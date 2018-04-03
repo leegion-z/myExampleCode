@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>	
+
+       *{padding:0;margin:0;}
+       
+       li{list-style: none;float:left;position:relative;width:78px;height:75px;overflow: hidden;}
+       div{position:absolute;width: 78px;height:75px;}
+       img{display:block;}
+	</style>
+</head>
+<body>
+	<ul id="list">
+		<li><div><img src="starOff.png"><img src="starOn.png"></div></li>
+		<li><div><img src="starOff.png"><img src="starOn.png"></div></li>
+		<li><div><img src="starOff.png"><img src="starOn.png"></div></li>
+		<li><div><img src="starOff.png"><img src="starOn.png"></div></li>
+		<li><div><img src="starOff.png"><img src="starOn.png"></div></li>
+		
+	</ul>
+
+
+	<script>
+             var list=document.getElementById('list')
+             var li=list.getElementsByTagName('li')
+             var div=list.getElementsByTagName('div')
+             for (var i = 0; i < div.length; i++) {
+             	   div[i].index=i;
+                   div[i].onmouseover=function(){
+                     for (var j = 0; j <= this.index; j++) {
+                     	  div[j].style.top=-75+'px'
+                     }
+
+                 }
+                 div[i].onmouseout=function(){
+                     for (var j = 0; j <= this.index; j++) {
+                     	  div[j].style.top=0;
+                     }
+
+                 }
+
+          }
+
+
+
+	</script>
+</body>
+</html>

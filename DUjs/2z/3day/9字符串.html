@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	//substring() : 第一个参数是起始位置，第二个参数结束位置(不包含结束位置)
+	//截取字符串
+	//不会影响到原字符串
+
+   //    var str = 'hello world';
+	  // var result = str.substring(2,4);
+	  // console.log(result);
+
+    //slice() : 第一个参数是起始位置，第二个参数结束位置(不包含结束位置)
+	//截取字符串
+
+	//   var str = 'hello world';
+	//   var result = str.slice(2,4);
+	//   console.log(result);
+
+	// substirng和slice的区别：
+	// 1. substring位置可以调换的
+	// 2. slice可以支持负数设置
+	// var str = 'hello world';
+ //    var result = str.substring(4,2);
+ //    console.log(result);
+ //    var str = 'hello world';
+ //    var result = str.slice(-4,-2);  // or
+ //    console.log(result);
+	
+ //    substr() : 第一个参数是起始位置，第二个参数截取的长度
+	// 截取字符串
+	// var str = 'hello world';
+	// var result = str.substr(2,4);
+	// console.log(result);
+
+	// var str = 'hello world';
+
+	// var result = str.indexOf('l');
+
+	// console.log(result);
+
+
+	//join() : 把数组转成字符串
+	//split() : 把字符串转成数组
+		//如果没有参数：会把字符串这个整体当做数组中的唯一一项
+		//作为分隔符不会成为数组中的项。
+
+// 	var str = ["1", "2", "3", "4"]
+// ;
+
+// 	var arr = str.join('+');
+
+// 	console.log( arr );   //["1", "2", "3", "4"]
+
+	// var str = 'hello world';
+	// var arr = str.split('l');
+	// console.log( arr );   // ["hell"," w","rld"]
+
+	// charAt()
+	// 找到指定的字符串
+	var str = 'hello world';
+	//str[1] : JS不推荐这么用，charAt()
+	str.length
+
+	var result = str.charAt(1);
+	console.log( result );
+
+ //    charCodeAt()      
+	// 找到指定的字符串unicode编码
+
+	var result = str.charCodeAt(1);  
+	console.log( result );
+
+
+
+	</script>
+</body>
+</html>

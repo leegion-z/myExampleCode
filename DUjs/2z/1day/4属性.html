@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="div1" class="box" title="hello" qianfeng="千锋" data-custom-name="自定义名字">aaaaa</div>
+	<script>
+
+	//id className title : 属于标签自带的属性
+	//qianfeng : 属于自定义属性(不会对标签产生任何样式的影响)
+
+
+	// 获取属性的四种方式
+	// 1. 点(.)方式
+		//可以获取标签自带的属性，但是获取不到自定义属性
+	// 2. []方式
+		//可以获取标签自带的属性，但是获取不到自定义属性
+	// 3. getAttribute()
+		//属于DOM操作的一种方式
+		//即可以获取到自带的属性，也可以获取到自定义属性
+	// 4. data-*
+		//属于HTML5新提供的一种方式
+		//必须前面带有data-的属性，是可以获取到自定义属性的（有格式限制）
+
+
+	var div1 = document.getElementById('div1');
+
+	//console.log(  div1.title  );
+	//console.log(  div1.qianfeng  );
+
+	//console.log( div1['title'] );
+	//console.log( div1['qianfeng'] );
+
+	//div1.style.background = 'red';
+	//div1['style']['background'] = 'red';
+
+	//console.log( div1.getAttribute('title') );
+	//console.log( div1.getAttribute('qianfeng') );
+
+	console.log( div1.dataset.customName );
+
+	</script>
+</body>
+</html>

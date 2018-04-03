@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{ width: 100px; height: 100px; background: red; position: absolute; left: 0; }
+	</style>
+</head>
+<body>
+	<input id="btn" type="button" value="开始">
+	<div id="div1"></div>
+	<script>
+
+	   /*t ：当前时间
+	   		time
+
+       b  :  初始值
+       		begin
+
+       c  :  变化量(要变化的量)
+       		change
+
+       d  :  总时间		
+       		duration*/
+
+        //jquery -> animate  css3 -> transition aimation
+
+
+	var btn = document.getElementById('btn');
+	var div1 = document.getElementById('div1');
+	
+	btn.onclick = function(){
+		
+		move(div1,{left : 500},1000,function(){
+			
+			//move(this,{top : 300},2000);
+			move(this,{opacity : 0.5} , 2000);
+
+		});
+		
+	};	
+
+	function move(elem , targets , time , cbFn){
+
+		var startTime = now();
+		var objB = {};
+		var objC = {};
+		
+		var d = time;
+		
+		for(var attr in targets){
+			//attr : left 、top
+			//targets[attr] : 500、200
+			var b = parseInt(css(elem,attr)); 
+			objB[attr] = b || ( attr == 'opacity' ? 1 : 0 );
+			objC[attr] = targets[attr] - b;
+		}
+		
+		clearInterval(elem.timer);
+		elem.timer = setInterval(function(){
+
+			var changeTime = now();
+
+			var t = Math.min(changeTime - startTime , d);  // 0~2000 
+
+			if(t == d){
+				clearInterval(elem.timer);
+				if(cbFn){
+					cbFn.call(elem);
+				}
+			}
+
+			for(var attr in targets){
+				var value = t/d * objC[attr] + objB[attr];
+				elem.style[attr] = value + (attr == 'opacity' ? '' : 'px');
+			}
+		
+			
+		},16);
+
+	}
+
+	function now(){
+		return (new Date()).getTime();
+	}
+
+	function css(elem,attr){
+		if(elem.currentStyle){
+			return elem.currentStyle[attr];
+		}
+		else{
+			return window.getComputedStyle(elem)[attr];
+		}
+	}
+
+	</script>
+</body>
+</html>

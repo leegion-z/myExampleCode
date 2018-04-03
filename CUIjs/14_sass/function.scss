@@ -1,0 +1,10 @@
+$craftWidth: 640px;
+$count: 10rem;
+
+@function px2Rem($px) {
+  @return $px * $count / $craftWidth;
+}
+
+div {
+  width: px2Rem(100px);
+}

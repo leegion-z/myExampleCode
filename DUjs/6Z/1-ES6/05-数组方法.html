@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Examples</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+
+       /*
+            1. Array.from  将类数组(伪数组)转换为数组
+                 比如function中的arguments  
+
+            2. 数组的展开合并
+       */
+
+
+
+
+         
+         function test(){
+            console.log(arguments);
+           
+            
+           var b=  Array.from(arguments).map((item)=>"kerwin"+item);
+         
+           console.log(b);
+         }  
+
+         test(11,22,33,44);
+
+         
+
+          /* 展开赋值 */
+    var kerwina = [1,2,3];
+    var kerwinb = [4,5,6];
+     
+    var kerwinc= kerwina.concat(kerwinb);// 连接
+    
+    //es6 展开赋值
+    
+    kerwinc=[...kerwina,...kerwinb,7,8,9];
+    </script>
+</body>
+
+</html>

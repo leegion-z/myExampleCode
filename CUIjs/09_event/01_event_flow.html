@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<div>
+		<button>点一个</button>
+	</div>
+<script type="text/javascript">
+
+
+	//默认情况下事件，是先触发捕获阶段，在触发冒泡阶段。
+	//只有在目标元素上，会根据代码的绑定顺序，触发对应的事件。
+	
+	document.body.addEventListener('click', function () {
+		console.log('BODY冒泡事件');
+	}, false)
+	document.querySelector('div').addEventListener('click', function () {
+		console.log('DIV冒泡事件');
+	}, false)
+	document.querySelector('button').addEventListener('click', function () {
+		console.log('BUTTON冒泡事件');
+	}, false)
+
+
+	document.body.addEventListener('click', function () {
+		console.log('BODY捕获事件');
+	}, true)
+	document.querySelector('div').addEventListener('click', function () {
+		console.log('DIV捕获事件');
+	}, true)
+	document.querySelector('button').addEventListener('click', function () {
+		console.log('BUTTON捕获事件');
+	}, true)
+
+
+	
+</script>
+</body>
+</html>

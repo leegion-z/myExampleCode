@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- <input type="text">
+	<input type="text">
+	<input type="text"> -->
+	<!-- <input type="text" id="text1" placeholder="提示信息" autofocus> -->
+	<input type="text" id="text1" value="提示信息">
+	<script>
+
+	/*var inputs = document.getElementsByTagName('input');
+
+	for(var i=0;i<inputs.length;i++){
+		inputs[i].onfocus = function(){
+			this.style.background = 'red';
+		}
+		inputs[i].onblur = function(){
+			this.style.background = '';
+		}
+	}*/
+
+	var text1 = document.getElementById('text1');
+
+	text1.focus();  //自动获取光标
+
+	text1.onfocus = function(){
+		if(this.value == '提示信息'){
+			this.value = '';	
+		}
+	};
+	text1.onblur = function(){
+		if(this.value == ''){
+			this.value = '提示信息';	
+		}
+	};
+
+	</script>
+</body>
+</html>

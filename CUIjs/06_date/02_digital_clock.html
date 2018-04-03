@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.clock {
+			width: 500px;
+			height: 200px;
+			background-color: black;
+			border-radius: 10px;
+			color: white;
+			padding: 20px;
+			box-sizing: border-box;
+		}
+
+		.left, .right {
+			float: left;
+		}
+
+		.left {
+			width: 350px;
+			background: white;
+			color: black;
+			height: 160px;
+			box-sizing: border-box;
+			line-height: 160px;
+			text-align: center;
+			font-size: 80px;
+			font-weight: bold;
+			border-radius: 15px;
+		}
+
+		.right p {
+			width: 100px;
+			text-align: center;
+			height: 50px;
+		    line-height: 50px;
+    		font-size: 20px;
+    		padding-left: 5px;
+		}
+
+		.right p:nth-of-type(2) {
+			font-size: 30px;
+			font-weight: bold;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="clock">
+		<div class="left">11:34</div>
+		<div class="right">
+			<p class="day">Tuesday</p>
+			<p class="date">30</p>
+			<p class="month">August</p>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function updateTime() {
+			//组织一个表示时间的字符串
+			var now = new Date();
+			var hour = now.getHours();
+			var minute = now.getMinutes();
+			var second = now.getSeconds();
+			var date = now.getDate();
+			var day = now.getDay();
+			var month = now.getMonth();
+			var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+			var months = ['January ','February','March','April','May ','June ','July','August ','September ','October ','November','December']
+			hour = hour < 10 ? '0' + hour : '' + hour;
+			minute = minute < 10 ? '0' + minute : '' + minute;
+			date = date < 10 ? '0' + date : '' + date;
+			second = second < 10 ? '0' + second : '' + second;
+
+			// console.log(hour + ':' + minute);
+			//将时间字符串，写到div.left的内部
+			//1. 取得这个元素
+			//querySelector的作用是通过css选择器，从页面上选取元素。(只能返回页面上匹配元素中的第一个)
+			var left = document.querySelector('.left');
+			//2. 改变标签的内容
+			left.innerHTML = hour + ':' + minute + ':' + second;
+
+			var dateP = document.querySelector('.right .date');
+			dateP.innerHTML = date;
+
+			var dayP = document.querySelector('.right .day');
+			dayP.innerHTML = days[day];
+
+			var monthP = document.querySelector('.right .month');
+			monthP.innerHTML = months[month];
+		}
+
+		updateTime();
+
+		//JS中，要实现每间隔一段时间，就执行某个操作，使用
+		//setInterval()
+		setInterval(function() {
+			updateTime();
+		}, 500)
+		
+	</script>
+</body>
+</html>

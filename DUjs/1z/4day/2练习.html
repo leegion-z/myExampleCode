@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#box{ position: relative; margin: 100px; }
+	#box div{ width: 50px; height: 50px; background: red; position: absolute; }
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+	<script>
+
+	
+	var box = document.getElementById('box');
+	var boxDivs = box.getElementsByTagName('div');
+	
+	/*for(var i=0;i<boxDivs.length;i++){
+		boxDivs[i].style.left = i*50 + 'px';
+		if( i > boxDivs.length/2 ){
+			//i -> 5 6 7 8
+			//boxDivs.length -> 9
+			//boxDivs.length - i  ->  4 3 2 1
+			boxDivs[i].style.top = (boxDivs.length - 1 - i)*50 + 'px';
+		}
+		else{
+			boxDivs[i].style.top = i*50 + 'px';
+		}
+		
+	}*/
+
+	for(var i=0;i<boxDivs.length;i++){
+		boxDivs[i].style.left = i*50 + 'px';
+	}
+	for(var i=0;i<boxDivs.length/2;i++){
+		boxDivs[i].style.top = i*50 + 'px';
+		boxDivs[ boxDivs.length - 1 - i ].style.top = i*50 + 'px';
+	}
+
+	</script>
+</body>
+</html>

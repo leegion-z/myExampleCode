@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="btn">aaaa</div>
+		
+	<script>
+
+	/*function foo(n1,n2){
+		console.log(n1 + n2);
+		console.log(this);  
+	}*/
+
+	//foo();
+
+	//call()
+	//call前面的函数中的this跟call的第一个参数相同，从第二个参数开始为函数的实参
+	//foo.call(document,3,4);
+
+	//apply()
+	//只能写两个参数，第一个为指向，第二个参数为集合[]
+	//foo.apply(document,[3,4]);
+
+	//bind()
+	//只会改变指向，不会去执行对应的函数
+	//foo.bind(document)(3,4);
+
+	var btn = document.getElementById('btn');
+
+	btn.onclick = function(){
+
+		/*var This = this;
+
+		setTimeout(function(){
+
+			This.style.background = 'red';
+
+		},1000);*/
+
+		setTimeout(function(){
+
+			this.style.background = 'red';
+
+		}.bind(this),1000);
+		
+	};
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id="list">
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<script>
+
+	var list = document.getElementById('list');
+	var firstLi = list.firstElementChild;
+
+	//nextSibling和nextElementSibling的区别：
+		//nextElementSibling下一个兄弟节点为元素节点
+
+	//firstLi.nextElementSibling : 下一个兄弟节点
+	//firstLi.previousElementSibling : 上一个兄弟节点
+
+	//注：如果没有找到指定的节点，会返回null
+
+	//parentNode : 找父节点
+	
+	//console.log( document.documentElement.parentNode  );
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{ margin:0; padding: 0; }
+	li{ list-style: none; }
+	div{ width: 600px; height: 300px; border: 1px black solid; margin-bottom: 400px; }
+	#list{ width: 30px; height: auto; position: fixed; right: 5px; top:50%; margin-top:-75px; }
+	#list li{ width: 30px; height: 30px; margin-bottom: 5px; border-radius: 50%; border: 1px black solid; }
+	#list li.active{ background:red; }
+	</style>
+</head>
+<body>
+	<div id="one">one</div>
+	<div id="two">two</div>
+	<div id="three">three</div>
+	<div id="four">four</div>
+	<div id="five">five</div>
+	<ul id="list">
+		<li class="active"></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<script>
+
+	var lis = document.querySelectorAll('#list li');
+	var divs = document.querySelectorAll('div');
+	var posArr = [];
+	for(var i=0;i<divs.length;i++){
+		posArr.push( posTop(divs[i]) );
+	}
+	//console.log(posArr);
+	
+	for(var i=0;i<lis.length;i++){
+		lis[i].index = i;
+		lis[i].onclick = function(){
+			
+			for(var i=0;i<lis.length;i++){
+				lis[i].className = '';
+			}			
+			this.className = 'active';
+
+			document.documentElement.scrollTop = posTop( divs[this.index] ) + 5;
+
+		};
+	}
+
+	window.onscroll = function(){
+		
+		//console.log( listenPos( document.documentElement.scrollTop ) );
+		var index = listenPos( document.documentElement.scrollTop );
+		for(var i=0;i<lis.length;i++){
+			lis[i].className = '';
+		}			
+		lis[index].className = 'active';
+
+	};
+
+	function listenPos( scrollTop ){
+		//console.log( scrollTop );
+		for(var i=0;i<posArr.length;i++){
+			if(posArr[i] <= scrollTop && i == posArr.length-1){
+				return i;
+			}
+			if( posArr[i] <= scrollTop && posArr[i+1] >= scrollTop ){
+				return i;
+			}
+		}
+	}
+
+	function posLeft(elem){
+		var result = 0;
+		while(elem){
+			result += elem.offsetLeft;
+			elem = elem.offsetParent;
+		}
+		return result;
+	}
+
+
+	function posTop(elem){
+		var result = 0;
+		while(elem){
+			result += elem.offsetTop;
+			elem = elem.offsetParent;
+		}
+		return result;
+	}	
+
+	</script>
+</body>
+</html>

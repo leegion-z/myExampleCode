@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	var str = '2018/1/5jdkfk/df';    // 2018_1_5jdkfk/df
+	var re = /\d+\//g;   //数字+/ -> 数字+_
+
+	//2018/
+	//1/
+
+	//var result = str.replace(re,'_');
+	var result = str.replace(re,function(arg){
+		// arg -> 2018/   -> 2018_
+		// 	   1/         1_
+		return arg.substring(0,arg.length-1)+'_';
+	});
+
+	console.log(result);
+
+	</script>
+</body>
+</html>

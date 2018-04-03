@@ -1,0 +1,23 @@
+<script type="text/javascript" src="../vendor/jquery-3.1.1.js"></script>
+<script>
+	var time;
+	$.get('../api/get_blog_list.php', {
+		username: 'cuijn'
+	} , function(data) {
+		time = data.time;
+		setTimeout(function() {
+			update();
+		}, 2000);
+	});
+	function update () {
+		$.get('../api/update_blog.php', {
+			username: 'cuijn',
+			timestamp: time
+		} , function(data) {
+			time = data.time;
+			setTimeout(function() {
+				update();
+			}, 2000);
+		});
+	}
+</script>

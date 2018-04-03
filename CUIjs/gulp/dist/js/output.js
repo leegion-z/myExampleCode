@@ -1,0 +1,1 @@
+document.querySelector("h1").style.fontSize="100px";var h2=document.createElement("h2");h2.innerHTML="this is gulp course",document.body.appendChild(h2);

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{ margin: 0; padding: 0; }
+	li{ list-style: none; }
+	#main{ margin: 100px; }
+	#content{ float: left; position: relative; }
+	#message{ float: left; }
+	#list{ display: none; width: 200px; position: absolute; }
+	</style>
+</head>
+<body>
+	<div id="main">
+		<div id="content">
+			<div id="btn">新闻</div>
+			<ul id="list">
+				<li data-tips="新闻的提示信息">新闻</li>
+				<li data-tips="视频的提示信息">视频</li>
+				<li data-tips="论坛的提示信息">论坛</li>
+				<li data-tips="体育的提示信息">体育</li>
+			</ul>
+		</div>
+		<div id="message">
+			<input id="text1" type="text">
+		</div>
+	</div>
+	<script>
+	var btn = document.getElementById('btn');
+	var list = document.getElementById('list');
+	var liList = list.getElementsByTagName('li');
+	var text1 = document.getElementById('text1');
+
+	var nowTips = liList[0].dataset.tips;//获取第一个li的自定义属性
+	text1.value = nowTips;
+
+	btn.onclick = function(ev){
+		list.style.display = 'block';
+		ev.stopPropagation();
+	};
+
+	document.onclick = function(){
+		list.style.display = 'none';
+	};
+
+	for(var i=0;i<liList.length;i++){
+		liList[i].onclick = function(){
+			btn.innerHTML = this.innerHTML;
+			nowTips = this.dataset.tips;
+			text1.value = nowTips;
+		};
+	}
+
+	text1.onfocus = function(){
+		if(this.value == nowTips){
+			this.value = '';
+		}
+	};
+	text1.onblur = function(){
+		if(this.value == ''){
+			this.value = nowTips;
+		}
+	};
+
+	</script>
+</body>
+</html>

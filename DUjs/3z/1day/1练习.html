@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{ margin: 0; padding: 0; }
+	li { list-style:none; }
+	#main button{ width: 50px; height: 50px; position: fixed; top:50%; margin-top:-25px;}
+	#main button:nth-of-type(1){ left: 0; }
+	#main button:nth-of-type(2){ right: 0; }
+	#list{ position: relative; margin: 20px auto; }
+	#list li{ position:absolute; }
+	</style>
+</head>
+<body>
+	<div id="main">
+		<ul id="list">
+			
+		</ul>
+		<button>←</button>
+		<button>→</button>
+	</div>
+	<script>
+
+	var list = document.getElementById('list');
+	var lis = list.getElementsByTagName('li');
+	var main = document.getElementById('main');
+	var btns = main.getElementsByTagName('button');
+	var arr = ['32.jpg','33.jpg','34.jpg','35.jpg','36.jpg'];
+	var imgWidth = 658;
+	var imgHeight = 658;
+	var now = 0;
+
+	createMap();
+	bindBtns();
+
+	function createMap(){
+		var gridX = 6;
+		var gridY = 5;
+		var gridW = imgWidth / gridX;
+		var gridH = imgHeight / gridY;
+
+		for(var i=0;i<gridY;i++){
+			for(var j=0;j<gridX;j++){
+				var li = document.createElement('li');
+				li.style.cssText = 'width:'+ gridW +'px;height:'+gridH+'px;left:'+ ( j * (gridW + 1) ) +'px;top:'+ ( i * (gridH + 1) ) +'px;background:url(img/'+ arr[now] +') '+( - j * gridW )+'px '+ ( - i * gridH) +'px';
+				list.appendChild(li);
+			}
+		}
+		list.style.width = imgWidth + 'px';
+
+	}
+
+	function bindBtns(){
+		btns[0].onclick = function(){
+			if(now == 0){
+				now = arr.length-1;
+			}
+			else{
+				now--;	
+			}
+			changeImg();
+		};
+		btns[1].onclick = function(){
+			if(now == arr.length-1){
+				now = 0;
+			}
+			else{
+				now++;	
+			}
+			changeImg();
+		};
+	}	
+
+	function changeImg(){
+
+		/*for(var i=0;i<6;i++){
+				lis[i].style.backgroundImage = 'url(img/'+( arr[now] )+')';
+		}*/
+		/*for(var i=6;i<12;i++){
+				lis[i].style.backgroundImage = 'url(img/'+( arr[now] )+')';
+		}*/
+		/*for(var i=12;i<18;i++){
+				lis[i].style.backgroundImage = 'url(img/'+( arr[now] )+')';
+		}*/
+
+		var count = 0;
+		var number = 6;
+		var newArr = randomArr();
+
+		var timer = setInterval(function(){
+
+			for(var i=count*number;i<(count+1)*number ;i++){
+				lis[ newArr[i] ].style.backgroundImage = 'url(img/'+( arr[now] )+')';
+			}
+
+			if(count == lis.length / number){
+				clearInterval(timer);
+			}
+			else{
+				count++;
+			}
+		
+		},100);
+
+	}
+
+	function randomArr(){
+		var arr = [];
+		var result = [];
+		var len = lis.length;
+		for(var i=0;i<len;i++){
+			arr.push(i);
+		}
+		for(var i=0;i<len;i++){
+			var index = Math.floor(Math.random()*arr.length);
+			result = result.concat(arr.splice(index,1));
+		}
+		//console.log(result);
+		return result;
+	}
+
+	</script>
+</body>
+</html>

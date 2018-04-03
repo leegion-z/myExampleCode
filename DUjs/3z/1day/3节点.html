@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{ margin:0; padding:0; }
+	#box1{ width: 300px; height: 300px; background: red; }
+	#box2{ width: 200px; height: 200px; background: yellow; position:relative; margin-left: 50px; }
+	#box3{ width: 100px; height: 100px; background: blue; position: relative; left: 50px;}	
+	</style>
+</head>
+<body>
+	<!-- <div id="div1">aaaa<p>pppppp</p></div> -->
+
+	<div id="box1">aaa
+		<div id="box2">bbb
+			<div id="box3">ccc</div>
+		</div>
+	</div>
+
+	<script>
+
+	var div1 = document.getElementById('div1');
+	
+	//元素节点的名字：DIV，可以利用这个nodeName来判断当前是什么标签
+	console.log( div1.nodeName.toLowerCase() == 'div' );	
+	//元素节点的值：null
+	//console.log( div1.nodeValue );
+
+	//所有的文本节点的名字：#text
+	//console.log( div1.childNodes[0].nodeName );
+	//文本节点的值：当前文本的内容
+	//console.log( div1.childNodes[0].nodeValue );
+	//div1.childNodes[0].nodeValue = 'bbbb';
+
+	//offsetParent parentNode 的区别
+		//offsetParent : 找到有定位的祖先节点，如果所有的祖先节点都没有定位的话，那么offsetParent会返回body标签
+		//parentNode : 找到父节点
+
+	// var box3 = document.getElementById('box3');
+	//console.log( box3.offsetParent );
+	//offsetLeft如果祖先节点都没有定位的话，那么offsetLeft到html的距离。
+	//console.log( box3.offsetLeft );
+
+	// console.log( posLeft(box3) ); 
+
+	// function posLeft(elem){
+	// 	var result = 0;
+	// 	while(elem){
+	// 		result += elem.offsetLeft;
+	// 		elem = elem.offsetParent;
+	// 	}
+	// 	return result;
+	// }//不管定位还是不定位都是100；
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<script type="text/javascript" src="../vendor/jquery-3.1.1.js"></script>
+<script>
+	$.post('../api/login.php', {
+		username: 'cuijn',
+		password: '123456'
+	} , function(data) {
+		console.log(data);
+	})
+</script>

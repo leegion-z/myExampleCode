@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	当写了一个构造函数后，会在原型对象下自动生成一个叫做constructor的属性
+	constructor属性：会等于对应的构造函数
+
+	function Foo(){
+		this.name = 'hello';
+	}
+	Foo.prototype.constructor = Foo;
+	
+	var f1 = new Foo();
+
+	console.log( f1.__proto__ == Foo.prototype );	 //true
+	console.log( Foo.prototype.__proto__ == Object.prototype );  //true
+	console.log( f1 );
+
+	console.log( f1.constructor == Foo );   // true
+
+
+	function Foo(){
+
+	}
+	Foo.prototype = {
+		constructor : Foo,
+		showName : function(){},
+		showAge : function(){}
+	};
+
+	var f1 = new Foo();
+
+	console.log( f1.constructor == Foo ); 
+
+
+	//instanceof: 左边是实例对象，右边是构造函数。它会检查右边构建函数的原型对象，是否在左边对象的原型链上。
+
+	function Foo(){
+
+	}
+	function Bar(){
+
+	}
+	Bar.prototype = Foo.prototype;
+	var f1 = new Foo();
+
+	console.log( f1 instanceof Foo );    //true
+	console.log( f1 instanceof Object ); //true
+
+	console.log( f1 instanceof Bar );  	 //false
+
+
+	function Foo(){
+		this.name = 'hello';
+	}
+	Foo.prototype.age = 20;
+	//Foo.prototype.constructor = Foo;
+	//Object.prototype
+
+	var f1 = new Foo();
+
+	/*for(var attr in f1){
+		console.log(attr);
+	}*/
+	// in运算符返回一个布尔值，表示一个对象是否具有某个属性。 
+	console.log( 'job' in f1 );
+	// 判断是否是自身下的属性。
+	//console.log( f1.hasOwnProperty('age') ); 
+
+	//hasOwnProperty() : 这个方法在Object.prototype对象下的
+	//toString() : 这个方法在Object.prototype对象下的
+		//把其他类型转换成字符串类型
+		//判断是否是....类型
+	function Foo(){
+		this.name = 'hello';
+	}
+
+	var f1 = new Foo();
+
+
+
+	//console.log( f1.toString() );  //'[object Object]'
+
+	//console.log( Object.prototype.toString.call(123) )  //'[object Number]'
+
+	//console.log( typeof [] );
+	//console.log( Object.prototype.toString.call([]) )   //'[object Array]'
+
+	//console.log( typeof null );
+	//console.log( Object.prototype.toString.call(null) )  //'[object Null]'
+
+	//console.log( typeof /A/ );
+	//console.log( Object.prototype.toString.call(/A/) )  //'[object RegExp]'
+	判断是否是数组
+	function isArray(arg){
+		return Object.prototype.toString.call(arg) == '[object Array]'
+	}
+	判断是否是日期
+	function isDate(arg){
+		return Object.prototype.toString.call(arg) == '[object Date]'
+	}
+
+	//console.log( isArray([1,2,3]) );
+	console.log( isDate(new Date()) );
+
+	面试问：如何区分不同的数据类型？
+		typeof 
+		Object.prototype.toString
+	</script>
+</body>
+</html>

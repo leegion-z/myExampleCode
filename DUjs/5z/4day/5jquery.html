@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	
+	div{ width: 100px; height: 100px; border:1px black solid; margin: 10px; display:inline; }
+	.hide{ display:none; }
+	</style>
+	<script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+	
+	<button>切换</button>
+	<!-- <input type="text" class="box1"> -->
+	<div>aaaaaaa</div>
+	
+	<script>
+
+	//$('input').attr('class','box1');
+
+	//$('input').addClass('box1 box2');
+
+	//$('input').removeClass('box1');
+
+	//$('input').toggleClass('box2');
+
+	var onoff = true;
+
+	$('button').click(function(){
+		//$('input').toggleClass('hide');
+		//$('input').toggle(1000);
+
+		if( onoff ){
+			//$('div').css('display','none');
+			$('div').hide();
+		}
+		else{
+			//$('div').css('display','');
+			$('div').show();
+		}
+		onoff = !onoff;
+
+	});
+	
+	</script>
+</body>
+</html>

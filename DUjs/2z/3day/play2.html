@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+div{width:100px; height:100px; position:absolute; transition:1s;}
+div:nth-of-type(1){left:0; top:50px; background:red;}
+div:nth-of-type(2){left:150px; top:50px; background:green;}
+div:nth-of-type(3){left:300px;top:50px;background:blue;}
+	</style>
+
+</head>
+<body>
+<input type="button" value="按钮" id='btn'>
+	
+	<div></div>
+	<div></div>
+	<div></div>	
+
+<script>
+var btn = document.getElementById('btn');
+var divs =document.getElementsByTagName('div');
+var arr=[];
+  for(var i=0; i<divs.length; i++){
+  	arr.push(css(divs[i],'left'))
+  }
+
+  btn.onclick=function(){
+  	arr.unshift(arr.pop())
+  	for(var i=0; i<divs.length; i++){
+  		divs[i].style.left =arr[i];
+  	}
+  }
+	function css(elem,attr){
+		if(elem.currentStyle){
+			return elem.currentStyle[attr];
+		}
+		else{
+			return window.getComputedStyle(elem)[attr];
+		}
+	}
+</script>
+</body>
+</html>

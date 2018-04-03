@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <script src="/socket.io/socket.io.js"></script>
+
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <input type="text" id="mytext"/>
+    <button onclick="send()">send</button>
+
+    <script type="text/javascript">
+    	
+    	var socket = io();
+
+    	var name = prompt("输入名字");
+    	socket.on("welcome",function(msg){
+    		console.log(msg);
+    	})
+
+    	socket.on("allchat",function(msg){
+    		console.log(msg);
+    	})
+
+		var otext = document.getElementById("mytext");
+
+
+		function send(){
+
+			socket.emit("all",{
+				name:name,
+				info:otext.value
+			});
+		}
+    </script>
+  </body>
+</html>

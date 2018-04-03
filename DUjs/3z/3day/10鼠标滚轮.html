@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{ width:200px; height: 200px; background: red; }
+	</style>
+</head>
+<body style="height:2000px">
+	<div id="div1"></div>
+	<script>
+
+	var div1 = document.getElementById('div1');
+	
+	//鼠标滚轮事件：onmousewheel
+	//滚轮的方向：event对象的 wheelDelta 负值为向下滚动 正值为向下滚动
+
+	div1.onmousewheel = function(ev){
+		//console.log(ev.wheelDelta);
+		if(ev.wheelDelta < 0){   //下
+			this.style.height = this.offsetHeight + 10 + 'px';
+		}
+		else{    //上
+			this.style.height = this.offsetHeight - 10 + 'px';
+		}
+		return false;
+	};
+
+	</script>
+</body>
+</html>

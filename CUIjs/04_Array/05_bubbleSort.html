@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//冒泡排序
+		function bubbleSort (array) {
+
+			for(var i=0; i<array.length-1; i++) {
+				var temp;
+				for(var j = array.length-1; j>i; j--) {
+					//如果在循环内，有索引的-1或者+1操作，我们要注意循环的边界
+					if(array[j] < array[j-1]) {
+						//交换位置
+						// array[j] = array[j] + array[j-1];
+						// array[j-1] = array[j] - array[j-1];
+						// array[j] = array[j] - array[j-1];
+						temp = array[j];
+						array[j] = array[j-1];
+						array[j-1] = temp;
+					}
+				}
+			}
+		}
+
+		var numbers = [2, 0, 1, 7, 10, 26, 0]
+		bubbleSort(numbers);
+		alert(numbers);
+	</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style type="text/css" media="screen">
+	#haha{
+		width:202px;
+		height:202px;
+		background-color:#f00;
+		position: absolute;
+		top:10px;
+		left:10px;
+		line-height:202px;
+		text-align: center;
+		font-size: 30px;}
+	#haha1{
+		position: absolute;
+		top:230px;
+		left:30px;
+	}
+</style>
+<body>
+	<div id="haha">哈哈哈</div>
+	
+	<br>
+	<button id="haha1">点击我啊</button>
+
+	<script>
+	var haha = document.getElementById('haha');
+	var haha1= document.getElementById('haha1');
+	var k=true;
+	haha1.onclick=function(){
+		if(k){			
+			haha.style.background="#ff0";
+			haha.style.transform="rotate(720deg)";
+			haha.style.transition="5s linear";
+			haha.style.left="1000px";
+			haha.style.top="500px";
+			haha.style.color="#fff";
+			haha.style.width="400px";
+			haha.style.borderRadius="50%";
+			k=false;
+		}else{
+			haha.style.background="blue";	
+			haha.style.transform="rotate(-720deg)";
+			haha.style.transition="5s linear";	
+			haha.style.left="0px";	
+			haha.style.top="0px";
+			haha.style.color="#f60";
+			haha.style.width="202px";
+			haha.style.borderRadius="0";
+			k=true;
+		}	
+	}
+	</script>
+</body>
+</html>

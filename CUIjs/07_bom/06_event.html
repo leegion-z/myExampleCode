@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body style="height:10000px;">
+
+	<script type="text/javascript">
+		window.onload = function () {
+			//这个事件，在页面DOM加载完成、JS加载完成、图片加载完成后触发
+			var div = document.getElementById('container');
+			div.onclick = function () {
+				alert('aaa')
+			}
+		}
+		
+		window.onscroll = function () {
+			console.log('aaaaa');
+		}
+	</script>
+
+	<div id="container">aaa</div>
+</body>
+</html>

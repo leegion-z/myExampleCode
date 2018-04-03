@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//递归，就是函数自己调用自己
+		//求100以内所有自然数的和（0算自然数）
+		function sum_all (n) {
+			if(n === 0) {
+				return 0;
+			}
+
+			return n + sum_all(n-1);
+		}
+
+		// alert(sum_all(100));
+
+		//求100阶乘
+		function factorial (n) {
+			if(n === 0) {
+				return 1;
+			}
+
+			return n * factorial(n-1);
+		}
+		// alert(factorial(100))
+
+		//兔子数列(斐波那契数列)：
+		// 兔子在出生两个月成熟，从出生后第三个月就有繁殖能力，
+		// 一对成熟兔子每个月能生出一对小兔子来(且一公一母)。
+		// 假设，第一个月有一对刚出生的兔子，如果所有兔子都不死，
+		// 那么一年以后可以繁殖多少对兔子
+
+		// f(1) = 1;
+		// f(2) = 1;
+		// f(n) = f(n-1) + f(n-2);
+
+		function fibonacci(n) {
+			if(n === 1 || n === 2) {
+				return 1;
+			}
+			return fibonacci(n-1) + fibonacci(n-2);
+		}
+
+		alert(fibonacci(13));
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input id="btn" type="button" value="排序">
+	<ul>
+		<li>321</li>
+		<li>50</li>
+		<li>12</li>
+		<li>9</li>
+		<li>11</li>
+	</ul>
+	<script>
+
+	// every()     
+	// 检测数组所有元素是否都符合指定条件，如果都符合条件就返回true，如果有一个不符合条件就返回false
+	
+	/*var arr = [5,16,7];
+
+	var result = arr.every(function(val){    //执行多次
+		//console.log(val);
+		return val < 10;
+	});
+
+	console.log(result);
+	console.log(arr);*/
+
+	// some()    
+	// 检测数组元素中是否有元素符合指定条件，如果有一个条件符合就返回true，都不符合条件返回false
+
+	/*var arr = [15,16,17];
+
+	var result = arr.some(function(val){    //执行多次
+		return val < 10;
+	});
+
+	console.log(result);*/
+
+	//filter()     
+	//检测数值元素，并返回符合条件的所有元素的筛选后的一个数组
+
+
+	/*var arr = [5,15,16,6,17,7];
+
+	var result = arr.filter(function(val){    //执行多次
+		return val > 10;
+	});
+
+	console.log(result);*/
+
+	//map()      
+	//通过指定函数处理数组的每个元素，并返回处理后的数组
+
+	/*var arr = [5,15,16,6,17,7];
+
+	var result = arr.map(function(val){    //执行多次
+		return Math.pow(val,2);
+	});
+
+	console.log(result);*/
+
+	//forEach()  : 类似于循环操作 for while ...
+	//for while是可以给数组用，还可以给集合用elems、arguments...
+	//forEach()只能给数组去用	
+	//数组每个元素都执行一次回调函数
+	//forEach() : 不具备跳出功能。
+
+	/*var arr = [5,15,16,6,17,7];
+
+	arr.forEach(function(val,i){  //参数，当前值和位置
+
+		console.log(i);
+
+	});*/
+
+
+	//
+
+	var arr = [5,6,7];
+
+	var result = every(arr,function(val){
+		return val < 10;
+	});
+
+	console.log( result );  //true
+
+	function every( elements , fn ){
+		var resultBool = [];
+		for(var i=0;i<elements.length;i++){
+			resultBool.push(fn( elements[i] ));	
+		}
+		for(var i=0;i<resultBool.length;i++){
+			if(resultBool[i] == false){
+				return false;
+			}
+		}
+		return true;
+	}
+
+	</script>
+</body>
+</html>

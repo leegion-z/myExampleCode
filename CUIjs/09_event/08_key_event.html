@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		div {
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<input type="" name="" placeholder="user">
+	<div tabindex="3"></div>
+	<input type="" name="" placeholder="password">
+	<script type="text/javascript">
+		//keydown、keypress、keyup
+		//获得焦点的那个元素，能够得到键盘事件
+		//keydown、keyup事件，所有按键都能监听到。keyCode就是键盘的按键代码
+		//keypress键，只能监听到可显示的字符按键。keyCode就是这个字符的ascii码
+		//按键按下后，触发顺序为：keydown->keypress->input的value改变->keyup
+		var i = document.querySelector('input');
+		i.onkeydown = function (evt) {
+			var e = evt || window.event;
+			// keyCode代表按键的码
+			console.log('onkeydown' + e.keyCode);
+			// console.log(input.value);
+			console.log('onkeydown' + this.value);
+		}
+		i.onkeypress = function (evt) {
+			var e = evt || window.event;
+			// keyCode代表按键的码
+			console.log('onkeypress' + e.keyCode);
+			// console.log(input.value);
+			console.log('onkeypress' + this.value);
+		}
+		i.onkeyup = function (evt) {
+			var e = evt || window.event;
+			// keyCode代表按键的码
+			console.log('onkeyup' + e.keyCode);
+			// console.log(input.value);
+			console.log('onkeyup' + this.value);
+		}
+
+		// var sum = function () {
+
+		// }
+
+		//作业：在input框中，阻止数字输入到input上
+	</script>
+</body>
+</html>

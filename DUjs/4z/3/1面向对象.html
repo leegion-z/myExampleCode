@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	//原型链：就近进行查找，如果没找到，就继续通过原型链向外查找。如果原型链上没有找到对应的属性或方法，就返回undefined
+
+	function Foo(){
+		this.name = 'hello';
+	}
+	Foo.prototype.name = 'hi';
+	Object.prototype.name = 'nihao';
+
+	//var obj1 = new Foo();
+	//console.log( obj1.name );
+	//console.log( obj1.name );
+	//console.log( window );
+
+	var obj1 = new Foo();
+	var obj2 = new Foo();
+	var obj3 = new Foo();
+
+	</script>
+</body>
+</html>

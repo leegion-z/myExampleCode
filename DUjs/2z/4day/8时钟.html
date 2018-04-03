@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{ margin: 0; padding: 0; }
+	li{ list-style: none; }
+	#div1{ width: 300px; height: 300px; border:5px black solid; margin: 30px auto; border-radius: 50%; position:relative;}
+	#list{}
+	#list li{ width: 2px; height:10px; background: blue; position: absolute; left: 50%; top: 0; margin-left: -1px; transform-origin:1px 150px; }
+	#hours{ position: absolute; width: 16px; height: 70px; background: black; left: 50%; top:50%; margin-left:-8px; margin-top: -70px; transform-origin:center 70px;}
+	#mins{ position: absolute; width: 8px; height: 90px; background: black; left: 50%; top:50%; margin-left:-4px; margin-top: -90px; transform-origin:center 90px;}
+	#secs{ position: absolute; width: 2px; height: 130px; background: black; left: 50%; top:50%; margin-left:-1px; margin-top: -130px; transform-origin:center 130px;}
+	</style>
+</head>
+<body>
+	<div id="div1">
+		<ul id="list">
+			
+		</ul>
+		<div id="hours"></div>
+		<div id="mins"></div>
+		<div id="secs"></div>
+	</div>
+	<script>
+
+	var list = document.getElementById('list');
+	var hours = document.getElementById('hours');
+	var mins = document.getElementById('mins');
+	var secs = document.getElementById('secs');
+	var num = 60;
+
+	for(var i=0;i<num;i++){
+		if(i%5 == 0){
+			list.innerHTML += '<li style="transform:rotate('+ (6*i) +'deg); height:20px;background-color:red;"></li>';
+		}
+		else{
+			list.innerHTML += '<li style="transform:rotate('+ (6*i) +'deg)"></li>';	
+		}
+		
+	}
+
+	run();
+	setInterval(run,1000);
+
+	function run(){
+		var date = new Date();
+		var iH = date.getHours();
+		var iM = date.getMinutes();
+		var iS = date.getSeconds();
+
+		//console.log(iH);
+
+		hours.style.transform = 'rotate('+ (iH * 30 + iM/2) +'deg)';
+		mins.style.transform = 'rotate('+ (iM * 6) +'deg)';
+		secs.style.transform = 'rotate('+ (iS * 6) +'deg)';
+
+	}
+
+	</script>
+</body>
+</html>

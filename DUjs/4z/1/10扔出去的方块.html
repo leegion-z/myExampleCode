@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{ width: 100px; height: 100px; background:red; position: absolute; }
+	.box{ position: absolute; border:1px black solid; }
+	</style>
+</head>
+<body>
+	<div id="div1"></div>
+	<script>
+
+	var div1 = document.getElementById('div1');
+	var disX = 0;
+	var disY = 0;
+	var prevX = 0;
+	var prevY = 0;
+	var speedX = 0;
+	var speedY = 0;
+
+	div1.onmousedown = function(ev){
+		var This = this;
+		disX = ev.pageX - this.offsetLeft;
+		disY = ev.pageY - this.offsetTop;
+		document.onmousemove = function(ev){
+			This.style.left = ev.pageX - disX + 'px';
+			This.style.top = ev.pageY - disY + 'px';
+			/*var box = document.createElement('div');
+			box.className = 'box';
+			box.style.left = ev.pageX + 'px';
+			box.style.top = ev.pageY + 'px';
+			document.body.appendChild(box);*/
+			speedX = ev.pageX - prevX;
+			prevX = ev.pageX;
+			speedY = ev.pageY - prevY;
+			prevY = ev.pageY;
+		};
+		document.onmouseup = function(){
+			document.onmousemove = null;
+			document.onmouseup = null;
+
+			var timer = setInterval(function(){
+
+				var L = This.offsetLeft + speedX;
+				var T = This.offsetTop + speedY;
+
+				if( Math.abs(speedY) <= 1 && Math.abs(speedX) <= 1 ){
+					clearInterval(timer);
+					return;
+				}
+				speedY += 3;
+
+				if(T<0){
+					T = 0;
+					speedY *= -1;
+					speedY *= 0.7;
+				}
+				else if( T > window.innerHeight - This.offsetHeight ){
+					T = window.innerHeight - This.offsetHeight;
+					speedY *= -1;
+					speedY *= 0.7;
+					speedX *= 0.7;
+				}
+
+				if(L<0){
+					L = 0;
+					speedX *= -1;
+					speedX *= 0.7;
+				}
+				else if( L > window.innerWidth - This.offsetWidth ){
+					L = window.innerWidth - This.offsetWidth;
+					speedX *= -1;
+					speedX *= 0.7;
+				}
+
+				This.style.left = L + 'px';
+				This.style.top = T + 'px';
+			},16);
+
+		};
+		return false;
+	};
+
+
+	</script>
+</body>
+</html>

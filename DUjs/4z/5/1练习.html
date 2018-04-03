@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{ margin: 0; padding: 0; }
+	li{ list-style: none; }
+	#main{ position: relative; margin: 20px auto; }
+	#list{ width:100%; height:100%; border:1px black solid; border-right: none; border-bottom: none; }
+	#list li{ border:1px black solid; border-left: none; border-top: none; position: absolute; }
+	#box{ position: absolute; left: 0; top: 0; background:red; }
+	</style>
+</head>
+<body>
+	<div id="main">
+		<ul id="list">
+		</ul>
+		<div id="box"></div>
+	</div>
+	<script>
+
+	var main = document.getElementById('main');
+	var list = document.getElementById('list');
+	var box = document.getElementById('box');
+
+	var cols = 10;
+	var rows = 10;
+	var width = 100;
+	var height = 100; 
+
+	createGrid();
+	setBox();
+	drag();
+
+	function createGrid(){
+		for(var i=0;i<rows;i++){
+			for(var j=0;j<cols;j++){
+				var li = document.createElement('li');
+				li.style.cssText = 'width:'+width+'px;height:'+height+'px;left:'+( j*width )+'px;top:'+ (i*height) +'px;';
+				list.appendChild(li);
+			}
+		}
+		main.style.width = cols * width + 'px';
+		main.style.height = rows * height + 'px';
+	}
+
+	function setBox(){
+		box.style.width = width + 'px';
+		box.style.height = height + 'px';
+	}
+
+	function drag(){
+		var disX = 0;
+		var disY = 0;
+		box.onmousedown = function(ev){
+			disX = ev.pageX - this.offsetLeft;
+			disY = ev.pageY - this.offsetTop;
+			document.onmousemove = function(ev){
+				this.style.left = ev.pageX - disX + 'px';
+				this.style.top = ev.pageY - disY + 'px';
+			}.bind(this);
+			document.onmouseup = function(ev){
+				
+				document.onmousemove = null;
+				document.onmouseup = null;
+
+				var x = Math.floor((ev.pageX - main.offsetLeft)/width);
+				var y = Math.floor((ev.pageY - main.offsetTop)/height);
+				
+				this.style.left = x * width + 'px';
+				this.style.top = y * height + 'px';
+
+			}.bind(this);
+			return false;
+		};
+	}
+
+	</script>
+</body>
+</html>

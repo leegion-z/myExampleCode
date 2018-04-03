@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title> 
+	<style>
+		*{padding:0; margin:0;}
+		li{list-style:none;}
+		#main{width:500px; height:150px; margin:20px auto; overflow: hidden;}
+		#list{position:relative;}
+		#list li{position:absolute;}
+		
+	</style>
+</head>
+<body>
+	<div id="main">
+		<ul id="list">
+			<li><img src ="img/1.jpg"><span></span></li>
+			<li><img src ="img/2.jpg"><span></span></li>
+			<li><img src ="img/3.jpg"><span></span></li>
+			<li><img src ="img/4.jpg"><span></span></li>
+			<li><img src ="img/5.jpg"><span></span></li>
+		</ul>
+	</div>
+<script src="move2.js"></script>
+<script>
+var li = document.getElementsByTagName('li');
+var main =document.getElementById('main');
+var oneW = main.offsetWidth / li.length;
+
+for(var i=0; i<li.length; i++){
+	li[i].style.left = i * oneW + 'px';
+	}
+
+</script>
+</body>
+</html>

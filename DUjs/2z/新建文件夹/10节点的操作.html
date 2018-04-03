@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="div1">
+		<input id="add" type="button" value="添加">
+		<!-- <span>11111111111</span> -->
+	</div>
+
+	<script>
+
+	//用innerHTML改变一个容器的内容，会导致这个容器中的元素事件失效。 
+	//appendChild() 会不导致事件的失效。
+	//经验告诉我们：能用DOM操作节点，尽量不用innerHTML
+
+
+	var add = document.getElementById('add');
+	var div1 = document.getElementById('div1');
+
+	/*add.onclick = function(){
+		div1.innerHTML += '<span>11111111111</span>';
+	};*/
+
+	add.onclick = function(){
+		var span = document.createElement('span');
+		span.innerHTML = '11111111111';
+		div1.appendChild(span);
+	};
+
+	</script>
+
+</body>
+</html>

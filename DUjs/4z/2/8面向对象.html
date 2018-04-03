@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{ width: 100px; height: 100px; background: red; position: absolute; }
+	</style>
+</head>
+<body>
+	<div id="div1"></div>
+	<script>
+
+	//尽量让面向对象中的this指向对象
+
+	function Drag(id){
+		this.elem = document.getElementById(id);//在对象下的属性
+		this.disX = 0;//this是在构造函数中写的，指的是对象
+		this.disY = 0;
+	}
+	Drag.prototype.init = function(){  //初始化
+		this.elem.onmousedown = this.down.bind(this);//赋值操作，把this.down赋值给前面， bind后的this指的是调用init的d1即对象就是构造函数Drag('div1');函数 就是对象；
+	};//this在init中写的，看谁调用的init 是元素d1（ 构造函数返回的结果）	
+	Drag.prototype.down = function(ev){  //按下操作
+		this.disX = ev.pageX - this.elem.offsetLeft;
+		//this属于down这个函数，他在楼上调用的，因为赋值操作所以这个this指的是this.elem,this.elem是元素 elem.divX必然报错 应该让this指向对象（事件）所以楼上加bind(this)
+		this.disY = ev.pageY - this.elem.offsetTop;
+		document.onmousemove = this.move.bind(this);
+		document.onmouseup = this.up;
+		return false;
+	};
+	Drag.prototype.move = function(ev){   //移动操作
+		this.elem.style.left = ev.pageX - this.disX + 'px';
+		this.elem.style.top = ev.pageY - this.disY + 'px';
+	};
+	Drag.prototype.up = function(){    //抬起操作
+		document.onmousemove = null;
+		document.onmouseup = null;
+	};
+
+	var d1 = new Drag('div1');
+	d1.init();//初始化调用
+
+	</script>
+</body>
+</html>

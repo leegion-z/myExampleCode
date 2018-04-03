@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<input type="" name="" id="wd">
+	<button>搜索</button>
+	<script type="text/javascript">
+		//点击button，跳转到百度，并在百度页面搜索input中的关键字
+		// https://www.baidu.com/s?wd=qianfeng
+		document.querySelector('button').onclick = function () {
+			var wd = document.getElementById('wd').value;
+			location.href = 'https://www.baidu.com/s?wd=' + wd;
+		}
+		
+	</script>
+</body>
+</html>
+
+

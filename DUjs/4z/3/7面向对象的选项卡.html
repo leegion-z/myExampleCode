@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1 button.active,#div2 button.active,#div3 button.active, #div4 button.active{ background:red; }
+	#div1 div, #div2 div, #div3 div, #div4 div{ border:1px black solid; display:none; width:200px; height: 200px; }
+	#div1 div.show,#div2 div.show,#div3 div.show, #div4 div.show{ display: block; }
+
+	</style>
+</head>
+<body>
+	<div id="div1">
+		<button>1111</button>
+		<button>2222</button>
+		<button>3333</button>
+		<div>1111的内容</div>
+		<div>2222的内容</div>
+		<div>3333的内容</div>
+	</div>
+	<div id="div2">
+		<button>1111</button>
+		<button>2222</button>
+		<button>3333</button>
+		<div>1111的内容</div>
+		<div>2222的内容</div>
+		<div>3333的内容</div>
+	</div>
+	<div id="div3">
+		<button>1111</button>
+		<button>2222</button>
+		<button>3333</button>
+		<div>1111的内容</div>
+		<div>2222的内容</div>
+		<div>3333的内容</div>
+	</div>
+	<div id="div4">
+		<button>1111</button>
+		<button>2222</button>
+		<button>3333</button>
+		<div>1111的内容</div>
+		<div>2222的内容</div>
+		<div>3333的内容</div>
+	</div>
+	<script>
+
+	function Tab(parent){
+		this.parent = document.getElementById(parent);
+		this.buttons = this.parent.getElementsByTagName('button');
+		this.contents = this.parent.getElementsByTagName('div');
+		this.events = 'click';
+		this.index = 0;
+	}
+	Tab.prototype.init = function(){
+
+		this.buttons[this.index].className = 'active';
+		this.contents[this.index].className = 'show';
+
+		for(var i=0;i<this.buttons.length;i++){
+			this.buttons[i].addEventListener(this.events,this.bindEvents.bind(this,i));
+		}
+	};	
+	Tab.prototype.bindEvents = function(index,ev){
+		for(var i=0;i<this.buttons.length;i++){
+			this.buttons[i].className = '';
+			this.contents[i].className = '';
+		}
+		this.buttons[index].className = 'active';
+		this.contents[index].className = 'show';	
+	};
+	Tab.prototype.selectEvents = function(events){
+		this.events = events;
+	};
+	Tab.prototype.selectIndex = function(index){
+		this.index = index;
+	};
+	Tab.prototype.autoPlay = function(){
+		
+		setInterval(function(){
+
+			if(this.index == this.buttons.length-1){
+				this.index = 0;
+			}
+			else{
+				this.index++;	
+			}
+		
+			this.bindEvents(this.index);
+
+		}.bind(this),2000);
+
+	};
+
+	var t1 = new Tab('div1');
+	t1.autoPlay();
+	t1.init();
+
+	var t2 = new Tab('div2');
+	t2.selectEvents('mouseover');
+	t2.init();
+
+	var t3 = new Tab('div3');
+	t3.selectEvents('mouseover');
+	t3.selectIndex(1);
+	t3.init();
+
+	var t4 = new Tab('div4');
+	t4.selectEvents('mouseover');
+	t4.selectIndex(2);
+	t4.autoPlay();
+	t4.init();
+
+	</script>
+</body>
+</html>

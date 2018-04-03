@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//do{//循环体}while(/*循环条件*/)
+		//100以内所有奇数的和
+		var num = 0;
+		var sum = 0;
+		do {
+			if(num%2 !== 0) {
+				//奇数
+				sum += num;
+			}
+
+			num++;
+		} while(num<=100)
+
+		console.log(sum);
+		//do-while&while
+		
+		//do-while无论循环条件是否满足，都会至少执行一次
+		//while会先判断执行条件，满足后执行
+	</script>
+</body>
+</html>

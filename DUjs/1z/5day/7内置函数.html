@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<input type="text"> + <input type="text"> = <input type="button" value="计算">
+
+	<script>
+
+//内置函数：JS这门语言帮我们实现好的，一些函数。我们只需要调用就行。
+
+/*JS内部：
+function alert(){
+
+}
+*/
+//---------------
+
+	//alert('1111');
+
+	//confirm() : 弹出一个确定窗口（了解）
+
+	/*var result = confirm('是否下单？');
+
+	if( result ){
+		console.log('提交了订单');
+	}
+	else{
+		console.log('取消了订单');
+	}*/
+
+	//prompt()  : 弹出一个对话窗口（了解）
+
+	/*var result = prompt('请输入你的年龄？', '20');
+
+	if( result > 25 ){
+		console.log('允许进入该网站');
+		//window.location.href = 'http://www.google.com';
+	}
+	else{
+		console.log('不允许进入该网站，年龄太小！');
+		//window.location.href = 'http://www.baidu.com';
+	}*/
+
+	//把其他数据类型，去转成数字类型
+	//parseInt() ：转成整型(整数)、parseFloat() ：转成浮点型(小数)
+	
+	//假设：'123abc' '100px' ，已数字作为开始的字符串，是可以转换的
+
+	//var foo = '1234.678px5555';
+
+	//console.log( parseInt(foo) );
+	//console.log( parseFloat(foo) );
+
+	//从HTML中获取到的数字都是字符串类型 
+		//parseInt(input1.value) + parseInt(input2.value)
+
+	//isNaN()	: 判断实参是否是NaN，如果是的话返回true，如果不是返回false
+
+	//console.log(  isNaN(NaN)  );   // true
+	//console.log(  isNaN(123)  );   // false	
+
+	var inputs = document.getElementsByTagName('input');
+
+	inputs[2].onclick = function(){   //计算的按钮
+
+		var val_1 = inputs[0].value;
+		var val_2 = inputs[1].value;
+
+		if(val_1 == '' || val_2 == ''){
+			alert('不能为空');
+		}
+		else if( isNaN( Number(val_1) ) || isNaN( Number(val_2) ) ){
+			alert('请输入数字');
+		}
+		else{
+			alert( parseFloat(val_1) + parseFloat(val_2) );
+		}
+
+	};
+
+
+	</script>
+</body>
+</html>

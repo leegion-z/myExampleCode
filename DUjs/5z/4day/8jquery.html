@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	
+	</style>
+	<script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+	
+	<!-- <ul>
+				<li><span>aaaaaaaa</span></li>
+				<li><span>aaaaaaaa</span></li>
+				<li><span class="nowLi">aaaaaaaa</span></li>
+				<li><span>aaaaaaaa</span></li>
+			</ul>
+			
+			<div id="div1">aaaaaaa</div> -->		
+
+	<span>span</span>
+	<span>span</span>
+	<p>ppppppp</p>
+	<span>span</span>
+	<textarea id="t1" name="">
+		as
+		da
+		sd
+		asd
+		as
+		da
+		sd
+		as
+		da
+		sd
+		as
+		d
+		asd
+		as
+		d
+	</textarea>
+	<script>
+
+	//index() : 索引就是在所有兄弟中排第几
+	//接收一个参数：不去按照兄弟中去排，按照你指定的规则进行排行
+
+
+	//console.log( $('.nowLi').index() );	
+	//console.log( $('.nowLi').index('span') );	
+
+	//$('li').html('bbbbbbb');
+
+	/*$('li').each(function(i,elem){
+		//elem : 原生的
+		//this == elem 等价
+		//console.log(elem);
+		$(elem).html(i);
+		return false;   //跳出循环
+	});*/
+
+	//$('span').wrap('<div>');
+
+	//$('span').wrapAll('<div>');
+
+	//$('span').wrapInner('<div>');
+	//body标签是不能删的
+	//$('span').unwrap();
+
+	//$('p').get() -> document.getElementsByTagName('p')
+	//$('p').get(0) -> document.getElementsByTagName('p')[0];
+
+	//$('p').get(0).style.background = 'red';
+
+	//console.log( $('#t1').height() );
+
+	//console.log( $('#t1').get(0).scrollHeight );
+
+	console.log( $('#t1').get(0) == $('#t1').get(0) );
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<div></div>
+	<script type="text/javascript">
+		//构造函数创建对象
+		//将属性和方法挂到this上
+		function Person (name, age, gender) {
+			this.name = name;
+			this.age = age;
+			this.gender = gender;
+			this.sayHi = function () {
+				alert(this.name + ' says: how are you doing!!!');
+			}
+		}
+
+		// 使用构造函数创建对象的方法是 new
+		// 在使用构造函数创建对象时(new的时候)
+		// JS引擎偷偷的为上面做了几件事
+		// 1. 创建了一个对象
+		// 2. 将this指针，指向这个对象
+		// 3. 执行构造函数
+		// 4. 将这个对象返回
+		var xiaoQ = new Person('Qiweijie', 18, 'Female');
+		xiaoQ.sayHi();
+
+		function Drag (el) {
+			this.el = el;
+			this.start = function () {
+				//this新创建的对象
+				this.el.onmousedown = function () {
+					//this指向el
+					this.move();
+					this.end()
+				}
+
+			}
+			this.move = function () {}
+			this.stop = function () {}
+		}
+
+		var d = new Drag(document.querySelector('div'));
+		d.start();
+
+		function Dog (name, type, gender) {
+			this.name = name;
+			this.type = type;
+			this.gender = gender;
+		}
+
+		alert(xiaoQ instanceof Person);
+		var dog = new Dog('hashiqi', 'Husky', 'Male');
+		alert(dog instanceof Person);
+		alert(dog instanceof Dog);
+
+		var p1 = new Person('xiaoM', 18, 'M');
+		var p2 = new Person('xiaoL', 19, 'F');
+		var p3 = new Person('xiaoC', 20, 'M');
+		//缺点：每个对象在创建时，都会创建一套独立的函数对象，且这些
+		//函数对象内部的代码一模一样，这个会浪费系统资源
+		//所以我们需要将函数对象共享
+		// ===> 使用原型方式共享函数对象
+		
+		
+
+	</script>
+</body>
+</html>

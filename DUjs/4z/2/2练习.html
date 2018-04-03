@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{ margin: 0; padding: 0; }
+	li{ list-style:none; }
+	#list{ width: 610px; height: 400px; margin: 20px auto; }
+	#list li{ width: 200px; height: 400px; float: left; background:url(img/slidepic8.jpg) center center; position: relative; }
+	#list li span{ width: 100%; height: 100%; position: absolute; left: 0; top: 0; background:rgba(0,0,0,0.5); }
+	</style>
+</head>
+<body>
+	<ul id="list">
+		<li>
+			<span></span>
+		</li>
+		<li>
+			<span></span>
+		</li>
+		<li>
+			<span></span>
+		</li>
+	</ul>
+	<script src="move2.js"></script>
+	<script>
+
+	var li = document.getElementsByTagName('li');
+	
+	for(var i=0;i<li.length;i++){	
+		li[i].onmouseover = function(){
+			for(var i=0;i<li.length;i++){
+				move(li[i],{width:100},300,'linear');
+			}
+			move(this,{width : 400},300,'linear');
+			var nowSpan = this.getElementsByTagName('span')[0];
+			nowSpan.style.background = 'rgba(0,0,0,0)';
+		};
+		li[i].onmouseout = function(){
+			for(var i=0;i<li.length;i++){
+				var nowSpan = li[i].getElementsByTagName('span')[0];
+				nowSpan.style.background = 'rgba(0,0,0,0.5)';
+				move(li[i],{width:200},300,'linear');
+			}
+		};
+	}	
+
+	</script>
+</body>
+</html>

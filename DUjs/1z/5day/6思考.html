@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<input id="btn" type="button" value="点击">
+	<div id="list">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+	</div>
+
+	<script>
+		
+		var btn = document.getElementById('btn');
+		var list = document.getElementById('list');
+		var inputs = list.getElementsByTagName('input');
+
+		btn.onclick = function(){
+			
+			for(var i=0;i<inputs.length;i++){
+				if( inputs[i].checked ){
+					inputs[i].checked = false;
+				}
+				else{
+					inputs[i].checked = true;
+				}
+			}
+
+		};
+
+	</script>
+</body>
+</html>

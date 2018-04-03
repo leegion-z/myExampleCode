@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<input id="btn" type="checkbox" value="点击">
+	<div id="list">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+	</div>
+
+	<script>
+	var btn = document.getElementById('btn')	
+	var	list= document.getElementById('list')	
+	var cbs =list.getElementsByTagName('input')
+	var onoff = true;
+	//-------------------------1----------------
+	/*btn.onclick =function(){
+		if(onoff){
+			for(var i=0; i<cbs.length;i++){
+				cbs[i].checked = true;
+			}
+			onoff = false;
+		}
+		else{
+			for(var i=0; i<cbs.length;i++){
+				cbs[i].checked = false;
+			}
+			onoff = true;
+		}
+	}*/
+//-------------------------------2------------------
+ 	/*btn.onclick=function(){
+		if(onoff){
+			for(var i=0; i<cbs.length; i++){
+				cbs[i].checked = true;
+			}
+		}
+		else{
+			for(var i=0; i<cbs.length; i++){
+				cbs[i].checked = false;
+			}
+		}
+		onoff=!onoff;
+	};*/
+//--------------------------3---------------
+	/*btn.onclick = function(){
+		if(btn.checked){
+			for(var i=0; i<cbs.length; i++){
+				cbs[i].checked=true;
+			}
+		}
+		else{
+			for(var i=0; i<cbs.length; i++){
+				cbs[i].checked = false;
+			}
+		}
+	};*/
+
+//--------------------------4---------------
+btn.onclick = function(){
+	if(btn.checked){
+		for(var i=0; i<cbs.length;i++){
+			cbs[i].checked = true;
+		}
+	}
+	else{
+		for(var i=0; i<cbs.length;i++){
+			cbs[i].checked =false;
+		}
+	}
+};
+
+for(var i=0; i<cbs.length; i++){ //假设条件
+		cbs[i].onclick = function(){
+			if(toCom()==1){
+				btn.checked =true;
+			}
+			else if(toCom()==2){
+				btn.checked =false;
+			}
+		};
+	}
+
+		function toCom(){
+			var on = 0;
+			var off =0;
+			for(var i=0;i<cbs.length; i++){
+			if(cbs[i].checked){
+				on +=1;
+			}
+			else {
+				off +=1;
+			}
+			}
+			if(on==5){
+				return 1;
+			}
+			if(off==5){
+				return 2;
+			}
+		}
+
+//-------------------------------------
+function foo(){
+	var val = arguments[0];
+	for(var i=1; i<arguments.length; i++){
+		if(arguments[i]<val){
+			val=arguments[i];
+		}
+	}
+	return val;
+}
+
+console.log(foo(5,8,10,4,123,88,7))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>	
+</body>
+</html>

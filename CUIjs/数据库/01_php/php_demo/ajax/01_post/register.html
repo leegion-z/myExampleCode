@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+	<title>登录</title>
+</head>
+<body>
+<input id="user" type="text" placeholder="请输入用户名"/>
+<input id="password" type="text" placeholder="请输入密码"/>
+<input id="submit" type="button" value="登录">
+<script type="text/javascript">
+	document.querySelector('#submit').onclick = function () {
+		
+		var user = document.querySelector('#user').value;
+		var password = document.querySelector('#password').value;
+
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState === 4 && xhr.status === 200) {
+				var ret = JSON.parse(xhr.responseText);
+				console.log(ret);
+			}
+		}
+		xhr.open('post', './register.php', true);
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhr.send('user=' + user + '&password=' + password);
+	}
+</script>
+</body>
+</html>

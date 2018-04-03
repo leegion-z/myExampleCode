@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{ width: 100px; height: 100px; background: red; padding:10px; border:1px black solid; margin: 10px;}
+	</style>
+</head>
+<script src="jquery-3.2.1.js"></script>
+<body style="height:2000px;">
+	<div id="div1">aaaa</div>
+	<ul>
+		<li>111111</li>
+		<li>111111</li>
+		<li>111111</li>
+		<li>111111</li>
+		<span>spanspanspanspan</span>
+	</ul>
+	<script>
+
+	/*$('#div1').click(function(){
+
+	});*/
+
+	/*$('#div1').on('click mouseover',function(){
+
+		alert(1);
+
+	});*/
+
+	/*$('#div1').on({
+		click  :  function(){
+			alert(1);
+		},
+		mouseover : function(){
+			alert(2);
+		}
+	});
+
+	//$('#div1').css('background','red').css('fontSize','20px');
+	$('#div1').css({
+		background  :'red',
+		fontSize : '20px'
+	});*/
+/*
+	$('#div1').on('click',function(){
+
+		alert(1);
+
+	});
+
+	$('#div1').on('click',function(){
+
+		alert(2);
+
+	});*/
+
+
+	/*$('#div1').on('click mouseover',function(){
+
+		alert(1);
+
+		//$(this).off();    //取消当前元素的所有事件
+
+		$(this).off('mouseover');
+
+	});*/
+
+	//JQ中的事件委托写法
+	/*$('ul').on('click','li',function(){
+		$(this).css('background','red');
+	})*/
+
+	$('#div1').on('click',function(ev){
+
+		alert(ev.pageX);
+
+		return false;    //阻止冒泡 + 阻止默认事件
+
+	});
+
+	$(document).on('keydown',function(ev){
+
+		alert( ev.which );
+
+	});
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1 id="duration"></h1>
+	<h1 id="boom"></h1>
+	<script type="text/javascript">
+		var start = new Date();
+		var target = new Date('2017-10-27 08:00:00');
+
+		setInterval(function() {
+			var now = new Date();
+			//两个日期对象相减，得到的是相差的毫秒数
+			var offset = now - start;
+			var offset_boom = target - now;
+
+			var hours = Math.floor(offset / (1000*60*60));
+			var hours_change = offset % (1000*60*60)
+			var minutes = Math.floor(hours_change / (1000*60));
+			var minutes_change = hours_change % (1000 * 60);
+			var seconds = Math.floor(minutes_change / 1000);
+
+			var h1 = document.getElementById('duration');
+			h1.innerHTML = hours + '小时' + minutes + '分钟' + seconds + '秒';
+
+
+			hours = Math.floor(offset_boom / (1000*60*60));
+			hours_change = offset_boom % (1000*60*60)
+			minutes = Math.floor(hours_change / (1000*60));
+			minutes_change = hours_change % (1000 * 60);
+			seconds = Math.floor(minutes_change / 1000);
+
+			h1 = document.getElementById('boom');
+			h1.innerHTML = hours + '小时' + minutes + '分钟' + seconds + '秒';
+		}, 500);
+	</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//1.if (/*条件*/) {//当条件满足时，要执行的代码}
+		var isTrueLove = true;
+		var age = 18;
+		var isRich = true
+
+		if((isTrueLove && age >= 22) || isRich) {
+			console.log('嫁给Ta');
+		}
+
+		var score = 59.5;
+
+		//if(/*条件*/){//条件满足时执行} else {//条件不满足，执行}
+		if(score >= 60) {
+			console.log('及格');
+		} else {
+			console.log('不及格');
+		}
+
+		//有分数，
+		//1. <60		===> 不及格
+		//2. 60~70		===> D	 
+		//3. 70~80		===> C
+		//4. 80~90		===> B
+		//5. 90~100		===> A
+
+		// 当重复的定义变量时，
+		// 在严格模式下，会报错
+		// 在非严格模式下，第二次定义仅仅是一个赋值操作。
+		//if-else if-else：
+		//	判断分支是否满足，是从上到下依次判断
+		//	当满足了某个分支时，就不在判断其他分支是否满足条件
+		var score = 100;
+		if (score < 60) {
+			console.log('不及格');
+		} else if (score < 70) {
+			console.log('D');
+		} else if (score < 80) {
+			console.log('C');
+		} else if (score < 90) {
+			console.log('B');
+		} else {
+			console.log('A');
+		}
+
+		//饿了么红包: 第3个人抢3元，第5个人抢4元，第7个人抢10元
+		//第9个人请第10人，第10个人免单一顿
+		var no = 9;
+		/*if (no === 3) {
+			console.log('抢3元');
+		} else if(no === 5) {
+			console.log('抢4元');
+		} else if(no === 7) {
+			console.log('抢10元');
+		} else if(no === 9) {
+			console.log('请第10人');
+		} else {
+			//10
+			console.log('免单');
+		}*/
+
+		//switch-case: 通常情况下，都是判断某个点，而不是范围
+		//break的作用是跳出switch-case语句，直接执行switch后面的代码
+		//当满足了某个case后，后面的case就不在判断了，而是直接执行case下的代码
+		//default放在最后
+		// var no = 7;
+		// switch(no) {
+		// 	case 3:
+		// 		console.log('三元');
+		// 	break;
+		// 	case 5:
+		// 		console.log('五元');
+		// 	break;
+		// 	case 7:
+		// 		console.log('七元');
+		// 	// break;
+		// 	case 9:
+		// 		console.log('9元');
+		// 	break;
+		// 	default:
+		// 		console.log('免单');
+		// 	break;
+		// }
+
+		// if(){}else{}
+		//三目运算符（三元运算符）
+		//当条件满足时，会执行冒号前的语句，并返回执行结果
+		//当条件不满足时，会执行冒号后面的语句，并返回执行结果
+		// (/*判断条件*/) ? (/*条件满足时的结果*/) : (/*条件不满足时的结果*/)
+
+		// score >=60 ? console.log('及格') : console.log('不及格');
+		var num = 13;
+
+		num = (num<10) ? '0' + num : '' + num;
+		console.log(num);
+
+
+
+
+
+	</script>
+</body>
+</html>

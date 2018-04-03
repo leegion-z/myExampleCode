@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>正则表达式(regular expression)</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<input type="" name="">
+	<button>提交</button>
+	<script type="text/javascript">
+
+		//1. \b 		===>	单词的开始或结束
+		//2. .			===>	任意【一个】非换行字符
+		//3. *			===>	前面的字符(可以是普通字符，也可以是元字符)重复0次或任意多次
+		//4. \d 		===>	任意【一个】数字
+		//5. {n}		===>	前面的字符，重复n次(n是一个数字)
+		//6. {n,m}		===>	前面的字符，重复n次到m次(m、n都是数字)
+		//7. ^			===>	字符串开始的位置
+		//8. $			===>	字符串结束的位置
+
+		var telNo = '024-12345678';
+		var  telNo2 = '0411-87654321';
+
+		// var telPattern = 
+		//正则表达式对象的创建
+		var telReg = /^0\d{2,3}-\d{7,8}$/
+		//正则表达式对象的test方法，用来测试参数字符串，是否符合正则所描述的规则
+		//符合，则返回true，否则，返回false
+		//只要字符串中有子串符合正则的规则，则返回true
+		//如果需要整个字符串都跟正则进行匹配，则需要加两个东西
+		//字符串开始的位置、字符串结束的位置
+		// alert(telReg.test(telNo))
+
+		// alert(telReg.test(telNo2))
+		// alert('hello\n world')
+		//数字可以开头、6-20位，数字、字母下划线
+		// /^\w{6,20}$/
+
+		//匹配一个奇数数字的正则为：
+		var oddDigitalReg = /^[13579]+$/
+		// alert(oddDigitalReg.test('1329'))
+
+		//匹配一个字符串，这个字符串表示一个奇数
+		//奇数的特点是以1、3、5、7、9结束
+		var oddReg = /^\d*[13579]$/
+
+		//表示一个非0数字的方法
+		//正则表达式内的[]内的-所代表的意义为：
+		//中括号中匹配的范围从-前面的字符开始，到-后面的字符结束
+		//开始和结束的范围，是有字符的字符编码表示
+		//例如：/[a-z]/表示97到122之间的字符
+		var noneZeroReg = /[123456789]/		//[1-9]
+		//表示一个英文字符
+		var alphabet = /[a-zA-Z]/
+
+		//用户名规则：数字、字母、下划线，数字不能开头，6-20位
+		var userReg = /^[a-zA-Z_]\w{5,19}$/
+		document.querySelector('button').onclick = function () {
+			var username = document.querySelector('input').value;
+			alert(userReg.test(username));
+		}
+
+		//元字符(meta character)
+		//1. 表示字符的
+		//	\b \w \s \d . ^ $
+		//2. 表示重复次数
+		//	* + ? {n} {n,m} {n,} 
+		// 字符类 /[aeiou]/
+
+		//这个正则表达式中，有两点：
+		//1. reg1|reg2 	表示两个里面匹配一个
+		//2. ()	分组，每个分组表示一个子表达式
+
+		// var mood = 'xihahaxi';
+		// var moodReg = /^xi((ha){2}|he)xi$/
+		// alert(moodReg.test(mood));
+
+		//电话区号是3位或者5位数字
+		// var reg = /^(\d{3}|\d{5})$/
+		var reg = /^\d{3}|\d{5}$/
+		// alert(reg.test('111aa11123'));
+
+		//ip地址的格式验证 xxx.xxx.xxx.xxx
+		//19211681011
+		var ipReg = /(\d{1,3}\.){3}\d{1,3}/
+		// alert(ipReg.test('192.168.0.1'));
+
+		//捕获：当正则中，包含了分组，在执行正则的test方法或者exec方法之后
+		//分组中(小括号)所匹配的内容，就会被放到一个固定的位置上。
+		//固定位置为：RegExp.$1 --- RegExp.$9
+		
+		//例如：取得一个email地址的用户名和域名，可以通过下面操作实现
+		var email = 'cui.jingnan@gmail.com';
+		var emailReg = /(.*)@(.*)/;
+		emailReg.test(email);
+		// alert(RegExp.$1)		//第一个分组在字符串中匹配的内容
+		// alert(RegExp.$2)		//第二个分组在字符串中匹配的内容
+
+		var info = '崔勾恩: 13988881322; emial:cui.jn@qq.com';	
+		//上面字符串，最后应该变成
+		//崔勾恩:
+		//电话：139****1322; email:cui.jn@qq.com
+		var infoReg = /(.*)(\d{11})(;.*)/;
+		infoReg.test(info);
+		// alert(RegExp.$1);
+		// alert(RegExp.$2);
+		// alert(RegExp.$3);
+		var newInfo =RegExp.$1 + '\n电话：' + RegExp.$2 + RegExp.$3
+		// alert(newInfo)
+
+		//匹配所有字符(包括换行)(当元字符.进入的[]内，则它就是一个真实的.，不能代表其他字符)
+		// /\d\D/
+		// /\s\S/
+		// /\w\W/
+		// \D ===> [^0-9]
+
+		//贪婪匹配（由重复元字符引起的）
+		//如果想要进行懒惰匹配,在表示重复的元字符后面加一个?，表明这个匹配要懒惰匹配
+		var msg = 'xiaoming xi ha every day, he looks very haha';
+		var msgReg_greed = /(xi.*ha)/;
+		var msgReg_lazy = /(xi.*?ha)/
+		msgReg_lazy.test(msg);
+		// alert(RegExp.$1);
+
+		//修饰符 img
+		//i: 忽略大小写
+		//m: 多行模式(字符串中包含换行的时候，可以考虑用m选项)
+		//普通模式下: ^代表字符串的开始，$代表字符串的结束
+		//多行模式下：^既代表字符串的开始，也代表行的开始，$既是字符串的结束，也是行的结束
+		//g: 全局
+
+		var hello = 'hello\nworld';
+		var reg = /^[a-zA-Z]{5}$/m
+		// alert(reg.test(hello))
+
+		//创建一个正则表达式对象：
+		//	1. 字面量
+		var userReg = /[a-zA-Z_]\w{5,19}/
+		//	2. 构造函数
+		//	参数1：(String)正则表达式的内容
+		//	参数2：(String)选项(默认为没选项)
+		var userReg = new RegExp('[a-zA-Z_\\w{5,19}]', 'gmi')
+		var mobileReg = new RegExp('1\\d{10}')
+
+		
+
+		function getCookie (name) {
+			var cookie = 'user=cuijn; tel=13988888888; email=cui.jn@qq.com; gender=male';
+			//方法1：
+			// var arr = cookie.split('; ')
+			// alert(arr);
+			// var name_value;
+			// for(var i=0; i<arr.length; i++) {
+			// 	name_value = arr[i].split('=');
+			// 	if(name_value[0] === name) {
+			// 		alert(name_value[1]);
+			// 		break;
+			// 	}
+			// }
+			//方法2：
+			//?放在重复的元字符后，表示懒惰匹配，放在其他字符后表示重复0或1次
+			// var cookieReg = /tel=(.*?);?/
+			// var cookieReg = /tel=([^;]*);?/
+			// cookieReg.test(cookie);
+			// alert(RegExp.$1);
+			//因为字符串和正则没有办法连接，所以我们最后在创建正则的时候，用字符串方式创建
+			var cookieReg = new RegExp(name + '=([^;]*);?')
+			cookieReg.test(cookie);
+			return RegExp.$1
+
+		}
+
+		alert(getCookie('gender'));
+
+	</script>
+</body>
+</html>

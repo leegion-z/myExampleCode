@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	/*function foo(){
+
+		var a = 10;
+
+		function bar(){
+
+		}
+
+	}*/
+
+	/*var a = 10;
+
+	function foo(){
+		a++;
+		console.log(a);
+	}
+
+	foo();
+	foo();
+	foo();
+
+	var a = 20;
+
+	console.log(a);*/
+
+/*
+	function foo(){
+		var a = 10;
+		a++;
+		console.log(a);
+	}
+	foo();
+	foo();
+	foo();*/
+
+
+	/*var a = 10;  //你写的代码
+
+	function foo(){
+		a++;
+		console.log(a);
+	}
+
+	foo();
+	foo();
+	foo();
+
+
+	function a(){  //你同事写的
+
+	}
+
+	a();*/
+
+
+	/*function foo(){
+		var a = 10;  //你写的代码
+		a++;
+		console.log(a);
+	}
+
+	foo();
+	foo();
+	foo();
+
+
+	function a(){  //你同事写的
+
+	}
+
+	a();*/
+
+
+	//需求：a不会有冲突，并且可以++的操作。
+
+	/*function foo(){
+		var a = 10;  //你写的代码
+		function bar(){
+			a++;
+			console.log(a);	
+		}
+		bar();
+		bar();
+		bar();
+	}
+	foo();
+
+	function a(){  //你同事写的
+
+	}
+
+	a();*/
+
+
+	/*var foo = function(){
+		var a = 10;  //你写的代码
+		return function(){
+			a++;
+			console.log(a);	
+		}
+	}();
+
+	foo();
+	foo();
+	foo();
+
+	function a(){  //你同事写的
+
+	}
+
+	a();*/
+
+
+	/*var list = document.getElementById('li');
+	
+
+	var tab = function(){
+		var timer;
+		function autoPlay(){
+
+		}
+		function stopPlay(){
+
+		}
+		return {
+			autoPlay : autoPlay,
+			stopPlay : stopPlay
+		};
+	}();
+
+	tab.autoPlay();
+	tab.stopPlay();
+
+
+	
+
+	var banner = function(){
+		var timer;
+		function autoPlay(){
+
+		}
+		function stopPlay(){
+
+		}
+		function _change(){
+
+		}
+		return {
+			autoPlay : autoPlay,
+			stopPlay : stopPlay
+		};
+	}();
+
+	banner.autoPlay();
+	banner.stopPlay();*/
+
+
+
+	var ajax = function(){
+
+		function get(url , data , cbFn){
+			data = data ? '?'+data : '';
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4 && xhr.status == 200){
+					cbFn(xhr.responseText);
+				}
+			};
+			xhr.open('GET',url+data,true);
+			xhr.send(null);
+		}
+		function post(url , data , cbFn){
+			data = data ? data : '';
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4 && xhr.status == 200){
+					cbFn(xhr.responseText);
+				}
+			};
+			xhr.open('POST',url,true);
+			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			xhr.send(data);
+		}
+
+		return {
+			get : get,
+			post : post
+		}
+
+	}();
+
+	ajax.get();
+	ajax.post();
+
+	</script>
+</body>
+</html>

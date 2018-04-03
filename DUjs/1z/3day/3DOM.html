@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="box" title="我是一个div" class="sty">aaaaaa</div>
+	<script>
+
+	var boxDiv = document.getElementById('box');
+
+	//console.log( boxDiv.title );
+	//boxDiv.title = '我是一个新的title';
+
+	//console.log( boxDiv.id );
+	//boxDiv.id = 'newBox';
+	//console.log( boxDiv.id );
+	//class是JS的保留字，样式中的class被替换成className
+	//className来表示标签中的class属性
+	//console.log( boxDiv.className );
+	boxDiv.className = 'newSty';
+
+	</script>
+</body>
+</html>

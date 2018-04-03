@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//作业2：
+		//[12, 8, 1, 65, 9]	===> 9865121
+
+		//reverse()
+		//功能：将数组颠倒(改变原数组)
+		//参数：无
+		//返回值：返回颠倒后的数组
+		var numbers = [1, 3, 5, 7, 9];
+		// var newNubers = numbers.reverse();
+		// alert(numbers);
+		// alert(newNubers);
+		// alert(numbers === newNubers);
+
+		//join()
+		//功能：将数组中的每个元素都转换成字符串，并将这些字符串用间隔符进行连接
+		//参数：连接时所使用的间隔符
+		//返回值：连接之后的字符串
+		var str = numbers.join('-');
+		// alert(str);
+		str = numbers.join();
+		// alert(str);
+		str = numbers.join('');
+		// alert(str);
+
+		//concat
+		//功能：将原数组与参数指定的元素进行连接(不改变原数组)
+		//参数：被连接的数据(单个元素，数组)
+		//返回：连接之后的数组
+		var newArr = numbers.concat(2,4,6,8,10);
+		// alert(newArr);
+		//上面运行的结果，跟下面的相同，新数组长度都为10
+		newArr = numbers.concat(2, 4, [6, 8, 10]);
+		// alert(newArr);
+		numbers = [1, 3, 5, 7, 9];
+		//slice()
+		//功能：将数组切片(截取)
+		//参数：
+		//	1. (Number)start: 切片的开始位置索引
+		//  2. (Number)end	: 切片的结束位置索引(不包含这个元素)
+		// //返回值：截取出来的元素
+		// var newArr = numbers.slice(2,4);
+		// alert(newArr);
+
+		//1. 不传参数(整个数组被截取)
+		newArr = numbers.slice();
+		// alert(newArr);
+
+		//2. 只传一个参数(从开始位置，截取到数组的最后)
+		newArr = numbers.slice(1);
+		// alert(newArr)
+
+		//3. 截取倒数第2个到倒数第3个原生
+		newArr = numbers.slice(-3, -1);
+		// alert(newArr);
+
+		//4. 取到倒数第一个元素
+		newArr = numbers.slice(-1);
+		// alert(newArr);
+
+		//splice()
+		//功能：
+		//参数：
+		//	1. 操作的开始位置
+		//	2. 删除的元素的个数
+		//  3. 从开始位置插入的元素
+		//	4. 从开始位置插入的元素
+		//  ........
+		//返回值：由被删除的元素组成的数组
+
+		numbers = [1, 3, 5, 7, 9];
+		// numbers.splice(2, 2, 2, 2);
+
+		//1. 在数组中间插入元素
+		var ret = numbers.splice(1, 0, 2);
+		//numbers = [1,2,3,5,7,9]
+		// alert(numbers);
+		// alert(ret);
+		//2. 在数组中间删除元素
+		ret = numbers.splice(1, 1)
+		//numbers = [1,3,5,7,9]
+		// alert(numbers);
+		// alert(ret);
+
+		//3. 替换
+		ret = numbers.splice(1, 3, 2, 4, 6)
+		//numbers = [1, 2, 4, 6, 9]
+		// alert(ret);
+
+		//indexOf()
+		//功能：查找参数在数组中的索引
+		//参数:
+		// 1. 查找的元素
+		// 2. 查找的起始位置
+		//返回值：
+		//如果找到，则返回参数在数组中的索引，否则，返回-1（找到第一个，则返回，停止查找）
+		// alert(numbers);
+		// var index = numbers.indexOf(3);
+		// alert(index);
+
+		var numbers_1 = [1, 3, 5, 7, 9, 7, 5, 3, 1,3];
+		var ret = numbers_1.indexOf(3);
+		// alert(ret);
+		//作业2：找到某个元素在数组中匹配的所有位置
+		var result = [];
+		var index = numbers_1.indexOf(3);
+
+		while(index !== -1) {
+			result.push(index);
+			index = numbers_1.indexOf(3, index+1);
+		}
+
+		alert(result);
+		//lastIndexOf(element, startIndex)
+		//从后向前查找
+
+
+
+	</script>
+</body>
+</html>

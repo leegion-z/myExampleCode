@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<a href="http://www.baidu.com">去百度</a>
+	<button>显示对话框</button>
+	<script type="text/javascript">
+		//alert()、confirm()、prompt()
+		//alert() ===> 【确定】X
+		//confirm()	===> 【确定】【取消】
+		//prompt()	===> 【输入框】【确定】【取消】
+
+		// alert('您选择的女友已下架');
+
+		// var ret = confirm('请确定年龄大于35');
+		// if(ret) {
+		// 	//用户点击了确定
+		// 	alert('点了确定');
+		// } else {
+		// 	//用户点击了取消/X
+		// 	alert('点了取消');
+		// }
+
+		// var content = prompt('请输入银行密码', '000000');
+		// if(content === null) {
+		// 	//用户点击了取消/X
+		// } else {
+		// 	//返回的是一个字符串，字符串就是用户输入的内容
+		// 	//如果用户没有输入，得到空字符串
+		// 	alert('您输入的是' + content);
+		// }
+
+		//1. 样式无法改变
+		//2. 当对话框弹出时，JS是停止运行的。
+		//3. 对话框是模态对话框
+
+
+		document.querySelector('button').onclick = function () {
+			alert('我是对话框');
+		}
+	</script>
+</body>
+</html>

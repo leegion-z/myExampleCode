@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{ width: 50px; height: 50px; background:red; position: absolute; top: 500px; }
+	</style>
+</head>
+<body>
+	<div id="div1"></div>
+	<script>
+
+	var div1 = document.getElementById('div1');
+	
+	var speedX = 10;
+	var speedY = -10;
+	var changeY = 0;
+
+	setInterval(function(){
+
+		changeY += .2;
+
+		div1.style.left = div1.offsetLeft + speedX + 'px';
+		div1.style.top = div1.offsetTop + speedY + changeY + 'px';
+	},16);	
+
+	</script>
+</body>
+</html>

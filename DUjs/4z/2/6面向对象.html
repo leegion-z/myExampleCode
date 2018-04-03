@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	/*var a = {
+		name : 'xiaoming'
+	};
+
+	var b = a;
+
+	b.name = 'xiaobai';
+
+	console.log( a );*/
+
+	/*var a = {
+		name : 'xiaoming'
+	};
+
+	var b = copy(a);
+
+	b.name = 'xiaobai';
+
+	console.log(a);
+
+	function copy(obj){
+		var result = {};
+		for(var attr in obj){
+			result[attr] = obj[attr];  //字符串赋值，不存在引用问题
+		}
+		return result;
+	}*/
+
+
+	/*var a = {
+		name : { age : 20 }
+	};
+
+	var b = deepCopy(a);
+
+	b.name.age = 30;
+
+	console.log(a);
+
+	function deepCopy(obj){   //深拷贝
+		var result = {};
+		for(var attr in obj){
+			if(typeof obj[attr] == 'object'){
+				result[attr] = deepCopy( obj[attr] );
+			}
+			else{
+				result[attr] = obj[attr]; 
+			}
+			
+		}
+		return result;
+	}*/
+
+
+	//数组的拷贝
+	var a = [1,2,3];
+
+	var b = a.concat();
+	//var b = a.slice();
+ 
+	b.push(4);
+
+	console.log(a);
+
+	</script>
+</body>
+</html>

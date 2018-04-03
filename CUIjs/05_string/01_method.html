@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//replace()
+		var msg = '今天太哈哈高兴了，都tmd要飞起来了.我高高兴兴，背着书包，去往天安门。祝19大胜利召开';
+		//g是global，i是ignore case
+		var newMsg = msg.replace(/tmd|天安门|19大/ig, '***');
+		// alert(newMsg);
+
+		//字符串截取
+		var str = '举个栗子';
+
+		// alert(str.slice(2, 4));
+		// alert(str.substring(2, 4));
+		// alert(str.substr(2,2));
+
+		var cookie = 'user=cuijn; password=123456; tel=139****1322; email=cui.jingnan2017@gmail.com';
+
+		//提取出password后面的值
+		var key_value = cookie.split('; ');
+		var key, value;
+		for(var i=0; i<key_value.length; i++) {
+			key = key_value[i].split('=')[0];
+			value = key_value[i].split('=')[1];
+			if(key === 'password') {
+				alert(value);
+			}
+		}
+
+		var introduction = 'I am cuijn, I am master of computer application.';
+		var newStr = introduction.toLowerCase();
+		// alert(newStr);
+		newStr = introduction.toUpperCase();
+		// alert(newStr);
+
+		//a ===> 97
+		//A ===> 65
+		//String.fromCharCode(97)	===> 将数组转换成字符
+		// alert(String.fromCharCode(97));
+
+		function toLowerCase (str) {
+			var result = '';
+			var code;
+			for(var i=0; i<str.length; i++) {
+				code = str.charCodeAt(i);
+				if(code>=65 && code <=90) {
+					//大写字母
+					result += String.fromCharCode(code + 32);
+				} else {
+					result += str[i];
+				}
+			}
+
+			return result;
+		}
+
+		alert(toLowerCase('I AM 崔景楠'))
+
+	</script>
+</body>
+</html>

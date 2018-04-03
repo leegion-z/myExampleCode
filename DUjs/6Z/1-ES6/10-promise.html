@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  </head>
+  <body>
+    <div id="example"></div>
+		
+	</body>
+	<script>
+
+
+		/*
+		  1.异步流程,
+
+		    （1）回调地狱-嵌套金字塔
+		     (2) 当所有的异步都结束之后，再做处理
+		*/
+
+		 //q.js (promise) => ES6 (promise) 
+
+		/*
+			promise：将异步流程转换同步实现，
+
+		    三种状态，
+		      (1) pending状态
+		      (2) resolve状态
+		      (3) reject 状态
+
+			pending ->reslove 或者 pending->reject 
+		 */
+	
+		function test1(){
+			return new Promise(function(resolve,reject){
+				setTimeout(()=>{
+					resolve("1111");
+				},1000)
+			})
+		}
+		function test2(data){
+			return new Promise(function(resolve,reject){
+				console.log("接受111的结果",data);
+				setTimeout(()=>{
+					resolve("22222aaaaaaa")
+				},2000)
+			})
+		}
+		function test3(){
+			return new Promise(function(resolve,reject){
+				setTimeout(()=>{
+
+				},3000)
+			})
+		}
+
+		// test1().then(res=>{
+		// 	return test2(res);
+		// }).then(res=>{
+		// 	console.log(res)
+		// 	return Promise.resolve("2222对了");
+		// }).then(res=>{
+		// 	console.log("调用",res);
+		// }).catch(error=>{
+		// 	console.log(error);
+		// 	return "继续了"
+		// }).then(res=>{
+		// 	console.log(res);
+		// })
+
+		Promise.all([test1(),test2()]).then(res=>{
+			console.log(res);
+		}).catch(error=>{
+			console.log("error", error);
+		})
+	</script>
+</html>

@@ -1,0 +1,12 @@
+$phgap_bgColor: pink;
+$font_size: 20px;
+
+div.container {
+  background-color: $phgap_bgColor;
+  font-size: $font_size;
+  width: 20px;
+}
+
+div.slider {
+  background-color: $phgap_bgColor;
+}

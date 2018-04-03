@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	//递归 : 函数自己调用自己。一定要有一个条件：停止递归调用
+	/*
+	求阶乘：6 -> 1*2*3*4*5*6
+
+	循环(迭代)  递归 : 把整体拆解成部分的操作
+
+	阶乘可以看做是两个数相乘：
+		1*2*3*4*5*6 -> 6   *    1*2*3*4*5
+		1*2*3*4*5 -> 5   *    1*2*3*4
+		1*2*3*4 ->  4   *   1*2*3*/
+
+	var num = 5;
+
+	function foo(){
+		num--;
+		if(num == 0){
+			return;
+		}
+		console.log(num);
+		foo();
+	}	
+
+	foo();
+
+
+	/*function foo(n){
+
+		if(n<=1){
+			return 1;
+		}
+
+		return n * foo(n-1);
+
+	}
+
+	console.log( foo(4) ); */
+
+
+	//斐波那契数
+	/*function foo(){
+
+	}	
+
+	console.log( foo(7) );   // 13 
+*/
+
+	//切换两个数
+
+	/*var a = 5;
+	var b = 6;
+	var tmp;
+
+	tmp = a;
+	a = b;
+	b = tmp;
+
+	console.log(a);
+	console.log(b);*/
+
+
+	/*var a = 5;
+	var b = 6;
+	
+	a = a + b;
+	b = a - b;
+	a = a - b;
+
+	console.log(a);
+	console.log(b);
+*/
+
+
+	</script>
+</body>
+</html>

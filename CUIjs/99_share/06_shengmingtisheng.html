@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//函数声明提升：函数的定义，可以放到函数的调用之后
+
+		// var num = 3;
+
+		// func();
+
+		// function func () {
+		// 	alert(num);
+		// 	var num = 5;
+		// }
+		// //----------上面代码在声明提升之后，代码如下------------------>
+		// function func() {
+		// 	var num;
+		// 	alert(num);
+		// 	num = 5;
+		// }
+
+		// var num = 3;
+
+		// func()
+
+		// var num = 3;
+		
+		// var func = function () {
+		// 	alert('aaa');
+		// }
+
+		// function func () {
+		// 	alert(num);
+		// 	var num = 5;
+		// }
+		// func();
+		// //=================声明提升之后====>
+		// function func() {
+		// 	alert(num);
+		// 	var num = 5;
+		// }
+		// var func;
+		// func = function () {
+		// 	alert('aaa')
+		// }
+
+		// func();
+
+
+		/**************************************/
+		// func1();
+		// function func1 () {
+		// 	alert('111')
+		// }
+		// //================>
+		// function func1 () {
+		// 	alert('111')
+		// }
+		// func1();
+		/**************************************/
+		// func2();
+		// var func2 = function () {
+		// 	alert('222');
+		// }
+		// //===================>
+		// var func2;
+		// func2();
+		// func2 = function () {
+		// 	alert('222');
+		// }
+
+		// var num = 3;
+		// func();
+		// var func = function () {
+		// 	alert('aaa');
+		// }
+
+		// function func () {
+		// 	alert(num);
+		// 	var num = 5;
+		// }
+		// //====================>
+		// function func () {
+		// 	alert(num);
+		// 	var num = 5;
+		// }
+
+		// var func;
+		// func();
+		// func = function () {
+		// 	alert('aaa');
+		// }
+	</script>
+</body>
+</html>

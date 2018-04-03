@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//1. 创建一个ajax对象
+		//2. 监听onreadystatechange
+		//3. open
+		//4. send
+
+		var phgap_xhr = new XMLHttpRequest();
+		phgap_xhr.onreadystatechange = function () {
+			//这个事件是当phgap_xhr.readyState变化时，就会触发
+			//当创建了一个xhr对象的时候，phgap_xhr.readyState === 0
+			//当调用了open的时候，phgap_xhr.readyState === 1
+			//当调用了send的时候，phgap_xhr.readyState === 2
+			//当服务器返回部分数据时，phgap_xhr.readyState === 3
+			//当服务器返回全部数据时，phgap_xhr.readyState === 4
+			if(phgap_xhr.readyState !== 4) {
+				return;
+			}
+
+			if(phgap_xhr.status>=200 && phgap_xhr.status <= 300) {
+				//请求成功，数据被放到了
+				alert(phgap_xhr.responseText);
+				//因为responseText是字符串类型的，所以，我们需要将之转换为对象
+				//方便我们数据的访问
+				var resp = JSON.parse(phgap_xhr.responseText);
+				var len = resp.length;
+				for(var i=0; i<len; i++) {
+					alert(resp[i].name);
+				}
+			} else {
+				console.error('ajax请求失败')
+			}
+		}
+
+		// phgap_xhr.open('GET', './person.txt', true);
+		phgap_xhr.open('get', './exes.json', true)
+		phgap_xhr.send();
+		// JSON: javascript object notation
+		// json是一种数据格式，它是由ecma定义的一套标准。
+		//	标准的编号是404
+		
+
+	</script>
+</body>
+</html>

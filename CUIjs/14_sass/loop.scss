@@ -1,0 +1,6 @@
+$divCount: 24;
+@for $i from 1 through $divCount {
+  .container div:nth-of-type(#{$i}) {
+    transform: rotateY($i * 30deg) translateZ($divCount * 20px);
+  }
+}

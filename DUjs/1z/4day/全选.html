@@ -1,0 +1,39 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+input{width:100px; height: 100px;}
+body{ font-size: 50px;}
+  </style>
+</head>
+<input id="cb" type="checkbox">全选
+<input type="checkbox">111
+<input type="checkbox">222
+<input type="checkbox">333
+<input type="checkbox">444
+<body>
+  <script>
+  var inputs = document.getElementsByTagName('input');
+  var all = document.getElementById('cb');
+  var onoff = true;
+  all.onclick = function cA(){
+    if (onoff){
+     //循环设置所有复选框为选中状态
+     for(var i = 0; i < inputs.length; i++)
+       inputs[i].checked = false;
+       onoff = false;
+  }else{//取消obj选中状态，则全不选
+     //循环设置所有复选框为未选中状态
+     for(var i = 0; i < inputs.length; i++)
+       inputs[i].checked =true;
+       onoff = true;
+  }
+  }
+
+  </script>
+</body>
+</html>

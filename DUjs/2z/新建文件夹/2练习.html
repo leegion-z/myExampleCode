@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+
+	var date = new Date();
+	
+	var iH = date.getHours();
+	var iM = date.getMinutes();
+	var num = iH + iM/60;
+	//6.5  到  19	
+
+	if( num > 6.5 && num < 19 ){
+		document.body.innerHTML += '白天';
+	}
+	else{
+		document.body.innerHTML += '晚上';
+	}
+
+	</script>
+</body>
+</html>

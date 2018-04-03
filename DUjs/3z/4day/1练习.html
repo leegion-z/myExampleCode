@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{ width: 100px; height: 100px; background: red; position: absolute; left: 300px; }
+	</style>
+</head>
+<body>
+	<div id="div1"></div>
+	<script>
+
+	var div1 = document.getElementById('div1');
+
+	var disX = 0;
+	var disY = 0;
+
+	div1.onmousedown = function(ev){
+		disX = ev.pageX - this.offsetLeft;
+		disY = ev.pageY - this.offsetTop;
+
+		var box = document.createElement('div');
+		box.style.cssText = 'width:'+ this.offsetWidth +'px;height:'+ this.offsetHeight +'px;border:1px black dotted;position:absolute;left:'+ (this.offsetLeft - 1) +'px;top:'+ (this.offsetTop-1) +'px';
+		document.body.appendChild(box);
+
+		document.onmousemove = function(ev){
+			box.style.left = ev.pageX - disX + 'px';
+			box.style.top = ev.pageY - disY + 'px';
+		};
+		document.onmouseup = function(ev){
+			document.onmousemove = null;
+			document.onmouseup = null;
+
+			div1.style.left = box.offsetLeft + 'px';
+			div1.style.top = box.offsetTop + 'px';
+			document.body.removeChild(box);
+		};
+		/*if (event.preventDefault) {//清除event的点击默认对象，覆盖更全面
+    event.preventDefault(); //支持DOM标准的浏览器
+} else {
+    event.returnValue = false; //IE
+}			//?*/
+	return false;
+	};
+	</script>
+</body>
+</html>

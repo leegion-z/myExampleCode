@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .slider {
+            border: 10px solid burlywood;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slider, .list img {
+            width: 480px;
+            height: 300px;
+        }
+
+        .list {
+            position: absolute;
+        }
+
+        .list img {
+            display: block;
+        }
+
+        .list li {
+            float: left;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .prev, .next {
+            z-index: 9999;
+            position: absolute;
+            height: 100%;
+            width: 40px;
+            opacity: 0.6;
+            top: 0;
+            background: green;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        .pagination {
+            position: absolute;
+            z-index: 9999;
+            bottom: 10px;
+            left: 40px;
+            margin: auto;
+        }
+
+        .pagination .bullet {
+            float: left;
+            margin-left: 10px;
+            width: 30px;
+            height: 30px;
+            border-radius: 35%;
+            background: blue;
+        }
+
+        .focus {
+            background: red !important;
+        }
+    </style>
+</head>
+<body>
+<div class="slider">
+    <ul class="list">
+        <li><a href="#1"><img src="./imgs/pic (1).jpg" alt=""></a></li>
+        <li><a href="#2"><img src="./imgs/pic (2).jpg" alt=""></a></li>
+        <li><a href="#3"><img src="./imgs/pic (3).jpg" alt=""></a></li>
+        <li><a href="#4"><img src="./imgs/pic (4).jpg" alt=""></a></li>
+        <li><a href="#5"><img src="./imgs/pic (5).jpg" alt=""></a></li>
+    </ul>
+    <ul class="pagination">
+        <li class="bullet focus"></li>
+        <li class="bullet"></li>
+        <li class="bullet"></li>
+        <li class="bullet"></li>
+        <li class="bullet"></li>
+    </ul>
+    <button class="prev"></button>
+    <button class="next"></button>
+</div>
+<!--<script src="../../animation.js"></script>-->
+<script src="../../animation.js"></script>
+<script type="text/javascript">
+    function slider() {
+        var list = document.querySelector('.list');
+
+        var li1 = document.querySelector('.list li');
+        var li1_fake = li1.cloneNode(true);
+
+        var li_last = document.querySelector('.list li');
+        var li1_fake = li1.cloneNode(true);
+
+        list.appendChild(li1_fake);
+
+        var id;
+
+
+        var len = document.querySelectorAll('.list li').length;
+        var liWidth = document.querySelector('.list li').offsetWidth;
+        list.style.width = len * liWidth + 'px';
+        var prevIndex = 0, nextIndex = 0;
+        prevIndex = nextIndex = 0;
+
+
+        function slideTo(index) {
+//            list.style.left = -index * liWidth + 'px';
+            if (index === len) {
+                list.style.left = 0;
+                index = nextIndex = 1;
+            }
+
+            if (index === -1) {
+                list.style.left = -(len - 1) * liWidth + 'px';
+                index = nextIndex = len - 2;
+            }
+
+            //设定焦点
+            document.querySelector('.focus').className = 'bullet';
+            var focusIndex = index === len - 1 ? 0 : index;
+            var bullets = document.querySelectorAll('.pagination .bullet')
+            bullets[focusIndex].className = 'bullet focus';
+
+            var left = -index * liWidth;
+
+            animate(list, {
+                left: left
+            }, function () {
+                auto();
+            })
+        }
+
+        function slideNext() {
+            nextIndex++;
+            slideTo(nextIndex);
+        }
+
+        function slidePrev() {
+            nextIndex--;
+            slideTo(nextIndex);
+        }
+
+        function auto() {
+            clearInterval(id);
+            id = setInterval(function () {
+                slideNext();
+            }, 3000)
+        }
+
+        function stop() {
+            clearInterval(id);
+        }
+
+        auto();
+
+        document.querySelector('.next').onclick = function () {
+            slideNext();
+        }
+
+        document.querySelector('.prev').onclick = function () {
+            slidePrev();
+        }
+
+        list.onmouseover = function () {
+            stop();
+        }
+
+        list.onmouseout = function () {
+            auto();
+        }
+
+        var bullets = document.querySelectorAll('.bullet');
+        for (var i = 0; i < bullets.length; i++) {
+            bullets[i].index = i;
+            bullets[i].onclick = function () {
+                nextIndex = this.index;
+                slideTo(nextIndex);
+            }
+        }
+
+    }
+
+    //问题：当点击切换图片时，会跟自动轮播冲突(重叠)
+    //解决方案：
+    // 点击时，停止自动，
+    // 动画结束时，开始自动
+
+    slider();
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+$isSbDied: false;
+$isDoubleEleven: false;
+
+@if $isSbDied {
+  p {
+    background: black;
+    color: gray;
+  }
+
+} @else if $isDoubleEleven {
+  p {
+    background: yellow;
+    color: red;
+  }
+} @else {
+  p {
+    background: white;
+    color: black;
+  }
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transform: rotateY(30deg) rotateX(30deg);
+            top: 200px;
+            position: relative;
+            width: 100px;
+            height: 100px;
+            left: 200px;
+        }
+
+        .container div {
+            width: 100px;
+            height: 100px;
+            background: black;
+            opacity: 0.7;
+            position: absolute;
+        }
+
+        /*.container div:nth-of-type(1) {*/
+        /*transform: rotateY(0deg) translateZ(150px);*/
+        /*}*/
+
+        /*.container div:nth-of-type(2) {*/
+        /*transform: rotateY(60deg) translateZ(150px);*/
+        /*}*/
+
+        /*.container div:nth-of-type(3) {*/
+        /*transform: rotateY(120deg) translateZ(150px);*/
+        /*}*/
+
+        /*.container div:nth-of-type(4) {*/
+        /*transform: rotateY(180deg) translateZ(150px);*/
+        /*}*/
+
+        /*.container div:nth-of-type(5) {*/
+        /*transform: rotateY(240deg) translateZ(150px);*/
+        /*}*/
+
+        /*.container div:nth-of-type(6) {*/
+        /*transform: rotateY(300deg) translateZ(150px);*/
+        /*}*/
+    </style>
+    <link rel="stylesheet" href="./loop.css">
+</head>
+<body>
+<script src="jquery-3.2.1.min.js"></script>
+<script src="random_color.jquery.js"></script>
+<div class="container">
+
+</div>
+<script>
+    $ === jQuery;
+    $.fn === jQuery.fn === jQuery.prototype;
+
+
+
+
+
+    //    $('.container div').randomColor();
+
+    for (var i = 0; i < 72; i++) {
+//        $('.container').append('<div></div>');
+//        $('<div></div>').appendTo('.container').randomColor();
+
+        $('<div></div>').randomColor().appendTo('.container');
+    }
+
+    //    $('.container div').randomColor();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.theme_black ul {
+			background: black;
+			color: white;
+		}
+
+		.theme_pink ul {
+			background: pink;
+			color: black;
+		}
+	</style>
+</head>
+<body>
+	<div id="container" class="theme_black">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</div>
+	<button>切</button>
+<script type="text/javascript">
+	//通过在页面上点击button，实现主题切换 
+	//主题1：黑底白字
+	//主题2：粉底黑字
+	document.querySelector('button').onclick = function () {
+		var div = document.querySelector('#container');
+		if(div.className === 'theme_black') {
+			div.className = 'theme_pink';
+		} else {
+			div.className = 'theme_black';
+		}
+	}
+</script>
+</body>
+</html>

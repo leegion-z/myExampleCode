@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//队列的特点：先进先出(FIFO)
+		//队列的实现思路：从后放，从前拿
+
+		//栈的特点：后进先出(LIFO)
+		//栈的实现思路：从后放，从后拿
+
+		var exes = ['xiaoS'];
+
+		//将元素放到数组的最后
+		var lenght = exes.push('daS');
+		// alert(lenght);
+
+		//将数组的最后一个元素，从数组中删除
+		var gf = exes.pop();
+		// alert(gf);
+
+		//在数组前面插入一个元素
+		exes.unshift('xiaoXingXing');
+		alert(exes);
+
+		exes.unshift('xiaoFeiFei');
+		alert(exes);
+
+		//将数组的第一个元素删除
+		exes.shift();
+
+		//栈的实现
+		var stack = {
+			data: [],
+			push: function (item) {
+				return stack.data.push(item);
+			},
+			pop: function () {
+				return stack.data.pop();
+			}
+		}
+
+		//队列
+		//作业3：实现队列
+		var queue = {
+			data: [],
+			enqueue: function (item) {
+				return queue.data.push(item);
+			},
+			dequeue: function () {
+				return queue.data.shift();
+			}
+		}
+	</script>
+</body>
+</html>

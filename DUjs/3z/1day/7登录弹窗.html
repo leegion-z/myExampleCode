@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{ margin: 0; padding: 0; }
+	html{ overflow-x: hidden; }
+	#login{ width: 300px; height: 200px; border: 1px black solid; position: fixed; background: white; z-index: 6; }
+	#close{ position: absolute; right: 0; top: 0; }
+	#mark{ position: absolute; left: 0; top: 0; background: rgba(0,0,0,0.5); z-index: 5;l}
+	</style>
+</head>
+<body style="height:2000px;">
+	<input id="btn" type="button" value="登录">
+	<!-- <div id="login">
+		<div id="close">X</div>
+	</div> -->
+	<script>
+
+	var btn = document.getElementById('btn');
+
+	btn.onclick = function(){
+		var login = document.createElement('div');
+		login.innerHTML = '<div id="close">X</div>';
+		login.id = 'login';
+		document.body.appendChild(login);
+		login.style.left = (window.innerWidth - login.offsetWidth)/2 + 'px';
+		login.style.top = (window.innerHeight - login.offsetHeight)/2 + 'px';
+
+		var mark = document.createElement('div');
+		mark.id = 'mark';
+		mark.style.width = window.innerWidth + 'px';
+		mark.style.height = Math.max(window.innerHeight,document.body.scrollHeight) + 'px';
+		document.body.appendChild(mark);
+
+		var close = document.getElementById('close');
+		close.onclick = function(){
+			document.body.removeChild(login);
+			document.body.removeChild(mark);
+		};
+
+	};
+
+	</script>
+</body>
+</html>

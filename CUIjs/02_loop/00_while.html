@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//while(/*循环条件*/){//循环体}
+		//输出1-100的数字
+		var num = 1;
+
+		// while(num<=100) {
+		// 	console.log(num);
+		// 	num++;
+		// }
+
+		// while(true) {
+		// 	if(num > 100) {
+		// 		//退出循环语句，执行循环后面的代码
+		// 		break;
+		// 	}
+		// 	console.log(num);
+		// 	num++;
+		// }
+
+		// 打印100以内 7的倍数
+		// var num = 1;
+		// while(num<=100) {
+		// 	if(num%7 === 0) {
+		// 		console.log(num);
+		// 	}
+
+		// 	num++;
+		// }
+
+		// var num = 7;
+		// while(num <=100) {
+		// 	console.log(num);
+		// 	num += 7;
+		// 	// num++;
+		// }
+
+		// var num = 1;
+		// while(num <= 100) {
+		// 	console.log(num);
+		// 	num += 2;
+		// }
+
+		// var num = 1;
+		// while(num <= 100) {
+		// 	if(num%2 !== 0) {
+		// 		console.log(num);
+		// 	}
+		// 	num++;
+		// }
+
+		// var sum = 0;
+
+		// var num = 0;
+		// while(num<=100) {
+		// 	if(num%2 === 0) {
+		// 		//偶数
+		// 		// sum = sum + num;
+		// 		sum += num;
+		// 	}
+		// 	num++;
+		// }
+
+		// console.log(sum);
+
+		// ■■■■■■■■■■
+		// ■■■■■■■■■■
+		// ■■■■■■■■■■
+		// ■■■■■■■■■■
+		var row = 1;
+		var col = 1;
+
+		while(row <= 4) {
+			col = 1;
+
+			while(col<=10) {
+				document.write('■');
+				col++;
+			}
+
+			document.write('<br>');
+			row++;
+		}
+
+		// document.write('■■■■■■■■■■');
+		// document.write('<br>');
+		// document.write('■■■■■■■■■■');
+		// document.write('<br>');
+		// document.write('■■■■■■■■■■');
+		// document.write('<br>');
+		// document.write('■■■■■■■■■■');
+		// document.write('<br>');
+
+		// ■
+		// ■■
+		// ■■■
+		// ■■■■
+		// ■■■■■
+		// var row = 1;
+		// var col = 1;
+
+		// while(row <= 10) {
+		// 	col = 1;
+		// 	while(col <= 10) {
+		// 		if(row >= col) {
+		// 			document.write('■');
+		// 		}
+		// 		col++;
+		// 	}
+
+		// 	document.write('<br>');
+		// 	row++;
+		// }
+
+		// □□□□■
+		// □□□■■
+		// □□■■■
+		// □■■■■
+		// ■■■■■
+
+		var row = 1;
+		var col = 1;
+		while (row <= 5) {
+			col = 1;
+			while(col <= 5) {
+				if(col+row >= 6) {
+					document.write('☚');
+				} else {
+					document.write('☞');
+				}
+
+				col++;
+			}
+
+			document.write('<br>');
+
+			row++;
+		}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input id="btn" type="button" value="点击">
+	<div id="div1"></div>
+
+	<script>
+	//数组和获取到元素集合很类似，都有length长度和下标
+	//集合：数组、获取元素（伪数组）、arguments（伪数组）、JSON、set、map...
+	
+	// var a = ['css','html','js'];
+	// console.log( a.length );  // 3
+	// console.log( a[1] );
+
+	// /*for(var i=0;i<a.length;i++){
+	// 	console.log( a[i] );
+	// }*/
+
+	// //数组下有很多方法：
+
+	// push() : 在数组结束位置添加多元素
+
+	// var a = ['css','html','js'];
+
+	// a.push('H5','CSS3','DOM');
+
+	// console.log(a);
+
+	// unshift() : 在数组起始位置添加多元素
+
+	// var a = ['css','html','js'];
+
+	// a.unshift('H5','CSS3','DOM');
+
+	// console.log(a);
+
+	// pop() : 在数组结束位置删除最后一个元素 
+
+	// var a = ['css','html','js'];
+
+	// a.pop();
+
+	// console.log(a);
+
+	// shift() : 在数组起始位置删除第一个元素
+
+	// var a = ['css','html','js'];
+
+	// a.shift();
+	
+	// console.log(a);
+
+	// 细节：4个方法都会改变原数组，方法调用完的返回结果
+
+	// var a = ['css','html','js'];
+
+	// var result = a.shift();  //执行完的结果为删除的元素
+	
+	// console.log(result);
+
+	// var a = ['css','html','js'];
+
+	// var result = a.push('H5','CSS3','DOM');  //执行完的结果为数组的长度
+	
+	// console.log(result);
+
+
+	var div1 = document.getElementById('div1');
+	var btn = document.getElementById('btn');
+	var a = ['css','html','js'];
+	div1.innerHTML = a;
+
+	btn.onclick = function(){
+
+		// var del = a.shift();
+		// a.push( del );
+
+		a.push( a.shift() );
+
+		div1.innerHTML = a;
+
+	};
+
+	
+
+
+	</script>
+</body>
+</html>

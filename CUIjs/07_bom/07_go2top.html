@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#home {
+			width: 100px;
+			height: 100px;
+			background: red;
+			cursor: pointer;
+			display: none;
+			position: fixed;
+			right: 30px;
+			bottom: 30px;
+		}
+	</style>
+</head>
+<body style="height: 10000px;">
+	<div id="home"></div>
+	<script type="text/javascript">
+		//当页面滚动到某个位置时，右下角出现一个红块，点击红块，页面回到顶部
+		//1. 页面滚动，显示/隐藏红块
+		window.onscroll = function() {
+			//取得页面的滚动位置
+			var scrollTop = document.documentElement.scrollTop ? 
+							document.documentElement.scrollTop :
+							document.body.scrollTop;
+			console.log(scrollTop);
+			var red = document.getElementById('home');
+			if(scrollTop >=1000) {
+				//显示红块
+				red.style.display = 'block';
+			} else {
+				//隐藏红块
+				red.style.display = 'none';
+			}
+		}
+		//2. 点击红块，回到顶部
+		document.getElementById('home').onclick = function () {
+			// document.documentElement.scrollTop = 0;
+			// document.body.scrollTop = 0;
+			// document.documentElement.scrollTop = document.body.scrollTop = 0;
+			go2Top();
+		}
+
+		function go2Top () {
+			var id = setInterval(function () {
+				document.documentElement.scrollTop -= 10;
+				document.body.scrollTop -= 10;
+
+				var scrollTop = document.documentElement.scrollTop ? 
+							document.documentElement.scrollTop :
+							document.body.scrollTop;
+				if (scrollTop === 0) {
+					clearInterval(id)
+				}
+			}, 20)
+			
+		}
+	</script>
+</body>
+</html>

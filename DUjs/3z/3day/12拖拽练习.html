@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#dialog{ width:300px; height: 300px; position: absolute; border: 1px black solid; }
+	#dialog header{ height: 30px; border-bottom: 1px black solid; line-height: 30px; text-indent: 10px; }
+	#dialog span{ float:right; margin-right: 5px; }
+	</style>
+</head>
+<body>
+	<div id="dialog">
+		<header>我是默认头信息<span>X</span></header>
+		<section>
+			<ul>
+				<li>00000</li>
+				<li>11111</li>
+				<li>22222</li>
+			</ul>	
+		</section>
+	</div>
+	<script>
+
+	var dialog = document.getElementById('dialog');
+	var header = dialog.getElementsByTagName('header')[0];
+	var disX = 0;
+	var disY = 0;
+
+	header.onmousedown = function(ev){
+		disX = ev.pageX - dialog.offsetLeft;
+		disY = ev.pageY - dialog.offsetTop;
+		document.onmousemove = function(ev){
+			dialog.style.left = ev.pageX - disX + 'px';
+			dialog.style.top = ev.pageY - disY + 'px';
+		};
+		document.onmouseup = function(){
+			document.onmousemove = null;
+			document.onmouseup = null;
+		};
+		return false;
+	};
+
+
+	</script>
+</body>
+</html>

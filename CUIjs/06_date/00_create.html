@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//Date
+		var d = new Date();					//取得系统当前时间
+		document.write('' + d);
+		var thatDay = new Date('2012-1-1')	//创建的是2012-1-1 00:00:00
+		document.write('<br>');
+		document.write('' + thatDay);
+		var thatNight = new Date('2015/2/14 19:30');
+		document.write('<br>');
+		document.write('' + thatNight);		//创建的是2015-2-14 19:30:00
+
+		//当使用数字作为参数表示时间时，月份从0开始(最多7个数字，最少2个)
+		var thatMorning = new Date(2015, 1, 15, 8, 30, 23);
+		document.write('<br>');
+		document.write('' + thatMorning);		//创建的是2015-2-15 8:30:23
+
+		//当传递的是一个数字时，这个数字是：距离UTC时间1970-1-1 00:00:00:00 毫秒数
+		//得到的时间，就是根据毫秒数计算出的时间
+		var nightmareDate = new Date(1000*60*60*24);
+		document.write('<br>');
+		document.write('' + nightmareDate);		//创建的是2015-2-15 8:30:23
+
+	</script>
+</body>
+</html>

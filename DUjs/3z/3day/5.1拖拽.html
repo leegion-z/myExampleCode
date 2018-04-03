@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{ width: 100px; height: 100px; background: red; position: absolute; }
+	</style>
+</head>
+<body>
+	<div id="div1"></div>
+	<script>
+
+	//拖拽的三大事件：onmousedown	onmousemove    onmouseup
+
+	var div1 = document.getElementById('div1');
+	var disX = 0;
+	var disY = 0;
+
+	div1.onmousedown = function(ev){
+		var This = this;
+		disX = ev.pageX - this.offsetLeft;
+		disY = ev.pageY - this.offsetTop;
+
+		document.onmousemove = function(ev){
+			This.style.left = ev.pageX - disX + 'px';
+			This.style.top = ev.pageY - disY + 'px';
+		};
+		document.onmouseup = function(){
+			document.onmousemove = null;
+			document.onmouseup = null;
+		};
+		return false;
+	};
+
+
+
+
+	</script>
+</body>
+</html>

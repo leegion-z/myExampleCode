@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<textarea id="t1" name="" id="" cols="30" rows="10"></textarea><br>
+	<button id="btn"> 转换 </button><br>
+	<textarea id="t2" name="" id="" cols="30" rows="10"></textarea><br>
+	<script>
+
+	var t1 = document.getElementById('t1');
+	var t2 = document.getElementById('t2');	
+	var btn = document.getElementById('btn');
+
+	正则中的或： |
+	习近平    陆军   实战化军事
+	习近平视察陆军某师时强调:抓实战化军事训练
+
+	replace( ) : 第二个参数可以是字符串，也可以是一个函数
+
+	var re = /习近平|陆军|实战化军事/g;
+
+	btn.onclick = function(){
+
+		var content = t1.value;
+
+		//var result = content.replace(re,'*');
+		var result = content.replace(re, function(arg){
+			var count = '';
+			for(var i=0;i<arg.length;i++){
+				count += '*';
+			}
+			return count;
+		});
+					
+		t2.value = result;
+
+	};
+
+
+	</script>
+</body>
+</html>

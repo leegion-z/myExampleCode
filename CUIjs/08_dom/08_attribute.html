@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<div class="slider" id="container" cuijn="laosiji"></div>
+	<script type="text/javascript">
+		var div = document.querySelector('div');
+		console.log(div.attributes);
+		for(var i=0; i<div.attributes.length; i++) {
+			alert(div.attributes[i].nodeType);
+			alert(div.attributes[i].nodeName);
+			alert(div.attributes[i].nodeValue);
+		}
+	</script>
+</body>
+</html>

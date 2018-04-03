@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		function sayHi () {
+			console.log('hello, I am phgap');
+		}
+		setTimeout(function () {
+			sayHi();
+		}, 1000)
+
+		setTimeout(sayHi, 1000)
+
+		setTimeout('sayHi()', 1000);
+
+		//功能：将参数解析成js代码，并执行
+		var str = 'alert("hello world")';
+		eval(str);
+	</script>
+</body>
+</html>

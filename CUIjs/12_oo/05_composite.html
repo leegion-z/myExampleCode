@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//组合
+		function Person(name, age, exes) {
+			this.name = name;
+			this.age = age;
+			this.exes = exes;
+		}
+
+		Person.prototype.sayHi = function () {
+			alert(this.name + ' says: Call me!!!');
+		}
+
+		var p1 = new Person('xiaoK', 20, ['xiaoR', 'xiaoB']);
+		alert(p1.name);
+		p1.sayHi();
+
+	</script>
+</body>
+</html>

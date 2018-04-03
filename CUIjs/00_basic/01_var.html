@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//f(x) = ax + b ===> 令a=3，b=5
+		//f(x) = 3x + 5
+
+		//在数学中，变量是表示一个变化量。
+		//在编程中，变量也是表示一个变化的量。
+		//但是，代码中的变量，不止可以表示数字，还能表示其他类型
+		//变量中存储的是数据，在JS中，变量的类型一共(六种)
+		//1. 数字
+
+		//弱类型中，变量的类型和里面装载的数据类型，没有必然联系
+		//声明变量:
+		var x;	//声明变量，但是没有赋值，则这个变量就是undefined
+		var person = null;	//这个变量是一个对象，但是目前还没有具体的指向
+
+		//定义布尔
+		var isMarried = true;
+
+		//定义字符串
+		var msg = 'how are you!';
+		var msg_2 = "how old are you!";
+
+		//定义number
+		var number = 201706;
+		var pi = 3.14159265358;
+		//NaN ===> Not a Number
+		//由其他类型向数字类型进行转换时，如果转换失败，就会得到NaN
+		//NaN:
+		//1. NaN不等于任何数字，包含NaN自己,判断一个数字是否为NaN的方式为
+		//Nubmer.isNaN();
+		document.write('a34' - 5);
+		document.write(NaN > NaN);
+		document.write(NaN < NaN);
+		document.write(NaN === NaN);
+		document.write(Number.isNaN('a34' - 5));
+
+		//infinity:通常是由于0作为被除数进行运算得到的。
+		document.write(3/0);
+
+
+
+	</script>
+</body>
+</html>

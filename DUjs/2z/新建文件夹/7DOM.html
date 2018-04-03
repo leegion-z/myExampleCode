@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>11111111</li>
+		<li>11111111</li>
+		<li>11111111</li>
+		<li>11111111</li>
+		<li>11111111</li>
+		<li>11111111</li>
+		<li>11111111</li>
+		<li>11111111</li>
+	</ul>
+	<script>
+
+	var li = document.getElementsByTagName('li');
+	
+	for(var i=0;i<li.length;i++){
+		li[i].onmouseover = function(){
+			var nextLi = this.nextElementSibling;
+			var prevLi = this.previousElementSibling;
+
+			this.style.background = 'blue';
+
+			if(prevLi){
+				prevLi.style.background = 'red';
+			}
+			if(nextLi){
+				nextLi.style.background = 'red';
+			}
+
+		};
+		li[i].onmouseout = function(){
+			for(var i=0;i<li.length;i++){
+				li[i].style.background = '';
+			}
+		};
+	}	
+
+	</script>
+</body>
+</html>

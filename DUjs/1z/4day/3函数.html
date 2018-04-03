@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	/*sin(30°)
+	平方函数(2) -> 4*/
+
+	//foo为函数名，自定义的
+	//函数声明写法 : 只是去定义了一个函数
+
+	/*function foo(){
+
+		console.log(123);
+		console.log(456);
+		console.log(789);
+
+	}
+
+	foo();    // 调用函数
+	foo();*/
+
+	//函数表达式写法：
+
+	/*var foo = function(){
+		console.log(123);
+		console.log(456);
+		console.log(789);
+	};
+
+	foo();
+	foo();*/
+
+	//区别
+	//1.函数声明可以预解析（扩展：变量预解析）
+	//2.函数表达式可直接调用执行
+
+	//函数预解析，表示函数被提前进行了定义。
+
+	/*foo();   
+
+	function foo(){    //声明式写法具备预解析功能，在函数上面调用是没任何问题的
+
+		console.log(123);
+		console.log(456);
+		console.log(789);
+
+	}*/
+
+	/*foo();   
+
+	var foo = function(){  //表达式写法，要按照顺序去写，不具备函数预解析功能。
+		console.log(123);
+		console.log(456);
+		console.log(789);
+	};*/
+
+
+	//变量有没有预解析呢？有的。但是跟函数有区别。
+
+	//规范：定义函数和定义变量，尽量在代码的前面进行定义，不会产生一些意料之外的问题。
+
+	// console.log(foo);	 // undefined
+	// var foo = 123;
+
+	//-> 变量预解析成，如下的样子：
+
+	// var foo;
+	// console.log(foo);
+	// foo = 123;
+
+
+	//2.函数表达式可直接调用执行
+
+	/*var foo = function(){ 
+		console.log(123);
+		console.log(456);
+		console.log(789);
+	}();*/
+
+	/*function foo(){ 
+		console.log(123);
+		console.log(456);
+		console.log(789);
+	}()    //错误的写法*/
+
+
+
+	</script>
+</body>
+</html>

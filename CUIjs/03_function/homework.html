@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		
+	// 写出一个函数，判断输入年份是否为闰年，并返回结果
+	/*
+		功能：判断是不是闰年
+		参数：(Number) year判断的年份
+		返回值：(Boolean) true是闰年，false不是闰年
+	*/
+	function isLeapYear (year) {
+		if(year%4===0&&year%100!==0 || year%400===0) {
+			return true;
+		}
+
+		return false;
+	}
+
+	// 写出一个函数，判断输入分数是否及格，并返回结果
+	function isPass(score) {
+		return score>=60;
+		
+		// if(score>=60) {
+		// 	return true;
+		// } else {
+		// 	return false;
+		// }
+	}
+	// 写一个函数，计算并返回n的阶乘，n为参数
+	// function factorial(n) {
+	// 	var ret = 1;
+	// 	for(var i=1; i<=n; i++) {
+	// 		ret *= i;
+	// 	}
+
+	// 	return ret;
+	// }
+	function factorial(n) {
+		if(n===0) {
+			return 1;
+		}
+
+		return n * factorial(n-1);
+	}
+	// 写一个函数，返回两个数中的最大值
+	function max (num1, num2) {
+		return num1 > num2 ? num1 : num2;
+	}
+	// 写一个函数，不限制参数个数，要求返回所有参数中的最大值
+	function max_all() {
+		// arguments.length	//表明了实参的个数
+		// arguments[0]
+		// arguments[1]
+		// arguments[2]
+		// arguments[3]
+		// ...
+		// arguments[arguments.length-1]
+		
+		// var max = arguments[0];
+		// for(var i=1; i<arguments.length; i++) {
+		// 	if(arguments[i] > max) {
+		// 		max = arguments[i];
+		// 	}
+		// }
+
+		// var max;
+		// for(var i=0; i<arguments.length-1; i++) {
+		// 	max = Math.max(arguments[i], arguments[i+1]);
+		// }
+
+		// var max = arguments[0];
+		// for(var i=0; i<arguments.length; i++) {
+		// 	max = Math.max(arguments[i], max);
+		// }
+
+		var max = arguments[0];
+		for(var i=1; i<arguments.length; i++) {
+			max = max > arguments[i] ? max : arguments[i];
+		}
+
+		return max;
+	}
+	
+	// 写一个函数，不限制参数个数，要求返回所有参数的总和
+	function sum_all(num1, num2) {
+		var sum = 0;
+		for(var i=0; i<arguments.length; i++) {
+			sum += arguments[i];
+		}
+
+		return sum;
+	}
+	// 写一个函数，要求将所有参数作为字符串连接后，并返回连接后的字符串
+	function concat_str() {
+		var str = '';
+		for(var i=0; i<arguments.length; i++) {
+			str += arguments[i];
+		}
+
+		return str;
+	}
+
+
+	</script>
+</body>
+</html>

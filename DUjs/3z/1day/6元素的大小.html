@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{ width: 100px; height: 100px; background: red; padding: 10px; border: 1px black solid;}
+	</style>
+</head>
+<body style="height:2000px;">
+	<div id="div1"></div>
+	<script>
+
+	//元素的大小：
+		//clientWidth : content + padding 
+		//offsetWidth : content + padding + border
+		//注：获取不到隐藏元素的大小
+	
+	//var div1 = document.getElementById('div1');
+	//console.log(div1.offsetWidth);	
+
+	//可视区的大小：
+		//BOM : window.innerWidth
+		//DOM : document.documentElement.clientWidth
+
+		//console.log( window.innerWidth );
+		//console.log( document.documentElement.clientWidth );
+
+	</script>
+</body>
+</html>

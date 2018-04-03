@@ -1,0 +1,5 @@
+1. 上传照片- multer 模块
+
+2. 前后端分离 - nodejs只做接口
+	res.send()
+	res.json()

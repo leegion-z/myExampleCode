@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{ margin: 0; padding: 0; }
+	#div1{ width: 350px; height:350px; border:1px black solid; position: absolute; left:30px;}
+	#div1 span{ width: 150px; height: 150px; background: rgba(255,255,0,0.5); position: absolute; left: 0; top: 0; display:none; }
+	#div2{ width: 343px; height: 343px; border:1px black solid; position: absolute; left: 400px;overflow: hidden; display: none; }
+	#div2 img{ position: absolute; left: 0; top: 0; }
+	</style>
+</head>
+<body>
+	<div id="div1">
+		<img src="img/center1.jpg">
+		<span></span>
+	</div>
+	<div id="div2">
+		<img src="img/big1.jpg">
+	</div>
+	<script>
+
+	var div1 = document.getElementById('div1');
+	var div1_span = div1.getElementsByTagName('span')[0];
+	var div2 = document.getElementById('div2');
+	var div2_img = div2.getElementsByTagName('img')[0];
+
+	div1.onmouseover = function(){
+		div1_span.style.display = 'block';
+		div2.style.display = 'block';
+	};
+	div1.onmouseout = function(){
+		div1_span.style.display = 'none';
+		div2.style.display = 'none';
+	};
+	div1.onmousemove = function(ev){
+		var L = ev.pageX - div1_span.offsetWidth/2 - 30;//spand距左侧的距离；
+		var T = ev.pageY - div1_span.offsetHeight/2;//span距上的距离；
+
+		if(L<0){
+			L = 0;
+		}
+		else if(L>div1.offsetWidth - div1_span.offsetWidth ){
+			L = div1.offsetWidth - div1_span.offsetWidth;
+		}
+
+		if(T<0){
+			T = 0;
+		}
+		else if(T>div1.offsetHeight - div1_span.offsetHeight){
+			T = div1.offsetHeight - div1_span.offsetHeight;
+		}
+
+		div1_span.style.left = L + 'px';
+		div1_span.style.top = T + 'px';
+
+		var scaleX = L / (div1.offsetWidth - div1_span.offsetWidth);
+		var scaleY = T / (div1.offsetHeight - div1_span.offsetHeight);
+
+		div2_img.style.left = - scaleX * (div2_img.offsetWidth - div2.offsetWidth) + 'px';
+		div2_img.style.top = - scaleY * (div2_img.offsetHeight - div2.offsetHeight) + 'px';
+
+	};	
+
+	</script>
+</body>
+</html>

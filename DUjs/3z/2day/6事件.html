@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{ position: absolute; width: 100px; height: 100px; background: red; }
+	#parent{ width: 400px; height: 400px; border: 1px black solid; position: relative; margin: 20px auto; }
+	</style>
+</head>
+<body style="height:2000px;">
+	<div id="parent">
+		<div id="div1">aaaaaa</div>
+	</div>
+	<script>
+
+	//event对象：用于获取事件的详细信息：鼠标位置、键盘按键等。
+	//事件函数的第一个参数为event对象 : ev  e
+	
+	//鼠标坐标：ev.clientX、ev.clientY  ( 鼠标到可视区的距离 )
+			   //ev.pageX、ev.pageY     ( 鼠标到整个页面的距离 )
+
+	//var div1 = document.getElementById('div1');
+
+	/*document.onclick = function(ev){
+		
+		console.log( ev.clientX );
+		console.log( ev.clientY );
+		console.log( ev.pageX );
+		console.log( ev.pageY );
+	};*/
+
+	/*document.onmousemove = function(ev){
+		var x = ev.pageX;
+		var y = ev.pageY;
+		div1.style.left = x - div1.offsetWidth/2  + 'px';
+		div1.style.top = y - div1.offsetHeight/2 + 'px';
+	};*/
+
+	var parent = document.getElementById('parent');
+	var div1 = document.getElementById('div1');
+
+	parent.onmousemove = function(ev){
+		var x = ev.pageX - parent.offsetLeft;
+		var y = ev.pageY - parent.offsetTop;
+		var L = x - div1.offsetWidth/2;
+		var T = y - div1.offsetHeight/2;
+
+		if(L<0){
+			L = 0;
+		}
+		else if(L>parent.offsetWidth - div1.offsetWidth){
+			L = parent.offsetWidth - div1.offsetWidth;
+		}
+
+		if(T<0){
+			T = 0;
+		}
+		else if(T>parent.offsetHeight - div1.offsetHeight){
+			T = parent.offsetHeight - div1.offsetHeight;
+		}
+
+		div1.style.left = L + 'px';
+		div1.style.top = T + 'px';
+
+
+	};
+
+	</script>
+</body>
+</html>

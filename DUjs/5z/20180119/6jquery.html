@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{ width: 100px; height: 100px; background: red; padding:10px; border:1px black solid; margin: 10px; position: absolute;}
+	#login{ width: 300px; height: 300px; border:1px black solid; position: absolute; background: white; z-index: 3;}
+	#close{ position: absolute; right:0; top: 0; }
+	#mark{ background: rgba(0,0,0,0.5); position: absolute; left: 0; top: 0; z-index: 2; }
+	</style>
+</head>
+<script src="jquery-3.2.1.js"></script>
+<body style="height:2000px;">
+	<button>登陆</button>
+
+	<script>
+
+	$('button').on('click',function(){
+		dailog();
+	});
+
+	function dailog(){
+		var $login = $('<div id="login"><span id="close">X</span></div>');
+		var $mark = $('<div id="mark"></div>');
+		$('body').append($login).append($mark);
+		$login.css({
+			left : ($(window).width() - $login.outerWidth())/2,
+			top : ($(window).height() - $login.outerHeight())/2
+		});
+		$mark.css({
+			width : $(document).width(),
+			height : $(document).height()
+		});
+		var $close = $('#close');
+		$close.on('click',function(){
+			$login.remove();
+			$mark.remove();
+		});
+	}
+
+	</script>
+</body>
+</html>

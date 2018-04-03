@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text"><input type="button" value="删除">
+	<div id="div1"></div>
+	<script>
+
+	var div1 = document.getElementById('div1');
+	var inputs = document.getElementsByTagName('input');
+	var arr = ['html','css','js','jquery'];
+
+	div1.innerHTML = arr;	
+
+	inputs[1].onclick = function(){
+		var val = inputs[0].value;
+		var flag = true;
+		for(var i=0;i<arr.length;i++){
+			if(arr[i] == val){
+				arr.splice(i,1);
+				flag = false;
+			}
+		}
+		if(flag){
+			alert('没有删除项');
+		}
+		div1.innerHTML = arr;
+	};
+
+	/*inputs[1].onclick = function(){
+		var val = inputs[0].value;
+		var index = arr.indexOf(val);
+		if(index == -1){
+			alert('没有删除项');
+			return;
+		}
+		arr.splice(index,1);
+		inputs[0].value = '';
+		div1.innerHTML = arr;
+	};*/
+	/*input[1].onclick = function(){
+		var val =inputs[0].value;
+		var index =
+	}*/
+
+
+	</script>
+</body>
+</html>

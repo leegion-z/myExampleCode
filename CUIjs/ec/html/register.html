@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		fontsize = window.innerWidth / 20;
+		document.documentElement.style.fontSize = fontsize;
+		document.body.style.fontSize = '16px';
+		var initialScale = 1 / window.devicePixelRatio;
+		var meta = document.createElement('meta');
+		meta.name = 'viewport';
+		meta.content = '<meta name="viewport" content="width=device-width; user-scalable=no; initial-scale='+initialScale+'; maximum-scale='+initialScale+'; minimum-scale='+initialScale+';">';
+		document.head.appendChild(meta);
+	</script>
+</head>
+<body>
+	<!-- 
+		form表单： 处理简单，因为我们点击submit后，浏览器自动提交请求
+					缺点是：form无法得到请求的响应，只能页面跳转
+		ajax: 处理相对比较麻烦，但是，处理响应会比较灵活，可以页面跳转，
+				也可以值显示错误信息，具体动作完全由前端自己决定
+	-->
+	<h1>注册页面</h1>
+	<div class="register">
+		<input type="text" id="user" name="" placeholder="请输入用户名"><br>
+		<input type="text" id="pw" name="" placeholder="请输入密码"><br>
+		<input type="text" id="tel" name="" placeholder="请输入电话"><br>
+		<input type="text" id="email" name="" placeholder="请输入电子邮箱"><br>
+		<input type="text" id="gender" name="" placeholder="请输入性别"><br>
+		<input type="text" id="age" name="" placeholder="请输入年龄"><br>
+		<button id="submit">注册</button>
+		<a href="./login.html">登录</a>
+		<!--	库的文件夹名字，常见的有下面几种 
+		vendor
+		library
+		lib
+		utility
+		utilities
+		util -->
+	</div>
+	<script type="text/javascript" src="../vendor/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../js/register.js"></script>
+</body>
+</html>

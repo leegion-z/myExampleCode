@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>1111111<input type="button" value="删除"></li>
+		<li>2222222<input type="button" value="删除"></li>
+		<li>3333333<input type="button" value="删除"></li>
+		<li>4444444<input type="button" value="删除"></li>
+		<li>5555555<input type="button" value="删除"></li>
+	</ul>
+	<script>
+
+	var btns = document.getElementsByTagName('input');
+	
+	for(var i=0;i<btns.length;i++){
+		btns[i].onclick = function(){
+			this.parentNode.style.display = 'none';
+		};
+	}	
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0;}
+li{ list-style:none;}
+#ul1{ width:300px; height:300px; border:1px #000000 solid; margin:20px auto; overflow:hidden;}
+li{ padding:10px; border-bottom:1px #666666 dashed;}
+</style>
+<script src="move2.js"></script>
+</head>
+
+<body>
+<ul id="ul1">
+	<li>张楠：#QQ会员微博红名#不管身处哪里，总有一种红色尊贵让我无法阻挡！会员微博红名特权，就是要红起来！</li>
+    <li>旅游就是：上车睡觉，停车撒尿，下车拍照，回家睡觉。第二天一问，什么都不知道！</li>
+    <li>要是不用上班跑去小胡同里看花喝茶发呆多好。。要是不用上班跑去小胡同里看花喝茶发呆多好。。要是不用上班跑去小胡同里看花喝茶发呆多好。。要是不用上班跑去小胡同里看花喝茶发呆多好。。要是不用上班跑去小胡同里看花喝茶发呆多好。。要是不用上班跑去小胡同里看花喝茶发呆多好。。</li>
+    <li>如果你的女友既任性又无理取闹，每天都要你哄。 此时出现了一个既温柔又善解人意的女生喜欢上了你。 你是选择和女友分手还是选择拒绝？ 神回复：谁上台都一个样，所以不要相信那些在野党…</li>
+    <li>Y线教务主任-金虎光：#虾米音乐#♫ 分享梁静茹的歌曲《情歌》 </li>
+</ul>
+<script>
+
+var ul = document.getElementById('ul1');
+var li = ul.getElementsByTagName('li');
+
+setInterval(function(){
+
+	var lastLi = li[li.length-1];
+	var iH = lastLi.offsetHeight - 21;
+
+	ul.insertBefore(lastLi, li[0]);
+
+	lastLi.style.height = 0;
+	lastLi.style.opacity = 0;
+
+	move(lastLi,{height : iH},500,'bounceOut',function(){
+		move(this,{opacity:1},500,'linear');
+	});
+
+
+},3000);
+
+</script>
+</body>
+</html>

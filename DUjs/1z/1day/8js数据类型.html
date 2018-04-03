@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	//判断类型：
+		//typeof 返回的结果都是字符串
+			//字符串 : 'string'
+			//数字 : 'number'
+			//布尔值 : 'boolean'
+			//对象 : 'object'
+				//函数( function(){} ) : 'function'
+			//undefined : 'undefined'
+			//null : 'object'  (都是历史问题，JS本身是非常灵活的语言)
+		//面试问：如果去判断JS中的数据类型？
+		// 	typeof(30分)
+		// 	Object.prototype.toString.call() (100分) 	
+
+	//var foo = null;
+	//console.log( typeof foo ); 
+
+	//console.log(typeof typeof undefined);  //从右向左执行 'string'
+
+	//类型转换：
+		//CSS : 块 -> 行内 -> display : inline
+		
+		//显示类型转换：用JS的语法或方法，主动去转换的
+		//String()、Number()、Boolean()
+
+		//var foo = 123;
+		//console.log( String(foo) );   // '123'
+		//console.log( typeof String(foo) );   // 'string'
+
+		//var foo = 'hello';
+		//console.log( Number(foo) );   // NaN
+		//var foo = '123';
+		//console.log( Number(foo) );   // 123
+
+		//var foo = 'hello';   // ''字符串会转成false，有字符会转成true
+		//console.log( Boolean(foo) );  // true
+
+		//隐式类型转换：不经意之间，程序帮我们完成转换的
+
+		var foo = '2';
+		var bar = 3;
+		// * / - 都可以隐式转换
+		//console.log( foo * bar );  //隐式类型转换了 , '2' -> 2 ，然后在相乘。
+		//+符号：1.链接 2.相加
+		console.log( foo + bar );  //不会转换，程序会认为你要做链接操作
+
+
+	</script>
+</body>
+</html>

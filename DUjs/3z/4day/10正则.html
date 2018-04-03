@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text"><input type="button" value="匹配">
+	<script>
+
+	//^ : 匹配起始位置 : 必须出现在第一个/后
+	//$ : 匹配结束位置 : 必须出现在第二个/前
+
+	var inputs = document.getElementsByTagName('input');
+	
+	inputs[1].onclick = function(){
+
+		var val = inputs[0].value;
+
+		var re = /^[1-9]\d{4,9}$/;
+
+		if( re.test(val) ){
+			alert('是QQ号');
+		}
+		else{
+			alert('不是QQ号');
+		}
+
+	};	
+
+	2.练习 :  匹配年龄  19  到  99
+	3.练习 : border-left-color   ->   borderLeftColor
+
+	</script>
+</body>
+</html>

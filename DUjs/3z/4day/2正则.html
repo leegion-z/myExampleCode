@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	//正则的写法：
+	
+	//var re = new RegExp('a');    // 类似 new Date() 类型 : 对象
+
+	//简写：可以直接在斜杠中写字符，不会要引号
+
+	//var re = /a/; 
+
+	//正则方法：test()
+		// 写法：正则.test(指定的字符串)。
+		// 规则：当正则在指定的字符串中匹配到了结果，就返回真，如果没匹配到结果就返回假。
+
+	/*var str = 'hello JavaScript';
+	
+	var re = /ell/;
+
+	if( re.test(str) ){
+		console.log('真');
+	}
+	else{
+		console.log('假');
+	}*/	
+
+	//正则中表示一类的元素：利用转义字符  \n   \'
+
+	// \d : 数字 0-9
+	// \D : 非数字
+	// \s : 空格
+	// \S : 非空格
+	// \w : 字符( 字母a-z 数字0-9 下划线_ )
+	// \W : 非字符 
+
+	//console.log( 'an\'b' );
+
+
+	var str = '74859437583945';
+
+	var re = /\D/;
+
+	if( re.test(str) ){
+		console.log('有不是数字的');
+	}
+	else{
+		console.log('都是数字');
+	}
+
+	</script>
+</body>
+</html>

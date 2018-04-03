@@ -1,0 +1,35 @@
+//div {
+//  -webkit-transition: width 2s;
+//  -moz-transition: width 2s;
+//  -ms-transition: width 2s;
+//  -o-transition: width 2s;
+//  transition: width 2s;
+//}
+
+@mixin phgap_transition($property, $duration, $timing_function, $delay) {
+  -webkit-transition: $property $duration $timing_function $delay;
+  -moz-transition: $property $duration $timing_function $delay;
+  -ms-transition: $property $duration $timing_function $delay;
+  -o-transition: $property $duration $timing_function $delay;
+  transition: $property $duration $timing_function $delay;
+}
+
+@mixin init($width, $height, $bgColor) {
+  width: $width;
+  height: $height;
+  background-color: $bgColor;
+}
+
+@mixin font($family, $size, $line_height, $text_align, $color) {
+  font-size: $size;
+  font-family: $family;
+  line-height: $line_height;
+  text-align: $text_align;
+}
+
+div {
+  //@include font()
+  @include init(100px, 100px, hotpink);
+  @include phgap_transition(width, 2s, linear, 0.7s);
+}
+

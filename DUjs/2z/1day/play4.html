@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="tab1">	
+		<div class="header">
+			<button class="active">公告</button>
+			<button>规则</button>
+			<button>论坛</button>
+		</div>
+		<div class="content">
+			<div class="show">公告11111111</div>
+			<div>规则22222222</div>
+			<div>论坛33333333</div>
+		</div>
+	</div>
+
+	<div id="tab2">	
+		<div class="header">
+			<button class="active">电影</button>
+			<button>电视剧</button>
+			<button>动漫</button>
+			<button>体育</button>
+		</div>
+		<div class="content">
+			<div class="show">电影11111111</div>
+			<div>电视剧22222222</div>
+			<div>动漫33333333</div>
+			<div>体育44444444</div>
+		</div>
+	</div>
+	<script>
+	var header = document.getElementById('tab1');
+	var header = document.getElementById('tab2');
+
+
+	function sliderTab(parent){
+		var header = parent.getElementsByClassName('header');
+		var btns = header.getElementsByTagName('button');
+		var content = parent.getElementsByClassName('content');
+		var cons = header.getElementsByTagName('div');
+
+		for(var i=0; i<btn.length; i++){
+			btns[i].index = i;
+			btns[i].onclick = function(){
+				for(var i=0; i<btns.length; i++){
+					btn[i].className = '';
+					cons[i].className = '';
+				}
+				this.className = 'active';
+				cons[this.index].className ='show';
+			}
+
+
+		}
+
+	}
+	</script>
+</body>
+</html>

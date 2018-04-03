@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap-theme.css" />
+	<style>
+		#container {
+			padding:20px; 
+			width:60%;
+			margin-top: 100px;
+		}
+		.btn.watched {
+			width: 100px;
+			margin: 10px;
+		}
+
+		.btn.watched p {
+			margin: 0;
+		}
+
+		.author {
+			position: absolute;
+			right: 10px;
+			top: 10px;
+		}
+		.list-group-item-text {
+			height: 35px;
+			overflow : hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+		}
+	</style>
+</head>
+<body>
+	<div id="header"></div>
+
+	<div id="container" class="panel panel-primary center-block">
+		<div class="panel-heading">
+			<h3 class="panel-title">微博</h3>
+		</div>
+		<div class="panel-body">
+			<div id="list" class="list-group">
+				
+			</div>
+		</div>
+	</div>
+	<script type="text/html" id="blog-tpl">
+		{{each bloglist as blog i}}
+		<a href="javascript:;" class="list-group-item" id="{{blog.id}}">
+			<h4 class="list-group-item-heading">{{blog.title}}</h4>
+			<p class="list-group-item-text">{{blog.summary}}</p>
+			<span class="author">作者：{{blog.author}}</span>
+		</a>
+		{{/each}}
+	</script>
+	<script type="text/javascript" src="vendor/jquery/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="vendor/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="vendor/art_template/template.js"></script>
+	<script type="text/javascript">
+
+		$('#header').load('./html/header.html')
+		var time;
+		$.get('./api/get_blog_list.php', {
+			username: 'cuijn'
+		}, function (resp) {
+			console.log(resp.time)
+			time = resp.time;
+			var html = template('blog-tpl', {
+				bloglist: resp.data
+			});
+
+			$('#list').append(html);
+
+			setTimeout(function(){
+				update();
+			}, 2000)
+		})
+
+		function update() {
+			$.get('./api/update_blog.php', {
+				username: 'cuijn',
+				timestamp: time
+			}, function (resp) {
+				console.log(resp.time)
+				time = resp.time;
+				var html = template('blog-tpl', {
+					bloglist: resp.data
+				});
+
+				$('#list').append(html);
+				setTimeout(function () {
+					update();
+				}, 2000)
+			})
+		}
+	</script>
+</body>
+</html>

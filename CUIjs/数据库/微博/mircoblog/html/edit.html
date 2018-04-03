@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap-theme.css" />
+	<style>
+		body {
+			overflow: hidden;
+		}
+		#container {
+			padding:20px; 
+			width:60%;
+			margin-top: 100px;
+		}
+		.btn.watched {
+			width: 100px;
+			margin: 10px;
+		}
+
+		.btn.watched p {
+			margin: 0;
+		}
+
+		.author {
+			position: absolute;
+			right: 10px;
+			top: 10px;
+		}
+		.dropdown-menu.dropdown-menu-right {
+			height: 360px;
+			overflow: scroll;
+		}
+		.list-group-item-text {
+			height: 35px;
+			overflow : hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+		}
+	</style>
+</head>
+<body>
+	<div id="header"></div>
+	<div id="container" class="panel panel-primary center-block">
+		<div class="panel-heading">
+			<h3 class="panel-title">发布微博</h3>
+		</div>
+		<div class="panel-body">
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1">标题</span>
+				<input id="title" type="text" class="form-control" placeholder="微博标题">
+				<div class="input-group-btn" id="categories">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<span id="cate">体育</span>
+						<span class="caret"></span>
+					</button>
+				</div>
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="exampleInputPassword1">正文</label>
+				<textarea id="content" class="form-control" rows="15"></textarea>
+			</div>
+
+			<div class="form-group">
+				<button id="submit" type="button" class="btn btn-primary pull-right">发布</button>
+			</div>
+		</div>
+	</div>
+	<script type="text/html" id="cate-tpl">
+		<ul class="dropdown-menu dropdown-menu-right">
+			{{each categories as cate i}}
+			<li><a href="javascript:;">{{cate.name}}</a></li>
+			{{/each}}
+		</ul>
+	</script>
+	<script type="text/javascript" src="../vendor/jquery/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="../vendor/art_template/template.js"></script>
+	<script type="text/javascript">
+		$().ready(function () {
+			$('#header').load('./header.html')
+			init();
+		});
+		function init () {
+
+			$.get('../api/get_categories.php', {
+				username:'cuijn'
+			}, function (data) {
+				var html = template('cate-tpl', {
+					categories:data
+				});
+
+				$('#categories').append(html);
+			});
+
+			$('#categories').on('click', '.dropdown-menu li', function () {
+				$('#cate').html($(this).find('a').html());
+			});
+
+			$('#submit').click(function () {
+				$.post('../api/create_blog.php', {
+					username: 'cuijn',
+					title: $('#title').val(),
+					summary: $('#content').val(),
+					content: $('#content').val(),
+					category: $('#cate').html()
+				}, function () {
+
+				});
+			})
+		}
+	</script>
+</body>
+</html>

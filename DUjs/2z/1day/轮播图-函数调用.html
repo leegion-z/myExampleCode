@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	*{padding:0;margin:0;}
+	li{list-style: none;}
+	img{display: block;}
+	#all1{width:178px;height:117px;overflow: hidden;margin:100px auto;position:relative;}
+	#all1 .list{width:890px;height:117px;position: absolute;right:0px;transition:1s;}
+	#all1 .list li{float:left;}
+	#all1 .btn{text-align: center;height:10px;width:100%;position:absolute;z-index: 10;bottom:10px;}
+    #all1 .btn li{height:10px;width:10px;border-radius: 50%;background:#fff;display:inline-block;}
+    #all1 .btn li.active{background:pink;}
+
+
+
+
+
+
+    #all2{width:178px;height:117px;overflow: hidden;margin:100px auto;position:relative;}
+	#all2 .list{width:890px;height:117px;position: absolute;right:0px;transition:1s;}
+	#all2 .list li{float:left;}
+	#all2 .btn{text-align: center;height:10px;width:100%;position:absolute;z-index: 10;bottom:10px;}
+    #all2 .btn li{height:10px;width:10px;border-radius: 50%;background:#fff;display:inline-block;}
+    #all2 .btn li.active{background:pink;}
+
+
+
+
+
+
+
+    #all3{width:178px;height:117px;overflow: hidden;margin:100px auto;position:relative;}
+	#all3 .list{width:890px;height:117px;position: absolute;right:0px;transition:1s;}
+	#all3 .list li{float:left;}
+	#all3 .btn{text-align: center;height:10px;width:100%;position:absolute;z-index: 10;bottom:10px;}
+    #all3 .btn li{height:10px;width:10px;border-radius: 50%;background:#fff;display:inline-block;}
+    #all3 .btn li.active{background:pink;}
+</style>
+<body>
+    <div id="all1">
+			<ul class="list">
+				<li><img src="pic1.png"></li>
+				<li><img src="pic2.png"></li>
+				<li><img src="pic1.png"></li>
+				<li><img src="pic2.png"></li>
+				<li><img src="pic3.png"></li>
+			</ul>
+	
+			<ol class="btn">
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ol>
+	</div>
+	<div id="all2">
+			<ul class="list">
+				<li><img src="pic1.png"></li>
+				<li><img src="pic2.png"></li>
+				<li><img src="pic1.png"></li>
+				<li><img src="pic2.png"></li>
+				<li><img src="pic3.png"></li>
+			</ul>
+	
+			<ol class="btn">
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ol>
+	</div>
+	<div id="all3">
+			<ul class="list">
+				<li><img src="pic1.png"></li>
+				<li><img src="pic2.png"></li>
+				<li><img src="pic1.png"></li>
+				<li><img src="pic2.png"></li>
+				<li><img src="pic3.png"></li>
+			</ul>
+	
+				<ol class="btn">
+					<li class="active"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ol>
+	</div>
+
+	<script>
+
+
+         foo(all1);
+         foo(all2);
+         foo(all3);
+
+      function foo(parent){
+
+          
+           var list=parent.getElementsByClassName('list')[0]
+           var listli=list.getElementsByTagName('li')
+           var btn=parent.getElementsByClassName('btn')[0]
+           var btnli=btn.getElementsByTagName('li')
+           for (var i = 0; i < btnli.length; i++) {
+           	    btnli[i].index=i
+            	btnli[i].onclick=function(){
+            		for (var i = 0; i < btnli.length; i++) {
+            			btnli[i].className='';
+            		}
+                   this.className='active'
+                   list.style.left=-this.index*178+'px';
+            	}
+            }
+         
+
+      }
+	</script>
+</body>
+</html>

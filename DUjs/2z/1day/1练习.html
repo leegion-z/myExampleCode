@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<input id="btn" type="button" value="切换">
+	<script>
+
+	var li = document.getElementsByTagName('li');
+	var btn = document.getElementById('btn');
+	var num = 0;
+
+	btn.onclick = function(){
+		for(var i=0;i<li.length;i++){     //让所有的样式还原
+			li[i].style.background = '';
+		}
+
+		li[num].style.background = 'red';    //让当前的元素添加样式
+
+		if(num == li.length - 1){   //实现循环切换
+			num = 0;
+		}
+		else{
+			num++;
+		}
+		
+	};
+
+	</script>
+</body>
+</html>

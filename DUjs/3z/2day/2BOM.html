@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">弹窗</button>
+	<button id="btn2">关闭</button>
+	<script>
+
+	//window.pageYOffset
+	//window.innerWidth
+
+	//自动弹出会受到浏览器的限制
+	//window.open('http://www.baidu.com');
+
+	var btn = document.getElementById('btn');
+	var btn2 = document.getElementById('btn2');
+	var newWin = null;
+
+	btn.onclick = function(){
+		newWin = window.open('http://www.baidu.com');
+		//window.open('1练习.html','_self');
+	};
+
+	btn2.onclick = function(){
+		newWin.close();
+	};
+
+	</script>
+</body>
+</html>

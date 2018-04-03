@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text"><input type="button" value="点击">
+
+	<script>
+
+	var aInput = document.getElementsByTagName('input');
+	var num = 0;
+	var dir = 1;
+
+	aInput[1].onclick = function(){
+
+		setInterval(function(){
+
+			aInput[0].value = num;
+			
+			if(num == 3){   //终点改变方向
+				dir = -1;
+			}
+			else if(num == 0){  //起点改变方向
+				dir = 1;
+			}
+
+			num += dir;
+
+		},2000);
+
+	};
+
+	</script>
+</body>
+</html>

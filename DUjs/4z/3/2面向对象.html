@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	
+	系统对象： 简写	、正常写法
+	var arr = ['a','b','c']; 	//数组  
+	var arr = new Array('a','b','c');
+
+	var re = /a/;		//正则
+	var re = new RegRxp('a');
+
+	var obj = {};		//对象自变量
+	var obj = new Object();	
+
+	//var arr = new Array('a','b','c');
+	//arr.length
+	//arr.push(4,5,6);
+	//arr.sort();
+	//console.log(arr);
+
+	// ---------------JS源码内---------------------
+
+	// function Array(){
+	// 	this.length
+	// }
+	// Array.prototype.push = function(){};
+	// Array.prototype.sort = function(){};
+
+
+	function MyArray(){
+		for(var i=0;i<arguments.length;i++){
+			this[i] = arguments[i];
+		}
+		this.length = arguments.length;
+	}
+	MyArray.prototype.push = function(){
+		//arguments  'd','e'
+		//this 'a','b','c'
+		var len = this.length;
+		for(var i=0;i<arguments.length;i++){
+			len++;
+			this[this.length+i] = arguments[i];
+		}
+		this.length = len;
+	};
+
+	var myArr = new MyArray('a','b','c');
+	myArr.push('d','e');
+	//console.log(myArr[1]);
+	console.log(myArr);
+
+	//尽量不要去修改系统对象的属性和方法。
+
+	/*Array.prototype.push = function(){};
+
+	var arr = ['a','b','c'];
+	arr.push('e','d');
+
+	console.log(arr);*/
+
+
+	//var str = 'hello';
+
+	//str.name = 'xiaoming';
+	//console.log( str.name );   // undefined
+
+	//str.indexOf('e')  -> 1 
+
+	//包装对象：所有的基本类型都对应拥有包装对象，String()、Number()、Boolean()。包装对象会把自身的属性和方法给对应的基本类型变量，然后就消失了。
+
+	String.prototype.indexOf = function(){};
+	var str = 'hello';
+	str.indexOf('e');   
+
+	console.log( window );
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{ margin: 0; padding: 0; }
+	li{ list-style:none; }
+	#main{ width: 300px; height: 200px; position: relative; margin: 20px; overflow: hidden; }
+	#main ul{ position: absolute; left: 0; top: 0; transition:.5s; }
+	#main ul li{ width: 300px; height: 200px; float: left; }
+	#main ul img{ width:100%; height:100%; }
+	#main ol{ position: absolute; z-index: 5; bottom: 0; width: 100%; text-align: center;}
+	#main ol li{ width: 20px; height: 20px; border-radius: 50%; display: inline-block; background:white; margin: 5px; }
+	#main ol li.active{ background:red; }
+
+	#main2{ width: 300px; height: 200px; position: relative; margin: 20px; overflow: hidden; }
+	#main2 ul{ position: absolute; left: 0; top: 0; transition:.5s; }
+	#main2 ul li{ width: 300px; height: 200px; float: left; }
+	#main2 ul img{ width:100%; height:100%; }
+	#main2 ol{ position: absolute; z-index: 5; bottom: 0; width: 100%; text-align: center;}
+	#main2 ol li{ width: 20px; height: 20px; border-radius: 50%; display: inline-block; background:white; margin: 5px; }
+	#main2 ol li.active{ background:red; }
+	</style>
+</head>
+<body>
+	<div id="main">
+		
+	</div>
+
+	<div id="main2">
+		
+	</div>
+
+	<script>
+
+	var main = document.getElementById('main');
+	var main2 = document.getElementById('main2');
+	
+	function getAjax(url , data , cbFn){
+		data = data ? '?'+data : '';
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				cbFn(xhr.responseText);
+			}
+		};
+		xhr.open('GET',url+data,true);
+		xhr.send(null);
+	}	
+
+	function postAjax(url , data , cbFn){
+		data = data ? '?'+data : '';
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				cbFn(xhr.responseText);
+			}
+		};
+		xhr.open('POST',url,true);
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		xhr.send(data);
+	}
+
+	function Banner(parent,data){
+		this.data = data;
+		this.parent = parent;
+	}	
+	Banner.prototype.init = function(){
+		this.createImg();
+		this.createBtn();
+		this.bindBanner();
+	};
+	Banner.prototype.createImg = function(){
+		var ul = document.createElement('ul');
+		for(var i=0;i<this.data.length;i++){
+			var li = document.createElement('li');
+			li.innerHTML = '<a href="'+ this.data[i].bannerUrl +'"><img src="'+ this.data[i].bannerImg +'"></a>';
+			ul.appendChild(li);
+		}
+		ul.style.width = this.data.length * this.parent.offsetWidth + 'px';
+		this.parent.appendChild(ul);
+	};
+	Banner.prototype.createBtn = function(){
+		var ol = document.createElement('ol');
+		for(var i=0;i<this.data.length;i++){
+			var li = document.createElement('li');
+			if(i == 0){
+				li.className = 'active';
+			}
+			ol.appendChild(li);
+		}
+		this.parent.appendChild(ol);
+	};
+	Banner.prototype.bindBanner = function(){
+		var ol = this.parent.getElementsByTagName('ol')[0];
+		var olBtns = ol.getElementsByTagName('li');
+		var ul = this.parent.getElementsByTagName('ul')[0];
+		var w = this.parent.offsetWidth;
+
+		for(var i=0;i<olBtns.length;i++){
+			olBtns[i].index = i;
+			olBtns[i].onclick = function(){
+				for(var i=0;i<olBtns.length;i++){
+					olBtns[i].className = '';
+				}
+				this.className = 'active';
+				ul.style.left = - this.index * w + 'px';
+			};
+		}
+
+	};	
+
+	getAjax('readBanner.php','len=3',function(data){
+		var jsonImgs = JSON.parse(data);
+		var b1 = new Banner(main,jsonImgs);
+		b1.init();
+	});
+
+	getAjax('readBanner.php','len=5',function(data){
+		var jsonImgs = JSON.parse(data);
+		var b1 = new Banner(main2,jsonImgs);
+		b1.init();
+	});
+
+	</script>
+</body>
+</html>

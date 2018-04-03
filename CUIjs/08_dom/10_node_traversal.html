@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<p>1</p>
+	<p>2</p>
+	<p>3
+		<a href=""><img src=""></a>
+		<a href=""><img src=""></a>
+		<a href=""><img src=""></a>
+	</p>
+	<p>4</p>
+	<p>5</p>
+	<script type="text/javascript">
+		var p3 = document.querySelector('p:nth-of-type(3)');
+		//p3相关节点：
+		//父节点：
+		// alert(p3.parentNode.tagName);							//body
+		// alert(p3.parentNode.parentNode.tagName)					//html
+		// alert(p3.parentNode.parentNode.parentNode)				//document
+		// alert(p3.parentNode.parentNode.parentNode.parentNode)	//null
+		//兄弟节点：
+		//	1. 大兄弟
+		// alert(p3.previousSibling)					//包含空文本节点
+		// alert(p3.previousSibling.previousSibling)	//p2
+		//	1. 元素大兄弟
+		// alert(p3.previousElementSibling.innerHTML);			//p2
+		//	2. 老妹
+		// alert(p3.nextSibling)						//包含空文本节点
+		//	2. 元素老妹
+		// alert(p3.nextElementSibling.innerHTML);				//p4
+
+		//取孩子们
+		// alert(p3.children[0].children);
+		// alert(p3.children[1].children);
+		// alert(p3.children[2].children);
+
+		// alert(p3.ownerDocument === document);
+		alert(p3.firstChild);						//包含空文件节点
+		alert(p3.firstElementChild)					//元素节点
+		alert(p3.lastChild);						//包含空文件节点
+		alert(p3.lastElementChild)					//元素节点
+	</script>
+</body>
+</html>

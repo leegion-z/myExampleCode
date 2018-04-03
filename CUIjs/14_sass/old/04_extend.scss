@@ -1,0 +1,31 @@
+.normal {
+  height: 30px;
+  padding: 5px;
+  line-height: 30px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+}
+
+.info {
+  @extend .normal;
+  color: white;
+  background: cornflowerblue;
+}
+
+.success {
+  @extend .normal;
+  color: darkgreen;
+  background: lightgreen;
+}
+
+.warning {
+  @extend .normal;
+  color: yellowgreen;
+  background: yellow;
+}
+
+.error {
+  @extend .normal;
+  color: darkred;
+  background: red;
+}

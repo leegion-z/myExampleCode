@@ -1,0 +1,28 @@
+.active{
+	background:yellow
+}
+
+
+#kerwin{
+	background:blue;
+}
+
+ul.test ,li{
+	list-style:none;
+}
+
+:global(.clear){
+	clear:both;
+}
+
+
+.header{
+	display:flex;
+
+	li{
+		flex:1;
+		height: 40px;
+		line-height: 40px;
+		text-align: center;	
+	}
+}

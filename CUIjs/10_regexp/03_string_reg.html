@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//replace() split() search() match()
+		var str = '今天太TMD高兴了，我都要tmd起飞了。我要背着小书包，高高兴兴去天安门'
+		str.replace(/tmd|天安门/ig, '***');
+		var info = 'cuijn13999999999qiweijie13888888888';
+		var names = info.split(/\d{11}/)		
+		var tels = info.split(/[a-zA-Z]*/)
+
+		var info = 'cuijn13999999997qiweijie13888888888phgap13333333333';
+		//match的正则中如果不加g选项：返回一个数组，数组有index属性和input属性
+		//数组中的元素，第一个为正则匹配的元素，后面为捕获得到的元素
+		//加了g选项，match返回的数组元素，就是所有匹配正则的字符串
+		var arr = info.match(/(\d){11}/)
+		alert(arr.index)
+		alert(arr.input)
+		alert(arr);
+
+	</script>
+</body>
+</html>

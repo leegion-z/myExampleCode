@@ -1,0 +1,27 @@
+@mixin mendaolv_rotate($deg) {
+  -webkit-transform: rotate($deg);
+  -moz-transform: rotate($deg);
+  -ms-transform: rotate($deg);
+  -o-transform: rotate($deg);
+  transform: rotate($deg);
+}
+
+@mixin setFontSize() {
+  //font-family: '\24494\8F6F\96C5\9ED1';
+  font-family: "\5B8B\4F53";
+  color: red;
+}
+
+div {
+  @include mendaolv_rotate(90deg)
+}
+
+body {
+  @include mendaolv_rotate(360deg)
+}
+
+.editor {
+  @include  setFontSize()
+}
+
+

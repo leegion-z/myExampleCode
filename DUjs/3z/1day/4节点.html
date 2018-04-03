@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#main{ width: 400px; margin:20px auto; border: 1px red solid; position: relative; }
+	#main span{ text-decoration: underline; }
+	#mark{ width: 200px; height: 50px; border: 1px black solid; line-height: 50px; padding-left: 10px; position: absolute; background:white; }
+	</style>
+</head>
+<body>
+	<div id="main">
+		互动在线科技有限公司由潘海东创立于2005年7月18日。互动在线深入Wiki领域，专注于Web 2.0互联网和无线增值业务应用的高新技术，现公司位于北京海淀区，邻近中国的“
+办公环境
+办公环境(8张)
+	硅谷”中关村。聘请Intel前中国区总经理和<span data-content="首席执行官CEO">首席执行官</span>Andrew S. Grove （安迪·葛洛夫）以及技术助理的Michael Bruck先生作为公司的资深顾问。[2]  [5] 
+ <p>2006年3月10日，互动在线"wiki进校园"清华活动。</p>
+<p>2007年3月30日，互动在线参加06计世网技术年会。</p>
+<p>2007年7月26日，互动在线入围红鲱鱼亚洲百强评选。</p>
+<p>2006年9月25日，互动在线被中关村管委会评为“优秀留学生创业企业”。</p>
+	<p>2006年12月4日，互动维客荣获2006<span data-content="中国互联网WEB2.0">中国互联网</span>最具潜力项目奖。</p>
+<p>2007年5月30日，WIKI就是知识，开源就是力量　HDwiki产品发布会。</p>
+<p>2007年6月21日，互动维客等成为世界顶尖互联网公司Netvibes全球合作伙伴。</p>
+<p>2007年8月29日，互动维客入选红鲱鱼亚洲100强。</p>
+	<p>2007年11月22日，首届<span data-content="中国维客VIKE">中国维客</span>建站创业大赛颁奖典礼。</p>
+<p>2008年3月20日，《我们的奥运大百科》公益活动启动仪式。</p>
+<p>2008年4月22日，维客集结挺奥运 “奥运大百科”走进清华园。</p>
+	</div>
+	<!-- <div id="mark">
+		中国维客VIKE
+	</div> -->
+	<script>
+
+	var main = document.getElementById('main');
+	var spans = main.getElementsByTagName('span');
+	var mark = null;
+
+	for(var i=0;i<spans.length;i++){
+		spans[i].onmouseover = function(){
+			mark = document.createElement('div');
+			mark.id = 'mark';
+			document.body.appendChild(mark);
+			mark.innerHTML = this.dataset.content;
+			mark.style.left = posLeft(this) + 'px';
+			mark.style.top = posTop(this) - 60 + 'px';
+		};
+		spans[i].onmouseout = function(){
+			document.body.removeChild(mark);
+		};
+	}	
+
+
+	function posLeft(elem){
+		var result = 0;
+		while(elem){
+			result += elem.offsetLeft;
+			elem = elem.offsetParent;
+		}
+		return result;
+	}
+
+
+	function posTop(elem){
+		var result = 0;
+		while(elem){
+			result += elem.offsetTop;
+			elem = elem.offsetParent;
+		}
+		return result;
+	}
+
+
+	</script>
+</body>
+</html>

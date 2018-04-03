@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.active{ background: red; }
+	</style>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<th>aaaaa</th>
+			<th>aaaaa</th>
+			<th>aaaaa</th>
+			<th>aaaaa</th>
+			<th>aaaaa</th>
+			<th>aaaaa</th>
+		</tr>
+		<tr>
+			<td>1111</td>
+			<td>1111</td>
+			<td>1111</td>
+			<td>1111</td>
+			<td>1111</td>
+			<td>1111</td>
+		</tr>
+		<tr>
+			<td>1111</td>
+			<td>1111</td>
+			<td>1111</td>
+			<td>1111</td>
+			<td>1111</td>
+			<td>1111</td>
+		</tr>
+		<tr>
+			<td>1111</td>
+			<td>1111</td>
+			<td>1111</td>
+			<td>1111</td>
+			<td>1111</td>
+			<td>1111</td>
+		</tr>
+		<tr>
+			<td>1111</td>
+			<td>1111</td>
+			<td>1111</td>
+			<td>1111</td>
+			<td>1111</td>
+			<td>1111</td>
+		</tr>
+	</table>
+	<script>
+
+	var td = document.getElementsByTagName('td');
+	var th = document.getElementsByTagName('th');
+
+	var row = td.length / th.length;
+	var col = th.length;	
+
+	for(var i=0;i<row;i++){
+		for(var j=0;j<col;j++){
+			/*j : 0 1 2 3..
+			i : 0 0 0 0..
+			j : 0 1 2 3..
+			i : 1 1 1 1*/
+			td[i*col+j].x = j;			//定义第*个td的x坐标是j
+			td[i*col+j].y = i;			//定义第*个td的y坐标是i
+		}
+	}
+
+	for(var i=0;i<td.length;i++){
+		td[i].onmouseover = function(){
+			var nowX = this.x;
+			var nowY = this.y;
+			for(var i=0;i<td.length;i++){
+				if(nowX == td[i].x || nowY == td[i].y){
+					td[i].className = 'active';
+				}
+			}
+		};
+		td[i].onmouseout = function(){
+			for(var i=0;i<td.length;i++){
+				td[i].className = '';
+			}
+		};
+	}
+
+	</script>
+</body>
+</html>

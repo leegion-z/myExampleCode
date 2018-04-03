@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	*{margin:0;padding:0}
+	ul{list-style:none}
+	a{text-decoration:none}
+	img{border:0;vertical-align:top;}
+	a{cursor:pointer;}
+	#content{
+		width:1200px;
+		margin:100px auto;
+	}
+	#slider{
+		height:500px;
+
+		position:relative;
+	}
+	#slider li{
+		position:absolute;
+		left:200px;
+	}
+	#slider li img{
+		width:100%;
+	}
+	#btn{
+		opacity: 0;
+		width:1200px;
+		height:500px;
+		position:relative;
+		z-index:100;
+	}
+	.prev,.next{
+		width:76px;
+	    height:112px;
+	    position: absolute;
+	    top:50%;
+	    margin-top:-56px;
+	    background: url(./images/prev.png) no-repeat;
+	    z-index: 100;
+	}
+	.next{
+		right:0;
+   		background-image: url(./images/next.png);
+	}
+	</style>
+</head>
+<body>
+<div id="content">
+	<div id="slider">
+		<ul>
+           <li><a href="#"><img src="images/slidepic1.jpg" alt=""/></a></li>
+           <li><a href="#"><img src="images/slidepic2.jpg" alt=""/></a></li>
+           <li><a href="#"><img src="images/slidepic3.jpg" alt=""/></a></li>
+           <li><a href="#"><img src="images/slidepic4.jpg" alt=""/></a></li>
+           <li><a href="#"><img src="images/slidepic5.jpg" alt=""/></a></li>
+       </ul>
+       <div  id="btn">
+           <a href="javascript:;" class="prev"></a>
+           <a href="javascript:;" class="next"></a>
+       </div>
+	</div>
+</div>
+<script src="js/animate.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var content = document.getElementById('content');
+	var silider = document.getElementById('slider');
+	var lis = slider.getElementsByTagName('li');
+	var btn = document.getElementById('btn');
+    var id;
+
+	btn.onmouseover = function (){
+		animate(btn,{
+			opacity:100,
+		})
+        clearInterval(id)
+	}
+	btn.onmouseout = function (){
+		animate(btn,{
+			opacity:0
+		})
+        auto()
+	}
+
+	//存储每个图片信息
+	 var json = [
+        {   //  1
+            width:400,
+            top:20,
+            left:50,
+            opacity:20,
+            z:2
+        },
+        {  // 2
+            width:600,
+            top:70,
+            left:0,
+            opacity:80,
+            z:3
+        },
+        {   // 3
+            width:800,
+            top:100,
+            left:200,
+            opacity:100,
+            z:4
+        },
+        {  // 4
+            width:600,
+            top:70,
+            left:600,
+            opacity:80,
+            z:3
+        },
+        {   //5
+            width:400,
+            top:20,
+            left:750,
+            opacity:20,
+            z:2
+        }
+    ];
+
+    change();
+    var as = btn.children;
+
+    for(var i in as){
+    	as[i].onclick = function (){
+    		if(this.className == 'prev'){
+    			//上一张
+    			change(false)
+    		}else{
+    			//下一张
+    			change(true)
+    		}
+    	}
+    }
+
+    function change(flag){
+
+    		if(flag){
+    			json.unshift( json.pop() )
+    		}else{
+
+    			json.push( json.shift() )
+    		}
+
+    	for(var i = 0;i < json.length;i++){
+    		animate(lis[i],{
+    			width:json[i].width,
+    			top:json[i].top,
+    			left:json[i].left,
+    			opacity:json[i].opacity,
+    			zIndex:json[i].z
+    		})
+    	}
+    }
+
+    // function auto(){
+
+    //   id = setInterval(function(){
+    //     change(true)
+    //  },3000)
+    // }
+
+</script>
+</body>
+</html>

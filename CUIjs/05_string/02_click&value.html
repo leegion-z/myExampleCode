@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<input type="" name="" id="user">
+	<button id="submit">提交</button>
+	<script type="text/javascript">
+		//1. 监听按钮的点击事件
+		// 	1.1 取到页面上的按钮
+		var btn = document.getElementById('submit');
+		//	1.2	为取到的btn添加属性onclick
+		btn.onclick = function () {
+			// alert('lalala');
+
+			//当点击时，提取input中的value值(string)
+			var username = document.getElementById('user');
+			alert(username.value);
+		}
+		
+
+		
+	</script>
+</body>
+</html>

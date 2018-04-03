@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#box1{ width: 500px; height: 500px; background: red;position: absolute;top: 50px; left: 50px; overflow: hidden;}
+	#box1 img{ width: 100%;height: 100% }
+	#box2 { width: 100%; height: 20px; background: rgba(0,0,0,0.3); position: absolute; bottom: 15px; }
+	#box3{ height: 100%; width: 30px; background: rgba(255,255,255,0.5); position: absolute;left: -15px }
+	#door{ width: 100%; height: 100%;background: rgba(0,0,0,0.9); position: absolute; top: -1000px;left: -1000px}
+	</style>
+</head>
+<body>
+	<div id="box1">
+		<img src="" alt="">
+		<img src="2.jpg" >
+		<div id="door"></div>
+		<div id="box2">
+			<div id="box3"></div>
+		</div>
+	</div>
+	<script>
+	var box2 = document.getElementById('box2');
+	var box3 = document.getElementById('box3');
+	var door = document.getElementById('door');
+	box3.onmousedown = function(ev){
+		var x = ev.pageX-box3.offsetLeft;
+
+		document.onmousemove = function(ev){
+			var L = ev.pageX-x;
+			if(L<-box3.offsetWidth/2){
+				L=-box3.offsetWidth/2;
+			}
+			else if(L>box2.offsetWidth-box3.offsetWidth/2){
+				L=box2.offsetWidth-box3.offsetWidth/2;
+			}
+			box3.style.left = L+'px';		
+			
+			door.style.top = '0px';
+			door.style.left = L+box3.offsetWidth/2-door.offsetWidth+'px'
+		}
+		document.onmouseup = function(){
+			document.onmousemove = null;
+		}
+		return false
+	}
+	
+	</script>
+</body>
+</html>

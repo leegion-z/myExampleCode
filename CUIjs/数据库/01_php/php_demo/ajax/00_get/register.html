@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+	<title>登录</title>
+</head>
+<body>
+<input id="user" type="text" placeholder="请输入用户名"/>
+<input id="password" type="text" placeholder="请输入密码"/>
+<input type="button" value="登录">
+<script type="text/javascript">
+	document.querySelector('#user').onkeyup = function () {
+		
+		var user = this.value;
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState === 4 && xhr.status === 200) {
+				var ret = JSON.parse(xhr.responseText);
+				console.log(ret);
+			}
+		}
+		xhr.open('get', './check_user.php?user_111=' + user, true);
+		xhr.send(null);
+	}
+</script>
+</body>
+</html>

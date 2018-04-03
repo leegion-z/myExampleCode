@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{ margin: 0; padding: 0; }
+	li{ list-style:none; }
+	#banner{ width: 470px; height: 150px; margin: 20px auto; position: relative; }
+	#banner ul li{ position: absolute; left: 0; top: 0; opacity:0; }
+	#banner ul li:nth-of-type(1){ opacity:1; }
+	#banner ol{ position: absolute; bottom: 0; width:100%; text-align: center; z-index: 2; }
+	#banner ol li{ display: inline-block; width: 30px; height: 30px; border:1px red solid; margin: 5px; background: white; }
+	#banner ol li.active{ background: yellow; }
+	</style>
+</head>
+<script src="jquery-3.2.1.js"></script>
+<body>
+	<div id="banner">
+		<ul>
+			<li><img src="img/1.jpg" height="150" width="470"></li>
+			<li><img src="img/2.jpg" height="150" width="470"></li>
+			<li><img src="img/3.jpg" height="150" width="470"></li>
+			<li><img src="img/4.jpg" height="150" width="470"></li>
+			<li><img src="img/5.jpg" height="150" width="470"></li>
+		</ul>
+		<ol>
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ol>
+	</div>
+	<script>
+
+	var $olLi = $('#banner').find('ol li');
+	var $ulLi = $('#banner').find('ul li');
+	var iNow = 0;
+	var timer;	
+
+	$olLi.on('mouseover',function(){
+		$(this).attr('class','active').siblings().attr('class','');
+		$ulLi.eq( $(this).index() ).animate({opacity:1},500).siblings().animate({opacity:0},500);
+		iNow = $(this).index();
+	});
+
+	$('#banner').on('mouseover',function(){
+		clearInterval(timer);
+	});
+	$('#banner').on('mouseout',function(){
+		timer = setInterval(run,2000);
+	});
+
+	timer = setInterval(run,2000);
+
+	function run(){
+		if(iNow == $olLi.length-1){
+			iNow = 0;
+		}
+		else{
+			iNow++;	
+		}
+		$olLi.eq(iNow).attr('class','active').siblings().attr('class','');
+		$ulLi.eq( iNow ).animate({opacity:1},500).siblings().animate({opacity:0},500);
+	}
+
+
+
+
+	</script>
+</body>
+</html>

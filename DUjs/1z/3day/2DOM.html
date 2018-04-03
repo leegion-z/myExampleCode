@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello DOM</title>
+</head>
+<style>
+	div{}
+	#box{}
+	.sty{}
+</style>
+<body>
+	<div id="box" class="sty">aaa</div>
+	<p id="text" class="sty">bbbbbbbb</p>
+	<div>cccccc</div>
+	<script>
+
+	/*ECMAScript : JS的核心语法。
+
+	DOM : DOM是可以让JS跟HTML和CSS之间进行交互和通信的。
+	
+	BOM : BOM是可以让JS跟浏览器之间进行交互和通信的。*/
+
+	//document : 文档。整个网页最外层的一个元素（对象）
+
+	//document.doctype  // 获取文档声明
+	//document.documentElement   // 获取html标签
+	//document.head    //获取 head 标签
+	//document.title    // 获取 title 标签的内容
+	//document.body   // 获取body标签
+
+	//console.log( document.doctype );
+	//console.log( document.documentElement );
+	//console.log( document.head );
+	//console.log( document.title );
+	//console.log( document.body );
+
+	//document.title = '我是标题';
+
+
+	//获取带有ID的标签:getElementById()
+	//获取到的DOM元素，是object（对象）类型
+
+	//var boxDiv = document.getElementById('box');
+	//console.log( typeof boxDiv );
+
+	//var textSpan = document.getElementById('text');
+
+	//获取带有CLASS的标签 : getElementsByClassName()
+	//JS中的所有获取到的集合元素，都是从0开始表示的
+	//length表示集合的长度，集合中有几个元素，他就是几
+	//集合中找到指定的某一个具体的元素，需要通过下标的方式，即：[]
+
+	//var stys = document.getElementsByClassName('sty');
+	//console.log( stys );
+	//console.log(stys.length);   //
+	//console.log( stys[1] );
+
+	//直接通过标签的方式来获取元素：getElementsByTagName()
+
+	//var divs = document.getElementsByTagName('div');
+	//console.log( divs );
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{ margin: 0; padding: 0; }
+	li{ list-style:none; }
+	#main{ margin: 20px auto; position: relative;}
+	#grid{ border:1px black solid; border-bottom: none; border-right:none;  overflow: hidden;}
+	#grid li{ float:left; border:1px black solid; border-top: none; border-left:none; }
+	#playBtn{ float: left; }
+	#showScore{ float:right; }
+	#snake{ position: absolute; left: 0; top:0; }
+	#snake .snakeHead{ background:red; position: absolute;}
+	#snake .snakeBody{ background:red; opacity:0.5; position: absolute;}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<ul id="grid">
+			
+		</ul>
+		<div id="snake">
+			<!-- <div class="snakeHead"></div>
+			<div class="snakeBody"></div>
+			<div class="snakeBody"></div>
+			<div class="snakeBody"></div>
+			<div class="snakeBody"></div> -->
+		</div>
+		<button id="playBtn">开始</button>
+		<button id="showScore">积分:<span>0</span></button>
+	</div>
+	<script>
+
+		var main = $id('main');
+		var grid = $id('grid');
+		var gridLi = $tag(grid,'li');
+		var playBtn = $id('playBtn');
+		var showScore = $id('showScore');
+		var snake = $id('snake');
+		var snakeDiv = $tag(snake,'div');
+		var gridData = { size : 20 , cols : 25 , rows : 25 };
+		var snakeData = { pos : 30 , speed : 200 , dir : 39 };
+
+		initGame();
+
+		function initGame(){   //初始化游戏
+			createGrid();
+			bindEvents();
+		}
+		function createGrid(){   //创建网格
+			for(var i=0;i<gridData.cols*gridData.rows;i++){
+				var li = document.createElement('li');
+				li.style.width = li.style.height = gridData.size + 'px';
+				grid.appendChild(li);
+			}
+			main.style.width = gridData.cols * (gridData.size + 1) + 1 + 'px';
+		}
+		function bindEvents(){   //游戏的事件操作
+			playBtn.onclick = function(){
+				createSnake();
+				moveSnake();
+			};
+		}
+
+		function createSnake(){   //创建蛇头
+			var snakeHead = document.createElement('div');
+			snakeHead.className = 'snakeHead';
+			snakeHead.style.width = snakeHead.style.height = gridData.size + 'px';
+			snakeHead.style.left = gridLi[ snakeData.pos ].offsetLeft + 'px';
+			snakeHead.style.top = gridLi[ snakeData.pos ].offsetTop + 'px';
+			snake.appendChild(snakeHead);
+		}
+
+		function moveSnake(){   //移动蛇
+			setInterval(function(){
+
+				switch(snakeData.dir){
+					case 37:
+						snakeDiv[0].style.left = snakeDiv[0].offsetLeft - (gridData.size + 1) + 'px';
+					break;
+					case 38:
+						snakeDiv[0].style.top = snakeDiv[0].offsetTop - (gridData.size + 1) + 'px';
+					break;
+					case 39:
+						snakeDiv[0].style.left = snakeDiv[0].offsetLeft + (gridData.size + 1) + 'px';
+					break;
+					case 40:
+						snakeDiv[0].style.top = snakeDiv[0].offsetTop + (gridData.size + 1) + 'px';
+					break;
+				}
+
+			},snakeData.speed);
+		}
+
+		function $id(id){
+			return document.getElementById(id);
+		}
+		function $tag(parent,tagName){
+			return parent.getElementsByTagName(tagName);
+		}
+		function $class(parent,cName){
+			return parent.getElementsByClassName(cName);
+		}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+
+	//for循环跟while循环特别类似：四个步骤 （for跟while可以互转）	
+
+	/*for(var i=0;i<5;i++){
+
+		console.log(i);
+
+	}*/
+
+	// 跳出循环 :  break  continue
+		//break; 跳出整个循环
+		//continue; 跳出当前循环
+
+	/*for(var i=0;i<5;i++){
+
+		console.log(i);
+
+		if(i == 2){
+			break;
+		}
+
+	}
+	console.log( i );   // 2*/
+
+	/*for(var i=0;i<5;i++){
+
+		if(i == 2){
+			continue;   //i 等于 2跳出循环，后面的代码就不执行了
+		}
+
+		console.log(i);
+
+	}*/
+
+
+	//if 可以嵌套 for  for 可以去嵌套 
+
+	//if 可以去嵌套 if   for 可以去嵌套 for 
+
+
+	//嵌套循环:
+
+	/*for(var i=0;i<5;i++){
+
+		for(var j=0;j<3;j++){
+
+			console.log(i);
+
+		}
+
+	}*/
+
+
+	/*for(var i=0;i<5;i++){
+
+		for(var i=0;i<3;i++){   // 反模式：不正确的写法：不要去嵌套循环的时候用同一个变量
+  
+			console.log(i); 
+
+		}
+
+	}*/
+
+
+
+</script>	
+
+
+
+</body>
+</html>

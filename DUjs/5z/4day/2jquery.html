@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+	<div id="div1" class="box">aaaaa</div>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<script>
+
+	/*var div1 = document.getElementById('div1');
+
+	div1.onclick = function(){
+		alert( this.innerHTML );
+	};*/
+
+	//jquery中的函数内的this都是原生的
+
+	$('#div1').click(function(){
+
+		//alert( this.innerHTML );   //纯原生JS写法
+		alert( $(this).html() );    //纯JQ写法
+
+		//alert( this.html() );   //错的
+		//alert( $(this).innerHTML );  //错的
+
+	});
+
+	//$('ul').children().css('background','red');
+
+	//$('ul li').first().css('background','red');
+
+	//------JQ源码-------
+	/*$('#div1')
+	click(function(){})
+	html()
+
+	function $(selector){
+
+	}
+
+	function click(fn){
+
+	}
+
+	function html(){
+
+	}
+
+	function first(){
+
+	}
+
+	function css(attr,value){
+
+	}
+
+	function eq(index){
+
+	}
+
+	function slice(begin,end){
+
+	}*/
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<ul id="list">
+		<!-- <li>
+			<h2>肖申克的救赎</h2>
+			<dl>
+				<dt>导演：</dt>
+				<dd>aaaaa</dd>
+			</dl>
+			<dl>
+				<dt>主演：</dt>
+				<dd>aaaaa</dd>
+				<dd>aaaaa</dd>
+				<dd>aaaaa</dd>
+			</dl>
+			<p><em>1994</em>：<span>犯罪</span>、<span>剧情</span></p>
+		</li>
+		<li>
+			<h2>肖申克的救赎</h2>
+			<dl>
+				<dt>导演：</dt>
+				<dd>aaaaa</dd>
+			</dl>
+			<dl>
+				<dt>主演：</dt>
+				<dd>aaaaa</dd>
+				<dd>aaaaa</dd>
+				<dd>aaaaa</dd>
+			</dl>
+			<p><em>1994</em>：<span>犯罪</span>、<span>剧情</span></p>
+		</li> -->
+	</ul>
+
+	<script>
+
+	/*JSON : 一种数据格式，跟对象自变量非常的像。
+		跟对象自变量区别：JSON中都是字符串，数字，JSON或数组	
+						  JSON一般需要严格的格式，key值要加双引号
+
+	var obj = {
+		name : 'xiaoming',
+		showName : function(){}
+	}
+
+	var json = {
+		"name" : "xiaoming",
+		"age" : "20",
+		"list" : []
+	}*/
+
+	//单JSON：
+
+	/*var json = {
+		"name" : "xiaoming",
+		"age" : "20",
+		"job" : "IT"
+	}
+
+	json.name  ->  xiaoming
+	json['name'] -> xiaoming
+
+	for(var attr in json){
+		console.log(attr);  ->  name 、 age 、job
+		console.log(json[attr]);  ->  xiaoming、20、IT
+	}*/
+
+	//多组JSON：
+
+	/*var json = [
+		{"name":"xiaoming","age":"20"},
+		{"name":"xiaobai","age":"22"},
+		{"name":"xiaoqiang","age":"25"}
+	];
+
+	for(var i=0;i<json.length;i++){
+		console.log( json[i].age );
+	}*/
+
+
+var json = {
+    "count": 20,
+    "start": 0,
+    "total": 250,
+    "subjects": [
+        {
+            "rating": {
+                "max": 10,
+                "average": 9.6,
+                "stars": "50",
+                "min": 0
+            },
+            "genres": [
+                "犯罪",
+                "剧情"
+            ],
+            "title": "肖申克的救赎",
+            "casts": [
+                {
+                    "alt": "https://movie.douban.com/celebrity/1054521/",
+                    "avatars": {
+                        "small": "http://img7.doubanio.com/view/celebrity/s_ratio_celebrity/public/p17525.jpg",
+                        "large": "http://img7.doubanio.com/view/celebrity/s_ratio_celebrity/public/p17525.jpg",
+                        "medium": "http://img7.doubanio.com/view/celebrity/s_ratio_celebrity/public/p17525.jpg"
+                    },
+                    "name": "蒂姆·罗宾斯",
+                    "id": "1054521"
+                },
+                {
+                    "alt": "https://movie.douban.com/celebrity/1054534/",
+                    "avatars": {
+                        "small": "http://img7.doubanio.com/view/celebrity/s_ratio_celebrity/public/p34642.jpg",
+                        "large": "http://img7.doubanio.com/view/celebrity/s_ratio_celebrity/public/p34642.jpg",
+                        "medium": "http://img7.doubanio.com/view/celebrity/s_ratio_celebrity/public/p34642.jpg"
+                    },
+                    "name": "摩根·弗里曼",
+                    "id": "1054534"
+                },
+                {
+                    "alt": "https://movie.douban.com/celebrity/1041179/",
+                    "avatars": {
+                        "small": "http://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p5837.jpg",
+                        "large": "http://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p5837.jpg",
+                        "medium": "http://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p5837.jpg"
+                    },
+                    "name": "鲍勃·冈顿",
+                    "id": "1041179"
+                }
+            ],
+            "collect_count": 1195831,
+            "original_title": "The Shawshank Redemption",
+            "subtype": "movie",
+            "directors": [
+                {
+                    "alt": "https://movie.douban.com/celebrity/1047973/",
+                    "avatars": {
+                        "small": "http://img7.doubanio.com/view/celebrity/s_ratio_celebrity/public/p230.jpg",
+                        "large": "http://img7.doubanio.com/view/celebrity/s_ratio_celebrity/public/p230.jpg",
+                        "medium": "http://img7.doubanio.com/view/celebrity/s_ratio_celebrity/public/p230.jpg"
+                    },
+                    "name": "弗兰克·德拉邦特",
+                    "id": "1047973"
+                }
+            ],
+            "year": "1994",
+            "images": {
+                "small": "http://img7.doubanio.com/view/photo/s_ratio_poster/public/p480747492.jpg",
+                "large": "http://img7.doubanio.com/view/photo/s_ratio_poster/public/p480747492.jpg",
+                "medium": "http://img7.doubanio.com/view/photo/s_ratio_poster/public/p480747492.jpg"
+            },
+            "alt": "https://movie.douban.com/subject/1292052/",
+            "id": "1292052"
+        },
+        {
+            "rating": {
+                "max": 10,
+                "average": 9.5,
+                "stars": "50",
+                "min": 0
+            },
+            "genres": [
+                "剧情",
+                "爱情",
+                "同性"
+            ],
+            "title": "霸王别姬",
+            "casts": [
+                {
+                    "alt": "https://movie.douban.com/celebrity/1003494/",
+                    "avatars": {
+                        "small": "http://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p67.jpg",
+                        "large": "http://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p67.jpg",
+                        "medium": "http://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p67.jpg"
+                    },
+                    "name": "张国荣",
+                    "id": "1003494"
+                },
+                {
+                    "alt": "https://movie.douban.com/celebrity/1050265/",
+                    "avatars": {
+                        "small": "http://img7.doubanio.com/view/celebrity/s_ratio_celebrity/public/p46345.jpg",
+                        "large": "http://img7.doubanio.com/view/celebrity/s_ratio_celebrity/public/p46345.jpg",
+                        "medium": "http://img7.doubanio.com/view/celebrity/s_ratio_celebrity/public/p46345.jpg"
+                    },
+                    "name": "张丰毅",
+                    "id": "1050265"
+                },
+                {
+                    "alt": "https://movie.douban.com/celebrity/1035641/",
+                    "avatars": {
+                        "small": "http://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1399268395.47.jpg",
+                        "large": "http://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1399268395.47.jpg",
+                        "medium": "http://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1399268395.47.jpg"
+                    },
+                    "name": "巩俐",
+                    "id": "1035641"
+                }
+            ],
+            "collect_count": 859592,
+            "original_title": "霸王别姬",
+            "subtype": "movie",
+            "directors": [
+                {
+                    "alt": "https://movie.douban.com/celebrity/1023040/",
+                    "avatars": {
+                        "small": "http://img7.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1451727734.81.jpg",
+                        "large": "http://img7.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1451727734.81.jpg",
+                        "medium": "http://img7.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1451727734.81.jpg"
+                    },
+                    "name": "陈凯歌",
+                    "id": "1023040"
+                }
+            ],
+            "year": "1993",
+            "images": {
+                "small": "http://img7.doubanio.com/view/photo/s_ratio_poster/public/p1910813120.jpg",
+                "large": "http://img7.doubanio.com/view/photo/s_ratio_poster/public/p1910813120.jpg",
+                "medium": "http://img7.doubanio.com/view/photo/s_ratio_poster/public/p1910813120.jpg"
+            },
+            "alt": "https://movie.douban.com/subject/1291546/",
+            "id": "1291546"
+        }
+        ],
+    	"title": "豆瓣电影Top250"
+    }
+
+    var list = document.getElementById('list');
+	var data = json.subjects;
+
+	for(var i=0;i<data.length;i++){
+		createList( data[i] );
+	}
+
+    function createList( itemData ){
+
+    	var li = document.createElement('li');
+
+    	li.innerHTML = '<h2>'+ itemData.title +'</h2>\
+			<dl>\
+				<dt>导演：</dt>\
+				<dd>'+ itemData.directors[0].name +'</dd>\
+			</dl>\
+			<dl>\
+				<dt>主演：</dt>\
+			</dl>\
+			<p><em>'+itemData.year+'</em>：</p>';
+		list.appendChild(li);
+
+		var zyDL = li.getElementsByTagName('dl')[1];
+		var zyNames = itemData.casts;
+		for(var i=0;i<zyNames.length;i++){
+			var dd = document.createElement('dd');
+			dd.innerHTML = zyNames[i].name;
+			zyDL.appendChild(dd);
+		}
+
+		var jqP = li.getElementsByTagName('p')[0];
+		var jqTags = itemData.genres;
+		for(var i=0;i<jqTags.length;i++){
+			var span = document.createElement('span');
+			span.innerHTML = jqTags[i] + ' ';
+			jqP.appendChild(span);
+		}
+
+    }
+
+	</script>
+</body>
+</html>

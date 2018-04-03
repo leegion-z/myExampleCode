@@ -1,0 +1,97 @@
+.container div:nth-of-type(1) {
+  transform: rotateY(30deg) translateZ(480px);
+}
+
+.container div:nth-of-type(2) {
+  transform: rotateY(60deg) translateZ(480px);
+}
+
+.container div:nth-of-type(3) {
+  transform: rotateY(90deg) translateZ(480px);
+}
+
+.container div:nth-of-type(4) {
+  transform: rotateY(120deg) translateZ(480px);
+}
+
+.container div:nth-of-type(5) {
+  transform: rotateY(150deg) translateZ(480px);
+}
+
+.container div:nth-of-type(6) {
+  transform: rotateY(180deg) translateZ(480px);
+}
+
+.container div:nth-of-type(7) {
+  transform: rotateY(210deg) translateZ(480px);
+}
+
+.container div:nth-of-type(8) {
+  transform: rotateY(240deg) translateZ(480px);
+}
+
+.container div:nth-of-type(9) {
+  transform: rotateY(270deg) translateZ(480px);
+}
+
+.container div:nth-of-type(10) {
+  transform: rotateY(300deg) translateZ(480px);
+}
+
+.container div:nth-of-type(11) {
+  transform: rotateY(330deg) translateZ(480px);
+}
+
+.container div:nth-of-type(12) {
+  transform: rotateY(360deg) translateZ(480px);
+}
+
+.container div:nth-of-type(13) {
+  transform: rotateY(390deg) translateZ(480px);
+}
+
+.container div:nth-of-type(14) {
+  transform: rotateY(420deg) translateZ(480px);
+}
+
+.container div:nth-of-type(15) {
+  transform: rotateY(450deg) translateZ(480px);
+}
+
+.container div:nth-of-type(16) {
+  transform: rotateY(480deg) translateZ(480px);
+}
+
+.container div:nth-of-type(17) {
+  transform: rotateY(510deg) translateZ(480px);
+}
+
+.container div:nth-of-type(18) {
+  transform: rotateY(540deg) translateZ(480px);
+}
+
+.container div:nth-of-type(19) {
+  transform: rotateY(570deg) translateZ(480px);
+}
+
+.container div:nth-of-type(20) {
+  transform: rotateY(600deg) translateZ(480px);
+}
+
+.container div:nth-of-type(21) {
+  transform: rotateY(630deg) translateZ(480px);
+}
+
+.container div:nth-of-type(22) {
+  transform: rotateY(660deg) translateZ(480px);
+}
+
+.container div:nth-of-type(23) {
+  transform: rotateY(690deg) translateZ(480px);
+}
+
+.container div:nth-of-type(24) {
+  transform: rotateY(720deg) translateZ(480px);
+}
+
+/*# sourceMappingURL=loop.css.map */

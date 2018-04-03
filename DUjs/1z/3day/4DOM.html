@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="box" style="width:100px;height:200px;background:red;font-size:40px;">aaaaaa</div>
+	<script>
+
+	//注：JS语法中不能出现横杠（ - ）。 把横杠转成驼峰写法。
+
+	var boxDiv = document.getElementById('box');
+
+	//console.log( boxDiv.style );  //样式的集合
+
+	//console.log( boxDiv.style.width );   // '100px'
+	//console.log( boxDiv.style.height );   // '200px'
+	//console.log( boxDiv.style.background );  // 'red'
+	
+	//console.log( boxDiv.style.font-size );  //错误写法
+	//console.log( boxDiv.style.fontSize );   //正确写法
+
+	boxDiv.style.background = 'blue';
+	boxDiv.style.color = 'white';
+ 
+
+	</script>
+</body>
+</html>

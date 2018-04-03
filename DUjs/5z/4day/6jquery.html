@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	
+	/* div{ width: 100px; height: 100px; border:1px black solid; margin: 10px; display:inline; }
+	.hide{ display:none; } */
+	</style>
+	<script src="jquery-3.2.1.js"></script>
+</head>
+<body class="content">
+	
+	<ul>
+		<li></li>
+		<li class="box content">
+			<!-- <ol>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ol> -->
+		</li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+
+	<h2>h2</h2>
+	<p>pppppppppp</p>
+	<h2>h2</h2>
+	<div>div</div>
+	<h2>h2</h2>
+	<p>pppppppppp</p>
+
+	
+	<script>
+
+	//$('ul').children().css('border','1px black solid');	
+
+	//$('ul').find('li').css('border','1px black solid');	
+
+	//$('.box').nextAll().css('border','1px black solid');
+
+	//找所有的兄弟节点，不包括自己
+	//$('.box').siblings().css('border','1px black solid');
+
+	/*var li = document.getElementsByTagName('li');
+
+	for(var i=0;i<li.length;i++){
+		li[i].onclick = function(){
+			for(var i=0;i<li.length;i++){
+				li[i].style.background = '';
+			}
+			this.style.background = 'red';
+		};
+	}*/
+
+	/*$('li').click(function(){
+
+		$(this).css('background','red').siblings().css('background','');
+
+	});*/
+
+    //$('h2').next('p').css('background','red');
+
+    //$('ul').siblings('h2').css('background','red');
+
+    //$('.box').parent().css('border','1px black solid');
+
+    //找指定元素的所有祖先节点
+    //$('.box').parents().css('border','1px black solid');
+
+    //closest()：找最近的满足条件的祖先节点（返回唯一一个元素）
+
+    $('.box').closest('.content').css('border','1px black solid');
+
+	</script>
+</body>
+</html>

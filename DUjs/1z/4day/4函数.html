@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	/*function foo(n){  // 定义函数：形式参数，形参   n = 4
+
+		console.log(n);
+		
+	}
+	
+	foo(5);*/   // 调用函数：实际参数，实参
+	
+	/*function foo(n,m,k){ 
+
+		console.log(n + m + k);
+
+	}
+	
+	foo(5,6,7);*/
+
+
+	/*function 阶乘(num){
+		var result = 1;
+		for(;num>0;num--){
+			result *= num;
+		}
+		console.log(result);
+	}
+
+	阶乘(6);
+	阶乘(7);
+	阶乘(8);*/
+
+	//形参多的话，会返回undefined
+	//当不定实参的时候，利用arugments来帮助完成功能。
+	//arugments表示实参的集合，集合一般都有长度(length)和下标([])
+
+/*	function sum(){
+
+		//console.log( arguments.length );
+		//console.log( arguments[1] );
+
+		var result = 0;
+		for(var i=0;i<arguments.length;i++){
+			result += arguments[i];
+		}
+		console.log( result );
+	}
+	
+	sum(1,2,3,4,3,2,1);*/
+
+
+
+	/*function sum(start,end){
+
+		var result = 0;
+
+		for(;start<=end;start++){
+			//start 3 4 5 6 7 ... 10
+			result += start;
+		}
+
+		console.log( result );
+	}
+
+	sum(3,10);   // 3 + 4 + ... 10
+	sum(5,20); */  // 5 + 6 + ... 20 
+
+/*
+	function computed(){
+
+	}
+
+	computed(3,10,'+');   //13
+	computed(3,10,'-');   //-7
+	computed(3,10,'*');   //30
+	computed(3,10,'/');   //0.3
+*/
+function computed(n1,n2,com){
+		var result = 0;
+		switch(com){
+			case '+':
+			result = n1 + n2;
+			break;
+			case '-':
+			result = n1 - n2;
+			break;
+			case '*':
+			result = n1 * n2;
+			break;
+			case '/':
+			result = n1 / n2;
+			break;
+		}
+		console.log(result);
+}
+	computed(3,10,'+');   //13
+	computed(3,10,'-');
+
+	/*function foo(){
+
+	}
+	foo(5,7,10,2,20);   // 2
+	foo(7,12,1,6);      // 1*/
+
+	</script>
+</body>
+</html>

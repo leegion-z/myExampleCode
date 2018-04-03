@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{ margin: 0; padding: 0; }
+	li{ list-style:none; }
+	#list{ width: 200px; border: 1px black solid; position: absolute; display: none;}
+	#list li{ border-bottom: 1px #ccc solid; }
+	</style>
+</head>
+<body>
+	<ul id="list">
+		<li>新建</li>
+		<li>文件夹</li>
+		<li>属性</li>
+		<li>工具</li>
+	</ul>
+	<script>
+
+	//右键事件：oncontextmenu	
+
+	var list = document.getElementById('list');
+
+	document.oncontextmenu = function(ev){
+		list.style.display = 'block';
+		list.style.left = ev.pageX + 'px';
+		list.style.top = ev.pageY + 'px';
+		return false;
+	};
+
+	document.onclick = function(){
+		list.style.display = 'none';
+	};
+
+	</script>
+</body>
+</html>

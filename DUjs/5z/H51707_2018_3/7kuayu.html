@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	getAjax('http://www.b.com/H51707_2018_2/data.php','',function(data){
+		console.log(data);
+	});
+
+
+		function getAjax(url , data , cbFn){
+			data = data ? '?'+data : '';
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4 && xhr.status == 200){
+					cbFn(xhr.responseText);
+				}
+			};
+			xhr.open('GET',url+data,true);
+			xhr.send(null);
+		}
+
+	</script>
+</body>
+</html>

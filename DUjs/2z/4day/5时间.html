@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="time"></div>
+	<script>
+
+	//JS中获取到的时间为计算机的系统时间，并不是真实的时间
+
+	// var date = new Date();
+	// console.log(typeof date);  // object  对象类型
+
+	// var date = new Date();
+	// console.log(date);
+
+	// var date = new Date();
+
+	// console.log( date.getFullYear() );   //年 数字类型
+
+	// console.log( date.getMonth() + 1 );  //月(0到11)   数字类型
+
+	// console.log( date.getDate() );       //日  数字类型
+
+	// console.log( date.getDay() );        //星期(0到6)  0表示星期日   数字类型
+
+	// console.log( date.getHours() );      //小时
+	// console.log( date.getMinutes() );     //分钟
+	// console.log( date.getSeconds() );     //秒
+
+	// getTime()
+ //    获取到1970年1月1日的毫秒数
+	// console.log( date.getTime() ); 
+
+	var time = document.getElementById('time');
+
+	run();
+	setInterval(run,1000);
+
+	
+	function run(){
+		var date = new Date();
+
+		time.innerHTML = toZero(date.getHours()) + ':' + toZero(date.getMinutes()) + ':' + toZero(date.getSeconds());
+	}
+
+	function toZero(num){
+		if(num<10){
+			return '0' + num;
+		}
+		else{
+			return '' + num;
+		}
+	}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+
+	/*function foo(){    //普通函数
+		this
+	}	
+
+	foo();*/
+
+	//规范中要求构造函数的第一个字母需要大写
+	//对象 : 属性（变量）和方法（函数）
+
+	function Bar(){     //构造函数
+		//this : 构造函数中的this就是通过构造函数创建出来的对象
+		this.name = 'xiaoming';
+		this.age = '20';
+		this.showName = function(){
+			console.log( this.name );//this指的是Bar
+		};
+		this.showAge = function(){
+			console.log( this.age );
+		};
+		//return this;   //隐式返回
+	}
+	var b = new Bar();
+	var c = new Bar();
+	var d = new Bar();
+	console.log(b);
+	console.log(b.name);
+	
+	b.showName();
+	b.showAge();
+
+	</script>
+</body>
+</html>

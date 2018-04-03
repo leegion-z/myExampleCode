@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{ width: 100px; height: 100px; background: red; position: absolute; }
+	</style>
+</head>
+<body>
+	<div id="div1"></div>
+	<script>
+
+	//拖拽的三大事件：onmousedown	onmousemove    onmouseup
+
+	var div1 = document.getElementById('div1');
+	var downX = 0;
+	var downY = 0;
+	var downL = 0;
+	var downT = 0;	
+
+	div1.onmousedown = function(ev){
+		var This = this;
+		downX = ev.pageX;
+		downY = ev.pageY;
+		downL = this.offsetLeft;
+		downT = this.offsetTop;
+
+		document.onmousemove = function(ev){
+			This.style.left = ev.pageX - downX + downL + 'px';
+			This.style.top = ev.pageY - downY + downT + 'px';
+		};
+		document.onmouseup = function(){
+			document.onmousemove = null;
+			document.onmouseup = null;
+		};
+		return false;
+	};
+
+
+
+
+	</script>
+</body>
+</html>

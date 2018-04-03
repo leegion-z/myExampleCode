@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+	
+
+function foo(){
+	var a = 10;   //a表示n多个局部的a，每调用一次就会有这样一个局部的a
+	a++;
+	return a;
+}
+
+console.log( foo() );
+console.log( foo() );
+console.log( foo() );
+
+
+</script>
+	
+</body>
+</html>

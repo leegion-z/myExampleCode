@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			*{padding:0;margin:0;}
+			li{list-style:none;}
+			#list{position: relative; margin:100px;}
+			#list li{width:50px; height:50px; background:red; position: absolute;}
+		</style>
+	</head>
+	<body>
+		<ul id="list"></ul>
+
+	<script>
+	var list = document.getElementById('list')
+	for(var i=0; i<17; i++){
+		if(i<9){
+			list.innerHTML +='<li style="left:'+(51*i)+'px;top:'+(51*i)+'px;"></li>'
+		}
+		else if(8<i<17){
+			list.innerHTML +='<li style="left:'+(i*51)+'px;top:'+((16-i)*51)+'px;"></li>'
+		}
+	}
+	</script>	
+	</body>
+	</html>	

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#list li div span:nth-of-type(1){ font-size: 30px; font-weight: bold; }
+	</style>
+</head>
+<body>
+	<div>
+		<div>用户名：<input type="text"></div>
+		<div>内容：<textarea></textarea></div>
+		<div><button>留言</button></div>
+	</div>
+	<ul id="list">
+		<!-- <li>
+			<div>
+				<span>111111</span>
+				<span>2018.1.16</span>
+			</div>
+			<p>
+				aaaaaaaaaaaaaaa
+			</p>
+		</li>
+		<li>
+			<div>
+				<span>111111</span>
+				<span>2018.1.16</span>
+			</div>
+			<p>
+				aaaaaaaaaaaaaaa
+			</p>
+		</li>
+		<li>
+			<div>
+				<span>111111</span>
+				<span>2018.1.16</span>
+			</div>
+			<p>
+				aaaaaaaaaaaaaaa
+			</p>
+		</li> -->
+	</ul>
+	<button id="moreBtn">加载更多</button>
+	<script>
+
+	var list = document.getElementById('list');
+	var moreBtn = document.getElementById('moreBtn');
+	var page = 0;
+
+	initMessage();
+	moreMessage();
+
+	function initMessage(){   //初始化留言
+		getAjax('initMessage.php','page='+page,function(data){
+			//console.log(data);
+			var json = JSON.parse(data);
+			if(json.code == '0'){
+				var data = json.data;
+				createList(data);
+			}
+		});
+	}
+
+	function moreMessage(){   //加载更多留言
+		moreBtn.onclick = function(){
+			page++;
+			getAjax('initMessage.php','page='+page,function(data){
+				var json = JSON.parse(data);
+				if(json.code == '0'){
+					var data = json.data;
+					createList(data);
+				}
+				else if(json.code == '1'){
+					moreBtn.style.display = 'none';
+				}
+			});
+		};
+	}
+
+	function createList(data){
+		for(var i=0;i<data.length;i++){
+			var li = document.createElement('li');
+			li.innerHTML = '<li>\
+								<div>\
+									<span>'+ data[i].username +'</span>\
+									<span>'+ data[i].date +'</span>\
+								</div>\
+								<p>'+ data[i].content +'</p>\
+							</li>';
+			list.appendChild(li);				
+		}
+	}
+
+
+	function getAjax(url , data , cbFn){
+		data = data ? '?'+data : '';
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				cbFn(xhr.responseText);
+			}
+		};
+		xhr.open('GET',url+data,true);
+		xhr.send(null);
+	}	
+
+	function postAjax(url , data , cbFn){
+		data = data ? '?'+data : '';
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				cbFn(xhr.responseText);
+			}
+		};
+		xhr.open('POST',url,true);
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		xhr.send(data);
+	}
+
+	</script>
+</body>
+</html>

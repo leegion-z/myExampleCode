@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	// 正则方法：search()
+	// 	 写法：指定的字符串.search(正则)。
+	// 	 规则：当正则在指定的字符串中匹配到了结果，就返回对应的位置，如果没匹配到结果就返回-1。
+
+	// 正则：默认区分大小写的。如果不区分大小写：加正则的标识符(i)。 
+	// 	标识符的位置：在结束斜杠的后面
+
+	var str = 'hello JavaScript';
+	
+	var re = /java/i;
+	//var re = new RegExp('java','i');
+
+	console.log( str.search(re) );
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		/*[name=user] {
+			width: 100px;
+			height: 100px;
+		}
+		#user {
+			background-color: red;
+		}*/
+	</style>
+</head>
+<body>
+	<div>
+		<input type="" name="user" id="user"><span id="user-error"></span><br><br>
+		<input type="" name="password" id="password"><span></span><br><br>
+		<input type="" name="" id="password-confirm"><span></span><br><br>
+		<input type="" name="email" id="email"><span></span><br><br>
+		<input type="" name="tel" id="mobile"><span></span><br><br>
+		<button id="button">提交</button>
+	</div>
+	
+
+
+	<script type="text/javascript">
+
+	// 去除字符串中的所有空格
+	function replaceSpace(str) {
+
+		// return str.replace(/ /g, '');
+		// return str.split(' ').join('');
+		var result = '';
+
+		for(var i=0; i<str.length; i++) {
+			if(str[i] !== ' ') {
+				result += str[i]
+			}
+		}
+
+		return result;
+	}
+
+	console.log(replaceSpace('a   b   c'));
+
+	// 去除字符串开头和结尾的空格
+	function trim(str) {
+		//'   a b  ';
+		// var index = str.indexOf(' ');
+		// while(index !== -1) {
+		// 	index = str.indexOf(' ', index + 1)
+		// }
+
+		// var start = index + 1;
+
+		for(var i=0; i<str.length; i++) {
+			if(str[i] !== ' ') {
+				//找到一个空格
+				break;
+			}
+		}
+
+		var start = i;
+
+		for(var i=str.length-1; i>=0; i--) {
+			if(str[i] !== ' ') {
+				break;
+			}
+		}
+
+		var end = i;
+
+		return str.slice(start ,end+1);
+	}
+	console.log('   a  b  ');
+	console.log(trim('   a  b  '));
+
+	// 写一个注册页面，包含：
+	//  用户名
+	//  密码
+	//  密码确认
+	//  邮箱地址
+	//  手机号码
+	//  提交按钮
+
+	// 在点击按钮时，进行验证：
+	// 用户名只能包含数字、字母和下划线, 数字不可以开头，长度不低于6，不高于20
+	// 密码必须一致
+	// 邮箱名必须包含字符串'@‘
+	// 手机号码必须为11位	
+	var btn = document.getElementById('button');
+	btn.onclick = function () {
+		checkUser();
+		checkPassword();
+		checkEmail();
+		checkTel();
+	}
+
+	function checkUser () {
+		// 用户名只能包含数字、字母和下划线, 
+		// 数字不可以开头，
+		// 长度不低于6，不高于20
+		var userInput = document.getElementById('user');
+		var username = userInput.value;
+		var userError = document.getElementById('user-error');
+
+		if(username.length<6 || username.length>20) {
+			//TODO:提示用户长度错误
+			userError.innerHTML = '长度不低于6，不高于20';
+			return;
+		}
+
+		var firstCode = username.charCodeAt(0);
+		if(firstCode>='0'.charCodeAt(0) && firstCode<='9'.charCodeAt(0)) {
+			userError.innerHTML = '数字不可以开头';
+			return;
+		}
+
+		var isDigital, isAlphabet, isUnderscore;
+		var code;
+		for(var i=0; i<username.length; i++) {
+			isDigital = false, isAlphabet = false, isUnderscore = false;
+
+			code = username.charCodeAt(i);
+			if(code>='0'.charCodeAt(0) && code<='9'.charCodeAt(0)) {
+				isDigital = true;
+			}
+
+			if(code>='a'.charCodeAt(0) && code<='z'.charCodeAt(0) || 
+			   code>='A'.charCodeAt(0) && code<='Z'.charCodeAt(0)) {
+				isAlphabet = true;
+			}
+
+			if(code === '_'.charCodeAt(0)) {
+				isUnderscore = true;
+			}
+
+			if(!isDigital && !isAlphabet && !isUnderscore) {
+				userError.innerHTML = '用户名只能包含数字、字母和下划线';
+				return;
+			} else {
+				userError.innerHTML = '';
+			}
+		}
+	}
+
+	function checkPassword () {
+
+	}
+
+	function checkEmail () {
+
+	}
+
+	function checkTel () {
+
+	}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//
+		var num1 = 10;
+		var num2 = 14;
+		// document.write('')
+		//console.log()会将参数输出到控制台(F12);
+		console.log(num1 >= num2);
+
+		var num3 = '10';
+		var num4 = 10;
+		// 在比较的过程中，如果是【==】，则JS引擎会根据比较的两个数，
+		// 进行隐式类型转换(尽量避免)
+		console.log('num3==num4:' + (num3 == num4));
+		//【===】会先比较两个数的类型，类型不同，直接返回false
+		console.log('num3===num4:' + (num3 === num4));
+		//如果比较操作的两边都是字符串，则会逐个字符进行比较
+		//字符的比较，实际上比较的是字符编码
+		//计算机中显示的字符，在内存中，都对应的是一个数字
+		//字符与数字的对应关系，我们需要一个标准：
+		//ascii码、Unicode、GB2312、GBK
+		var name_1 = 'xiaos';
+		var name_2 = 'xiaoS';
+		console.log('name_1>name_2:' + (name_1 > name_2));
+
+		//赋值操作：
+		var x = 3;
+		x += 3;	//===> x = x + 3;
+		console.log('x+=3:' + x);
+		x *= 3;	//===> x = x * 3;
+		console.log('x*=3:' + x);
+		x /= 3;	//===> x = x / 3;
+		console.log('x/=3:' + x);
+		x -= 3;	//===> x = x - 3;
+		console.log('x-=3:' + x);
+		x %= 3;	//===> x = x % 3;
+		console.log('x%=3:' + x);
+
+	</script>
+</body>
+</html>

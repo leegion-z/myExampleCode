@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Examples</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+</head>
+
+<body>
+    <script>
+    /*   
+      1.ES6允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。 
+      2.解构赋值不仅适用于var命令，也适用于let和const命令。
+
+      3. 解构不仅可以用于数组，还可以用于对象。
+
+    */
+
+
+    //------------------------------数组--------------------------------------
+
+    let [foo, [ [bar], baz ]] = [1, [ [2], 3 ]];  
+  
+
+    //需要写多行代码，现在一行就解决
+
+    // foo // 1
+    // bar // 2
+    // baz // 3
+
+    let [, , third] = ["foo", "bar", "baz"];
+    // third // "baz"
+    console.log(third);
+
+    let [x, , y] = [1, 2, 3];
+    // x // 1
+    // y // 3
+
+    let [head,...tail] = [1, 2, 3, 4]; //...是剩余参数，只能写在最后
+    // head // 1
+    // tail // [2, 3, 4]
+
+    let [x1, y1, ...z1] = ['a','b'];  //...是剩余参数，只能写在最后
+    // x1 // "a"
+    // y1 // undefined
+    // z1 // []
+    
+
+
+
+     //-----------------------------对象---------------------------------------
+    var { bar1,foo1 } = { foo1: "aaa", bar1: "bbb" };
+
+    //bar1  bbb
+    //foo1  aaa 根据属性key进行匹配
+
+
+ 	var { baz1 } = { foo: "aaa", bar: "bbb" };
+
+    //baz // undefined
+
+
+    let obj = { first: 'hello', last: 'world' };
+
+    // var first = "cnmx";
+
+    //别名
+    var { first:f,last:l } = obj;
+
+    //f // hello
+    //l //world
+
+    var { foo2: baz2 } = { foo2: "aaa", bar: "bbb" };
+
+    //baz2 // "aaa"
+    //foo2 // error: foo is not defined
+
+    //----------------------------字符串解构-------------------------------------
+
+    const [a, b, c, d, e] = 'hello';
+    // a // "h"
+    // b // "e"
+    // c // "l"
+    // d // "l"
+    // e // "o"
+
+    let { length:len } = 'hello';
+
+    // len // 5
+
+
+    //------------------------函数参数的解构赋值----------------------------
+
+    function add([x,y]) { return x+y }
+
+
+    add([1, 2]); // 3
+
+
+    //---------------------------提取json数据------------------------
+
+    var jsonData = {
+        id: 42,
+        status: "OK",
+        data: [867, 5309]
+    };
+    // var id = jsonData.id;
+    // var status =jsonData.status;
+    // var data = jsonData.data
+
+    let {id,status,data} = jsonData;
+
+
+    </script> 
+</body>
+
+</html>

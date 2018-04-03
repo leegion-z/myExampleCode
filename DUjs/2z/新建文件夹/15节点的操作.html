@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>aaaaaaaaa</li>
+	</ul>
+	<hr>
+	<ul>
+		
+	</ul>
+	<script>
+
+	//DOM的剪切操作
+
+	//var uls = document.getElementsByTagName('ul');
+	//uls[1].appendChild( uls[0].children[0] );
+
+
+	//cloneNode() : 克隆节点，需要接收一个布尔值false(不去克隆内容) true(会克隆内容)
+	var uls = document.getElementsByTagName('ul');
+	var cloneLi = uls[0].children[0].cloneNode(true);
+	uls[1].appendChild( cloneLi );
+
+	</script>
+</body>
+</html>

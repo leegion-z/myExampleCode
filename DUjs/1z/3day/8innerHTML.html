@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#box{ width:100px; }
+	</style>
+</head>
+<body>
+	<div id="box" style="width:200px">aaaaaa<p>pppp</p></div>
+	
+	<script>
+
+	//获取和设置HTML标签的内容
+
+	var boxDiv = document.getElementById('box');
+	
+	console.log( boxDiv.innerHTML );
+
+	//boxDiv.innerHTML = '<h1>我是标题</h1>';
+
+	//boxDiv.innerHTML = boxDiv.innerHTML + '<h1>我是标题</h1>';
+
+	//boxDiv.innerHTML += '<h1>我是标题</h1>';
+
+	//boxDiv.innerHTML = '<h1>我是标题</h1>' + boxDiv.innerHTML;
+
+	//在JS中字符串中不能折行抒写。
+	/*boxDiv.innerHTML = '<ul>
+							<li>111</li>
+							<li>222</li>
+						</ul>';*/
+	//解决折行问题：
+		//1. + 链接字符串
+	/*boxDiv.innerHTML = '<ul>' +
+						'<li>111</li>' +
+						'<li>222</li>' +
+					'</ul>';*/					
+		//2. \ 反斜杠操作
+	/*boxDiv.innerHTML = '<ul>\
+					<li>111</li>\
+					<li>222</li>\
+				</ul>';*/
+
+	/* 后面在详解介绍： boxDiv.innerHTML = `<ul>
+											<li>111</li>
+											<li>222</li>
+										</ul>`;	*/			
+	</script>
+</body>
+</html>

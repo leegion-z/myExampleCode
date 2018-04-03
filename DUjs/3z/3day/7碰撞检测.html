@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{ width: 100px; height: 100px; background: red; position: absolute; }
+	#list li{ width: 100px; height: 100px; background: yellow; float: left; margin: 100px; }
+	</style>
+</head>
+<body>
+	<div id="div1"></div>
+	
+	<ul id="list">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+
+	<script>
+
+	var div1 = document.getElementById('div1');
+	var li = document.getElementsByTagName('li');
+
+	var disX = 0;
+	var disY = 0;
+
+	div1.onmousedown = function(ev){
+		var This = this;
+		disX = ev.pageX - this.offsetLeft;
+		disY = ev.pageY - this.offsetTop;
+
+		document.onmousemove = function(ev){
+			This.style.left = ev.pageX - disX + 'px';
+			This.style.top = ev.pageY - disY + 'px';
+
+			for(var i=0;i<li.length;i++){
+				if( pz( This , li[i] ) ){
+					li[i].style.background = 'blue';
+				}
+				else{
+					li[i].style.background = 'yellow';
+				}
+			}
+
+		};
+		document.onmouseup = function(){
+			document.onmousemove = null;
+			document.onmouseup = null;
+		};
+		return false;
+	};	
+
+
+	function pz(elem1,elem2){
+		var L1 = elem1.offsetLeft;
+		var R1 = elem1.offsetLeft + elem1.offsetWidth;
+		var T1 = elem1.offsetTop;
+		var B1 = elem1.offsetTop + elem1.offsetHeight;
+
+		var L2 = elem2.offsetLeft;
+		var R2 = elem2.offsetLeft + elem2.offsetWidth;
+		var T2 = elem2.offsetTop;
+		var B2 = elem2.offsetTop + elem2.offsetHeight;
+
+		if( R1 < L2 || L1 > R2 || B1 < T2 || T1 > B2 ){
+			return false;
+		}
+		else{
+			return true;
+		}	
+	}
+
+	</script>
+</body>
+</html>

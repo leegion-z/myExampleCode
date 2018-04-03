@@ -1,0 +1,7 @@
+@charset "utf-8";
+//scss文件以_开头的，是不会被生成css文件的。这个文件只能被导入
+.header {
+  width: 100%;
+  height: 30px;
+  background: red;
+}

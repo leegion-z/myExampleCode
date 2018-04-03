@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<div>
+		<button>戳我</button>
+	</div>
+	<script type="text/javascript">
+		//DOM0事件处理程序
+		//1. 只能处理冒泡阶段
+		//2. 当同一个元素，添加相同的事件多次，后添加的会将先添加的覆盖
+		//3. this指针
+		document.querySelector('button').onclick = function () {
+			//this指向button
+			console.log('button click');
+		}
+		document.querySelector('div').onclick = function () {
+			//this指向div
+			console.log('div click');
+		}
+		document.querySelector('body').onclick = function () {
+			//this指向body
+			console.log('body click');
+		}
+		document.querySelector('html').onclick = function () {
+			//this指向html
+			console.log('html click');
+		}
+		document.onclick = function () {
+			//this指向document
+			console.log('document click');	
+		}
+		window.onclick = function () {
+			//this指向window
+			console.log('window. click');
+		}
+		setTimeout(function () {
+			console.log('你将永远失去我');
+			document.querySelector('button').onclick = null;
+		}, 3000)
+
+
+		//DOM2事件处理程序
+		//	1. 捕获/冒泡都可以监听
+		//	2. 可以重复添加
+		//  3. IE8不兼容
+
+		//绑定 xxx.addEventListener(事件名称, 回调, 是否在捕获阶段)
+		document.querySelector('button').addEventListener('click', function () {
+			console.log('冒泡阶段，button点击');
+		}, false)
+		document.querySelector('button').addEventListener('click', function () {
+			console.log('冒泡阶段，button点击又处理一遍');
+		}, false)
+		function thirdTime () {
+			console.log('冒泡阶段，button点击又处理了第三遍');
+		}
+		document.querySelector('button').addEventListener('click', thirdTime, false);
+		//解绑 xxx.removeEventListener(事件名称，回调函数名字，阶段)
+		//如果在添加事件时，事件使用匿名函数，则无法解绑
+		document.querySelector('button').removeEventListener('click', thirdTime, false);
+
+		//与DOM2类似的在IE8上的事件处理程序
+		//绑定：xxx.attachEvent(on+事件名称，回调)
+		// document.getElementsByTagName('button')[0].attachEvent('onclick', function () {
+		// })
+
+		// 解绑：xxx.detachEvent(on+事件名称, 回调)绑定时使用匿名函数，无法解绑
+		// document.getElementsByTagName('button')[0].detachEvent('onclick', function() {
+		// })
+
+		
+	</script>
+</body>
+</html>

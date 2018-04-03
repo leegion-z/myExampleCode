@@ -1,0 +1,24 @@
+.normal, .info, .success, .warning, .error {
+  height: 30px;
+  padding: 5px;
+  line-height: 30px;
+  border-radius: 5px;
+  border: 1px solid #cccccc; }
+
+.info {
+  color: white;
+  background: cornflowerblue; }
+
+.success {
+  color: darkgreen;
+  background: lightgreen; }
+
+.warning {
+  color: yellowgreen;
+  background: yellow; }
+
+.error {
+  color: darkred;
+  background: red; }
+
+/*# sourceMappingURL=04_extend.css.map */

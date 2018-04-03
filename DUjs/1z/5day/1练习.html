@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input id="btn" type="checkbox">
+	<div id="list">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+	</div>
+	<script>
+
+	var btn = document.getElementById('btn');
+	var list = document.getElementById('list');
+	var cbs = list.getElementsByTagName('input');
+
+	var onoff = true;
+
+	btn.onclick = function(){
+
+		/*if(onoff){
+			for(var i=0;i<cbs.length;i++){
+				cbs[i].checked = true;
+			}
+			onoff = false;
+		}
+		else{
+			for(var i=0;i<cbs.length;i++){
+				cbs[i].checked = false;
+			}
+			onoff = true;
+		}*/
+
+		if(onoff){
+			for(var i=0;i<cbs.length;i++){
+				cbs[i].checked = true;
+			}
+		}
+		else{
+			for(var i=0;i<cbs.length;i++){
+				cbs[i].checked = false;
+			}
+		}
+		onoff = !onoff;
+
+	};
+
+
+	</script>
+</body>
+</html>

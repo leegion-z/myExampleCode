@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#box{ width:100px; }
+	</style>
+</head>
+<body>
+	<div id="box" style="width:200px">aaaaaa</div>
+	
+	<script>
+
+	//var boxDiv = document.getElementById('box');
+	//console.log(boxDiv.style.width); //这种方式的获取和设置都是针对style属性的
+
+	//最终样式 : 可以获取到元素最终添加上的样式
+	//getComputedStyle
+
+	/*window是整个JS的最外层的对象，一般情况下window是可以省略不写的
+	document是整个页面(DOM)的最外层对象
+
+	JS : ECMA + DOM + BOM
+
+	window会包含document
+
+	window.document
+	window.getComputedStyle : 
+	一般的高级浏览器都是支持的，只有一些老式的浏览器不支持
+	兼容性：ECMA(ECMA组织规范的) > DOM(W3C来规范的) > BOM(浏览器自身)
+	
+	IE的低版本如何获取最终样式？currentStyle
+
+	*/
+
+	var boxDiv = document.getElementById('box');
+	
+	//console.log( window.getComputedStyle(boxDiv).width );
+
+	//console.log( boxDiv.currentStyle.width );
+
+	if(boxDiv.currentStyle){   //IE低版本
+		console.log( boxDiv.currentStyle.width );
+	}
+	else{   //高级浏览器
+		console.log( window.getComputedStyle(boxDiv).width );
+	}
+	
+	</script>
+</body>
+</html>

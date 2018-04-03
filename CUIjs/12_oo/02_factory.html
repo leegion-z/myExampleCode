@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		* {
+			 margin: 0;
+			 padding: 0;
+		}
+		div {
+			width: 30px;
+			height: 30px;
+			background: red;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<script type="text/javascript">
+		//gender: 性别
+		//工厂模式：
+		//1. 创建一个空对象
+		//2. 向空对象上挂属性和方法
+		//3. 返回这个对象
+		function createPerson (name, age, gender) {
+			var o = {};
+			o.name = name;
+			o.age = age;
+			o.gender = gender;
+			o.sayHi = function () {
+				alert(this.name + ' says: how are you!');
+			}
+			return o;
+		}
+
+		var xiaoM = createPerson('xiaoM', 18, 'Male');
+		var xiaoL = createPerson('xiaoL', 20, 'Female');
+		// xiaoM.sayHi();
+		// xiaoL.sayHi();
+
+		function DD (el) {
+			var o = {};
+			o.el = el;
+			o.start = function () {
+				var that = this;
+
+				this.el.onmousedown = function (evt) {
+					//在onmousedown中，this指向div
+					var e = evt || window.event;
+					that.downX = e.clientX;
+					that.downY = e.clientY;
+					that.downLeft = that.el.offsetLeft;
+					that.downTop = that.el.offsetTop;
+					that.move();
+					that.stop();
+					return false;
+				}
+			}
+			o.move = function () {
+				var that = this;
+				window.onmousemove = function (evt) {
+					var e = evt || window.event;
+					var diffX = e.clientX - that.downX;
+					var diffY = e.clientY - that.downY;
+					that.el.style.left = that.downLeft + diffX + 'px';
+					that.el.style.top = that.downTop + diffY + 'px';
+					return false;
+				}
+			}
+			o.stop = function () {
+				window.onmouseup  = function () {
+					window.onmousemove = null;
+					window.onmouseup = null;
+					return false;
+				}
+			}
+			o.randomColor  = function () {
+				var r = Math.floor(Math.random() * 256);
+				var g = Math.floor(Math.random() * 256);
+				var b = Math.floor(Math.random() * 256);
+				var a = Math.random();
+				this.el.style.background =  'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+			}
+
+			o.randomColor();
+
+			return o;
+		}
+
+		// var d1 = DD(document.querySelector('div'))
+		// d1.start();
+		// var d2 = DD(document.querySelector('div:nth-of-type(2)'))
+		// d2.start();
+		var divs = document.querySelectorAll('div');
+		var d;
+		for(var i=0; i<divs.length; i++) {
+			d = DD(divs[i]);
+			d.start();
+		}
+
+		//缺点：无法区分生成对象的类型(因为都是Object)
+		//判断一个变量属于哪个类的方法
+		//判断实例属于哪个类
+		alert([] instanceof Array);
+		alert([] instanceof String);
+
+		alert(xiaoM instanceof Object);
+		alert(d instanceof Object);
+
+		//===> 构造函数去解决工厂模式的缺点
+
+
+
+	</script>
+</body>
+</html>

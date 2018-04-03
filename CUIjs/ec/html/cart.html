@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container .cart ul li {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-top: 2px solid black;
+        }
+
+        #container .cart ul li:last-of-type {
+            border-bottom: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+<script type="text/html" id="product-tpl">
+    {{each products as product index}}
+    <li>
+        <input type="checkbox">
+        <img src="{{product.imgSrc}}" alt="">
+        <span class="name">{{product.name}}</span>
+        <span class="price">{{product.price}}</span>
+            <span>
+                <span class="minus">-</span>
+                <input type="text" class="count" value="{{product.count}}">
+                <span class="add">+</span>
+            </span>
+        <!--<span class="summary">{{product.summary}}</span>-->
+    </li>
+    {{/each}}
+</script>
+<div id="container">
+    <!--class is attribute-->
+    <div class="cart">
+        <div>
+            <label>全选 <input type="checkbox" id="check-all"></label>
+        </div>
+        <ul>
+            <!--<li>-->
+            <!--<input type="checkbox">-->
+            <!--<img src="../imgs/pro(1).jpg" alt="">-->
+            <!--<span class="name">name</span>-->
+            <!--<span class="price">¥price</span>-->
+            <!--<span>-->
+            <!--<span class="minus">-</span>-->
+            <!--<input type="text" class="count" value="1">-->
+            <!--<span class="add">+</span>-->
+            <!--</span>-->
+            <!--<span class="summary">¥price*count</span>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<input type="checkbox">-->
+            <!--<img src="../imgs/pro(2).jpg" alt="">-->
+            <!--<span class="name">name</span>-->
+            <!--<span class="price">¥price</span>-->
+            <!--<span>-->
+            <!--<span class="minus">-</span>-->
+            <!--<input type="text" class="count" value="1">-->
+            <!--<span class="add">+</span>-->
+            <!--</span>-->
+            <!--<span class="summary">¥price*count</span>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<input type="checkbox">-->
+            <!--<img src="../imgs/pro(3).jpg" alt="">-->
+            <!--<span class="name">name</span>-->
+            <!--<span class="price">¥price</span>-->
+            <!--<span>-->
+            <!--<span class="minus">-</span>-->
+            <!--<input type="text" class="count" value="1">-->
+            <!--<span class="add">+</span>-->
+            <!--</span>-->
+            <!--<span class="summary">¥price*count</span>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<input type="checkbox">-->
+            <!--<img src="../imgs/pro(4).jpg" alt="">-->
+            <!--<span class="name">name</span>-->
+            <!--<span class="price">¥price</span>-->
+            <!--<span>-->
+            <!--<span class="minus">-</span>-->
+            <!--<input type="text" class="count" value="1">-->
+            <!--<span class="add">+</span>-->
+            <!--</span>-->
+            <!--<span class="summary">¥price*count</span>-->
+            <!--</li>-->
+        </ul>
+    </div>
+</div>
+<script src="../vendor/jquery-3.2.1.min.js"></script>
+<script src="../vendor/template.js"></script>
+<script>
+    function createProduct(productInfo) {
+//        alert(productInfo.name)
+//        alert(productInfo.count)
+//        alert(productInfo.price)
+//        alert(productInfo.off)
+//        alert(productInfo.imgSrc)
+
+        var price = parseFloat(productInfo.price.slice(1));
+        var count = parseInt(productInfo.count);
+        //方法1：自己替换
+//        var html = $('#product-tpl').html();
+//        html = html.replace('{{imgSrc}}', productInfo.imgSrc)
+//                .replace('{{name}}', productInfo.name)
+//                .replace('{{count}}', productInfo.count)
+//                .replace('{{price}}', productInfo.price)
+//                .replace('{{summary}}', price * count)
+
+        //方法2：使用模板引擎
+        var html = template('product-tpl', {
+            imgSrc: productInfo.imgSrc,
+            name: productInfo.name,
+            count: productInfo.count,
+            price: productInfo.price,
+            summary: price * count
+        })
+//        alert(html);
+        $(html).appendTo('#container .cart ul');
+
+    }
+
+    var username = 'cuijn';
+    $.get('../api/cart.php', {user: username}, function (resp) {
+//        for (var i = 0; i < resp.length; i++) {
+//            createProduct(resp[i]);
+//        }
+
+//        var html = template('product-tpl', {
+//            products: resp
+//        })
+//        $(html).appendTo('.cart ul');
+
+        $(template('product-tpl', {
+            products: resp
+        })).appendTo('.cart ul')
+
+        $('.cart ul li input[type=checkbox]').on('change', function () {
+            var allCount = $('.cart ul li input[type=checkbox]').length;
+            var checkedCount = $('.cart ul li input[type=checkbox]:checked').length;
+            $('#check-all').prop('checked', allCount === checkedCount);
+//            $('#check-all').css('background', 'red')
+        })
+
+
+    })
+
+    $('#check-all').on('change', function () {
+//        alert('全选')
+        //checkbox要使用property来获得或者改变他的checked状态(attribute只是一个默认选中)
+        //this指向checkbox，他是一个原生的dom节点
+//        alert($(this).prop('checked'))
+        var checked = $(this).prop('checked');
+        $('.cart ul li input[type=checkbox]').prop('checked', checked)
+    })
+
+    //    $('.cart ul li input[type="checkbox"]').on('change', function () {
+    //        var allCount = $('.cart ul li input[type=checkbox]').length;
+    //        var checkedCount = $('.cart ul li input[type=checkbox]:checked').length;
+    //        alert();
+    //        $('#check-all').prop('checked', allCount === checkedCount);
+    //    })
+    //
+</script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id="list">
+		<!-- <li>我是默认的</li> -->
+	</ul>
+	<script>
+
+	//createElement()	: 创建元素节点，在document下调用的
+		//只是创建了节点(只是存在在JS中)，并不会自动添加到页面上
+
+	//appendChild()  :  可以对节点进行添加操作，把要操作的节点添加到目标节点里面的最后位置
+		//指定的目标节点.appendChild( 操作的节点 );
+	
+
+	var list = document.getElementById('list');
+	/*var li = document.createElement('li');  //<li></li>
+	li.innerHTML = '我是新创建的节点';
+	list.appendChild(li);*/
+
+	/*for(var i=0;i<60;i++){
+		//list.innerHTML += '<li></li>';
+		var li = document.createElement('li');
+		list.appendChild(li);
+	}*/
+	/*var str = '';
+	for(var i=0;i<60;i++){
+		str += '<li>aaaaaa</li>';
+	}
+	list.innerHTML = str;*/
+
+	/*console.time();
+	for(var i=0;i<1000;i++){
+		list.innerHTML += '<li>aaaaaaaa</li>';
+	}
+	console.timeEnd();*/
+
+	/*console.time();
+	var str = '';
+	for(var i=0;i<10000;i++){
+		str += '<li>aaaaaa</li>';
+	}
+	list.innerHTML = str;
+	console.timeEnd();*/
+
+	//文档碎片
+	/*var frag = document.createDocumentFragment();
+
+	console.time();
+	for(var i=0;i<10000;i++){
+		var li = document.createElement('li');
+		li.innerHTML = 'aaaaaa';
+		frag.appendChild(li);
+	}
+	list.appendChild(frag);
+	console.timeEnd();*/
+
+	</script>
+</body>
+</html>

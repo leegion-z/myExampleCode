@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+/*JavaScript数据类型
+	六种类型（常用划分）
+		字符串、数字、布尔值、对象、undefined、null
+		对象会包含：数组、函数这两种类型
+	八种类型
+		字符串、数字、布尔值、对象、数组、函数、undefined、null
+
+	还有一种（ECMA6新的版本中symbol类型，后面去讲）
+
+六种类型：三大类
+		基本类型：字符串、数字、布尔值
+		复合类型：对象
+		特殊类型：undefined未定义类型、null空类型*/
+
+
+//字符串:
+//var foo = 'hello';  //字符串类型一般是字母居多，用引号引起来，所以说变量值用引号引起来的值一般都是字符串类型。 单引号和双引号都可以，规范中推荐用单引号。双引号一般用于标签的属性，还有数据的操作。
+
+var foo = 'hel\'lo';   //单引号可以包含双引号，双引号也可以包含单引号。
+					   //如果想单引号里输出单引号，转义字符(\)
+console.log(foo);
+
+//数字：
+//var foo = 123;   //一个数字值就是数字类型。不加引号。
+//var bar = '123';   //字符串类型
+
+
+//字符串用加号，表示链接的意思。
+//数字用加号，表示加法的意思。
+
+/*var foo = '10';
+var bar = '20';
+
+console.log( foo + bar );*/
+
+// var foo = 'hello';
+// var bar = 'world';
+
+// console.log( foo + bar );  // 'helloworld'
+// console.log( foo + bar + '!!!' );  // 'helloworld!!!'  字符串与变量链接的操作
+
+//var foo = 'box';
+//console.log('<div class="' + foo + '">aaaa</div>');
+
+//var foo = 'box1';
+//var bar = 'box2';
+//console.log('<div class="box1 box2">aaaa</div>');
+//console.log('<div class="'+foo+' '+bar+'">aaaa</div>');
+
+//布尔值：
+	//真假值类型 : true（真）false（假）
+//var foo = true;  //用在判断中
+
+//复合类型：对象：对一组集合的操作，{}、[]、内置对象(时间、正则、函数)
+
+/*var foo = {};
+var bar = [];
+var baz = new Date();*/
+
+
+//undefined未定义类型
+
+/*var foo;
+console.log(foo);  //undefined
+
+//null空类型
+var foo = null;
+console.log(foo);  //null
+
+undefined和null的区别：undefined被动去定义没有，null主动去定义没有。*/
+
+//console.log( 1 * undefined );   //   NaN(返回不了一个计算的结果)
+//console.log( 1 * null );     //0  (程序会主动的把null转换成0)
+
+
+
+	</script>
+</body>
+</html>

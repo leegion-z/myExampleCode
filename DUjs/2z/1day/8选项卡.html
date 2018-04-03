@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+	#header button.active{ background : red; }
+
+	#content div{ display: none; }
+	#content div.show{ display: block; }
+
+	</style>
+</head>
+<body>
+	<div id="header">
+		<button class="active">公告</button>
+		<button>规则</button>
+		<button>论坛</button>
+	</div>
+	<div id="content">
+		<div class="show">公告11111111</div>
+		<div>规则22222222</div>
+		<div>论坛33333333</div>
+	</div>
+	<script>
+
+	var header = document.getElementById('header');
+	var headerBtn = header.getElementsByTagName('button');
+	var content = document.getElementById('content');
+	var contentDiv = content.getElementsByTagName('div');
+
+	for(var i=0;i<headerBtn.length;i++){
+		
+		//添加索引操作(添加唯一标识，一组去对应另一组)
+		headerBtn[i].index = i;   
+
+		headerBtn[i].onmouseover = function(){
+			for(var i=0;i<headerBtn.length;i++){
+				headerBtn[i].className = '';
+				contentDiv[i].className = '';
+			}
+			this.className = 'active';  //按钮的操作
+			contentDiv[this.index].className = 'show';  //内容的操作
+		};
+	}	
+
+	</script>
+</body>
+</html>

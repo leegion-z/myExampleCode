@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input id="message" type="text">
+	<ul id="list">
+		
+	</ul>
+	<script>
+
+	//ctrl shift alt : ctrlKey shiftKey altKey
+
+	var message = document.getElementById('message');
+	var list = document.getElementById('list');
+	var onoff1 = false;
+	var onoff2 = false;
+
+	message.onkeydown = function(ev){
+		 
+		 if(ev.keyCode == 13){
+			onoff1 = true;
+		 }
+		 if(ev.keyCode == 17){
+			onoff2 = true;
+		 }
+		 if(onoff1 && onoff2){
+			var val = this.value;
+			var li = document.createElement('li');
+			li.innerHTML = val;
+			list.appendChild(li);
+		 }
+	};
+
+	message.onkeyup = function(ev){
+		/*if(ev.keyCode == 13 && ev.ctrlKey){
+			var val = this.value;
+			var li = document.createElement('li');
+			li.innerHTML = val;
+			list.appendChild(li);
+		}*/
+		if(ev.keyCode == 13){
+			onoff1 = false;
+		}
+	 	if(ev.keyCode == 17){
+			onoff2 = false;
+	 	}
+	};	
+
+	</script>
+</body>
+</html>

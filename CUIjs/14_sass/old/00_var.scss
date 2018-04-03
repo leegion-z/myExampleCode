@@ -1,0 +1,12 @@
+/**
+ * Created by Administrator on 2017/4/19.
+ */
+
+$bgColor: black;
+$color: pink;
+$fontSize: 14px;
+div {
+  background: $bgColor;
+  color: $color;
+  font-size: $fontSize;
+}

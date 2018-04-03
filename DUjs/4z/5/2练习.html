@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{ margin: 0; padding: 0; }
+	li{ list-style: none; }
+	#main{ position: relative; margin: 20px auto; }
+	#list{ width:100%; height:100%; border:1px black solid; border-right: none; border-bottom: none; }
+	#list li{ border:1px black solid; border-left: none; border-top: none; position: absolute; }
+	#box{ position: absolute; left: 0; top: 0; background:red; }
+	</style>
+</head>
+<body>
+	<div id="main">
+		<ul id="list">
+		</ul>
+		<div id="box"></div>
+	</div>
+	<script>
+
+	var main = document.getElementById('main');
+	var list = document.getElementById('list');
+	var listLi = list.getElementsByTagName('li');
+	var box = document.getElementById('box');
+
+	var cols = 10;
+	var rows = 10;
+	var width = 100;
+	var height = 100; 
+
+	createGrid();
+	setBox();
+	drag();
+
+	function createGrid(){
+		for(var i=0;i<rows;i++){
+			for(var j=0;j<cols;j++){
+				var li = document.createElement('li');
+				li.style.cssText = 'width:'+width+'px;height:'+height+'px;left:'+( j*width )+'px;top:'+ (i*height) +'px;';
+				list.appendChild(li);
+			}
+		}
+		main.style.width = cols * width + 'px';
+		main.style.height = rows * height + 'px';
+	}
+
+	function setBox(){
+		box.style.width = width + 'px';
+		box.style.height = height + 'px';
+	}
+
+	function drag(){
+		var disX = 0;
+		var disY = 0;
+		box.onmousedown = function(ev){
+			disX = ev.pageX - this.offsetLeft;
+			disY = ev.pageY - this.offsetTop;
+			document.onmousemove = function(ev){
+				this.style.left = ev.pageX - disX + 'px';
+				this.style.top = ev.pageY - disY + 'px';
+			}.bind(this);
+			document.onmouseup = function(ev){
+				
+				document.onmousemove = null;
+				document.onmouseup = null;
+
+				var nL = nearLi();
+
+				//console.log(nL);
+
+				this.style.left = nL.offsetLeft + 'px';
+				this.style.top = nL.offsetTop + 'px';
+
+			}.bind(this);
+			return false;
+		};
+	}
+
+	function nearLi(){
+
+		var result = [];
+		var maxNum = 9999;
+		var nL;
+
+		for(var i=0;i<listLi.length;i++){
+			if( pz(box,listLi[i]) ){
+				result.push( listLi[i] );
+			}
+		}
+
+		//console.log(result);
+		for(var i=0;i<result.length;i++){
+			var c = jl( box , result[i] );
+			//console.log(c);
+			if( c < maxNum ){
+				maxNum = c;
+				nL = result[i];
+			}
+		}
+		return nL;
+
+	}
+
+	function jl(obj1,obj2){
+		var a = obj1.offsetLeft - obj2.offsetLeft;
+		var b = obj1.offsetTop - obj2.offsetTop;
+		var c = Math.sqrt(a*a + b*b);
+		return c;
+	}
+
+	function pz(obj1,obj2){
+		var L1 = obj1.offsetLeft;
+		var R1 = obj1.offsetLeft + obj1.offsetWidth;
+		var T1 = obj1.offsetTop;
+		var B1 = obj1.offsetTop + obj1.offsetHeight;
+		var L2 = obj2.offsetLeft;
+		var R2 = obj2.offsetLeft + obj2.offsetWidth;
+		var T2 = obj2.offsetTop;
+		var B2 = obj2.offsetTop + obj2.offsetHeight;
+		
+		if( R1 < L2 || L1 > R2 || B1 < T2 || T1 > B2){
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+
+
+	JS : 
+		基础语法：
+			语句if switch for while
+			数据类型
+			数据类型的转换、比较。。
+			变量、定时器
+			函数：定义函数、return、arguments
+			自定义属性：元素添加属性，利用属性进行开发
+
+		DOM:
+			节点、节点类型、获取节点、操作节点
+		BOM:
+			浏览器信息、浏览器网址、浏览器大小
+			弹窗、历史管理
+			
+		事件：
+			事件流、event对象、绑定事件、取消事件
+			阻止默认事件、常见的事件操作
+
+		正则：
+			几个方法、量词、字符类、子项。。。
+
+		面向对象：
+			属性、方法、原型、原型链、继承、多态。。。
+
+		运动：
+			setInterval、new Date()
+			tween算法 ：t b c d								
+
+		内置对象：
+			数组、对象自变量、时间、正则。。。
+
+		算法：
+			排序、求最大最小值、去重、递归。。。	
+
+		AJAX：
+			前后端无刷新的数据交互操作。		
+
+
+	</script>
+</body>
+</html>

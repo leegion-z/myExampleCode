@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+    // 快速排序
+
+    var arr = [1, 2, 3, 4, 5, 6];
+    // 4   left = [5,6]
+    //  right = [1,2,3]
+    // letf.concat.right
+    var quick = function (arr) {
+        if (arr.length <= 1) {
+            return arr;
+        }
+        var mid = Math.floor(arr.length / 2);
+        // mid = 4;
+        var midval = arr.splice(mid, 1);
+        var left = [];
+        var right = [];
+        for (var i = 0; i < arr.length; i++) {
+
+            if (arr[i] > midval) {
+                left.push(arr[i]);
+
+            } else {
+                right.push(arr[i]);
+            }
+
+        }
+        return quick(left).concat(midval, quick(right));
+
+    }
+    alert(quick(arr))
+
+    // var a = 3, b = 5;
+    // a = a + b;	//a ===> 8
+    // b = a - b;	//8 - 5 ===> b===>3
+    // a = a - b;	//8 - 3 ===> a===>5
+
+</script>
+
+</body>
+</html>

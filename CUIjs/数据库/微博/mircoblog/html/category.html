@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap-theme.css" />
+	<style>
+		#container {
+			padding:20px; 
+			width:60%;
+			margin-top: 100px;
+		}
+		.btn.watched {
+			width: 100px;
+			margin: 10px;
+		}
+
+		.btn.watched p {
+			margin: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="header"></div>
+	<div id="container" class="panel panel-primary center-block">
+		<div class="panel-heading">
+			<h3 class="panel-title">选择分类</h3>
+			<div class="panel-body">
+				
+			</div>
+		</div>
+	</div>
+	<script type="text/html" id="cate-tpl">
+		{{each categories as cate i}}
+		<button type="button" class="btn {{if cate.username}}btn-success{{else}}btn-primary{{/if}} btn-lg watched">
+			<p>{{cate.name}}</p>
+			<span class="glyphicon {{if cate.username}}glyphicon-ok{{else}}glyphicon-plus{{/if}}"></span>
+		</button>
+		{{/each}}
+	</script>
+	<script type="text/javascript" src="../vendor/jquery/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="../vendor/art_template/template.js"></script>
+	<script type="text/javascript">
+		$('#header').load('./header.html')
+		$.get('../api/get_categories.php',{
+			username: 'cuijn'
+		}, function (data) {
+			var html = template('cate-tpl', {
+				categories: data
+			});
+			$('.panel-body').append(html);
+		});
+
+		$('.panel-body').on('click', '.watched', function () {
+			//this指向的是事件触发的元素(evt.target);
+			var that = this;
+			$.get('../api/select_category.php', {
+				username: 'cuijn',
+				cate: $(this).children('p').html()
+			}, function (data) {
+				console.log(data);
+				if(data.watched) {
+					//话题被关注，改为绿色对号
+					$(that)
+						.removeClass('btn-primary')
+						.addClass('btn-success')
+						.children('span')
+						.removeClass('glyphicon-plus')
+						.addClass('glyphicon-ok');
+				} else {
+					//话题被取消关注，显示蓝色加好
+					$(that)
+						.removeClass('btn-success')
+						.addClass('btn-primary')
+						.children('span')
+						.removeClass('glyphicon-ok')
+						.addClass('glyphicon-plus');
+				}
+			})
+		})
+	</script>
+</body>
+</html>

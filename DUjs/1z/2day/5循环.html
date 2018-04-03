@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	//循环：重复的去执行一段代码，节省代码的空间。
+
+
+	/*console.log(123);
+
+	console.log(123);
+
+	console.log(123);
+
+	console.log(123);
+
+	console.log(123);*/
+
+
+	//while : 循环
+		//四个步骤 : 1.定义初始值，2.条件判断, 3.执行语句  4.自增/自减
+			//2、3、4步骤会重复执行，直到条件判断返回假，整个循环结束。
+			//我们写循环的时候，一定要让循环等停下来（条件最终等于false），要不然就死循环了。
+
+	/*var i = 10;  //定义初始值
+
+	while(i<5){   //条件判断
+		console.log(i);   // 执行语句
+		i++;      //自增
+	}
+
+	console.log(i);*/
+
+	//1 + 2 + 3 ... + 100
+
+	var result = 0;
+	var iStart = 1;
+	var iEnd = 100;
+	//循环
+	while(iStart <= iEnd){
+		result += iStart;  //result = result + iStart;
+		iStart++;
+	}
+	console.log(result);   //5050
+
+
+	//练习：通过循环打印出0到99之间的所有偶数？
+
+	</script>
+</body>
+</html>

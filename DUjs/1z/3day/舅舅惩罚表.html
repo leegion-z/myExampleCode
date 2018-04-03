@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<ul id="list"></ul>
+<script>
+var list = document.getElementById('list')
+for(var i=1; i<10; i++){
+	for(var j=1; j<=i; j++){
+		list.innerHTML += j+'*'+i+'='+(j*i)+' '
+	}
+	list.innerHTML +='<br>'
+}
+
+
+
+</script>	
+</body>
+</html>

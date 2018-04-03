@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="time"></div>
+	<script>
+
+	//JS中获取到的时间为计算机的系统时间，并不是真实的时间
+
+	// var date = new Date();
+	
+	// date.setDate( date.getDate() + 50 );   //50天之后的日期
+
+	// console.log( date.getDate() );
+	// console.log( date.getMonth() );
+
+	//统一去设置未来的一个时间点
+
+	var date = new Date('December 31,2017 00:00:00');
+
+	//console.log(date.getTime());  //2017年12月31日到1970年1月1日的毫秒数
+
+	
+
+	//console.log(nowDate.getTime());  //2017年12月28日到1970年1月1日的毫秒数
+
+	setInterval(function(){
+
+		var nowDate = new Date();
+
+		var num = Math.floor((date.getTime() - nowDate.getTime())/1000);
+
+		var iD = Math.floor(num / 86400);
+		var iH = Math.floor(num % 86400 / 3600);
+		var iM = Math.floor(num % 86400 % 3600 / 60);
+		var iS = Math.floor(num % 60);
+
+		time.innerHTML = '距离元旦还有：' + iD + '天' +  iH + '小时' +  iM + '分钟' +  iS + '秒';
+
+		//time.innerHTML = '距离元旦还有：' + num + '秒';
+
+
+
+	});
+
+	</script>
+</body>
+</html>

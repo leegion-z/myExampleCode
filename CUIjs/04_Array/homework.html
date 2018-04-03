@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+	// 随机生成一个五位(最大99999)的数，然后输出该数共有多少位，每位分别是什么
+	function homework1 () {
+		var num = Math.floor(Math.random() * 100000);
+		alert(num);
+		//方法1:
+		// var str = '' + num;
+		// alert(str.length);
+		// for(var i=0; i<str.length; i++) {
+		// 	alert(str[i]);
+		// }
+
+		//方法2:
+		var array = [];
+		var number;
+		for(var i=10000; i>=1; i/=10) {
+			number = Math.floor(num/i)   % 10;
+			array.push(number)
+		}
+
+		//去除数组中开头的0
+		while(array[0] === 0) {
+			array.shift();
+		}
+
+		alert(array.length);
+		alert(array);
+	}
+	// homework1();
+
+	//138 ===> Math.floor(138/1)   % 10 ===> 8
+	//138 ===> Math.floor(138/10)  % 10 ===> 3
+	//138 ===> Math.floor(138/100) % 10 ===> 1
+	//138 ===> Math.floor(138/1000) % 10 ===> 0
+	//138 ===> Math.floor(138/100) % 10 ===> 0
+
+
+	// 山上有一口缸可以装50升水，现在有15升水。老和尚叫小和尚下山挑水，每次可以挑5升。问：小和尚要挑几次水才可以把水缸挑满？通过编程解决这个问题。
+	function homework2 () {
+		var volumn = 50;
+		var remain = 15;
+		var perTime = 4;
+		var times = Math.ceil((volumn-remain)/perTime);
+	}
+
+	homework2();
+	// 有一个从小到大排好序的数组。现输入一个数，要求按原来的规律将它插入数组中。
+	function homework3 () {
+		function insertInto(array, num) {
+			for(var i=0; i<array.length; i++) {
+				if(num < array[i+1]) {
+					//num插入到i之前
+					array.splice(i, 0, num);
+					break;
+				}
+			}
+
+			//当程序执行到此处：
+			//1. break;			i < array.length;
+			//2. 循环结束了;		i === array.length;
+			if(i === array.length) {
+				//num > 数组中的所有数字
+				array.push(num);
+			}
+		}
+
+		// var numbers = [10, 20, 30, 40, 50];
+		// var newNum = 4;
+
+		// insertInto(numbers, newNum);
+		// alert(numbers);
+
+		//===>扩展：有一个无序数组，通过insertInto()这个函数，将无序数组中数字进行排序
+		var numbers = [30, 40, 10, 50, 20];
+		var sorted = [];
+		for(var i=0; i<numbers.length; i++) {
+			insertInto(sorted, numbers[i]);
+		}
+
+		alert(sorted);
+	}
+
+	// homework3();
+	// 随机从一组人员名单中，抽出一个人。
+	function homework4 () {
+		var names = ['刘烨晗','杨航','刘世齐','方世杰','迟清鹏','王文哲','兰育林','刘子华','韩毅','何婷婷','邱可新','王晨','郑荣','李振','白鑫','籍忠鹏','阎春宇','方灿','董加琨','崔健','林辉铭','罗文延','代力','齐维杰','孙华鹏','陈德世','李文荣','刘兴会','孟庆勋','李友午','李骁航','王元堃','李秉健','高慧','张晗','马岩','盛鑫','张禹','毛彬睿','姜洋'];
+
+		// alert(names.length);
+		var index = Math.floor(Math.random() * names.length);
+		alert(names[index]);
+	}
+
+	// homework4();
+
+	// 一球从100米高度自由落下，每次落地后反跳回原高度的一半；再落下，求它在第5次落地时，共经过多少米？再反弹弹起多少米？
+	function homework5 () {
+		var h = 100;
+		var sum = 0;
+		for(var i=1; i<=5; i++) {
+			sum += h + h/2;
+			h = h/2;
+		}
+
+		//sum为第五次落地再弹起的距离
+		sum = sum - h;
+		alert(sum);
+		alert(h);
+	}
+
+	// homework5();
+	// 生成13位条形码(6K)
+	// Ean-13码规则：第十三位数字是前十二位数字经过计算得到的校验码。
+	// 例如：690123456789
+	// 第十三位计算其校验码的过程为：
+	// @前十二位的奇数位和6+0+2+4+6+8=26
+	// @前十二位的偶数位和9+1+3+5+7+9=34
+	// @将奇数和与偶数和的三倍相加26+34*3=128
+	// @取结果的个位数：128的个位数为8
+	// @用10减去这个个位数10-8=2
+	// 所以校验码为2（注：如果取结果的个位数为0，那么校验码不是（10-0=10），而是0）实现方法ean13（）计算验证码，输入12位条码，返回带验证码的条码。
+	// 例如：输入：692223361219输出：6922233612192
+	function ean13 (num) {
+		var array = ('' + num).split('');
+		// alert(array);
+		console.log(array);
+		array = array.map(function (v, i) {
+			return parseInt(v);
+		});
+		// @前十二位的奇数位和6+0+2+4+6+8=26
+		// @前十二位的偶数位和9+1+3+5+7+9=34
+		var oddSum = 0, evenSum = 0;
+		for(var i=0; i<array.length; i++) {
+			if(i % 2 === 0) {
+				//奇数位
+				oddSum += array[i];
+			} else {
+				//偶数位
+				evenSum += array[i];
+			}
+		}
+		
+		// @将奇数和与偶数和的三倍相加26+34*3=128
+		var sum = oddSum + 3 * evenSum;
+		// @取结果的个位数：128的个位数为8
+		var num_o = sum % 10;
+		// @用10减去这个个位数10-8=2
+		if(num_o !== 0) {
+			num_o = 10 - num_o;
+		}
+
+		// alert(num);
+
+		return num * 10 + num_o;
+		
+	}
+
+	ean13(690123456789);
+
+	// var num = [1, 3, 5];
+	// var square = num.map(function (v, i) {
+	// 		return v * v;
+	// 	})
+	// }
+
+	//猴子吃桃问题：
+	// 猴子
+	// 第一天摘下若干个桃子，当即吃了一半，还不瘾，又多吃了一个　　　
+	// 第二天早上又将剩下的桃子吃掉一半，又多吃了一个。
+	// 以后每天早上都吃了前一天剩下的一半零一个。
+	// 到第10天早上想再吃时，见只剩下一个桃子了。
+	// 求第一天共摘了多少。程序分析：采取逆向思维的方法，从后往前推断
+	function homework7 () {
+		var peach = 1;
+		for(var day = 9; day >=1; day--) {
+			peach = (peach + 1) * 2;
+		}
+
+		// alert(peach);
+	}
+
+	// homework7();
+
+	//冒泡、选择
+	</script>
+</body>
+</html>

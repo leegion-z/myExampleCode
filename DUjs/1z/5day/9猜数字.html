@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input id="text" type="text">
+	<button id="btn">确定</button>
+	<ul id="list">
+	</ul>
+	<script>
+
+	var text = document.getElementById('text');
+	var btn = document.getElementById('btn');
+	var list = document.getElementById('list');
+	var nowNum = randomNum(0,101);
+	var count = 10;
+
+	document.title = nowNum;
+
+	btn.onclick = function(){
+
+		var val = text.value;
+
+		if(val < nowNum){
+			console.log('小了');
+		}
+		else if(val > nowNum){
+			console.log('大了');
+		}
+		else{
+			console.log('恭喜猜对了');
+		}
+
+		count--;
+		list.innerHTML += '<li>尴尬</li>';
+		if(count == 0){
+			console.log('游戏失败');
+		}
+		
+
+	};
+
+	function randomNum( n1 , n2 ){
+		return  Math.floor(Math.random() * (n2 - n1) + n1);
+	}
+
+	</script>
+</body>
+</html>

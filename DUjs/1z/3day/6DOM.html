@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	ul li{}
+	</style>
+</head>
+<body>
+	<div id="box" style="">aaaaaa</div>
+	<ul id="list">
+		<li>111</li>
+		<li>111</li>
+		<li>111</li>
+		<li>111</li>
+		<li>111</li>
+	</ul>
+	<ol>
+		<li>111</li>
+		<li>111</li>
+		<li>111</li>
+		<li>111</li>
+		<li>111</li>
+	</ol>
+	<input type="checkbox">
+	<input type="checkbox">
+	<input type="checkbox">
+	<input type="checkbox">
+	<input type="checkbox">
+	<script>
+
+	//注：JS语法中不能出现横杠（ - ）。 把横杠转成驼峰写法。
+
+	//var boxDiv = document.getElementById('box');
+
+	/*boxDiv.style.background = 'blue';
+	boxDiv.style.color = 'white';
+ 	boxDiv.style.width = '100px';
+	boxDiv.style.height = '100px';*/
+
+	// 多样式的抒写
+	//boxDiv.style.cssText = 'width:100px;height:100px;background:blue;color:white;';
+
+	//getElementById() : 前面必须是document
+
+	var list = document.getElementById('list');
+
+	var lis = list.getElementsByTagName('li');
+
+	console.log( lis.length );
+
+
+	</script>
+</body>
+</html>

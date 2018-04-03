@@ -1,0 +1,13 @@
+$h2_fontSize: 22px;
+$h1_fontSize: $h2_fontSize + 5px;
+
+h1 {
+  font-size: $h1_fontSize;
+}
+
+h2 {
+  font-size: $h2_fontSize;
+}
+
+
+

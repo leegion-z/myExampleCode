@@ -1,0 +1,44 @@
+1. websocket ,H5标准，
+
+	var ws = new WebSocket("ws://127.0.0.1:8000");
+
+	ws.onopen = function(){
+		//连接成功调用
+	} 
+
+	ws.onmessage = function(msg){
+		// 服务器给客户端发消息
+	}
+
+	ws.onerror =function(){
+		// 连接失败调用
+	}
+
+	ws.onclose = function(){
+		// 服务器断掉
+	}
+
+	ws.send(发消息给服务器); 
+	// 只接受字符串
+
+
+2. websocketServer <= nodejs(即时通信功能)
+
+	(1)nodejs 自带的 net 模块能够实现websocketServer创建
+
+	(2)nodejs 第三方的ws 模块能够实现websocketServer创建
+
+	(3)nodejs 第三方的socketio 模块能够实现websocketServer创建
+
+		Websocket仅仅是 Socket.io实现实时通信的一个子集
+		
+
+			a. 客户端部分 
+					- 如果浏览器支持websocket， 进行websocket接口调用
+					- 不支持就轮询
+			b. 服务端部分
+					- websocketserver 响应
+					- 轮询响应
+
+
+	

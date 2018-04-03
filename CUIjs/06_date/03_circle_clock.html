@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		#second-stick {
+			width: 2px;
+			height: 100px;
+			background-color: black;
+			position: absolute;
+			left: 119px;
+			top: 30px;
+			transform-origin: center 90px;
+			transition-property: all;
+			transition-timing-function: linear;
+			transition-duration: 1s;
+		}
+
+		#minute-stick {
+			width: 4px;
+			height: 80px;
+			background-color: black;
+			position: absolute;
+			left: 118px;
+			top: 50px;
+			transform-origin: center 70px;
+			/*transition-property: all;
+			transition-timing-function: linear;*/
+			/*transition-duration: 60s;*/
+		}
+
+		#hour-stick {
+			width: 6px;
+			height: 60px;
+			background-color: black;
+			position: absolute;
+			left: 117px;
+			top: 70px;
+			transform-origin: center 50px;
+			/*transition-property: all;
+			transition-timing-function: linear;*/
+			/*transition-duration: 60s;*/
+		}
+
+		.clock {
+			position: absolute;
+			width: 240px;
+			height: 240px;
+			border: 10px solid hotpink;
+			border-radius: 50%;
+			left: 50px;
+			top: 50px;
+		}
+
+		.mark {
+			/*margin-left: -5px;*/
+			position: absolute;
+			width: 2px;
+			height: 15px;
+			left: 119px;
+			top: 0;
+			background-color: black;
+			transform-origin: center 120px; 
+		}
+
+		/*.mark:nth-of-type(2) {
+			transform: rotateZ(90deg);
+		}
+
+		.mark:nth-of-type(2) p {
+			transform: rotateZ(-90deg);
+		}
+
+		.mark:nth-of-type(3) {
+			transform: rotateZ(180deg);
+		}
+
+		.mark:nth-of-type(4) {
+			transform: rotateZ(270deg);
+		}*/
+
+		
+	</style>
+</head>
+<body>
+	<div class="clock">
+		<div class="mark"><p>12</p></div>
+		<div class="mark"><p>1</p></div>
+		<div class="mark"><p>2</p></div>
+		<div class="mark"><p>3</p></div>
+		<div class="mark"><p>4</p></div>
+		<div class="mark"><p>5</p></div>
+		<div class="mark"><p>6</p></div>
+		<div class="mark"><p>7</p></div>
+		<div class="mark"><p>8</p></div>
+		<div class="mark"><p>9</p></div>
+		<div class="mark"><p>10</p></div>
+		<div class="mark"><p>11</p></div>
+
+		<div id="second-stick" style=""></div>
+		<div id="minute-stick" style=""></div>
+		<div id="hour-stick" style=""></div>
+	</div>
+	
+	<script type="text/javascript">
+		var sec;
+		var minu;
+		var h;
+		function updateTime() {
+			// return;
+			var now = new Date();
+			var second = now.getSeconds();
+			var minute = now.getMinutes();
+			var hour = now.getHours();
+
+			// console.log(sec);
+
+			if(!sec) {
+				sec = second;
+			} else {
+				sec++;
+			}
+
+			console.log(sec);
+
+			// if(!minu) {
+			// 	minu = minute;
+			// } else {
+			// 	if(sec%60 === 0) {
+			// 		minu++;
+			// 	}
+			// }
+
+			// if(!h) {
+			// 	h = hour;
+			// } else {
+
+			// }
+
+			console.log('minu=' + minu);
+			
+			//改变一个元素的行内样式
+			//1. 取到该元素
+			var secStick = document.querySelector('#second-stick');
+			secStick.style.transform = 'rotateZ(' + sec*6 + 'deg)';
+			var minuStick = document.querySelector('#minute-stick');
+			minuStick.style.transform = 'rotateZ(' + (minute*6 + second/60) + 'deg)';
+			var hourStick = document.querySelector('#hour-stick');
+			hourStick.style.transform = 'rotateZ(' + (hour*30+ minute/60) + 'deg)';
+		}
+
+		updateTime();
+
+		setInterval(function () {
+			updateTime();
+		}, 1000);
+
+		//1.取得所有的刻度
+		var allMark = document.getElementsByClassName('mark');
+		var deg = 360 / allMark.length;
+
+		for(var i=0; i<allMark.length; i++) {
+			allMark[i].style.transform = 'rotateZ(' + i*deg + 'deg)';
+			allMark[i].children[0].style.transform = 'rotateZ(' + -i*deg + 'deg)';
+		}
+	</script>
+</body>
+</html>

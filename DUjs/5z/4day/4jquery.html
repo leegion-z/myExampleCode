@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	div{ width: 100px; height: 100px; border:1px black solid; float:left; margin: 10px; }
+	</style>
+	<script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+	<span>red</span>
+	<span>yellow</span>
+	<span>green</span>
+	<span>blue</span>
+	<br>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<input type="text">
+	<script>
+
+	/*$(function(){   //等整个DOM加载完，触发
+
+	})*/
+	/*var div = document.getElementsByTagName('div')[0];
+	var p = document.createElement('p');
+	p.innerHTML = 'pppp';
+	div.appendChild(p);*/
+
+	//写一个标签在$()中，表示创建一个新的标签
+	/*var $p = $('<p>');
+	$p.html('pppp');*/
+
+	// var $p = $('<p>pppp</p>');
+	// $('div').eq(0).append($p);
+
+	/*var $div = $('div').eq(0);
+	$div.html('ppppppp');
+	$div.css('background','red');
+	$div.click(function(){
+		alert(123);
+	});*/
+
+	//链式操作只是针对设置的方式
+	/*$('div').eq(0).html('ppppppp').css('background','red').click(function(){
+		alert(123);
+	});*/
+
+	//var list = document.getElementById('list');
+	//list.innerHTML = '123';
+
+	var $list = $('#list');
+	$list.html('123');
+
+	console.log( $list.length );  //长度等于0，表示获取的元素不存在(容错处理)
+
+	</script>
+</body>
+</html>

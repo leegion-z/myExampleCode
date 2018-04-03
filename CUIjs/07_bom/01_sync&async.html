@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<button>清除</button>
+	<a href="javascript:alert('清除成功')">清除</a>
+	<script type="text/javascript">
+		//同步&异步：
+		// 1. 同步：等待函数调用结束，才能执行后面代码
+		// 2. 异步：调用结束后，就会执行后面代码。
+		//    当某个条件满足时，会得到函数的执行结果。
+		//JS的异步：
+		// 1. 网络请求（Ajax）
+		// 2. 事件处理
+		// 3. setTimeout&setInterval
+
+		//setTimeout:
+		//计时指定时间到达时，要执行某种操作
+		//这个函数有一个返回值，这个返回值是一个数字
+		//这个数字，就唯一标识了这个timeout
+		// var timer = setTimeout(function () {
+		// 	console.log('hello worker');
+		// }, 1000);
+
+		//idel
+
+		//如果我们想清除一个timeout
+		//clearTImeout，参数为设定timeout时的返回值
+		
+		//TODO:有一个处理，这个处理好事10分钟
+
+		// clearTimeout(timer);
+
+		// var mendaolv = setInterval(function () {
+		// 	console.log('闷倒驴');
+		// }, 3000);
+
+		//当interval本身处理的时间，比间隔时间长，就会引起事件的堆积
+		// var btn = document.querySelector('button');
+		// btn.onclick = function () {
+		// 	clearInterval(mendaolv);
+		// }
+
+		//为了避免事件堆积，我们使用setTimeout模拟setInterval
+		//方法如下：
+
+		function cutFruit() {
+			console.log('切葱');
+
+			setTimeout(function () {
+				cutFruit()
+			}, 1000)
+		}
+
+		setTimeout(function () {
+			cutFruit();
+		}, 1000)
+
+		var id = setInterval(function () {
+			console.log('去厕所');
+			clearInterval(id);
+		}, 4000)
+
+	</script>
+</body>
+</html>

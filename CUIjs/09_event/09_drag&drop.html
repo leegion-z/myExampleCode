@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>D&amp;D</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.block {
+			width: 200px;
+			height: 200px;
+			background: #f60;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+
+		.block h3 {
+			cursor: move;
+		}
+
+		.bar-right {
+			width: 3px;
+			height: 100%;
+			position: absolute;
+			right: 0;
+			top: 0;
+			background: green;
+			cursor: ew-resize;
+		}
+
+		.bar-left {
+			width: 3px;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+			background: green;
+			cursor: ew-resize;
+		}
+		.bar-top {
+			width: 100%;
+			height: 3px;
+			background: green;
+			left: 0;
+			top: 0;
+			position: absolute;
+			cursor: ns-resize;
+		}
+
+		.bar-bottom {
+			width: 100%;
+			height: 3px;
+			background: green;
+			left: 0;
+			bottom: 0;
+			position: absolute;
+			cursor: ns-resize;
+		}
+		.bar-left-top {
+			width: 5px;
+			height: 5px;
+			background: yellow;
+			left: 0;
+			top: 0;
+			position: absolute;
+			cursor: nw-resize;
+		}
+	</style>
+</head>
+<body>
+	<div class="block">
+		<h3>可拖拽窗口</h3>
+		<hr>
+		<div class="bar-right"></div>
+		<div class="bar-left"></div>
+		<div class="bar-top"></div>
+		<div class="bar-bottom"></div>
+		<div class="bar-left-top"></div>
+	</div>
+	<script type="text/javascript" src="./shake.js"></script>
+	<script type="text/javascript">
+		function dragAndDrop () {
+			var block = document.querySelector('div');
+			var h3 = document.querySelector('h3');
+
+			h3.onmousedown = function (evt) {
+				var e = evt || window.event;
+				var downX = e.clientX;
+				var downY = e.clientY;
+				var downLeft = block.offsetLeft;
+				var downTop = block.offsetTop;
+
+				console.log('onmousedown')
+				window.onmousemove = function (evt) {
+					var e = evt || window.event;
+					var diffX = e.clientX - downX;
+					var diffY = e.clientY - downY;
+					block.style.left = downLeft + diffX + 'px';
+					block.style.top = downTop + diffY + 'px';
+					console.log('onmousemove')
+					console.log('[onmousemove] diffX:' + diffX + ';diffY:' + diffY);
+					return false;
+				}
+
+				window.onmouseup = function () {
+					console.log('onmouseup')
+					window.onmousemove = null;
+					window.onmouseup = null;
+					// new Shake(block, 20, 60, 10);
+					return false;
+				}
+				return false;
+			}
+		}
+
+		dragAndDrop();
+
+		function resize_right () {
+			var right_bar = document.querySelector('.bar-right');
+			var block = document.querySelector('.block');
+			right_bar.onmousedown = function (evt) {
+				var e = evt || window.event;
+				var downX = e.clientX;
+				var downWidth = block.offsetWidth;
+
+				window.onmousemove = function (evt) {
+					var e = evt || window.event;
+					var diffX = e.clientX - downX;
+
+					block.style.width = downWidth + diffX + 'px';
+					return false;
+
+				}
+
+				window.onmouseup = function () {
+					window.onmousemove = null;
+					window.onmouseup = null;
+					return false;
+				}
+				return false;
+			}
+		}
+
+		function resize_left () {
+			//TODO:
+			var left_bar = document.querySelector('.bar-left');
+			var block = document.querySelector('.block');
+			left_bar.onmousedown = function (evt) {
+				var e = evt || window.event;
+				var downX = e.clientX;
+				var downLeft = block.offsetLeft;
+				var downWidth = block.offsetWidth;
+
+				window.onmousemove = function (evt) {
+					var e = evt || window.event;
+					var diffX = e.clientX - downX;
+
+					block.style.width = downWidth - diffX + 'px';
+					block.style.left = downLeft + diffX + 'px';
+					return false;
+
+				}
+
+				window.onmouseup = function () {
+					window.onmousemove = null;
+					window.onmouseup = null;
+					return false;
+				}
+				return false;
+			}
+		}
+
+		function resize_bottom () {
+			var bottom_bar = document.querySelector('.bar-bottom');
+			var block = document.querySelector('.block');
+			bottom_bar.onmousedown = function (evt) {
+				var e = evt || window.event;
+				var downY = e.clientY;
+				var downHeight = block.offsetHeight;
+
+				window.onmousemove = function (evt) {
+					var e = evt || window.event;
+					var diffY = e.clientY - downY;
+
+					block.style.height = downHeight + diffY + 'px';
+					return false;
+
+				}
+
+				window.onmouseup = function () {
+					window.onmousemove = null;
+					window.onmouseup = null;
+					return false;
+				}
+				return false;
+			}
+		}
+
+		function resize_top () {
+			//TODO:
+			var top_bar = document.querySelector('.bar-top');
+			var block = document.querySelector('.block');
+			top_bar.onmousedown = function (evt) {
+				var e = evt || window.event;
+				var downY = e.clientY;
+				var downTop = block.offsetTop;
+				var downHeight = block.offsetHeight;
+
+				window.onmousemove = function (evt) {
+					var e = evt || window.event;
+					var diffY = e.clientY - downY;
+
+					block.style.height = downHeight - diffY + 'px';
+					block.style.top = downTop + diffY + 'px';
+					return false;
+
+				}
+
+				window.onmouseup = function () {
+					window.onmousemove = null;
+					window.onmouseup = null;
+					return false;
+				}
+				return false;
+			}
+		}
+
+		//===> 重构
+		//TODO: 重构：改善代码设计
+		//合并四个函数的思路：
+		//	1. 复制相同的代码
+		//	2. 不同的处理，我们使用if分支，根据参数进行判断，分别执行不同的处理。
+		function resize(dir) {
+
+			var bar = document.querySelector('.bar-' + dir);
+			var block = document.querySelector('.block');
+			var isLeft, isTop, isBottom, isRight;
+			isLeft = dir.indexOf('left') !== -1 ? true : false;
+			isRight = dir.indexOf('right') !== -1 ? true : false;
+			isTop = dir.indexOf('top') !== -1 ? true : false;
+			isBottom = dir.indexOf('bottom') !== -1 ? true : false;
+
+			bar.onmousedown = function (evt) {
+				var e = evt || window.event;
+
+				var downX = e.clientX;
+				var downY = e.clientY;
+				var downWidth = block.offsetWidth;
+				var downHeight = block.offsetHeight;
+				var downLeft = block.offsetLeft;
+				var downTop = block.offsetTop;
+
+				window.onmousemove = function (evt) {
+					var e = evt || window.event;
+					var diffX = e.clientX - downX;
+					var diffY = e.clientY - downY;
+
+					if(isLeft) {
+						block.style.width = downWidth - diffX + 'px';
+						block.style.left = downLeft + diffX + 'px';
+					}
+
+					if(isTop) {
+						block.style.height = downHeight - diffY + 'px';
+						block.style.top = downTop + diffY + 'px';
+					}
+
+					if(isRight) {
+						block.style.width = downWidth + diffX + 'px';
+					}
+
+					if(isBottom) {
+						block.style.height = downHeight + diffY + 'px';
+					}
+					// block.style.width = downWidth + diffX + 'px';
+					return false;
+
+				}
+
+				window.onmouseup = function () {
+					window.onmousemove = null;
+					window.onmouseup = null;
+					return false;
+				}
+				return false;
+			}
+		}
+
+
+		// resize_right();
+		// resize_left();
+		// resize_bottom();
+		// resize_top();
+
+		resize('right');
+		resize('left');
+		resize('bottom');
+		resize('top');
+		resize('left-top');
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{ width: 100px; height: 100px; background: red; position: fixed; right: 0; bottom: 0; display: none; }
+	</style>
+</head>
+<body style="height:2000px">
+	<div id="div1">回到顶部</div>
+	<script>
+
+	document.onclick = function(){
+
+		//BOM的方式来获取到滚动距离，只能获取，不能设置
+		//alert( window.pageYOffset );
+
+		//DOM的方式来获取到滚动距离，不仅可以获取，还可以设置
+		//alert(document.documentElement.scrollTop);
+		//document.documentElement.scrollTop = 1322;
+
+	};	
+
+
+	//滚动条事件：滚动条一动，就会触发这个事件，这个事件是连续触发的
+	var div1 = document.getElementById('div1');
+	window.onscroll = function(){
+		//console.log(123);
+		if( document.documentElement.scrollTop > 50 ){
+			div1.style.display = 'block';
+		}
+		else{
+			div1.style.display = 'none';
+		}
+	};
+	div1.onclick = function(){
+		document.documentElement.scrollTop = 0;
+	};
+
+	/*div1.onclick = function(){
+		var num = document.documentElement.scrollTop;
+		setInterval(function(){
+			num -= 5;
+			document.documentElement.scrollTop = num;	
+		},30);
+	};*/
+
+
+	</script>
+
+</body>
+</html>

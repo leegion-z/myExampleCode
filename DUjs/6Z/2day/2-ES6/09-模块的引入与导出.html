@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Examples</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+</head>
+
+<body>
+	
+	<script>
+
+		/*
+			es5 不支持友好模块化写法，自定义模块化。
+
+			var moduleA = (function(){
+
+					var name ="kerwin";
+					var age =100;
+
+					function test(){
+							
+					}
+
+					return {
+						name:name,
+						age:age,
+						test:test
+					}
+			})()
+
+			// 闭包 应用-> 模块化写法
+
+		*/
+	
+		/*
+			
+			AMD ;  require.js  提前下载 提前加载（异步）
+			CMD ;  sea.js   提前下载， 按需加载。（异步）
+			CommonJS  - node,webpack  (同步，按需加载)
+			
+
+		 */
+
+
+		/*  es6标准中定义了 import 关键字 进行模块化开发
+
+			(1)import 关键字 导入一个模块（跟require相似）
+
+			(2)export 导出一个模块（跟module.exports相似）
+			
+			(3)所有的浏览器都不支持import export ,但是开发者通过webpack 的babel loader（加载器），进行翻译，把es6 的写法 ，翻译成es5的写法， 浏览器就支持了
+		*/
+	
+
+	</script>
+</body>
+
+</html>

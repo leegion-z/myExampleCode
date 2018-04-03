@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 100px;
+            height: 100px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+<input type="password" id="user" name="username" value="123456" class="register"
+       style="outline: none;width: 100px;height: 30px; background-color: green;">
+<button>显示密码</button>
+<button>重新输入</button>
+<script>
+    // var input = document.getElementById('user');
+    // var input = document.getElementsByClassName('register')[0];
+    // var input = document.getElementsByTagName('input')[0];
+    // var input = document.getElementsByName('username')[0];
+    // var input = document.querySelector('input[type=text]');
+    var input = document.querySelectorAll('input')[0];
+    // alert(input.getAttribute('name'));
+    input.setAttribute('value', '654321');
+    var btn = document.querySelector('button');
+    // input.setAttribute('style', 'outline: none;width: 120px;height: 30px;');
+    btn.onclick = function () {
+        // input.setAttribute('style', '');
+        if(input.getAttribute('type') === 'password' ) {
+            input.setAttribute('type', 'text');
+            btn.innerHTML = '隐藏密码';
+        } else {
+            input.setAttribute('type', 'password');
+            btn.innerHTML = '显示密码';
+        }  
+    }
+    var btn1 = document.querySelector('button:nth-of-type(2)');
+    btn1.onclick = function () {
+        input.removeAttribute('value');
+    }
+</script>
+</body>
+</html>

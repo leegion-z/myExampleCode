@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css"></style>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<!-- hello world -->
+	<script>
+		// 1. type: 说明此script标签的类型，如果指定为
+		// javascript,则浏览器会按照JS进行解析，解析成功后会执行这段脚本
+
+		/*
+			这是块儿状注释，可以同时注释多行代码。
+			但是，这种注释：
+			1. 不能嵌套
+			2. TODO: 使用正则表达式可能会出错
+		*/
+
+		document.write('<h1>hello world</h1>');
+		document.write('<h2>hello javascript</h2>');
+
+	</script>
+	<!-- .	代表当前路径(html文件所在路径)
+		..	代表上一次路径
+	 -->
+	<script src="./00_helloworld.js">
+		//当script标签包含了src属性，则标签内的代码，会被无视
+		document.write('啊，被玩坏了！！');
+		//通常会将script标签放到body的最下面
+		//原因：
+		//1. 避免因为解析脚本导致页面显示延迟
+		//2. 避免由于标签后解析导致的选取标签失败
+	</script>
+
+	<script type="text/javascript">
+		document.write('我要在页面上写一个&lt;script&gt;');
+	</script>
+	<div>a       b</div>
+
+</body>
+</html>

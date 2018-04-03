@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	getAjax('data.php','username=hello',function(data){
+
+	});
+
+	postAjax('data2.php','age=20',function(){
+
+	});
+
+	function getAjax(url , data , cbFn){
+		data = data ? '?'+data : '';
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				cbFn(xhr.responseText);
+			}
+		};
+		xhr.open('GET',url+data,true);
+		xhr.send(null);
+	}	
+
+	function postAjax(url , data , cbFn){
+		data = data ? '?'+data : '';
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				cbFn(xhr.responseText);
+			}
+		};
+		xhr.open('POST',url,true);
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		xhr.send(data);
+	}
+
+	</script>
+</body>
+</html>

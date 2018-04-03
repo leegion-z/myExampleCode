@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+/* 类型比较
+	1.当两边都是字符串的情况下，会有一个特殊的比较方式，按照字符串unicode的编码方式一位一位的比较。
+	2.除第一种情况外，其他情况把其他类型都转成数字类型再比较。
+	3.特殊类型的比较
+
+	JS中比较运算： == 相等运算符
+						只要值相等，类型可以不等，整体会返回真
+				   =  赋值运算符*/
+
+	//console.log( 1 == 1 );	 // true
+	//console.log( 1 == 2 );     // false
+
+	//内部的机制：把其他类型转成数字类型，然后再进行比较
+	//console.log( 1 == '1' );     // '1' -> 1 , 然后 1 == 1比较 -> true
+	//console.log( 1 == true );   // true -> 1 , 然后 1 == 1比较 -> true
+	//console.log( 0 == false );   // false -> 0 , 然后 0 == 0比较 -> true
+	//console.log( '1' == true );  // '1' -> 1 , true -> 1 ，然后1 == 1比价 -> true
+	//console.log( '' == false );  // '' -> 0 , false -> 0 , 0 == 0 -> true
+
+
+	//以上的行为，不针对接下来的操作，字符串跟字符串比较的时候 ， 按照字符串unicode的编码方式一位一位的比较。
+	//console.log('12' == '13');  // '1' == '1'的unicode编码，继续比较 '2' == '3'的unicode编码 , 50跟51是不等的，所以整体false
+
+	//console.log( 'a'.charCodeAt() );  //unicode编码97
+	//console.log( '你'.charCodeAt() ); //unicode编码20320
+	//console.log( '1'.charCodeAt() );    //unicode编码49
+
+	//console.log('12' > 2);   //true
+		//'12' -> 12 , 12 > 2 比较 true
+	//console.log('12' > '2');  //false
+		//'1' '2'比较  49 < 50  比较 false
+
+	//特殊类型的比较：undefined 、null
+	
+	//除了这三种情况，其他情况都是false
+	//console.log( undefined == undefined );   // true
+	//console.log( null == null );             // true
+	//console.log( undefined == null );	       // true
+
+	//console.log( undefined == true );   //false
+	//console.log( undefined == false );  //false
+	//console.log( null == 1 );           //false
+	//console.log( null == 0 );           //false
+
+	//NaN跟任何值比较都是false，包括自身比较
+	//console.log(NaN == NaN);   //false（历史原因，设计的有问题）
+
+	</script>
+</body>
+</html>

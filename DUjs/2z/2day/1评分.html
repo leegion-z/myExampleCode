@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{ margin: 0; padding:0; }
+	li{ list-style: none; }
+	#star li{ float:left; width: 78px; height:75px; background: url(img/starOff.png) no-repeat;  }
+	.clearfix:after{ display: block; content: ""; clear:both; }
+
+	#newStar{ width: 78px; height: 75px; position:relative; margin: 100px; }
+	#newStar .down{ width: 100%; height: 100%; background: url(img/starOff.png) no-repeat;}
+	#newStar .up{ width: 50%; height: 100%; background: url(img/starOn.png) no-repeat; position: absolute; left: 0; top: 0;}
+	</style>
+</head>
+<body>
+	<ul id="star" class="clearfix">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+
+	<div id="newStar">
+		<div class="up"></div>
+		<div class="down"></div>
+	</div>
+
+	<script>
+
+	var li = document.getElementsByTagName('li');
+	
+	for(var i=0;i<li.length;i++){
+		li[i].index = i;
+		li[i].onmouseover = function(){
+			for(var i=0;i<li.length;i++){
+				if(i <= this.index){
+					li[i].style.backgroundImage = 'url(img/starOn.png)';	
+				}
+				
+			}
+		};
+		li[i].onmouseout = function(){
+			for(var i=0;i<li.length;i++){
+				li[i].style.backgroundImage = 'url(img/starOff.png)';
+			}
+		};
+	}	
+
+	</script>
+</body>
+</html>

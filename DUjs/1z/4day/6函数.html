@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+<script>
+	
+
+//作用域
+//:作用域指的是里面能调用外面的，但是外面不能调用里面的，函数和变量都用作用域。
+
+//函数作用域：相对的全局函数和局部函数
+
+/*function baz(){
+	console.log(3);
+}
+
+function foo(){
+
+	console.log(1);
+
+	function bar(){
+		console.log(2);
+		baz();
+	}
+	bar();
+}
+
+
+foo();*/
+
+//变量作用域：相对的全局变量，相对的局部变量
+
+/*var a = 10;
+
+function foo(){
+	console.log(a);
+	var b = 20;
+}
+
+foo();
+
+console.log(b);
+*/
+
+
+/*function foo(){
+	var a = 10;
+	bar();
+}
+
+function bar(){
+	console.log(a);
+}
+
+foo();*/
+
+// 程序中有两个a变量
+/*var a = 10;
+
+function foo(){
+
+	var a = 20;
+
+}
+foo();*/
+
+// 程序中有一个a变量
+/*var a = 10;
+
+function foo(){
+
+	a = 20;
+
+}
+foo();*/
+
+
+//变量的查找：变量的作用域链，即变量的查找方式是什么样的？就近去找定义的这个变量
+
+/*var a = 10;
+
+function foo(){
+
+	a = 20;
+
+	console.log(a);
+
+}
+foo();*/
+
+var a = 10;
+
+function foo(){
+
+	console.log(a);   //  undefined
+	var a = 20;
+
+	/*var a;
+	console.log(a);
+	a = 20;*/
+
+}
+foo();
+
+</script>
+
+</body>
+</html>

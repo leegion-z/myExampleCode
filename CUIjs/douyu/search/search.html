@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<div>
+		<input type="" name="" id="search">
+		<ul></ul>
+	</div>
+	<button>搜索</button>
+	<script type="text/javascript" src="../vendor/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../util.js"></script>
+	<script type="text/javascript">
+		$('button').click(function () {
+			saveSearchHistory();
+			alert('搜索完成');
+		});
+
+		function saveSearchHistory () {
+			//在cookie的存储方式是['keyword1', 'keyword2', 'keyword3'];
+			//当用户搜索的最新的关键字时keyword3时，我们的search cookie
+			//['keyword3', 'keyword1', 'keyword2']
+			var searchHistory = getCookie('search');
+			if(searchHistory === null) {
+				searchHistory = [];
+			} else {
+				searchHistory = JSON.parse(searchHistory);
+			}
+			var keyword = $('#search').val();
+			var index = searchHistory.indexOf(keyword);
+			if(index !== -1) {
+				//keyword是一个新的搜索关键字，加到数组前面	,且将原来位置的删除
+				searchHistory.splice(index, 1);
+			}
+
+			searchHistory.unshift(keyword);
+
+			setCookie('search', JSON.stringify(searchHistory), 3);
+
+		}
+
+		$('#search').focus(function () {
+			// alert('aaaa');
+			var val = $(this).val();
+			if(val !== '') {
+				return;
+			}
+			searchList = getCookie('search');
+			if(searchList === null) {
+				return;
+			}
+
+
+			searchList = JSON.parse(searchList);
+			var len = searchList.length;
+			$('ul').empty();
+			// $('ul li').remove();
+			for(var i=0; i<len; i++) {
+				$('<li><span>' + searchList[i] +'</span><a href="javascript:;">X</a></li>').appendTo('ul');
+			}
+		})
+
+		$('ul').on('click', 'a', function () {
+			//this指向a
+			var keyword = $(this).prev('span').html()
+			var searchList = getCookie('search');
+			var index;
+			if(searchList === null) {
+				return;
+			} else {
+				searchList = JSON.parse(searchList);
+			}
+			index = searchList.indexOf(keyword);
+			if(-1 !== index) {
+				searchList.splice(index, 1);
+			}
+
+			setCookie('search', JSON.stringify(searchList), 3);
+
+			$(this).parent().remove();
+		})
+	</script>
+</body>
+</html>

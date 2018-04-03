@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="div1">aaaaaa</div>
+	<script>
+
+	//普通的取消事件方式：onclick = null;
+	//绑定的取消事件方式：removeEventListener , 取消的参数必须跟添加的时候的参数相同
+
+	var div1 = document.getElementById('div1');
+	/*div1.onclick = function(){
+		alert(1);
+		div1.onclick = null;
+	};*/
+
+	div1.addEventListener('click', change);	
+
+	function change(){
+		alert(1);
+		div1.removeEventListener('click', change);
+	}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .date-picker {
+
+        }
+
+        th, td {
+            width: 100px;
+            height: 30px;
+            background: #cccccc;
+            empty-cells: hide;
+        }
+
+        td {
+            border: 1px solid black;
+        }
+
+        .prev {
+            float: left;
+        }
+
+        .next {
+            float: right;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        .date-picker {
+            width: 650px;
+        }
+
+        .current {
+            background: hotpink;
+        }
+
+        .gray {
+            background: #eeeeee;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+<div class="date-picker">
+    <div class="header">
+        <button class="prev">&lt;</button>
+        <span>2017-11-02</span>
+        <button class="next">&gt;</button>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Su</th>
+            <th>Mo</th>
+            <th>Tu</th>
+            <th>We</th>
+            <th>Th</th>
+            <th>Fr</th>
+            <th>Sa</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function setDate(date) {
+        var year = date.getFullYear();
+        var month = date.getMonth();
+        var now = new Date();
+        //dFirst是当月的第一天
+        var dFirst = new Date(year, month);
+        //当月第一天是周几
+        var firstDay = dFirst.getDay();
+        //dLast是当月的最后一天
+        var dLast = new Date(year, month + 1, 0);
+        var last = dLast.getDate();
+
+        var tds = document.querySelectorAll('tbody td');
+        var j = 1;
+        var m = date.getMonth();
+        for (var i = firstDay; i <= tds.length; i++) {
+            if (now.getFullYear() === date.getFullYear() &&
+                    now.getMonth() === m &&
+                    now.getDate() === j) {
+                tds[i].className = 'current';
+            }
+
+            if (m !== date.getMonth()) {
+                tds[i].className = 'gray';
+            }
+            tds[i].innerHTML = j;
+            j++;
+            if (j > last) {
+                m++;
+                j = 1;
+            }
+        }
+
+
+    }
+
+    var now = new Date();
+    setDate(now);
+</script>
+
+</body>
+</html>

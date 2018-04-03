@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<!-- <div onclick=" console.log(123); ">aaaaa</div> -->
+
+	<div id="div1">aaaaa</div>
+
+	<script>
+
+	//事件：一个触发的条件，点击触发，鼠标移入触发，键盘触发。。。
+	
+	//点击事件：点击触发 html标签上的一个属性 : onclick	
+
+	var div1 = document.getElementById('div1');
+
+	var onoff = true;
+
+	div1.onclick = function(){   //定义了一个事件函数
+		//console.log(123);
+		if(onoff){               //相当于if（true）
+			div1.style.background = 'red';
+			onoff = false; 
+		}
+		else{
+			div1.style.background = 'blue';
+			onoff = true;
+		}
+		
+	};
+
+	//当点击元素div1的时候，去调用函数
+
+	</script>
+</body>
+</html>

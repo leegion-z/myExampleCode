@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//数组：一组值的集合，且按照位置依次摆放
+		//c/java: 这些语言中，数组一旦创建，大小无法改变
+		//JS的数组特点：
+		//	1.大小可变，可任意扩充或裁减
+		//	2.类型可任意(不推荐)
+		//	3.可稀疏
+
+		//创建数组：（空数组）
+		//1. 字面量
+		var nums = [];
+		//2. 构造函数
+		var array = new Array();
+
+		var nums1 = [1,3,5,7];
+		var array = new Array(1,3,5,7);
+
+		var exes = ['xiaoR', 'xiaoG', 'xiaoB', 'xiaoQ', 'xiaoL', 'xiaoA'];
+		// alert(exes[2]);
+
+		//exes.length表明数组里元素的个数
+		//逐个访问数组元素的过程，叫做数组的遍历、也叫做迭代
+		// for(var i=0; i<exes.length; i++) {
+		// 	alert(exes[i]);
+		// }
+
+		//在数组中查找某个元素时，效率较低。
+		//因为数组存储时，并没有表明内容，所以，我们在查找数组时，
+		//只能遍历查找，最坏情况是要查找的在数组的最后
+
+		// for(var i=0; i<exes.length; i++) {
+		// 	if(exes[i] === 'xiaoA') {
+		// 		alert(i);
+		// 	}
+		// }
+
+		//for-in	===>	遍历数组&对象
+		//对于数组来说，for循环和for-in循环，区别不大
+		//遍历对象，只能用for-in循环
+		function random(start, end) {
+			return Math.floor(Math.random() * (end - start + 1)) + start;
+		}
+
+		var numbers = [1,3,5,7];
+		// for(var i in numbers) {
+		// 	alert('index=' + i);
+		// 	alert('value' + numbers[i]);
+		// }
+
+		//key-value:键值对
+		//name-value:名值对
+		//在定义对象时，key可以是字符串，也可以是一个变量表达式
+		var person = {
+			"name": 'xiaoM',
+			'age': 18,
+			exes: ['xiaoM', 'xiaoL', 'xiaoS', 'xiaoG'],
+			'background-color': 'white',
+			treeNewBee: function () {
+				for(var index in person.exes) {
+					alert(person.exes[index]);
+				}
+			}
+		};
+
+		// person.name
+		//对象方法的调用：在这个对象的方法名后面直接加上参数列表
+		// person.treeNewBee();
+
+		//name是一个变量，里面装的是这个对象各个的key所构成的字符串
+		// for(var name in person) {
+		// 	alert('name=' + name)
+		// 	alert('value=' + person[name]);
+		// }
+
+		var div = {
+			width: '100px',
+			height: '100px',
+			backgroundColor: 'pink',
+			position: 'absolute',
+			left: '200px',
+			top: '50px',
+			draw: function () {
+				console.log('现在还不会画，等到学完DOM就可以画到页面上了');
+			}
+		};
+
+		var numbers = [10,20,30,40,50];
+		//for
+		//for-in
+
+		//forEach函数接受一个参数，参数的类型是function
+		//这个function在变量过程中，会不停的被调用（被调用次数与数组元素个数相同）
+		// numbers.forEach(function(v, i) {
+		// 	alert('value=' + v);
+		// 	alert('index=' + i);
+		// });
+
+		//TODO:
+		// function forEach (arr, fn) {
+		// 	for(var i in arr) {
+		// 		fn(arr[i], i);
+		// 	}
+		// }
+
+		// forEach(numbers, function (v, i) {
+		// 	alert('value=' + v);
+		// 	alert('index=' + i);
+		// })
+
+		// 练习：产生随机验证码(4位，有数字和字母，字母大小写)
+		var checkCode = ['1', '2', '3', '4', 'A', 'B', 'C', 'D', 'a', 'b', 'c', 'd', 'e', 'd'];
+
+		// var index;
+		// var str = '';
+		// for(var i=0; i<4; i++) {
+		// 	index = Math.floor(Math.random() * checkCode.length);
+		// 	str += checkCode[index];
+		// }
+		
+		//作业1：无重复的验证码
+		//取一个验证码，取完之后，判断这个验证码在str中是否存在，如果存在，则重新去
+		function getCheckCode () {
+			var checkCode = ['1', '2', '3', '4', 'A', 'B', 'C', 'D', 'a', 'b', 'c', 'd', 'e', 'd'];
+			var result = [];
+		
+			var index;
+			var code;
+			
+
+			while(true) {
+				if(result.length === 4) {
+					break;
+				}
+				index = Math.floor(Math.random() * checkCode.length);
+				code = checkCode[index];
+				if(-1 === result.indexOf(code)) {
+					result.push(code);
+				}
+			}
+
+			return result.join('');
+		}
+
+		
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>	
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{ margin: 0; padding:0; }
+	li{ list-style: none; }
+	#list{ position: fixed; width: 35px; right: 0; top:50%; }
+	#list li{ width: 100%; height: 35px; background:black url(img/img.png); cursor: pointer; position: relative;}
+	#list li:hover{ background-color: red; }
+	#list li div{ width: 100px; height: 100%; background:black; line-height: 35px; position: absolute; left: -150px; top: 0; color:white; text-align: center; z-index: 10; opacity: 0; }
+	#list li .arrow{ width:0; height:0; border:6px transparent solid; border-left-color:black; position: absolute; right:-12px; top:11px; z-index: 10;}
+	</style>
+</head>
+<body>
+	
+	<ul id="list">
+		<li>
+			<div>
+				我的资产1
+				<span class="arrow"></span>
+			</div>
+		</li>
+		<li>
+			<div>
+				我的资产2
+				<span class="arrow"></span>
+			</div>
+		</li>
+		<li>
+			<div>
+				我的资产3
+				<span class="arrow"></span>
+			</div>
+		</li>
+		<li>
+			<div>
+				我的资产4
+				<span class="arrow"></span>
+			</div>
+		</li>
+	</ul>
+
+	<script src="move.js"></script>
+	<script>
+
+	var list = document.getElementById('list');
+	var listLi = list.getElementsByTagName('li');
+
+	for(var i=0;i<listLi.length;i++){
+		listLi[i].onmouseover = function(){
+			var nowDiv = this.getElementsByTagName('div')[0];
+			move( nowDiv , { opacity : 1 , left : -100 } , 500 );
+		};
+		listLi[i].onmouseout = function(){
+			var nowDiv = this.getElementsByTagName('div')[0];
+			move( nowDiv , { opacity : 0 , left : -150 } , 500 );
+		};
+	}
+
+
+	</script>
+</body>
+</html>

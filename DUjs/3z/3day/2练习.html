@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#main{ width: 400px; margin: 20px auto; }
+	#main img{ width: 100%; }
+	</style>
+</head>
+<body>
+	<div id="main">
+		<img src="img/32.jpg">
+	</div>
+	<script>
+
+	var main = document.getElementById('main');
+	var nowImg = main.getElementsByTagName('img')[0];
+	var arr = ['32.jpg','33.jpg','34.jpg','35.jpg','36.jpg'];
+	var now = 0;
+	main.onclick = function(ev){
+		var x = ev.pageX;
+		var num = this.offsetLeft + this.offsetWidth/2;
+		if( x > num ){
+			change(1);
+		}
+		else{
+			change(-1);
+		}
+	};	
+	function change(n){
+		now += n;
+		if(now == -1){
+			now = arr.length-1;
+		}
+		else if(now == arr.length){
+			now = 0;
+		}
+		nowImg.src = 'img/'+arr[now];
+	}
+
+	</script>
+</body>
+</html>

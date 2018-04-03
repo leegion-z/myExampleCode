@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	// 正则方法：replace()
+	// 	 写法：指定的字符串.replace(正则,新的字符串)。
+	// 	 规则：当正则在指定的字符串中匹配到了结果，然后用新的字符串去替换掉，如果没匹配到就不会有任何的修改。
+		//并不会直接改变这个字符串，而是改变的为执行的结果。
+
+	var str = 'abcabc';
+
+	var re = /bc/g;
+
+	var result = str.replace(re,'d');
+
+	console.log(result);
+
+	</script>
+</body>
+</html>

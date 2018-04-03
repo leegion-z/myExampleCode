@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		* {
+			 margin: 0;
+			 padding: 0;
+		}
+		div {
+			width: 30px;
+			height: 30px;
+			background: red;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+
+	<script type="text/javascript">
+		// var div = document.querySelector('div');
+		// div.onmousedown = function (evt) {
+		// 	var e = evt || window.event;
+		// 	var downX = e.clientX;
+		// 	var downY = e.clientY;
+		// 	var downLeft = div.offsetLeft;
+		// 	var downTop = div.offsetTop;
+		// 	window.onmousemove = function (evt) {
+		// 		var e = evt || window.event;
+		// 		var diffX = e.clientX - downX;
+		// 		var diffY = e.clientY - downY;
+
+		// 		div.style.left = downLeft + diffX + 'px';
+		// 		div.style.top = downTop + diffY + 'px';
+
+		// 	}
+
+		// 	window.onmouseup = function () {
+		// 		window.onmousemove = null;
+		// 		window.onmouseup = null;
+		// 	}
+		// }
+
+		var DD = {};
+		DD.el = document.querySelector('div');
+		DD.start = function () {
+			//this指向DD
+			var that = this;
+
+			this.el.onmousedown = function (evt) {
+				//在onmousedown中，this指向div
+				var e = evt || window.event;
+				DD.downX = e.clientX;
+				DD.downY = e.clientY;
+				DD.downLeft = DD.el.offsetLeft;
+				DD.downTop = DD.el.offsetTop;
+				DD.move();
+				DD.stop();
+			}
+		}
+
+		DD.move = function () {
+			window.onmousemove = function (evt) {
+				var e = evt || window.event;
+				var diffX = e.clientX - DD.downX;
+				var diffY = e.clientY - DD.downY;
+				DD.el.style.left = DD.downLeft + diffX + 'px';
+				DD.el.style.top = DD.downTop + diffY + 'px';
+			}
+		}
+
+		DD.stop = function () {
+			window.onmouseup  = function () {
+				window.onmousemove = null;
+				window.onmouseup = null;
+			}
+		}
+
+		DD.start();
+
+
+
+
+		var DD1 = {};
+		DD1.el = document.querySelector('div:nth-of-type(2)');
+		DD1.start = function () {
+			//this指向DD
+			var that = this;
+
+			this.el.onmousedown = function (evt) {
+				//在onmousedown中，this指向div
+				var e = evt || window.event;
+				that.downX = e.clientX;
+				that.downY = e.clientY;
+				that.downLeft = that.el.offsetLeft;
+				that.downTop = that.el.offsetTop;
+				that.move();
+				that.stop();
+			}
+		}
+
+		DD1.move = function () {
+			var that = this;
+			window.onmousemove = function (evt) {
+				var e = evt || window.event;
+				var diffX = e.clientX - that.downX;
+				var diffY = e.clientY - that.downY;
+				that.el.style.left = that.downLeft + diffX + 'px';
+				that.el.style.top = that.downTop + diffY + 'px';
+			}
+		}
+
+		DD1.stop = function () {
+			window.onmouseup  = function () {
+				window.onmousemove = null;
+				window.onmouseup = null;
+			}
+		}
+
+		DD1.start();
+
+		var DD2 = {};
+		DD2.el = document.querySelector('div:nth-of-type(3)');
+		DD2.start = function () {
+			//this指向DD
+			var that = this;
+
+			this.el.onmousedown = function (evt) {
+				//在onmousedown中，this指向div
+				var e = evt || window.event;
+				that.downX = e.clientX;
+				that.downY = e.clientY;
+				that.downLeft = that.el.offsetLeft;
+				that.downTop = that.el.offsetTop;
+				that.move();
+				that.stop();
+			}
+		}
+
+		DD2.move = function () {
+			var that = this;
+			window.onmousemove = function (evt) {
+				var e = evt || window.event;
+				var diffX = e.clientX - that.downX;
+				var diffY = e.clientY - that.downY;
+				that.el.style.left = that.downLeft + diffX + 'px';
+				that.el.style.top = that.downTop + diffY + 'px';
+			}
+		}
+
+		DD2.stop = function () {
+			window.onmouseup  = function () {
+				window.onmousemove = null;
+				window.onmouseup = null;
+			}
+		}
+
+		DD2.start();
+	</script>
+</body>
+</html>

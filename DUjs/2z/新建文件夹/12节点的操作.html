@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- <ul id="list">
+		<li>我是默认的</li>
+	</ul> -->
+	<input type="text"><input type="button" value="留言">
+	<ul id="message">
+		
+	</ul>
+	<script>
+
+	//var list = document.getElementById('list');
+	//var li = document.createElement('li');
+
+	//insertBefore() : 
+		//目标元素.insertBefore(操作元素，参照元素)
+		//把操作的元素添加到参照元素的前面，并且目标元素是参数元素的父节点。
+
+	//list.insertBefore(li, list.children[0]);
+
+	//document.body.insertBefore(li, list);
+
+
+	var inputs = document.getElementsByTagName('input');
+	var message = document.getElementById('message');
+	var lis = message.getElementsByTagName('li');
+
+	inputs[1].onclick = function(){
+		var val = inputs[0].value;
+		var li = document.createElement('li');
+		li.innerHTML = val;
+		message.insertBefore(li,lis[0]);
+		/*message.insertBefore(li,null);
+		->等价
+		message.appendChild(li)*/
+		if(lis.length > 5){
+			message.removeChild( lis[lis.length-1] );
+		}
+	};	
+
+	</script>
+</body>
+</html>

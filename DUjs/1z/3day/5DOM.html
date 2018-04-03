@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>111</li>
+		<li>111</li>
+		<li>111</li>
+		<li>111</li>
+		<li>111</li>
+		<li>111</li>
+		<li>111</li>
+		<li>111</li>
+		<li>111</li>
+		<li>111</li>
+	</ul>
+	<script>
+
+	var lis = document.getElementsByTagName('li');
+
+	/*lis[0].style.background = 'red';
+	lis[1].style.background = 'red';
+	lis[2].style.background = 'red';
+	lis[3].style.background = 'red';
+	lis[4].style.background = 'red';*/
+
+	/*for(var i=0;i<lis.length;i++){
+		//i : 0 1 2 3 4
+		lis[i].style.background = 'red';
+	}*/
+
+	/*for(var i=0;i<lis.length;i++){
+		if(i%2 == 0){
+			lis[i].style.background = 'red';
+		}
+		else{
+			lis[i].style.background = 'green';
+		}
+	}*/
+
+	for(var i=0;i<lis.length;i++){
+		if(i%3 == 0){
+			lis[i].style.background = 'red';
+		}
+		else if(i%3 == 1){
+			lis[i].style.background = 'yellow';
+		}
+		else if(i%3 == 2){
+			lis[i].style.background = 'green';
+		}
+	}
+
+
+	</script>
+</body>
+</html>

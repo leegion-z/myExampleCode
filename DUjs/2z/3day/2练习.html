@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	var arr = [    
+		['a','b','c'],
+		['d','e','f'],
+		['g','h','i']
+	];
+
+	/*var newArr = [    //通过程序转换成下面的样子
+		['a','d','g'],
+		['b','e','h'],
+		['c','f','i']
+	];*/
+
+	var newArr = [];
+
+	for(var i=0;i<arr.length;i++){
+		newArr.push([]);
+	}
+
+	for(var i=0;i<arr.length;i++){
+		//arr[i] :  ['a','b','c']、['d','e','f']、['g','h','i']
+		for(var j=0;j<arr[i].length;j++){
+			 //console.log(arr[i][j]);
+			 //i : 0 0 0 1 1 1 2 2 2
+			 //j : 0 1 2 0 1 2 0 1 2
+			 newArr[j][i] = arr[i][j];
+		}
+	}
+
+	console.log(newArr);
+
+	</script>
+</body>
+</html>

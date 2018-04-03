@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		span {
+			display: inline-block;
+			text-align: center;
+			line-height: 30px;
+			width: 100px;
+			height: 30px;
+			border: 1px solid hotpink;
+			border-radius: 5px;
+			background: chocolate;
+			/*color: deeppink;*/
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+
+		//for(var num=0;num<=100;num++) {//循环体}
+		// var num = 0;
+		// while(num<=100) {
+		// 	//循环体
+
+		// 	num++;
+		// }
+
+		//99乘法表
+		for(var row=1; row<=9; row++) {
+			for(var col=1; col<=row; col++) {
+				document.write('<span>' + col + 'X' + row + '=' + row*col + '</span>');
+			}
+
+			document.write('<br>');
+		}
+
+		// 一个新入职，月工资为2000元的员工，每年涨工资20%，到退休时的月工资是多少？
+		// (20岁入职，70岁退休)
+		var salary = 2000;
+		for(var year = 21; year<=40; year++) {
+			// salary *= 1.2;
+			// salary = salary + salary*0.2
+			// salary = salary * (1 + 0.2);
+			// salary = salary * 1.2;
+			salary *= 1.2;
+		}
+
+		// console.log(salary);
+
+		// 打印100–200之间所有能被3或者7整除的数
+		for(var i=100; i<=200; i++) {
+			if(i%3 === 0 || i%7 === 0) {
+				// console.log(i);
+			}
+		}
+
+		//计算100的阶乘
+		//100! = 100 * 99 * 98 * 97...... * 1;
+		//100! = 100 * 99!
+		//99! = 99 * 98!
+		//2! = 2 * 1!
+		//1! = 1 * 0!
+		//0! = 1
+
+		var factorial = 1;
+		for(var i=1; i<=100; i++) {
+			factorial *= i;
+		}
+
+		// console.log(factorial);
+
+		//计算1+3+5+...+99的和
+		// var sum = 0;
+		for(var i=1, sum=0; i<100; i+=2) {
+			// console.log(i);
+			sum += i;
+		}
+
+		// console.log(sum);
+
+		// 编写一个程序，找出200以内的所有的质数
+
+		// 质数：除了1和Ta本身，没有能被整除的数，叫做质数
+		//栗子: 11 ===> 11/2, 11/3, ... , 11/9, 11/10 没有一个结果为整数，则11为质数
+		var num = Math.floor(Math.random() * 18) + 2;
+		// num = 5;
+		
+
+		for(var num=2; num<200; num++) {
+
+			for(var i=2; i<num; i++) {
+				if(num % i === 0) {
+					//不是质数
+					break;
+				}
+			}
+
+			//如果没break，说明是质数
+			if(i === num) {
+				console.log(num + '是质数');
+			} /*else {
+				console.log(num + '不是质数');
+			}*/
+
+		}
+
+		for(num=200; ; num++) {
+			for(var i=2; i<num; i++) {
+				if(num % i === 0) {
+					//不是质数
+					break;
+				}
+			}
+
+			//如果没break，说明是质数
+			if(i === num) {
+				console.log(num + '是质数');
+				break;
+			}
+		}
+
+		for(var i=2; i<209; i++) {
+			if(209%i === 0) {
+				console.log(i);
+			}
+		}
+	</script>
+</body>
+</html>

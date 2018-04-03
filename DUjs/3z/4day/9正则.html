@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	// 量词：
+	
+	// +   >=1 至少匹配一位
+	// *   >=0 至少匹配零位
+	// ?   0,1 匹配0位或者1位
+
+	// {4,}  >= 4 至少匹配4位
+	// {4}    4   正好匹配4位
+	// {4,10}  4~10  匹配4位到10位
+
+	// +  ->  {1,}
+	// *  ->  {0,}
+	// ?  ->  {0,1}
+
+	var str = 'aabc';
+	var re = /a{2,10}/;
+	console.log(str.match(re));
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!--<script>
+
+	//jsonp实现跨域操作：利用script标签来进行跨域的，因为script标签是不存在跨域问题的。
+	script标签的src不仅可以引入JS文件，也可以引入任何类型的文件
+	script标签的数据，只能通过get方式进行提交
+
+	//jsonp : json + padding
+
+	function foo(data){
+		console.log(data);
+	}
+
+	</script>
+	<script>
+		foo({"name":"hello","age":"20"});
+	</script>-->
+
+	<!--<script>
+	function foo(data){
+		console.log(data);
+	}
+	</script>
+	<script src="http://www.b.com/H51707_2018_2/dataJSONP.js"></script>	
+	<script src="http://www.b.com/H51707_2018_2/dataJSONP.php"></script>-->
+
+
+	<script>
+
+	/*function getJSON(url,cbFn){
+		var script = document.createElement('script');
+		var re = /cb=(\w+)/;
+		url = url.replace( re , function(arg){
+			return arg + String(Math.random()).replace(/\./,'');
+		});
+		var fnName = url.match(re)[1];
+		window[fnName] = cbFn;
+		script.src = url;
+		script.onload = function(){
+			document.body.removeChild(script);
+			delete window[fnName];
+		};
+		document.body.appendChild(script);
+	}
+
+	getJSON('http://www.b.com/H51707_2018_2/dataJSONP.php?cb=foo&id=3',function(data){
+		console.log(data);
+	});	*/
+
+	
+	
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .python div {
+            width: 30px;
+            height: 30px;
+            background: green;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .python .head {
+            /*border-radius: 50%;*/
+            background: red;
+        }
+
+        .food {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            background: chocolate;
+            z-index: -1;
+        }
+
+        [data-type=shit] {
+            background: darkmagenta;
+        }
+    </style>
+</head>
+<body>
+<div class="python">
+    <div class="head"></div>
+    <div class="tail"></div>
+    <div class="tail"></div>
+    <div class="tail"></div>
+    <div class="tail"></div>
+    <div class="tail"></div>
+    <div class="tail"></div>
+</div>
+
+<script type="text/javascript">
+    //多个DIV跟随移动
+    // ===> 移动蛇头
+    // ===> 后面跟随
+    var speed = 30;
+    var speedX = speed;
+    var speedY = 0;
+    var id;
+    var interval = 500;
+    function move() {
+
+        // var head = document.querySelector('.head');
+        clearInterval(id);
+        id = setInterval(function () {
+            //移动蛇头
+            var tail = document.querySelectorAll('.python div');
+            isTurning = false;
+            var food = document.querySelector('.food');
+            if (food && check_collision(tail[0], food)) {
+                eat();
+            }
+
+            for (var i = 1; i < tail.length; i++) {
+                if (check_collision(tail[i], tail[0])) {
+                    alert('死球了');
+                    location.reload();
+                }
+            }
+            var currentX = tail[0].offsetLeft;
+            var currentY = tail[0].offsetTop;
+            for (var i = tail.length - 1; i > 0; i--) {
+                tail[i].style.left = tail[i - 1].style.left
+                tail[i].style.top = tail[i - 1].style.top
+            }
+
+            tail[0].style.left = currentX + speedX + 'px';
+            tail[0].style.top = currentY + speedY + 'px';
+
+
+        }, interval)
+    }
+
+    function createFood() {
+        var type = ['food', 'shit'];
+        var x = Math.floor(Math.random() * (window.innerWidth - 30))
+        var y = Math.floor(Math.random() * (window.innerHeight - 30))
+        x = x - x % 30;
+        y = y - y % 30;
+        var food = document.createElement('div');
+        food.className = 'food';
+        food.style.left = x + 'px';
+        food.style.top = y + 'px';
+        //xxx.dataset.yyy设定之后，会跟标签上的属性data-yyy同步设定
+        food.dataset.type = type[Math.floor(Math.random() * type.length)];
+        document.body.appendChild(food);
+    }
+
+    function check_collision(el1, el2) {
+        if (el1.offsetLeft === el2.offsetLeft &&
+                el1.offsetTop === el2.offsetTop) {
+            return true;
+        }
+
+        return false;
+    }
+
+    function eat() {
+        var food = document.querySelector('.food');
+        var body = document.querySelector('.python');
+        food.className = 'tail';
+        body.appendChild(food);
+        if (food.dataset.type === 'shit') {
+            interval /= 2;
+            move();
+        }
+        createFood();
+    }
+
+    createFood();
+    move();
+
+    function init() {
+        var block = document.querySelectorAll('.python div');
+        var left = 0;
+        for (var i = block.length - 1; i >= 0; i--) {
+            block[i].style.left = left + 'px';
+            left += 30;
+        }
+    }
+
+    init();
+    //监听键盘事件
+    var KEY_CODE = {
+        LEFT: 37,
+        UP: 38,
+        RIGHT: 39,
+        DOWN: 40
+    }
+
+    var dir = KEY_CODE.RIGHT;
+    var isTurning = false;
+
+    window.onkeydown = function (evt) {
+        //window的键盘事件
+        var e = evt || window.event;
+        // console.log(e.keyCode);
+        if (Math.abs(dir - e.keyCode) === 2) {
+            //按键与蛇移动方向相反
+            return;
+        }
+        if (!isTurning) {
+            isTurning = true;
+        } else {
+            return;
+        }
+
+        switch (e.keyCode) {
+            case KEY_CODE.LEFT:
+                speedX = -speed;
+                speedY = 0;
+                dir = KEY_CODE.LEFT;
+                break;
+            case KEY_CODE.UP:
+                speedX = 0;
+                speedY = -speed;
+                dir = KEY_CODE.UP;
+                break;
+            case KEY_CODE.RIGHT:
+                speedX = speed;
+                speedY = 0;
+                dir = KEY_CODE.RIGHT;
+                break;
+            case KEY_CODE.DOWN:
+                speedX = 0;
+                speedY = speed;
+                dir = KEY_CODE.DOWN;
+                break;
+            default:
+                break;
+        }
+    }
+</script>
+</body>
+</html>

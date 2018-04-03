@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	</style>
+</head>
+<body>
+	<input id="input1" type="text">
+	<div>
+		<input type="checkbox" value="html">html<br>
+		<input type="checkbox" value="css">css<br>
+		<input type="checkbox" value="js">js<br>
+		<input type="checkbox" value="jquery">jquery<br>
+	</div>
+	<script>
+
+	//getElementById getElementsByTagName  getElementsByClassName
+
+	//CSS的方式来获取元素
+	//document.querySelector('#input1')
+	//document.querySelectorAll('ul li')	
+
+	var input1 = document.getElementById('input1');
+	var cb = document.querySelectorAll('input[type="checkbox"]');	
+
+	for(var i=0;i<cb.length;i++){
+		cb[i].onclick = function(){
+			//console.log( this.checked );
+			if(this.checked){
+				input1.value += (input1.value ? ',' : '') + this.value;
+			}
+			else{
+				var arrVal = input1.value.split(',');
+				var index = arrVal.indexOf(this.value);
+				arrVal.splice(index,1);
+				input1.value = arrVal;
+			}
+		};
+	}
+
+
+	</script>
+</body>
+</html>

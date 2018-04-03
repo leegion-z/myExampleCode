@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	// 类式继承：
+	// 	属性继承：父类.call()  :  属性是继承的，但是不共享
+	// 	方法继承：用空函数作为中转函数进行继承
+		
+		
+	
+
+	function Foo(name,age){    //父类
+		this.list = [1,2,3];
+		this.name = name;
+		this.age = age;
+	}	
+	Foo.prototype.showName = function(){
+		return this.name;
+	};
+
+	function Bar(name,age,job){           //子类
+		Foo.call(this,name,age);
+		this.job = job;
+	}
+
+	var F = function(){};
+	F.prototype = Foo.prototype;
+	Bar.prototype = new F();
+	Bar.prototype.constructor = Bar;
+	
+	
+
+	//var f1 = new Foo('xiaoming','20');
+
+	var b1 = new Bar('xiaobai','22','it');
+
+	//b1.list.push(4);
+
+	//console.log( b1.list );
+	console.log( b1.showName );
+
+	//var b2 = new Bar();
+	//console.log( b2.list );
+
+
+
+	</script>
+</body>
+</html>

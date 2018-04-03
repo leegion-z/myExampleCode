@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{ width: 100px; height: 100px; background: red; position: absolute; left: 0; }
+	</style>
+</head>
+<body>
+	<input id="btn" type="button" value="开始">
+	<div id="div1"></div>
+	<script src="move2.js"></script>
+	<script>
+
+
+	var btn = document.getElementById('btn');
+	var div1 = document.getElementById('div1');
+	
+	btn.onclick = function(){
+		
+		move(div1,{ width:300 ,height:300},1000,'bounceOut');
+		
+	};	
+
+	
+
+	</script>
+</body>
+</html>

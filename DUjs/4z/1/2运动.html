@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{ width: 100px; height: 100px; background: red; position: absolute; left: 0; transition:10s; }
+	</style>
+</head>
+<body>
+	<input id="btn" type="button" value="开始">
+	<div id="div1"></div>
+	<script>
+
+	var btn = document.getElementById('btn');
+	var div1 = document.getElementById('div1');
+	
+	btn.onclick = function(){
+		
+		div1.style.left = '501px';
+		
+	};	
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{ width: 30px; height: 300px; background:#ccc; position: relative; float:left; }
+	#div2{ width: 30px; height: 60px; background: red; position: absolute; top: 0; left: 0; }
+	#div3{ width: 300px; height: 250px; border: 1px black solid; float:left; margin-left: 50px; position: relative; overflow: hidden; }
+	#div4{ position: absolute; top: 0; }
+	</style>
+</head>
+<body>
+	<div id="div1">
+		<div id="div2"></div>
+	</div>
+	<div id="div3">
+		<div id="div4">
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+			赣州城区一民宅发生火灾 疑因手机充电所致 ...
+		</div>
+	</div>
+	<script>
+
+	//找起始对起始，结束对结束的需求时：一般去找一个比例值（0到1）
+
+	var div1 = document.getElementById('div1');
+	var div2 = document.getElementById('div2');
+	var div3 = document.getElementById('div3');
+	var div4 = document.getElementById('div4');
+
+	var disY = 0;
+	var scrollT = 0;
+
+	div2.onmousedown = function(ev){
+		var This = this;
+		disY = ev.pageY - this.offsetTop;
+		document.onmousemove = function(ev){
+
+			var T = ev.pageY - disY;
+
+			if(T<0){
+				T = 0;
+			}
+			else if(T > div1.offsetHeight - div2.offsetHeight){
+				T = div1.offsetHeight - div2.offsetHeight;
+			}
+
+			This.style.top = T + 'px';
+
+			var scale = T / (div1.offsetHeight - div2.offsetHeight);
+
+			//document.title = scale;
+
+			div4.style.top = - scale * (div4.offsetHeight - div3.offsetHeight) + 'px';
+
+		};
+		document.onmouseup = function(){
+			document.onmousemove = null;
+			document.onmouseup = null;
+		};
+		return false;
+	};	
+
+	div4.onmousewheel = function(ev){
+		if(ev.wheelDelta < 0){
+			scrollT = div2.offsetTop + 10;
+		}
+		else{
+			scrollT = div2.offsetTop - 10;
+		}
+
+		if(scrollT < 0){
+			scrollT = 0;
+		}
+		else if(scrollT > div1.offsetHeight - div2.offsetHeight){
+			scrollT = div1.offsetHeight - div2.offsetHeight;
+		}
+
+		div2.style.top = scrollT + 'px';
+		var scale = scrollT / (div1.offsetHeight - div2.offsetHeight);
+		div4.style.top = - scale * (div4.offsetHeight - div3.offsetHeight) + 'px';
+	};
+
+	</script>
+</body>
+</html>

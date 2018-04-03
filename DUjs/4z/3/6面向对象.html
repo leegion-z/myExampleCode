@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{ width: 100px; height: 100px; background: red; position: absolute; }
+	#div2{ width: 100px; height: 100px; background: blue; position: absolute; }
+	</style>
+</head>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+	<script>
+
+	//尽量让面向对象中的this指向对象
+
+	function Drag(id){      //父类
+		this.elem = document.getElementById(id);
+		this.disX = 0;
+		this.disY = 0;
+	}
+	Drag.prototype.init = function(){  //初始化
+		this.elem.onmousedown = this.down.bind(this);
+	};	
+	Drag.prototype.down = function(ev){  //按下操作
+		this.disX = ev.pageX - this.elem.offsetLeft;
+		this.disY = ev.pageY - this.elem.offsetTop;
+		document.onmousemove = this.move.bind(this);
+		document.onmouseup = this.up;
+		return false;
+	};
+	Drag.prototype.move = function(ev){   //移动操作
+		this.elem.style.left = ev.pageX - this.disX + 'px';
+		this.elem.style.top = ev.pageY - this.disY + 'px';
+	};
+	Drag.prototype.up = function(){    //抬起操作
+		document.onmousemove = null;
+		document.onmouseup = null;
+	};
+
+	function DragRange(id){       //子类
+		Drag.call(this,id);
+	}
+
+	var F = function(){};
+	F.prototype = Drag.prototype;
+	DragRange.prototype = new F();
+	DragRange.prototype.constructor = DragRange;
+
+	DragRange.prototype.move = function(ev){   //多态性的体现
+		var L = ev.pageX - this.disX;
+		var T = ev.pageY - this.disY;
+		if(L<0){
+			L = 0;
+		}
+		else if(L>window.innerWidth - this.elem.offsetWidth){
+			L = window.innerWidth - this.elem.offsetWidth;
+		}
+		if(T<0){
+			T = 0;
+		}
+		else if(T>window.innerHeight - this.elem.offsetHeight){
+			T = window.innerHeight - this.elem.offsetHeight;
+		}
+		this.elem.style.left = L + 'px';
+		this.elem.style.top = T + 'px';
+	};
+
+	var d1 = new Drag('div1');
+	d1.init();
+
+	var d2 = new DragRange('div2');
+	d2.init();
+
+	</script>
+</body>
+</html>

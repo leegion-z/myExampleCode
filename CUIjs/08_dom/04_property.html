@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		ul {
+			min-height: 20px;
+			background-color: deeppink;
+			min-width: 20px;
+			height: 300px;
+		}
+	</style>
+</head>
+<body>
+	<ul id="aaa" class="bbb">
+		<li>1
+			<a href="">
+				<img src="">
+			</a>
+		</li>
+		<li>2
+			<a href="">
+				<img src="">
+			</a>
+		</li>
+		<li>3
+			<a href="">
+				<img src="">
+			</a>
+		</li>
+		<li>4
+			<a href="">
+				<img src="">
+			</a>
+		</li>
+	</ul>
+	<input type="button" name="" value="清空ul">
+	<input type="button" name="" value="删除ul">
+	<script type="text/javascript">
+		//innerHTML:元素两个尖角号中间夹的所有内容(单标签没有innerHTML)
+		var ul1 = document.querySelector('ul');
+		// console.log(document.querySelector('ul').innerHTML);
+
+		//outerHTML:innerHTML+元素本身 (单标签也有)
+		// console.log(document.querySelector('ul').outerHTML);
+		console.log(document.querySelector('input').outerHTML);
+
+		document.querySelector('input').onclick = function () {
+			ul1.innerHTML = '';
+		}
+
+		document.querySelector('input:nth-of-type(2)').onclick = function () {
+			ul1.outerHTML = '';
+		}
+
+		// alert(ul1.tagName);
+		// alert(ul1.id);
+		// alert(ul1.className);
+		//ul1.style ===>	
+		//1. 这个属性能读能取
+		//2. 只能取得/设定行内样式（如果元素没有初始行内样式，我们就取这个属性值，得到的会是空字符串）
+		// alert(ul1.style.height);
+		ul1.style.color = '#eeeeee';
+		ul1.style.bacgroundColor = '#aaaaaa';
+		ul1.style['background-color'] = '#aaaa';
+
+	</script>
+</body>
+</html>

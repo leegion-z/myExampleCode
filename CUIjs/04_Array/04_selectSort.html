@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//选择排序
+		function selectSort(array) {
+			//5个元素,循环4次
+			//length个元素，循环length-1次
+			//0~length-1 是 length 次
+			//
+			var temp;
+			for(var i=0; i<array.length-1; i++) {
+				for(var j=i+1; j<array.length; j++) {
+					if(array[i] > array[j]) {
+						//交换i和j对应的元素
+						temp = array[i];
+						array[i] = array[j];
+						array[j] = temp;
+					}
+				}
+			}
+
+		}
+		var numbers = [2, 0, 1, 7, 10, 26, 0]
+		selectSort(numbers);
+		alert(numbers);
+	</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- <div id="div1">aaaaaa</div> -->
+	<div id="box1">aaaa
+		<div id="box2">bbbb
+			<div id="box3">cccc</div>
+		</div>
+	</div>
+	<script>
+
+	//绑定事件与普通事件的区别
+		//1. 绑定事件 : 事件是不加on的
+		//2. 绑定事件 : 相同的事件操作是不会覆盖的
+		//3. 绑定事件 : 可以选择捕获还是冒泡，默认是冒泡阶段
+				//第三个参数：就是可选的阶段，默认 : false(冒泡) true(捕获)
+
+	//var div1 = document.getElementById('div1');
+
+	/*div1.onclick = function(){
+		alert(1);
+	};
+	div1.onclick = function(){
+		alert(2);
+	};*/
+
+
+	/*div1.addEventListener('click', function(){
+		alert(1);
+	});
+	div1.addEventListener('click', function(){
+		alert(2);
+	});
+*/
+	var box3 = document.getElementById('box3');
+	var box2 = document.getElementById('box2');
+	var box1 = document.getElementById('box1');
+
+
+	box1.addEventListener('click', function(){
+		alert(1);
+	},true);
+	box2.addEventListener('click', function(){
+		alert(2);
+	},true);
+	box3.addEventListener('click', function(){
+		alert(3);
+	},true);
+
+
+
+	</script>
+</body>
+</html>

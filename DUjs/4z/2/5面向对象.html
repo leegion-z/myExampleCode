@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	/*function CreatePerson(name){
+		this.name = name;
+		this.showName = function(){
+			console.log(this.name);
+		};
+	}
+
+	var p1 = new CreatePerson('小明');
+	var p2 = new CreatePerson('小白');
+	var p3 = new CreatePerson('小红');
+	p1.showName();
+	p2.showName();
+	p3.showName();*/
+
+	function CreatePerson(name){
+		this.name = name;
+		this.showName = function(){
+			console.log(this.name);
+		};
+	}
+
+	var p1 = new CreatePerson('小明');
+	var p2 = new CreatePerson('小白');
+
+	//console.log( p1.showName == p2.showName );     // false
+
+	//console.log( function(){} == function(){} );   // false
+
+
+	//基本类型：字符串、数字、布尔值
+	//特殊类型：null、undefined
+	//复合类型：对象
+
+	//比较的时候：
+		//基本类型：比较的时候，只要值相等，结果就相等。
+		//对象类型：比较的时候，不仅值相等，并且引用也要相同才能相等。
+
+	//var a = 5;
+	//var b = 5;
+	//console.log( a == b );   //true
+
+	//var a = {};
+	//var b = {};
+	//var a = [];
+	//var b = [];
+	//console.log(a == b);    //false
+
+	//var a = [];
+	//var b = a;
+	//console.log(a == b);     //true
+
+	//赋值的时候：
+		//基本类型：只会把值赋值给另一个变量
+		//对象类型：不仅把值进行赋值，而且把引用地址也进行赋值。所以说两个引用的对象改变任何一个的对象，都会影响到另外的一个对象。
+
+	/*var a = 5;
+	var b = a;
+	b += 3;
+	console.log(a);   //5*/
+
+	/*var a = [1,2,3];
+	var b = a;
+	b.push(4);
+	console.log(a);  //[1, 2, 3, 4]*/
+
+
+	/*var a = [1,2,3];
+	var b = a;
+	b = [1,2,3,4];    //重新赋值
+	console.log(a);   // [1, 2, 3]*/
+
+
+	/*var a = 5;
+	
+	function foo(a){
+		a += 3;
+	}
+
+	foo(a);
+
+	console.log(a);  //5*/
+
+	var a = [1,2,3];
+	
+	function foo(a){
+		//a.push(4);
+		a = [1,2,3,4];
+	}
+
+	foo(a);
+
+	console.log(a);
+
+	</script>
+</body>
+</html>

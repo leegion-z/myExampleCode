@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style type="text/css" media="screen">
+	button{
+		position: relative;
+		top:20px;
+		left:50px;
+	}
+	div{width:200px;height:30px;background-color: #ff0;margin-top: 10px;}
+</style>
+<body>
+        <!--    <div class="box">歌曲1</div>
+          <button id="btn">全选</button> -->
+
+		
+            <h1>请选择歌曲</h1>
+            <input type="checkbox"  >歌曲1<br><br>
+            <input type="checkbox"  >歌曲2<br><br>
+            <input type="checkbox"  >歌曲3<br><br>
+            <input type="checkbox"  >歌曲4<br><br>
+            <input type="checkbox"  >歌曲5<br><br>
+            <input type="checkbox"  >歌曲6<br><br>
+            <input type="button" value="全选" onclick="checkall();">
+            <input type="button" value="全不选" onclick="clearall();">
+     
+
+ <script type="text/javascript">
+            function checkall(){
+                var sings = document.getElementsByTagName('input');
+                for( var i = 0; i< sings.length; i++){
+                    if(sings[i].type=='checkbox'){
+                        sings[i].checked='checked';
+                    }
+
+                }
+            }//第一个函数用于全选
+            function clearall(){
+                var sings = document.getElementsByTagName('input');
+                for( var i = 0;i<sings.length;i++){
+                    if(sings[i].type=='checkbox'){
+                        sings[i].checked=false;
+                    }
+                }
+            }//第二个函数用于全不选
+         
+        </script>
+</body>
+</html>

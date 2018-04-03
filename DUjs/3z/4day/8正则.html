@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	// 正则 : () : 1.分组 1+1*2 (1+1)*2
+	// 			2.子项 : 整体匹配类似父节点，局部匹配类似子节点
+	//match(正则中不加g标识的时候，可以看到子项) replace
+
+	//var str = 'abcd';
+
+	//var re = /a(b)(c)/;
+
+	//console.log( str.match(re) );  //结果：第一项是整体，第二项开始为子项
+
+
+	// var str = '2018/1/5jdkfk/df';    // 2018_1_5jdkfk/df
+	// var re = /(\d+)(\/)/g;
+
+	// var result = str.replace(re,function(arg0,arg1,arg2){
+	// 	return arg1 + '_';  
+	// });
+
+	// console.log(result);
+
+
+	//任意字符 : []
+
+	//var str = 'abdc';
+	//var re = /a[bde]c/;
+
+	//var re = /a(b|d|e)c/;
+
+	//范围：a-z  A-Z  0-9
+	//范围组合：[a-z0-9]
+	//var str = 'a8c';
+	//var re = /a[\d]c/;
+	//console.log( re.test(str) );
+
+	//排除 ^
+	//var str = 'abc';
+	//var re = /a[^\d]c/;
+
+	// var str = '<div class="box">你好</div><p id="p1">ppppppp</p>';
+
+	// var re = /<[^>]+>/g;        //你好ppppppp
+
+	// var result = str.replace(re,'');
+
+	// console.log(result);
+
+
+	//点 ：任意字符
+	//匹配真正的点 : \.
+
+	//var str = 'adc';
+	//var re = /a.c/;
+
+
+	//\1    重复子项 : 跟第一个子项是相同的内容
+
+	//var str = 'abcd';
+	//var re = /a(b)(c)(d)\3/;    //abcdd
+
+	//var str = 'ddhjdskwwhdahhsd';  //[dd,ww,hh]
+	//var re = /(\w)\1/g;
+	//console.log( str.match(re) );
+
+	//练习：
+
+	var str = '<div id="div1">ddddd</div>';    //√
+	var str = '<p class="p1">ddddd</p>';       //√
+	var str = '<div class="p1">ddddd</p>';     //×
+	var str = '<div class="p1">ddddd';         //×
+
+	var re = //;
+
+
+
+	</script>
+</body>
+</html>

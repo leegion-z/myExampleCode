@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	// 拷贝继承：
+	// 	属性继承：父类.call()
+	// 	方法继承：for in 父类的原型对象
+		
+
+	function Foo(name,age){    //父类
+		this.name = name;
+		this.age = age;
+	}	
+	Foo.prototype.showName = function(){
+		return this.name;
+	};
+
+	function Bar(name,age,job){           //子类
+		Foo.call(this,name,age);      //父类中属性的继承
+		this.job = job;
+	}
+	Bar.prototype = deepCopy(Foo.prototype);
+
+	Bar.prototype.showJob = function(){
+		return this.job;
+	};
+
+	var f1 = new Foo('xiaoming','20');
+
+	var b1 = new Bar('xiaobai','22','it');
+
+	//console.log( b1.name );
+	//console.log( b1.showName() );
+
+	console.log( b1.showJob );
+
+
+
+	function deepCopy(obj){   //深拷贝
+		var result = {};
+		for(var attr in obj){
+			if(typeof obj[attr] == 'object'){
+				result[attr] = deepCopy( obj[attr] );
+			}
+			else{
+				result[attr] = obj[attr]; 
+			}
+			
+		}
+		return result;
+	}
+
+	</script>
+</body>
+</html>

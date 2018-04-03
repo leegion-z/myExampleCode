@@ -1,0 +1,11 @@
+$countPerPage:20;
+$designWidth:640px;
+
+@function px2Rem($px) {
+  //width*countPerPage/designWidth
+  @return $px * $countPerPage / $designWidth * 1rem;
+}
+
+div {
+  width: px2Rem(100px);
+}

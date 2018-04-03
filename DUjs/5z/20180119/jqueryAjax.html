@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script src="jquery-3.2.1.js"></script>
+	<script>
+
+	// $.ajax({
+	// 	url : 'jqueryAjax.php',
+	// 	type : 'GET',
+	// 	//data : 'age=20&password=123',
+	// 	data : { age : 20 , password : 123 },
+	// 	dataType : 'json',
+	// 	async : true,
+	// 	success : function(data){
+	// 		console.log(data);
+	// 	},
+	// 	error : function(err){
+	// 		console.log(err);
+	// 	}
+	// });
+	//console.log(123123);	
+
+	//$.get()    $().get()
+	//$.post()
+
+	// 地址、输出给后台的数据、成功的回调、dataType
+	//$.get('jqueryAjax.php',{age:20},function(){},'json');
+	//$.post('jqueryAjax.php',{age:20},function(){},'json');
+
+	//jsonp : getJSON()
+
+	$.getJSON('https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=15011112222&callback=?',function(data){
+		console.log(data);
+	});
+	
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	//Math.random() : 0 ~ 1
+	
+	/*一等奖 : 1%
+	二等奖 : 5%
+	三等奖 : 94%*/
+
+for(var i=0;i<1000;i++){
+
+	var num = Math.random();
+
+	if(num <= 0.01){
+		console.log('一等奖');
+	}
+	else if( num > 0.01 && num <= 0.06 ){
+		console.log('二等奖');
+	}
+	else{
+		console.log('三等奖');
+	}
+
+}
+
+	
+
+	</script>
+</body>
+</html>

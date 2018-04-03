@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//1. 10级台阶，每次登1级或2级，
+		//问，多少种组合(例如：2,2,2,2,2)
+		//F(10) = F(9) + F(8)
+		//F(9)  = F(8) + F(7)
+		//......
+		//F(2) = 2;
+		//F(1) = 1;
+		//作业1：下面算法，重复计算了很多次(见思维导图)
+		//如果能够避免重复计算(浪费时间)
+
+		function step (n) {
+			if(n === 1) {
+				return 1;
+			}
+			if(n === 2) {
+				return 2;
+			}
+			return step(n-1) + step(n-2);
+		}
+		// alert(step(10));
+	</script>
+</body>
+</html>

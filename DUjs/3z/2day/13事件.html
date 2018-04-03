@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	div{ width: 50px; height: 50px; background: red; position: absolute; }
+	div:nth-of-type(1){ background:blue; }
+	</style>
+</head>
+<body>
+	<div>0</div>
+	<div>1</div>
+	<div>2</div>
+	<div>3</div>
+	<div>4</div>
+	<div>5</div>
+	<script>
+
+	var divs = document.getElementsByTagName('div');
+	var step = 52;
+
+	for(var i=0;i<divs.length;i++){
+		divs[i].style.left = step * (divs.length - i) + 'px';
+	}	
+
+	document.onkeydown = function(ev){
+		switch(ev.keyCode){
+			case 37:
+				run();
+				divs[0].style.left = divs[0].offsetLeft - step + 'px';
+			break;
+			case 38:
+				run();
+				divs[0].style.top = divs[0].offsetTop - step + 'px';
+			break;
+			case 39:
+				run();
+				divs[0].style.left = divs[0].offsetLeft + step + 'px';
+			break;
+			case 40:
+				run();
+				divs[0].style.top = divs[0].offsetTop + step + 'px';
+			break;
+		}
+	};
+
+	function run(){
+		for(var i=divs.length-1;i>0;i--){
+			divs[i].style.left = divs[i-1].offsetLeft + 'px';
+			divs[i].style.top = divs[i-1].offsetTop + 'px';
+		}
+	}
+
+	</script>
+</body>
+</html>

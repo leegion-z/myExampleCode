@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    body {
+        background-color: #000;
+    }
+
+    img {
+        margin: 0 auto;
+        display: block;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        height: 60px;
+        text-align: center;
+    }
+
+    li {
+        display: inline-block;
+        color: #fff;
+        margin: 0 20px;
+        padding-bottom: 4px;
+        border-bottom: 2px solid #fff;
+        cursor: pointer;
+    }
+
+    li:nth-of-type(1) {
+        border-bottom-color: red;
+    }
+
+    li:nth-of-type(2) {
+        border-bottom-color: blue;
+    }
+
+    li:nth-of-type(3) {
+        border-bottom-color: yellow;
+    }
+
+    li:nth-of-type(4) {
+        border-bottom-color: green;
+    }
+
+    li:nth-of-type(5) {
+        border-bottom-color: #fff;
+    }
+
+    li:nth-of-type(6) {
+        border-bottom-color: #f40;
+    }
+
+    .inp {
+        width: 200px;
+        height: 100px;
+        margin: 20px auto 0;
+        color: #fff;
+    }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li id="li_2">normal</li>
+        <li id="li_3">gray</li>
+        <li id="li_4">sepia</li>
+        <li id="li_5">rotate</li>
+        <li id="li_6">blur</li>
+        <li id="li_7">invert</li>
+    </ul>
+    <img src="http://www.jq22.com/demo/jQueryLbt201711052222/images2/a4.jpg" alt="" class="all">
+    <div class="inp">
+        饱和度：
+        <input type="range" id="one" max="100" min="0" value="0"> 亮&nbsp;&nbsp;&nbsp;度：
+        <input type="range" id="two" max="100" min="0" value="0"> 对比度：
+        <input type="range" id="three" max="100" min="0" value="0">
+    </div>
+    <script>
+    var imgs = document.querySelector('img')
+    var one = document.querySelector('#one')
+    var two = document.querySelector('#two')
+    var three = document.querySelector('#three')
+    document.querySelector('#li_2').onclick = function() {
+        imgs.style.filter = 'none'//正常
+    }
+    document.querySelector('#li_3').onclick = function() {
+        imgs.style.filter = 'grayscale(100%)'//将图像转换为灰度图像。值定义转换的比例。
+    }
+    document.querySelector('#li_4').onclick = function() {
+        imgs.style.filter = 'sepia(1)'//将图像转换为深褐色。
+    }
+    document.querySelector('#li_5').onclick = function() {
+        imgs.style.filter = 'hue-rotate(90deg)'//给图像应用色相旋转。
+    }
+    document.querySelector('#li_6').onclick = function() {
+        imgs.style.filter = 'blur(10px)'//  给图像设置高斯模糊
+    }
+    document.querySelector('#li_7').onclick = function() {
+        imgs.style.filter = 'invert(100)'//反转输入图像。
+    }
+    one.oninput = function() {
+        imgs.style.filter = 'saturate(' + this.value / 10 + ')';
+        // document.querySelector('oneVal').innerHTML = one.value
+    }
+    two.oninput = function() {
+        imgs.style.filter = 'brightness(' + this.value / 10 + ')';
+    }
+    three.oninput = function() {
+        imgs.style.filter = 'contrast(' + this.value / 10 + ')';
+    }
+
+// css3 filter属性
+// grayscale灰度
+// sepia褐色（求专业指点翻译）
+// saturate饱和度
+// hue-rotate色相旋转
+// invert反色
+// opacity透明度
+// brightness亮度
+// contrast对比度
+// blur模糊
+// drop-shadow阴影
+
+
+    </script>
+</body>
+
+</html>
+
+
+
+
+

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{ margin: 0; padding:0; }
+	li{ list-style: none; }
+	#main{ width: 300px; border:1px black solid; border-radius: 5px; margin: 20px auto; }
+	#main ul li{ border-bottom: 1px black solid; }
+	#main .active{ background:red; }
+	</style>
+	<script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+	
+	<div id="main">
+		
+		<div class="header">
+			<input type="text">
+			<button value="m">男</button> 
+			<button value="f">女</button> 
+			<button class="active" value="all">ALL</button>
+		</div>
+	
+		<ul>
+			<!-- <li>
+				<h2>小明</h2>
+				<p>奥斯卡静安寺贷记卡</p>
+			</li>
+			<li>
+				<h2>小明</h2>
+				<p>奥斯卡静安寺贷记卡</p>
+			</li>
+			<li>
+				<h2>小明</h2>
+				<p>奥斯卡静安寺贷记卡</p>
+			</li>
+			<li>
+				<h2>小明</h2>
+				<p>奥斯卡静安寺贷记卡</p>
+			</li> -->
+		</ul>
+
+	</div>
+
+
+	<script>
+
+
+	var personArr = [
+	    { name: '王港', src: 'img/3.png', des: '颈椎不好', sex: 'm' },
+		{ name: '张三', src: 'img/4.png', des: '描述信息2', sex: 'm' },
+		{ name: '李四', src: 'img/5.png', des: '描述信息3', sex: 'm' },
+		{ name: '王麻子', src: 'img/1.png', des: '描述信息4', sex: 'm' },
+		{ name: '阿海', src: 'img/2.png', des: '描述信息5', sex: 'm' },
+	    { name: '刘莹', src: 'img/5.png', des: '我是谁', sex: 'f' },
+	    { name: '王秀莹', src: 'img/4.png', des: '我很好看', sex: 'f' },
+	    { name: '刘金雷', src: 'img/1.png', des: '你没有见过陌生的脸', sex: 'm' },
+	    { name: '刘飞翔', src: 'img/2.png', des: '瓜皮刘', sex: 'm' }
+	];
+	
+	var sex = 'all';
+	var text = '';
+	var $main = $('#main');
+	var $buttons = $main.find('button');
+	var $ul = $main.find('ul');
+	var $input = $main.find('input');
+
+	showList();
+
+	$buttons.click(function(){
+
+		sex = $(this).val().trim();
+
+		$(this).attr('class','active').siblings('button').attr('class','');
+
+		showList();
+
+	});	
+
+	$input.keyup(function(){
+
+		text = $(this).val().trim();
+
+		showList();
+
+	});	
+
+	function showList(){   //显示列表
+
+		var result = filterFn();
+		renderFn(result);
+
+	}
+
+	function filterFn(){   //筛选操作
+
+		var result = personArr;
+
+		if(sex == 'all'){
+			//return result;
+		}
+		else if(sex == 'm' || sex == 'f'){
+			result = result.filter(function(item){
+				return item.sex == sex;
+			});
+		}
+
+		if(text == ''){
+			//return result;
+		}
+		else{
+			result = result.filter(function(item){
+				return item.name.indexOf(text) != -1;
+			});
+		}
+
+		return result;
+	}
+	function renderFn(result){   //渲染操作
+
+		$ul.empty();  //清空所有内容
+
+		for(var i=0;i<result.length;i++){
+			var $li = $('<li><h2>'+result[i].name+'</h2><p>'+result[i].des+'</p></li>');
+			$ul.append($li);
+		}
+
+	}
+
+	</script>
+</body>
+</html>

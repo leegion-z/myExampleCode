@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{ width: 100px; height: 100px; background: red; position: absolute; }
+	</style>
+</head>
+<body>
+	<div id="div1"></div>
+	<script>
+
+	//onkeyup : 键盘抬起
+	//onkeydown : 键盘按下(按下不抬起会连续触发)
+
+	//如果能够得到焦点的元素：输入框、图片。。键盘事件可以直接添加到这些元素上。
+	//没有焦点的元素：div、span、p 。。键盘事件就加给document
+
+	//获取用户按下键盘的哪个按键 : event对象的 键盘键值 keyCode
+
+	//document.onkeydown = function(ev){   
+		//console.log(1);
+		//console.log( ev.keyCode );
+	//};
+
+	/*document.onkeyup = function(){
+		console.log(2);
+	};*/
+
+	var div1 = document.getElementById('div1');
+
+	document.onkeydown = function(ev){
+		switch(ev.keyCode){
+			case 37:
+				div1.style.left = div1.offsetLeft - 10 + 'px';
+			break;
+			case 38:
+				div1.style.top = div1.offsetTop - 10 + 'px';
+			break;
+			case 39:
+				div1.style.left = div1.offsetLeft + 10 + 'px';
+			break;
+			case 40:
+				div1.style.top = div1.offsetTop + 10 + 'px';
+			break;
+		}
+	};
+
+	</script>
+</body>
+</html>

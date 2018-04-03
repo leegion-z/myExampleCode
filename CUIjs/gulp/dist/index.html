@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+    </style>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+<h1>hello world</h1>
+<script type="text/javascript" src="./vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="./js/output.js"></script>
+<script>
+    //项目开发的工作流：
+    // 1. 创建项目路径(src和dist)
+    // 2. 配置gulp
+    //  2.1 src/index.html ===> dist/index.html
+    //  2.2 src/vendor ===> dist/vendor
+    //  2.3 src/html ===> dist/html
+    //  2.4 src/imgs ===> dist/resource/imgs
+    //TODO：  2.5 src/icons ===> dist/resource/sprite
+    //  2.6 src/scss ===> dist/css  (编译)
+    //  2.7 src/js  ===>    dist/js (连接、压缩)
+    //  2.8 定义gulp的文件监听规则
+    //  2.9 自动刷新浏览器
+    $.get('/ec/api/test.php', {}, function (resp) {
+        alert(resp.result);
+        
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+html, body, ul, li, div, p, span, a, img {
+  margin: 0;
+  padding: 0; }
+
+#container .box {
+  padding-left: 10px;
+  padding-top: 10px;
+  float: left; }
+  #container .box img {
+    width: 250px;
+    display: block; }
+
+/*# sourceMappingURL=index.css.map */

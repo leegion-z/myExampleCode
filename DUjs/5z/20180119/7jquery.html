@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+	</style>
+</head>
+<script src="jquery-3.2.1.js"></script>
+<body style="height:2000px;">
+	<button>登陆</button>
+
+	<script>
+
+	// JQ中有两种模式：
+	// 	1. 实例方法：$().html()、$().css()、$().on()  ....
+			//实例方法：只能给jquery创建出来的对象来使用
+	// 	2. 工具方法：$.xxx()、$.yyy()、$.zzz()  ....
+			//工具方法：即可以给jquery创建出来的对象来使用，也可以给原生JS使用。
+
+
+	//$.type()
+	
+	//var arr = /a/;
+
+	//console.log( typeof arr );	
+
+	//console.log( Object.prototype.toString.call(arr) );
+
+	//console.log( $.type(arr) );
+
+
+	//var foo = [1,2,3];
+
+	//console.log( $.isFunction(foo) );
+
+	//console.log( $.isWindow(foo) );
+
+	//console.log( $.isEmptyObject({"name":"hello"}) );
+	//console.log( $.isEmptyObject(foo) );
+
+	//判断是不是对象自变量
+	//console.log( $.isPlainObject(foo) );
+
+
+	/*var a = {
+		//name : "hello"
+		name : {
+			age : 20
+		}
+	};
+
+	//最起码有两个参数：第一个是目标对象，第二开始才是拷贝对象
+	//var b = $.extend({},a);   //默认：浅拷贝
+	var b = $.extend(true,{},a);   //第一个参数：实现深拷贝
+
+	b.name.age = 30;
+
+	console.log(a);*/
+
+	/*$(window).on('click',function(){
+		console.log(this);
+	}.bind(document));*/
+
+
+	$(window).on('click',$.proxy(function(){
+		console.log(this);
+	},document));
+
+	/*getElementsByClassName() 
+	event    window.event
+	target   ev.srcElement
+	firstElementChild    firstChild
+	addEventListener     attachEvent*/
+
+	</script>
+</body>
+</html>

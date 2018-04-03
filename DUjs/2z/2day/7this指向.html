@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="btn">aaaa</div>
+	<ul>
+		<li>1111</li>
+		<li>1111</li>
+		<li>1111</li>
+	</ul>
+	<script>
+
+	// btn.onclick = function(){
+	// 	this
+	// };	
+
+	//this可以用在任意的函数中
+
+	//this在调用的时候才确定是谁，谁去调用就指向谁。(当前所属的这个函数)
+
+	//函数名前面没有任何代码的情况下，那么this就会指向window
+
+	/*function foo(){
+		console.log(this);
+	}
+
+	foo();*/
+
+
+	/*btn.onclick = function(){
+		this
+	};
+	当去点击操作的时候，实际上调用的就是 btn.onclick();*/
+
+	var btn = document.getElementById('btn');
+
+	btn.onclick = function(){
+		console.log(this);
+	};
+
+	// btn.onclick();
+
+	var btn = document.getElementById('btn');
+
+	btn.onclick = function(){
+		console.log(this);   //btn
+		run();
+	};
+
+	function run(){
+		console.log(this);   //window
+	}
+
+	/*var btn = document.getElementById('btn');
+
+	btn.onclick = function(){
+
+		setTimeout(function(){
+
+			console.log(this);
+
+		},1000);
+		setTimeout(function(){
+
+			this.style.background = 'red';
+
+		},1000);
+	};*/
+
+	var li = document.getElementsByTagName('li');
+
+	for(var i=0;i<li.length;i++){
+		li[i].index = i;
+		li[i].onclick = function(){
+
+			var This = this;
+
+			setTimeout(function(){
+
+				This.style.background = 'red';
+				
+			},1000);
+
+		};
+	}
+
+	</script>
+</body>
+</html>

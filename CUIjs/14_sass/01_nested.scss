@@ -1,0 +1,24 @@
+//.container .box .pic img {
+//  width: 100px;
+//}
+
+.container {
+  background: black;
+  .box {
+    width: 200px;
+    height: 100px;
+
+    .pic {
+      border: 2px;
+
+      img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  }
+}
+
+
+
+

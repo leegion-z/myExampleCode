@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//对象：数据与操作的集合
+		var person = {
+			name: 'xiaoM',
+			age: 18,
+			tel: '13888888888',
+			sayHi: function () {
+				alert('hello, I am' + person.name);
+			},
+			flirt: function () {
+				alert('how are you! I am ' + person.name +  ' this is my number:' + person.tel + '. Call me back');
+			},
+			getName: function () {
+				return person.name;
+			}
+		}
+
+		//类：具有某种特性的一群对象共同点的抽象
+		//对象/实例： 是某个类所生产的一个具体的东西
+		//Array、String、RegExp、Date、Object
+		// arr = new Array(); str = new String()
+
+		//JAVAScript对象：
+		//创建对象：
+		var person = {}
+		var person = new Object();
+
+		//JS中，对象创建出来之后，可以动态的添加属性和方法
+		person.name = 'xiaoM'	//因为person之前没有name属性，所以这是添加name
+		person['name'] = 'xiaoL'	//因为之前已经有name属性，所以这个是修改name
+
+		//取得属性
+		// alert(person.name)	//取得name属性
+		// alert(person.age)	//取得age属性，但是age不存在，所以返回undefined
+
+		//对象属性的删除
+		delete person.name 	//删除属性之后，再访问这个属性，返回undefined
+
+		//this指针
+		//1. this通常用在函数中(在函数外，this指向window)
+		// this.alert(this)
+		//2. 在函数定义时，this无法确定自己的指向
+		//3. 只有在函数调用时，才能确定this的指向。
+		//		1. 当函数作为了一个对象的方法被调用(例如：xxx.sayHi(),)此时，this指向方法前面的那个对象(xxx)
+		//		2. 当函数以普通的方式进行调用(sayHi()),此时，this指向window
+
+		var x = 3;
+		var y = 20;
+
+		var point = {
+			x: 5,
+			y:10,
+			print: function () {
+				alert('[point::print]x:' + this.x + ';y:' + this.y);
+				var that = this;
+				//this在不同的函数中，有不同的指向，如果需要在内部函数中使用
+				//外部函数的this，就需要把外部函数的this保存到变量中
+				//外部变量的名字可以随意写，但是，通常情况下，我们使用that或者self
+				function inner() {
+					alert('[point::print::inner]x:' + this.x + ';y:' + this.y);
+					//如果在此处想使用print函数的this指向的对象，我们需要使用that这个变量
+					alert('[point::print::inner]x:' + that.x + ';y:' + that.y);
+
+				}
+
+				inner();
+			}
+		}
+
+		point.print();		//x:5;y:10
+
+		function output () {
+			alert('[global::output]x:' + this.x + ';y:' + this.y);
+		}
+
+		output()			//x:3;y:20
+
+		var print = point.print;
+		print();			//x:3;y:20
+
+		point.output = output;
+		point.output();		//x:5;y:10
+
+		//setTimeout/setInterval中，函数是以普通的形式被调用
+		setTimeout(point.print, 2000);		//x:3;y:20
+
+		// function 
+		
+	</script>
+</body>
+</html>

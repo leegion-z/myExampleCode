@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">添加</button>
+	<ul id="list">
+		<li>11111111</li>
+		<li>11111111</li>
+		<li>11111111</li>
+		<li>11111111</li>
+		<li>11111111</li>
+	</ul>
+	<script>
+
+	/*事件委托也叫事件代理，是一种提高代码性能的手段。主要原理就是利用事件的冒泡特性，把一个元素响应事件（click、keydown......）的函数委托到另一个元素。
+
+	一般来讲，会把一个或者一组元素的事件委托到它的父层或者更外层元素上，真正绑定事件的是外层元素，当事件响应到需要绑定的元素上时，会通过事件冒泡机制从而触发它的外层元素的绑定事件上，然后在外层元素上去执行函数。*/
+
+	// 复杂的委托操作：
+	// 		事件源：event对象下的 event.target（跟this功能类似，区别是不需要关心指向问题，当前操作的是谁那么事件源就是谁）
+
+	//好处：
+	//1. 减少内存消耗
+
+	//2. 动态绑定事件
+
+	var list = document.getElementById('list');
+	var li = document.getElementsByTagName('li');
+	var btn = document.getElementById('btn');
+
+	/*for(var i=0;i<li.length;i++){
+		li[i].onclick = function(){
+			alert(123);
+		};
+	}*/
+
+	/*for(var i=0;i<li.length;i++){
+		li[i].onclick = function(){
+			this.style.background = 'red';
+		};
+	}*/
+
+	/*for(var i=0;i<li.length;i++){
+		li[i].onclick = function(){
+			this.style.background = 'red';
+		};
+	}
+
+	btn.onclick = function(){
+		var newLi = document.createElement('li');
+		newLi.innerHTML = '22222222';
+		list.appendChild(newLi);
+	};*/
+
+
+	/*list.onclick = function(){
+		alert(123);
+	};*/
+
+	/*list.onclick = function(ev){
+		var target = ev.target;
+		if(target.nodeName.toLowerCase() == 'li'){
+			target.style.background = 'red';
+		}
+	};*/
+
+	list.onclick = function(ev){
+		var target = ev.target;
+		if(target.nodeName.toLowerCase() == 'li'){
+			target.style.background = 'red';
+		}
+	};
+
+	btn.onclick = function(){
+		var newLi = document.createElement('li');
+		newLi.innerHTML = '22222222';
+		list.appendChild(newLi);
+	};
+
+	</script>
+</body>
+</html>

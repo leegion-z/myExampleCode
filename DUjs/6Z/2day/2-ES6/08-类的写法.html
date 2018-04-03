@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    
+	<script>
+	/*es6, 定义了一套规则， 让我们通过class关键字创建一个"类",js 模拟的强语言类型的类
+
+		通过这个类来创建对象
+	
+	*/	
+
+		/*创建person 这个类， name 属性， age 属性，
+			say()
+		*/
+
+		
+		// function person(name,age){
+
+		// 	this.name=name;
+		// 	this.age =age;
+		// }
+
+		// person.prototype.say = function(){
+
+		// 	console.log(this.name,'hello');
+		// }
+
+		// person.prototype.walk = function(){
+
+		// 	console.log(this.name,'walk');
+		// }
+
+
+		// var obj1 = new person("kerwin",100);
+
+		// var obj2 = new person("xiaoming",18);
+
+		// //继承这个person类
+		// function chinese(name,age,color){
+		// 	person.call(this,name,age);			
+		// 	this.color= color;
+		// }
+
+		// chinese.prototype = new person();
+
+
+		// var obj3 = new chinese("tiechui",30,"yellow");
+
+
+
+		//class
+
+
+		class person {
+
+			constructor(name,age){
+				//构造器
+				this.name = name;
+				this.age = age;
+			}
+
+			say(){
+				console.log(this.name,'hello');
+			}
+
+			walk(){
+				console.log(this.name,'walk');
+			}
+		}
+
+		var myobj = new person("kerwin",100);
+
+
+		class chinese extends person{
+
+
+			constructor(name,age,color){
+				super(name,age) // super 继承父类的属性
+				this.color= color;
+			}
+
+			// 方法已经继承了
+
+			kongfu(){
+				console.log("kongfu",this.name);
+			}
+
+			say(){
+				console.log(this.name,'您好');
+			}
+		}
+
+		var myobj2 = new chinese("tiechui",30,'yellow');
+
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h2>好友</h2>
+	<ul>
+		<li>111</li>
+		<li>222</li>
+		<li>333</li>
+	</ul>
+	<h2>同学</h2>
+	<ul>
+		<li>aaa</li>
+		<li>bbbb</li>
+		<li>cccc</li>
+	</ul>
+	<h2>家人</h2>
+	<ul>
+		<li>aaa111</li>
+		<li>bbbb222</li>
+		<li>cccc3333</li>
+	</ul>
+<script>
+	//1.整体来实现
+
+	/*var h2 = document.getElementsByTagName('h2');
+	var ul = document.getElementsByTagName('ul');
+
+	for(var i=0;i<h2.length;i++){
+		h2[i].onoff = true;
+		h2[i].index = i;
+		h2[i].onclick = function(){
+			if(this.onoff){
+				ul[this.index].style.display = 'none';
+			}
+			else{
+				ul[this.index].style.display = 'block';	
+			}
+			this.onoff = !this.onoff;
+		};
+	}*/
+
+
+	//2.函数复用来实现
+
+
+	var h2 = document.getElementsByTagName('h2');
+	var ul = document.getElementsByTagName('ul');
+
+
+	for(var i=0;i<h2.length;i++){
+		bindList( h2[i] , ul[i] );
+	}
+	
+
+	function bindList(nowH2 , nowUl){
+		var onoff = true;
+		nowH2.onclick = function(){
+			if(onoff){
+				nowUl.style.display = 'none';
+			}
+			else{
+				nowUl.style.display = 'block';
+			}
+			onoff = !onoff;		
+		};
+	}
+
+</script>
+</body>
+</html>

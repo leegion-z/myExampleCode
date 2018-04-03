@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		table tr td {
+			width: 50px;
+			height: 50px;
+			background-color: chocolate;
+			border-radius: 5px;
+		}
+
+		img {
+			width: 300px;
+		}
+
+		.focus {
+			background-color: hotpink;
+		}
+	</style>
+</head>
+<body>
+	<table id="gallary">
+		<tbody>
+			<tr>
+				<td class="focus"></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+	<img src="./img/0.JPG">
+	<script type="text/javascript">
+		//取到所有td，绑定点击事件
+		var tds = document.querySelectorAll('#gallary td');
+		for(var i=0; i<tds.length; i++) {
+			tds[i].setAttribute('cuijn_index', i);
+			tds[i].onclick = function () {
+				//在循环中如果有事件绑定，在事件绑定函数中，不能直接使用i值。解决方法是将i值保存到某个不变的对象上，通常情况下，保存到对应元素上，比如我们这里的td
+				// alert(i);
+				//在事件处理中，对应触发事件的那个元素，可以通过this找到
+				//也即是说，this指向的是被点击的那个td
+
+				// alert(this.getAttribute('cuijn'));
+				var index = this.getAttribute('cuijn_index');
+				//改变一个图片的路径，
+				//1. 取到图片
+				//2. 改变他的src属性
+				var img = document.querySelector('img');
+				img.src = './img/' + index + '.JPG';
+
+				//设定焦点：清除旧焦点、设定新焦点
+				document.querySelector('.focus').className = '';
+				// tds[index].className = 'focus';
+				this.className = 'focus';
+			}
+		}
+
+		// alert('循环已结束。i=' + i);
+		//点击时，取到被点击的td的索引
+		//根据索引，改变img的src属性
+
+		// var num = [1,2,3];
+		// var newNums = num.map(v=>v*v);
+	</script>
+</body>
+</html>

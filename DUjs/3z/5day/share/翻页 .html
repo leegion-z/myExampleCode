@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#box{ width: 400px; margin: 100px auto;position: relative; overflow: hidden;}
+	#box img{ width: 100% }
+	#bd{ position: absolute;
+		top: 0;
+		right: 0;
+		width: 0px;
+		height: 0px; 
+		transition:all 1s ;
+		/* border-right: 50px solid white;
+		border-bottom: 50px solid rgba(0,0,0,0.3);
+		border-left: 50px solid rgba(0,0,0,0.3);
+		border-top: 50px solid white;
+		
+		border-radius: 0 0 0 4px;
+		box-shadow: 0 1px 1px rgba(0,0,0,0.3),-1px 1px 1px rgba(0,0,0,0.2)   */
+			}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<img id="pic" src="2.jpg" >
+		<div id="bd"></div>
+	</div>
+	<script>
+	var box = document.getElementById('box');
+	var bd = document.getElementById('bd');
+	var pic = document.getElementById('pic');
+	var now = 0;
+	var arr = ['2.jpg','3.jpg','4.jpg','5.jpg']
+	pic.onmouseover = function(){
+		/*bd.style.cssText=`'border-right: 50px solid white;
+		border-bottom: 50px solid rgba(0,0,0,0.3);
+		border-left: 50px solid rgba(0,0,0,0.3);
+		border-top: 50px solid white;
+		border-radius: 0 0 0 4px;
+			}'`*/
+		bd.style.borderRight='50px solid white';
+		bd.style.borderLeft='50px solid rgba(0,0,0,0.3)';
+		bd.style.borderTop='50px solid white';
+		bd.style.borderBottom='50px solid rgba(0,0,0,0.3)';
+		bd.style.borderRadius = '0 0 0 4px';
+	}
+	box.onmouseout = function(){
+		bd.style.border=0
+	}
+	box.onmousedown = function(){
+		bd.style.borderRightWidth='400px';
+		bd.style.borderTopWidth='400px';
+		bd.style.borderColor='white';
+			
+	}
+
+	box.onmouseup = function(){
+		change(1);
+	}
+	function change(n){
+		now +=n;
+		if(now==arr.length){
+			now=0;
+		}
+		pic.src=arr[now];
+	}
+	</script>
+</body>
+</html>

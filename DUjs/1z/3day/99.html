@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+*{ margin: 0; padding:0; }
+span {
+  display: inline-block;
+  text-align: center;
+  line-height: 30px;
+  width: 100px;
+  height: 30px;
+  border: 1px solid blue;
+  border-radius: 5px;
+  background: yellow;
+  color: red;
+}
+</style>
+<body>
+  <div id="boxDiv"></div>
+  <script>
+      var boxDiv=document.getElementById("boxDiv");
+        for(var i=1;i<10;i++){
+            for(var j=1;j<=i;j++){
+                boxDiv.innerHTML+="<span>"+j+'X'+i+'='+j*i+"</span>";
+                }
+            boxDiv.innerHTML+="<br/>";
+            }
+
+  </script>
+</body>
+</html>

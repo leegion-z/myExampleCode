@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.active{ background: red; }
+	#loading{ display: none; }
+	</style>
+</head>
+<body>
+
+	<input type="text" id="suggest">
+	<div id="loading">loading...</div>
+	<ul id="suggestList">
+		
+	</ul>
+	<script>
+
+	//https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=h&json=1&p=3&sid=1438_22534_21107_17001_20930&req=2&csor=1&cb=foo
+	
+	var suggest = document.getElementById('suggest');
+	var suggestList = document.getElementById('suggestList');
+	var suggestListLi = suggestList.getElementsByTagName('li');
+	var iNow = -1;
+
+	//oninput : 当输入框输入的时候，被触发
+	suggest.oninput = function(){
+		
+		var val = this.value.trim();
+		loading.style.display = 'block';
+		suggestList.style.display = 'none';
+		
+		getJSON('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+ val +'&json=1&p=3&sid=1438_22534_21107_17001_20930&req=2&csor=1&cb=foo',function(data){
+			//console.log(data);
+			suggestList.innerHTML = '';
+			loading.style.display = 'none';
+			suggestList.style.display = 'block';
+
+			if(data.status == '0'){
+				var list = data.s;
+				for(var i=0;i<list.length;i++){
+					var li = document.createElement('li');
+					li.innerHTML = list[i];
+					suggestList.appendChild(li);
+				}
+			}
+			else{
+				suggestList.innerHTML = '';
+			}
+
+		});
+
+	};
+
+	suggest.onkeydown = function(ev){
+
+		if(ev.keyCode == '38'){
+
+			if(iNow == -1){
+				iNow = suggestListLi.length;
+			}
+
+			if(iNow == 0){
+				iNow = suggestListLi.length-1;
+			}
+			else{
+				iNow--;	
+			}
+			change();
+
+		}
+		else if(ev.keyCode == '40'){
+
+			if(iNow == suggestListLi.length-1){
+				iNow = 0;
+			}
+			else{
+				iNow++;	
+			}
+			change();
+
+		}
+
+	};
+
+	function change(){
+		for(var i=0;i<suggestListLi.length;i++){
+			suggestListLi[i].className = '';
+		}
+		suggestListLi[iNow].className = 'active';
+		suggest.value = suggestListLi[iNow].innerHTML;
+	}
+
+	
+
+
+	function getJSON(url,cbFn){
+		var script = document.createElement('script');
+		var re = /cb=(\w+)/;
+		url = url.replace( re , function(arg){
+			return arg + String(Math.random()).replace(/\./,'');
+		});
+		var fnName = url.match(re)[1];
+		window[fnName] = cbFn;
+		script.src = url;
+		script.onload = function(){
+			document.body.removeChild(script);
+			delete window[fnName];
+		};
+		document.body.appendChild(script);
+	}
+
+	//http://haoma.baidu.com/query
+	//手机归属地：https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=15011112222&callback=foo
+
+
+	</script>
+</body>
+</html>

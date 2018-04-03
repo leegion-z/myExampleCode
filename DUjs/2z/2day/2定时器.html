@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input id="btn" type="button" value="清除定时器">
+	<script>
+
+	// 定时器：1. 延迟定时器(只会触发一次)   2. 连续定时器。(触发多次)
+	// 	在指定的时间后触发响应的代码。
+
+
+	//延迟定时器 : setTimeout() : 两个参数 ，要触发的函数、时间(毫秒作为单位)
+
+
+	/*setTimeout(function(){   //只会执行一次
+
+		console.log(123);
+
+	},2000);*/
+
+	/*setInterval(function(){   //每隔一段时间就执行一次
+
+		console.log(123);
+
+	},2000);*/
+
+	//定时器是一个异步的操作，所谓异步就是把程序分成两部分，先执行一部分，间隔一段时间去执行另外一部分，并且在两部分之间不影响后面代码的执行。
+
+	//同步跟异步是相反的概念：同步类似于排队，前面代码没有执行完毕，后面的代码是不会执行的。
+
+	setTimeout(function(){  
+
+		console.log(123);
+
+	},2000);
+
+	console.log(456);
+
+	/*setTimeout(function(){  
+
+		console.log(123);
+
+	},0);   //谷歌：16
+
+	console.log(456);*/
+
+	/*for(var i=0;i<5;i++){
+
+		setTimeout(function(){  
+			console.log(i);
+		},0);
+
+	}*/
+
+	//清除定时器：clearTimeout 、 clearInterval
+
+	var btn = document.getElementById('btn');
+
+	btn.onclick = function(){
+		//clearTimeout(timer);
+		clearInterval(timer);
+	};
+
+	var timer = setInterval(function(){
+
+		console.log(123);
+
+	},500);
+
+	/*var timer = setTimeout(function(){
+
+		console.log(123);
+
+	},5000);*/
+
+	/*var timer2 = setTimeout(function(){
+
+		console.log(456);
+
+	},2000);*/
+
+
+	</script>
+</body>
+</html>

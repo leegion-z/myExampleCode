@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		td {
+			width: 100px;
+			height: 30px;
+			background: chocolate;
+		}
+	</style>
+</head>
+<body>
+	<button>走你</button>
+	<!-- <table>
+		<tbody>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table> -->
+
+
+	<script type="text/javascript">
+		//创建三行四列
+		function createTable () {
+			var table = document.createElement('table');
+			document.body.appendChild(table);
+
+			var tbody = document.createElement('tbody');
+			table.appendChild(tbody);
+			var tr, td;
+			for(var i=0; i<3; i++) {
+				tr = document.createElement('tr');
+				for(var j=0; j<4; j++) {
+					td = document.createElement('td');
+					tr.appendChild(td);
+				}
+				tbody.appendChild(tr);
+			}
+
+
+
+		}
+		
+		// document.querySelector('button').onclick = createTable;
+		document.querySelector('button').onclick = function () {
+			// createTable();
+			create9X9Table();
+		};
+
+
+		//9 * 9 乘法表
+		function create9X9Table () {
+			var table = document.createElement('table');
+			document.body.appendChild(table);
+
+			var tbody = document.createElement('tbody');
+			table.appendChild(tbody);
+
+			var tr, td;
+			for(var i=1; i<=9; i++) {
+				tr = document.createElement('tr');
+				for(var j=1; j<=i; j++) {
+					td = document.createElement('td');
+					if(j===3 && i===5) {
+						td.style.background = 'red';
+					}
+					td.innerHTML = j + 'X' + i + '=' + j*i;
+					tr.appendChild(td);
+				}
+				tbody.appendChild(tr)
+			}
+
+		}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text"><input type="button" value="获取验证码">
+
+	<script>
+
+	var aInput = document.getElementsByTagName('input');
+	
+	aInput[1].onclick = function(){
+
+		var num = 6;
+
+		aInput[1].disabled = true;		//按键之后等程序执行完才能进行下一次操作；
+		aInput[1].value = num + 's';	
+
+		var timer = setInterval(function(){
+
+			aInput[1].value = --num + 's';
+
+			if(num == -1){
+				clearInterval(timer);
+				aInput[1].disabled = false;
+				aInput[1].value = '获取验证码';
+			}	
+
+		},1000);
+		
+
+
+	};	
+
+	</script>
+</body>
+</html>

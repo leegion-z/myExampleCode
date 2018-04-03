@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	
+	</style>
+	<script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+	
+	<ul>
+		<li>
+			<ul>
+				<li><div><span>111111<button>X</button></span></div></li>
+				<li><div>222222<button>X</button></div></li>
+				<li>333333<button>X</button></li>
+				<li><div>444444<button>X</button></div></li>
+				<li><div>555555<button>X</button></div></li>
+			</ul>
+		</li>
+	</ul>
+	
+	<div id="div1">aaaaaaa</div>		
+
+	
+	<script>
+
+	// $('button').click(function(){
+	// 	//$(this).parent().hide();
+	// 	//$(this).parent().parent().hide();
+	// 	//$(this).parents('li').hide();
+	// 	$(this).closest('li').hide();
+	// });
+
+	// appendChild()
+	// insertBefore()
+	// removeChild()
+
+	//var $span = $('<span>bbbbbbb</span>');
+
+	//$('div').append( $span );
+	//$('div').prepend( $span );
+
+	//$('div').before( $span );
+	//$('div').after( $span );
+
+	//$('div').append( $span ).css('background','red');
+	//$span.appendTo( $('div') ).css('background','red');
+
+	// remove()会删除元素的所有内容，detach()不会删的那么彻底(会保留事件操作和数据)
+
+	//$('div').remove();
+
+	//$('div').detach();
+
+	/*$('#div1').click(function(){
+		alert(123);
+	});
+
+	$delDiv = $('#div1').detach();
+
+	$('body').append( $delDiv );*/
+
+	$('#div1').click(function(){
+		alert(123);
+	});
+
+	var $cloneDiv = $('#div1').clone(true);
+
+	$('body').append( $cloneDiv );
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    
+
+	<ul>
+		<li>11</li>
+		<li>22</li>
+		<li>33</li>
+		<li>44</li>
+	</ul>
+
+
+	<script>
+
+		/*
+			1.块级作用域的妙用
+
+			2.不能重复定义
+
+			3.在全局定义后，并不会挂载到window对象下
+		*/
+
+		var oli = document.getElementsByTagName("li");
+
+		// for(var i=0;i<oli.length;i++){
+		// 	oli[i].index = i;
+		// 	oli[i].onclick = function(){
+		// 		console.log(this.index);
+		// 	}
+		// }
+
+		for(let i=0;i<oli.length;i++){
+			// oli[i].index = i;
+			oli[i].onclick = function(){
+				console.log(i);
+			}
+		}
+
+		// console.log(i);
+
+
+		// let name = "kerwin";
+		// let name = "xiaoming";
+
+		let myname ="kerwin";
+		console.log(window.myname);
+	</script>
+</body>
+</html>

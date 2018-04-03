@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	//当前页面的网址
+	// console.log( window.location );   //类型对象，里面有很多子项
+	// console.log( window.location.href );  //类型字符串 ，当前对应的网址
+	// console.log( window.location.search ); //网址问号后面的内容 ?name=hello
+	// console.log( window.location.hash );   //网址井号后面的内容  #abc
+
+	// setTimeout(function(){
+
+	// 	//window.location.reload();   //刷新页面
+
+	// },2000);
+
+	// 浏览器信息
+
+	//console.log( window.navigator.userAgent );
+
+	var agent = window.navigator.userAgent;
+	console.log(agent);
+	if(agent.indexOf('Mobile') == -1){
+		console.log('PC端');
+	}
+	else{
+		console.log('移动端');
+	}
+  
+	</script>
+</body>
+</html>

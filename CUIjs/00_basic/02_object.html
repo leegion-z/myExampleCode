@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+
+		//定义一个空对象：
+		//JS中，【=】为赋值操作符，它的作用，是将【=】右边的值，赋值给左边
+		//【=】左边的，叫做左值(left value)，右边的叫做右值(right value)
+
+		var person = {};				//字面量定义对象
+		var person_1 = new Object();	//通过构造函数创建对象
+
+		//向对象上添加一个属性(数据)：
+		//给person的name属性赋值，如果person之前存在name属性，就相当于修改这个属性，否则，就是添加这个属性
+		person.name = 'xiaoMing';
+		// person['name'] = 'xiaoMing';
+
+		person.age = 21;
+		// person['age'] = 21;
+		//因为age已经存在，所以下面是修改age属性
+		person.age = 20;
+		//person['age'] = 20
+
+		//取得一个对象的属性
+		document.write("person.age");
+		document.write('<br>');
+		document.write(person.age);
+		// document.write(person['age']);
+
+		//添加一个方法：TODO
+	</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="div1">aaa</div>
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<script>
+
+	var div1 = document.getElementById('div1');
+	
+	/*div1.ondblclick = function(){   //双击操作
+		console.log(123);
+	};*/
+
+
+	/*div1.onclick = function(){  //在点击行为是最后触发的(抬起之后)，键盘也可以触发onclick(标签必须是可以获取到焦点，按回车键可以触发onclick)
+		console.log(456);
+	};*/
+
+	div1.onmousedown = function(){   //鼠标按下操作
+		console.log(123);
+	};
+
+	div1.onmouseup = function(){   //鼠标抬起操作
+		console.log(789);
+	};
+
+	div1.onmouseover = function(){   //鼠标移入操作
+		console.log('a');
+	};
+	div1.onmouseout = function(){   //鼠标移开操作
+		console.log('b');
+	};
+	
+	div1.onmousemove = function(){   //鼠标移动操作(连续触发)
+		console.log('c');
+	};
+
+
+	</script>
+</body>
+</html>

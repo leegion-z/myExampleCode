@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		td, th {
+			width: 100px;
+			height: 30px;
+			border: 1px solid #cccccc;
+		}
+	</style>
+</head>
+<body>
+	<input type="" name="" id="id" placeholder="ID">
+	<input type="" name="" id="name" placeholder="姓名">
+	<input type="" name="" id="tel" placeholder="电话">
+	<button>保存</button>
+	<table>
+		<thead>
+			<th>ID</th>
+			<th>姓名</th>
+			<th>电话</th>
+			<th>操作</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>吕布</td>
+				<td>13333333333</td>
+				<td><a href="javascript:;">删除</a></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>关羽</td>
+				<td>13388888888</td>
+				<td><a href="javascript:;">删除</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<script type="text/javascript">
+		//
+		document.querySelector('button').onclick = function () {
+			var id = document.querySelector('#id').value;
+			var name = document.querySelector('#name').value;
+			var tel = document.querySelector('#tel').value;
+			var tbody = document.querySelector('tbody');
+
+			var tr = document.createElement('tr');
+			tbody.appendChild(tr);
+
+			var idTd = document.createElement('td');
+			idTd.innerHTML = id;
+			tr.appendChild(idTd);
+
+			var nameTd = document.createElement('td');
+			nameTd.innerHTML = name;
+			tr.appendChild(nameTd);
+
+			var telTd = document.createElement('td');
+			telTd.innerHTML = tel;
+			tr.appendChild(telTd);
+
+			var opTd = document.createElement('td');
+			opTd.innerHTML = '<a href="javascript:;">删除</a>';
+			tr.appendChild(opTd);
+
+			bindDelelte();	//添加新A的时候，重新绑定
+		}
+
+		bindDelelte();	//页面加载时，绑定a的点击事件
+
+		function bindDelelte() {
+			var anchors = document.querySelectorAll('a');
+			for(var i=0; i<anchors.length; i++) {
+				anchors[i].onclick = function () {
+					//删除
+					deleteTr(this.parentNode.parentNode);
+				}
+			}
+
+			function deleteTr(tr) {
+				tr.parentNode.removeChild(tr);
+			}
+		}
+		
+	</script>
+</body>
+</html>

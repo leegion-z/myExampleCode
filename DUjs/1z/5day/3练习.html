@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="div1">aaaa</div>
+	<div id="div2">bbbb</div>
+	<script>
+
+	/*function foo(){
+		
+		var val = arguments[0];
+
+		for(var i=1;i<arguments.length;i++){
+			if( arguments[i] < val ){
+				val = arguments[i];
+			}
+		}
+		return val;
+	}
+
+	console.log( foo(5,8,10,4,123,88,7) );
+	console.log( foo(2,5,7,9) );
+	console.log( foo(548,3489,5,34,12) );*/
+
+	//var div1 = document.getElementById('div1');
+	//var div2 = document.getElementById('div2');
+
+	var div1 = $('div1');
+	var div2 = $('div2');
+
+	console.log( css(div1,'width') );
+	console.log( css(div2,'color') );
+
+	function $(id){      // 简化ID获取
+		return document.getElementById(id);
+	}
+
+	//getComputedStyle()
+	//currentStyle
+
+	function css(elem,props){     //  获取最终样式
+		if(elem.currentStyle){
+			return elem.currentStyle[props];
+		}
+		else{
+			return window.getComputedStyle(elem)[props];
+		}
+	}
+
+	
+
+	</script>
+</body>
+</html>

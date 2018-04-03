@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    
+	<script>
+	/*es6, 定义了一套规则， 让我们通过class关键字创建一个"类",js 模拟的强语言类型的类
+
+		通过这个类来创建对象
+	
+	*/	
+
+		/*创建person 这个类， name 属性， age 属性，
+			say()
+		*/
+
+		class person{
+			constructor(name,age) {
+				
+				this.name =name;
+				this.age =age;
+			}
+
+			say(){
+					console.log("hello");
+			}
+		}
+
+		class chinese  extends person{
+
+			constructor(name,age,color) {
+				
+				super(name,age)
+				this.color = color;
+			}
+
+			say(){
+					console.log("你好");
+
+					super.say();
+			}
+
+			kongfu (){
+				console.log("kongfu")
+			}
+		}
+
+	</script>
+
+</body>
+</html>

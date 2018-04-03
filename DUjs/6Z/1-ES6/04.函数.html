@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    
+	<div id="box"></div>
+	<script>
+		/*
+			1.默认参数值
+			2.解构
+			3.... 剩余参数 ，将多余的参数放入数组中。
+
+			4.箭头函数 var f = v => v;
+				优点
+					(1)写法简洁
+					(2)箭头函数的this是定义时绑定当前作用域，普通函数是运行时绑定。
+				
+				注意	
+					(1)this 指向问题
+
+					(2)不可以作为构造函数
+
+					(3)不可以使用arguments ,使用报错
+
+		
+		*/
+		
+		function test(a="defualt a",b="default b"){
+
+			return a.substring(0,1)+"-"+b.substring(0,1);
+		}
+
+		console.log(test());
+
+		console.log(test("111","222"));
+
+
+		function test2({name,age}){
+			return name+age;
+		}
+
+		test2({name:"kerwin",age:100});
+
+
+
+		function test3([a,...tail]){
+			console.log(a);
+
+			console.log(tail);
+		}
+
+		test3([1,2,3,4,5,6]);
+
+
+		var commontest = function(){
+			console.log("111");
+			return "普通函数返回值";
+		}
+
+		var arrowtest = ()=>{
+			console.log("222");
+
+			return "箭头函数返回值"
+		}
+
+
+		var arr = [1,2,3];
+
+		//普通函数
+		// var arr2= arr.map(function(item){
+		// 	console.log(item)
+		// 	return "<li>"+item+"</li>";
+		// })
+
+
+		//箭头函数
+		
+		var arr2=  arr.map(item=>"<li>"+item+"</li>")
+		
+		var obox  =document.getElementById('box');
+
+		obox.innerHTML= arr2.join('');
+
+
+		setTimeout(()=>{
+
+		}, 1000)
+
+		var name = "global-kerwin";
+
+		var obj  ={
+			name:"kerwin",
+
+			getName:function(){
+				// console.log(this.name);
+				var _this = this; //保存一份this
+				setTimeout(function(){
+					console.log(_this.name);
+				}, 1000)
+			}
+		}
+
+
+		obj.getName();
+
+
+
+
+		var obj2  ={
+			name:"kerwin",
+
+			getName:function(){
+				// console.log(this.name);
+				
+				setTimeout(()=>{
+					console.log(this.name);
+				}, 2000)
+			}
+		}
+
+
+		obj2.getName();
+
+
+
+
+		var obj3 = {
+			name:"xiaoming",
+			getName:()=>{
+				console.log(this.name);
+			}
+		}
+
+		obj3.getName();
+
+
+
+		var test=()=>{
+			console.log("test调用",arguments)
+		}
+
+		test(1,2,3);
+	</script>
+</body>
+</html>

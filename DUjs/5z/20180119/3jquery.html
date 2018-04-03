@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{ width: 100px; height: 100px; background: red; padding:10px; border:1px black solid; margin: 10px; display: none;}
+	</style>
+</head>
+<script src="jquery-3.2.1.js"></script>
+<body style="height:2000px;">
+	<div id="div1"></div>
+	<script>
+
+	//console.log( $('#div1').width() );  // content的大小
+
+	//console.log( $('#div1').innerWidth() );   // content + padding
+
+	//console.log( $('#div1').outerWidth() );     // content + padding + border
+
+	//console.log( $('#div1').outerWidth(true) );  // content + padding + border + margin
+
+	//还可以设置：
+	//$('#div1').width(200);    //width -> 200
+	//$('#div1').innerWidth(200);   //width -> 200 - padding
+	//$('#div1').outerWidth(200);   //width -> 200 - padding - border
+	//$('#div1').outerWidth(200,true);   //width -> 200 - padding - border - margin
+  
+	//console.log( $('#div1').get(0).offsetWidth );
+	//jquery是可以获取到隐藏元素的大小
+	//console.log( $('#div1').width() ); 
+
+	//window.innerWidth ,  document.documentElement.clientWidth
+	//console.log( $(window).width() );
+
+	//document.body.offsetHeight
+	//console.log( $(document).height() );
+
+	//window.pageYOffset  ,  document.documentElement.scrollTop
+	//console.log( $(window).scrollTop() );
+
+	//offsetLeft、offsetTop
+	//function posLeft(){}
+
+	//offset() : 无论当前元素的祖先节点有没有定位，都到浏览器的距离。
+
+	$('#div1').offset().left
+	$('#div1').offset().top
+
+	//position() : 当前元素到有定位的祖先节点的距离。 
+
+	$('#div1').position().left
+	$('#div1').position().top
+
+	</script>
+</body>
+</html>

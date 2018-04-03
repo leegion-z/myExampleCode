@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap-theme.css" />
+	<style>
+		#container {
+			position: absolute;
+			margin-top: 30px;
+			top: 10%;
+			right: 10%;
+		}
+	</style>
+</head>
+<body>
+	<div id="container" class="panel panel-primary" style="padding:20px; width:40%;">
+		<div class="panel-heading">
+			<h3 class="panel-title">登录</h3>
+		</div>
+		<div class="panel-body">
+			<div class="form-group">
+				<label for="user">用户名</label>
+				<input type="text" class="form-control" id="user" placeholder="User">
+			</div>
+			<div class="form-group">
+				<label for="password">密码</label>
+				<input type="password" class="form-control" id="password" placeholder="Password">
+			</div>
+			<div class="button">
+				<button id="login" type="button" class="btn btn-primary">登录</button>
+				<button id="register" type="button" class="btn btn-link">注册</button>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="../vendor/jquery/jquery-3.1.1.js"></script>
+	<script type="text/javascript">
+		$().ready(function () {
+			$('#login').click(function(){
+				$.post('../api/login.php', {
+					username: $('#user').val(),
+					password: $('#password').val()
+				}, function (data) {
+					if (data.ret) {
+						location.href = '../index.html';
+					} else {
+						alert('登录失败');
+					}
+				})
+			})
+			$('#register').click(function(){
+				location.href = 'register.html';
+			})
+		});
+	</script>
+</body>
+</html>

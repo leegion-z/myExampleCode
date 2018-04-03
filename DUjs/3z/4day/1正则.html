@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+//正则表达式，又称规则表达式。(英语：Regular Expression，在代码中常简写为regex、regexp或RE)，计算机科学的一个概念。正则表通常被用来检索、替换那些符合某个模式(规则)的文本。
+
+	var str = 'hsjd123kahs44dlkaj1213sdlkajlkdja789';
+
+	function foo(str){
+		var result = [];
+		var tmp = '';
+		for(var i=0;i<str.length;i++){
+			if(str.charAt(i) >= '0' && str.charAt(i) <= '9'){
+				//result.push(str.charAt(i));
+				tmp += str.charAt(i);
+			}
+			else{
+				if(tmp){
+					result.push(tmp);
+					tmp = '';
+				}
+			}
+		}
+		if(tmp){
+			result.push(tmp);
+			tmp = '';
+		}
+		return result;
+	}
+
+	// function foo(str){
+	// 	return str.match(/\d+/g);
+	// }
+
+	console.log( foo(str) );    //  [123,44,1213,789]
+
+	</script>
+</body>
+</html>

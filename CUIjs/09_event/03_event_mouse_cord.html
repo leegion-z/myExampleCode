@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<div></div>
+	<script type="text/javascript">
+		//
+		document.querySelector('div').onclick = function (evt) {
+			var e = evt || window.event;
+			// e.offsetX	===> 光标相对于div左上角的X坐标
+			// e.pageX		===> 光标相对于页面左上角的x坐标
+			// e.clientX	===> 光标相对于可视区左上角的x坐标
+			// e.screenX	===> 光标相对于屏幕左上角的x坐标
+			// e.ctrlKey为true，说明点击时，按下了ctrl键
+			// e.shiftKey为true，说明点击时，按下了shift键
+			// e.altKey为true，说明点击时，按下了alt键
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<textarea id="t1" cols="30" rows="10"></textarea>
+	<div>
+		<input type="button" value="打印" id="btn">
+		<span id="number"></span>
+	</div>
+	<textarea id="t2" cols="30" rows="10"></textarea>
+	<script>
+
+	//如果substring只写一个参数，那么结束位置默认到最后
+	/*var str = 'hello world';
+	
+	var result = str.substring(0,2);
+
+	console.log(result);	*/
+
+	var btn = document.getElementById('btn');
+	var t1 = document.getElementById('t1');
+	var t2 = document.getElementById('t2');
+	var number = document.getElementById('number');
+
+	btn.onclick = function(){
+
+		var allVal = t1.value;
+		var num = 0;
+		var timer = setInterval(function(){
+			num++;
+
+			var upVal = allVal.substring(num);
+			var downVal = allVal.substring(0,num) + '_';
+
+			t1.value = upVal;
+			t2.value = downVal;
+
+			number.innerHTML = upVal.length+'/'+allVal.length;
+
+			if(upVal.length == 0){
+				clearInterval(timer);
+				t2.value = t2.value.substring(0,t2.value.length);
+				console.log('已停止');
+			}
+
+		},50);
+	};
+
+	</script>
+</body>
+</html>

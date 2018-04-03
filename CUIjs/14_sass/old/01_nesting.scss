@@ -1,0 +1,15 @@
+#container {
+  .box {
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+    .pic {
+      padding: 10px;
+      border: 1px solid #ccc;
+      img {
+        width: 200px;
+      }
+
+    }
+  }
+}

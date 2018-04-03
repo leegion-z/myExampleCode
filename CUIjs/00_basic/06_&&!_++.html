@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//&& || !
+		//1. 有鼻子有眼
+		//2. 女
+		//3. 活
+		var hasNoseAndEye = true;
+		var isFemale = true;
+		var isAlive = false;
+
+		//逻辑与：当两边同时为true，表达式才为true，否则为false
+		var isOk = hasNoseAndEye && isFemale && isAlive;		//false
+		console.log(isOk);
+
+		//逻辑或：当两边同时为false是，表达式为false，否则为true
+		isOk = isAlive || isFemale || hasNoseAndEye;
+		console.log(isOk);
+
+		var isAnimal = false;
+
+		//取反：将后面的表达式取反
+		isOk = !isAnimal;
+		console.log(isOk);
+
+		//自增、自减：自增一次，num增加1，自减一次num减少1
+		var num = 3;
+		console.log(num++);
+		console.log(num);
+
+		//num === 4
+		console.log(num++ + num);
+		//num === 5
+		console.log(num++ + num + ++num + ++num + num++);
+		console.log(num);
+		
+		// num++;
+		
+	</script>
+</body>
+</html>

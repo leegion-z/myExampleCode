@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		// console.log(window);
+		//window是浏览器的一个实例，我们访问页面，都是通过window访问的。
+
+		//JS的全局变量num，sum
+		//只用var定义的全局变量，以及全局的函数，
+		//全部作为了window的属性和方法存在
+
+		var num = 3;
+		function sum (num1, num2) {
+			var num = 5;
+			alert(window.num);
+			return num1 + num2;
+		}
+
+		alert(window.num);
+		alert(window.sum(4,5));
+
+		// window.alert() ===> alert()
+		// window.document ===> document
+		// window.setInterval ===> setInterval
+		// window.console ===> console
+
+
+		
+
+
+
+
+
+	</script>
+</body>
+</html>

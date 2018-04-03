@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//URL:http://www.w3.org:80/TR/html5/browsers.html#the-window-object?name=cuijn
+		//1. http ===> 请求的网络协议， 有两种	(http/https)
+		//2. 服务器地址(www.w3.org)	===>	
+		//	在网络中，唯一标识一个终端的是IP地址，我们如何通过字符串(www.w3.org)取访问一个以IP地址为标识的服务器呢？
+		//	我们通过DNS(域名网络系统)来进行解析。DNS会将域名(www.w3.org)转换成IP地址。
+		//3. :80	===> 	端口号(标识一个终端上的某个应用程序): 80 443
+		// /TR/html5/browsers.html 	===>文件的路径 第一个斜杠，是服务器的根路径，后面的是html所在的文件夹名称
+		//4. #the-window-object ===> Hash地址
+		//5. ?name=cuijn	===> search 发送http的get请求是，所带的参数
+
+//		alert(location.protocol);
+//		alert(location.host);
+//		alert(location.hostname);
+//		alert(location.port);
+//		alert(location.pathname);
+//		alert(location.hash);
+//		alert(location.search);
+		alert(location.href);
+
+		//要以http形式打开页面（必须搭建服务器）
+		//使用webstrom打开html页面，webstorm会创建一个http服务器，我们可以直接以服务器形式打开
+
+		setTimeout(function(){
+			location.href = 'http://www.baidu.com'
+		}, 3000)
+
+		//我们的刷新分为普通刷新(F5)和深度刷新(ctrl+F5)
+		location.reload()		//===>F5
+		location.reload(true)	//===>ctrl+F5
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		<img class="time" src="img/0.png" alt="">
+		<img class="time" src="img/0.png" alt="">
+		<img src="img/second1.png" alt="">
+		<img class="time" src="img/0.png" alt="">
+		<img class="time" src="img/0.png" alt="">
+		<img src="img/second1.png" alt="">
+		<img class="time" src="img/0.png" alt="">
+		<img class="time" src="img/0.png" alt="">
+	</div>
+
+	<script>
+
+	var times = document.getElementsByClassName('time');
+	
+	run();
+	setInterval(run,1000);
+
+	function run(){
+		var date = new Date();
+		var str = toZero(date.getHours()) + toZero(date.getMinutes()) + toZero(date.getSeconds());
+		//console.log(str);
+		for(var i=0;i<times.length;i++){
+			times[i].src = 'img/'+ str.charAt(i) +'.png';
+		}
+	}	
+
+	function toZero(num){
+		if(num<10){
+			return '0' + num;
+		}
+		else{
+			return '' + num;
+		}
+	}
+
+	</script>
+</body>
+</html>

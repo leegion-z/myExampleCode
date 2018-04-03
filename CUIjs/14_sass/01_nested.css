@@ -1,0 +1,16 @@
+.container {
+  background: black;
+}
+.container .box {
+  width: 200px;
+  height: 100px;
+}
+.container .box .pic {
+  border: 2px;
+}
+.container .box .pic img {
+  width: 200px;
+  height: 200px;
+}
+
+/*# sourceMappingURL=01_nested.css.map */

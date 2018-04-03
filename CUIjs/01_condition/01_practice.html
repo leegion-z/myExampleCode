@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		// 判断一个整数，属于哪个范围：大于0；小于0；等于0
+		// var num = 0;
+		// if(num > 0) {
+		// 	console.log('num>0');
+		// } else if(num === 0) {
+		// 	console.log('num===0');
+		// } else {
+		// 	//<0
+		// 	console.log('num<0');
+		// }
+		// 判断一个整数是偶数还是奇数，并输出判断结果
+
+		var num = Math.floor(Math.random() * 201) - 100;
+
+		console.log('num:' + num);
+		
+		if(num % 2 === 0) {
+			console.log('偶数');
+		} else {
+			console.log('奇数');
+		}
+
+		// 开发一款软件，根据公式 (体重-（身高-108）*2) > 10 就说明胖了，<-10说明是瘦了 ，来观察测试者体重是否合适
+		var weight = 180;
+		var height = 200;
+
+		if((weight - (height-108)*2) > 10) {
+			//胖了，减肥
+			console.log('胖了，减肥');
+		} else if (((weight - (height-108)*2) < -10)) {
+			//瘦了，多吃
+			console.log('瘦了，多吃');
+		} else {
+			//正好，保持
+			console.log('正好，保持');
+		}
+
+		// 编写程序， 判断一个变量x的值，如果是1，输出x=1，如果是5，输出x=5，如果是 10，输出x=10，除了以上几个值，都输出x=none
+		var x = Math.floor(Math.random() * 10) + 1;
+
+		console.log('x:' + x);
+		
+		switch(x) {
+			case 1:
+			case 5:
+			case 10:
+				console.log('x=' + x);
+			break;
+			default:
+				console.log('x=none');
+			break;
+		}
+
+
+		/******************************************************/
+		/***********故事***************************************/
+		// linus ===> 多任务的操作系统(模仿的unix) ===> linux
+		// linux ===> redhat
+		// 	  ===> fedro
+		// 	  ===> ubuntu
+		// 	  ===> centos
+		// linux代码放到了一个世界人民都能访问到地方，internet
+		// 用到了版本管理系统（收费）===> 但是，给linus免费使用
+
+		// git (linus) 当前最火的版本控制系统
+		// github ===> 世界上最大的男性交友社区
+		/***********故事***************************************/
+		/******************************************************/
+
+
+		// 判断一个数字是否能被5和6同时整除（打印能被5和6整除），或只能被5整除（打印能被5整除），或只能被6整除，（打印能被6整除），不能被5或6整除，（打印不能被5或6整除）
+
+		var num = Math.floor(Math.random() * 100) + 1;
+		var isDivided_5 = num%5 === 0 ? true : false;
+		var isDivided_6 = num%6 === 0 ? true : false; 
+
+		if(isDivided_5 && isDivided_6) {
+
+		} else if (isDivided_5 && !isDivided_6) {
+
+		} else if (!isDivided_5 && isDivided_6) {
+
+		} else {
+			//!isDivided_5 && !isDivided_6
+		}
+
+	</script>
+</body>
+</html>

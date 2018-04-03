@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<input id="input1" type="text">
+	<input id="input2" type="text">
+
+	<script>
+
+	//函数的返回值：return , 函数执行完的结果就是return对应的值。
+
+	var input1 = document.getElementById('input1');
+	var input2 = document.getElementById('input2');
+	
+	function computed(n1,n2,com){
+		var result = 0;
+		switch(com){
+			case '+':
+			result = n1 + n2;
+			break;
+			case '-':
+			result = n1 - n2;
+			break;
+			case '*':
+			result = n1 * n2;
+			break;
+			case '/':
+			result = n1 / n2;
+			break;
+		}
+		//console.log(result);
+		input1.value = result;
+		input2.value = result;
+	}
+
+	computed(3,10,'+');   //13
+	computed(3,10,'-');
+
+
+	/*function foo(){
+		return 456;
+	}
+
+	console.log( foo() ); */ //默认函数执行完的结果是：undefined
+
+	//函数一般会写成一个通用的功能，具体干什么在函数外面去做，利用return返回值。
+
+	/*var input1 = document.getElementById('input1');
+	var input2 = document.getElementById('input2');
+	
+	function computed(n1,n2,com){
+		var result = 0;
+		switch(com){
+			case '+':
+			result = n1 + n2;
+			break;
+			case '-':
+			result = n1 - n2;
+			break;
+			case '*':
+			result = n1 * n2;
+			break;
+			case '/':
+			result = n1 / n2;
+			break;
+		}
+		return result;
+	}
+
+	input1.value = computed(3,10,'+');   
+	input2.value = computed(3,10,'-');
+
+	console.log( computed(3,10,'*') );
+	document.title = computed(3,10,'/');*/
+
+
+	//return 后面的代码是不执行的。
+
+	var a = 6;
+	var b = square(a);
+	var c = 7;
+	var d = square(c);
+
+	console.log(b);   //36
+	console.log(d);   //49
+
+	function square(n){   //计算平方的函数
+		return n * n;
+		//console.log(123);   // 123是不会执行的
+	}
+	/*function extract(n){    //计算开平方的函数
+		return Math.sqrt(n);
+	}
+
+	var a = 3;
+	var b = 4;
+	var c = extract(square(a) + square(b));
+
+	console.log(c);
+*/
+
+
+
+
+
+	</script>
+</body>
+</html>

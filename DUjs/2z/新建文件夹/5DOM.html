@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id="list">
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<script>
+
+	//所有的子节点：属于集合，必然有长度length和下标[]	
+
+	//childNodes和children类似的功能：
+		//区别children只会获取子节点中的元素节点
+
+	var list = document.getElementById('list');
+	//console.log( list.childNodes.length	);     // 7
+	//console.log( list.childNodes[0].nodeType );  // 3
+	//console.log( list.childNodes[1].nodeType );  // 1 
+
+	/*for(var i=0;i<list.childNodes.length;i++){
+		if(list.childNodes[i].nodeType == 1){
+			list.childNodes[i].style.background = 'red';	
+		}
+	}*/
+
+	//console.log( list.children.length );
+	/*for(var i=0;i<list.children.length;i++){
+		list.children[i].style.background = 'red';	
+	}*/
+
+	//firstChild 和 firstElementChild（last跟first类似）
+	//区别 : firstElementChild只会获取到第一个元素类型的子节点
+	//console.log( list.firstElementChild.nodeType );
+	//console.log( list.lastChild.nodeType );
+
+	</script>
+</body>
+</html>

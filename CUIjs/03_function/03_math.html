@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//Math.floor()	//向下取整
+		//Math.ceil()	//向上取整
+		//Math.round()	//四舍五入
+		alert(Math.floor(3.14));
+
+		//Math.max()	//取得参数中的最大值
+		//Math.min()	//取得参数中的最小值
+		alert(Math.min(4, 6, 9, 11));
+
+		//Math.pow()	//进行幂运算
+		Math.pow(3, 2)	//3的平方
+		Math.pow(5, 3)	//5的三次幂
+
+		//Math.sqrt()	//开方，取正值
+
+		//直角边30,40，求斜边
+		//a^2 + b^2 = c^2	===>	a,b是直角边，c是斜边
+		var a=13, b=14;
+		var c= Math.sqrt(Math.pow(a,2) + Math.pow(b,2));
+		alert(c);
+
+		//Math.abs()	//取绝对值
+		Math.abs(-1);	//返回1
+		Math.abs(1);	//返回1
+
+		//Math.random();	//得到一个[0, 1)之间的小数
+		//取随机整数的方法：
+		//Math.floor(Math.random()*随机数个数) + 开始值
+		function random(start, end) {
+			return Math.floor(Math.random() * (end - start + 1)) + start;
+		}
+		var num;
+		while(true) {
+			num = random(0,41);
+			console.log(num);
+			if(num === 10) {
+				break;
+			}
+
+		}
+	</script>
+</body>
+</html>

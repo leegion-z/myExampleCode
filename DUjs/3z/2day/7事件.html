@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<div id="box1">aaaa
+		<div id="box2">bbbb
+			<div id="box3">cccc</div>
+		</div>
+	</div>
+
+	<script>
+
+	/*事件流 : 事件传播的整个过程。三个阶段：捕获阶段、目标阶段、冒泡阶段。
+	
+	捕获阶段 : document想元素内一层层的传递
+
+	目标阶段 : 当前操作的元素
+
+	冒泡阶段 : 从前面元素一层层向外传递，传递到document结束。*/
+
+	var box3 = document.getElementById('box3');
+	var box2 = document.getElementById('box2');
+	var box1 = document.getElementById('box1');
+
+
+	//这种事件写法：只支持 目标阶段、冒泡阶段。
+	//另外一种事件写法：绑定写法 是支持 捕获阶段、目标阶段、冒泡阶段。
+
+	//阻止冒泡：event对象下 ev.stopPropagation();
+
+	box3.onclick = function(){
+		alert(this.id);
+	};
+	box1.onclick = function(){
+		alert(this.id);
+	};
+	box2.onclick = function(ev){
+		alert(this.id);
+		ev.stopPropagation();
+	};
+
+	</script>
+</body>
+</html>

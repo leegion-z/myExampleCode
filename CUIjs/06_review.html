@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//this指针:
+		//1. 函数定义时，无法确定指向
+		//2. 函数调用时，根据调用方式不同，会有不同结果
+		//	2.1 XXX()	===>	this指向window
+		//	2.2	o.xxx()	===>	this指向o
+		var cuijn_name = 'cuijn';
+
+		var sayHi = function () {
+			alert('Global sayHi:' + this.cuijn_name);
+		}
+
+		var person = {
+			cuijn_name: 'phgap',
+			sayHi: function () {
+				alert('Person sayHi:' + this.cuijn_name)
+			}
+		};
+
+		// sayHi();						//cuijn
+		// person.sayHi()				//phgap
+
+		// var sayHello = person.sayHi;
+		// sayHello();					//cuijn
+		// person.sayHello = sayHi
+		// person.sayHello()			//phgap
+
+		// (3, person.sayHi)();			//cuijn this指向window
+		// (person.sayHi)();				//phgap this指向person
+
+		//创建类
+		function Person(name, age, gender) {
+			this.name = name;
+			this.age = age;
+			this.gender = gender;
+			this.exes = [this.name];
+		}
+
+		Person.prototype.sayHi = function () {
+			alert(this.name + ' is ' + this.age + ' years old');
+		}
+
+		//创建对象
+		//1. 创建了一个新对象
+		//2. 对象上添加一个属性__proto__，它指向这个对象的构造函数的prototype
+		//3. this指向这个对象这个对象
+		//4. 执行构造函数
+		//5. 返回这个对象
+
+		var p1 = new Person(' xiaoD', 20);
+
+		// p1.sayHi();
+
+		
+		// ['2017-11-23', '2017-11-24']
+		// function formatDate(date) {
+		// 	var y = date.getFullYear();
+		// 	var m = date.getMonth() + 1;
+		// 	var d = date.getDate();
+		// 	m = m < 10 ? '0' + m : m;
+		// 	d = d < 10 ? '0' + d : d;
+		// 	return y + '-' + m + '-' + d;
+		// }
+
+		// var date = new Date();
+		// var date_array = [];
+		// date_array.push(formatDate(date));
+		// for(var i=1; i<=30; i++) {
+		// 	date.setDate(date.getDate()-1);
+		// 	date_array.unshift(formatDate(date));
+
+		// }
+		// alert(date_array);
+
+		// 继承
+		// UML工具astah，astah是画UML图的。
+		// UML叫做统一建模语言。
+		// UML图中的类图。
+		//私有属性以及方法，只能在类的内部实现中访问，
+		//不能通过对象直接访问到(通过.来访问)
+		//继承时，私有的属性和方法不被继承(比如，皇帝的妃子就是私有的，皇子通常不能继承)
+		//JS中没有私有这个限定，如果我们希望某个属性和方法是私有的，我们可以将这个属性
+		//或者方法以_开头命名，但是JS引擎并不会阻止我们这么做，这只是一个道德的约束(不报错)
+		//继承关系中：父类又叫基类或者超类
+		//			子类又叫衍生类
+		//在JS中的继承，分为构造函数的继承和原型的继承
+		//例如创建一个Student类，来继承Person类
+		function Student(name, age, gender, no, wechat) {
+			// this.name = name;
+			// this.age = age;
+			// this.gender = gender;
+			//如果直接调研Person，this指向window，name,age,gender会被挂到window上，而不是student对象上
+			//所以，我们需要在调用Person这个函数时，将里面的this指针，指向student对象(也就是this)
+			//函数对象有字节方法call()，这个方法可以在调用函数时，指定this指针的指向
+			//call()有n个参数，第一个参数，就是this的指向，后面的对象，是原函数的参数
+			// Person(name, age, gender);
+			Person.call(this, name, age, gender);
+			this.no = no;
+			this.wechat = wechat;
+		}
+
+		Student.prototype = Object.create(Person.prototype)
+		Student.prototype.sleepInClass = function () {
+
+		}
+
+		var s1 = new Student('xiaoQ', 20, 'Male', 0, 'qiweijie');
+		s1.sayHi();
+		// s1.sayHi();	//报错，因为Person原型上的东西，并没有继承过来
+		// // 需要使用原型继承，来继承基类的原型的方法。
+
+		// // 1. Object.create(): 创建了一个新的空对象，并将这个空对象的__proto__，指向了参数对象
+		// var p = {
+		// 	name: 'qwj',
+		// 	age: 18
+		// }
+		// var op = Object.create(p)	//创建了空对象op，将op的__proto__指向p
+
+		var num = [3];
+		var len = num.length;
+		for(var i=0; i<len; i++) {
+
+		}
+
+
+
+	</script>
+</body>
+</html>

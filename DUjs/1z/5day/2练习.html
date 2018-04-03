@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input id="btn" type="checkbox">
+	<div id="list">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+	</div>
+	<script>
+
+	var btn = document.getElementById('btn');
+	var list = document.getElementById('list');
+	var cbs = list.getElementsByTagName('input');
+
+	/*btn.onclick = function(){
+
+		if(btn.checked){
+			for(var i=0;i<cbs.length;i++){
+				cbs[i].checked = true;
+			}
+		}
+		else{
+			for(var i=0;i<cbs.length;i++){
+				cbs[i].checked = false;
+			}
+		}
+
+	};*/
+
+	btn.onclick = function(){
+
+		if(btn.checked){
+			for(var i=0;i<cbs.length;i++){
+				cbs[i].checked = true;
+			}
+		}
+		else{
+			for(var i=0;i<cbs.length;i++){
+				cbs[i].checked = false;
+			}
+		}
+
+	};
+
+	for(var i=0;i<cbs.length;i++){
+		cbs[i].onclick = function(){
+
+			if( toCom() == 'on' ){    //五个全选中
+				btn.checked = true;
+			}
+			else if( toCom() == 'off' ){   //五个全取消
+				btn.checked = false;
+			}
+
+		};
+	}
+
+	function toCom(){
+		var onCount = 0;
+		var offCount = 0;
+		var len = cbs.length;
+		for(var i=0;i<len;i++){
+			if(cbs[i].checked){
+				onCount += 1;
+			}
+			else{
+				offCount += 1;
+			}
+		}
+		if(onCount == len){
+			return 'on';
+		}
+		if(offCount == len){
+			return 'off';
+		}
+	}
+
+
+	</script>
+</body>
+</html>

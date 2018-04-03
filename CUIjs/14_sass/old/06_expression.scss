@@ -1,0 +1,11 @@
+@for $i from 1 through 72 {
+
+  .all div:nth-child(#{$i}) {
+    background-color: teal;
+    opacity: 0.5;
+    -webkit-transform: rotateY($i*30deg) translateZ(300px) translateY((200-$i*10)*1px);
+    -ms-transform: rotateY($i*30deg) translateZ(300px) translateY((200-$i*10)*1px);
+    -o-transform: rotateY($i*30deg) translateZ(300px) translateY((200-$i*10)*1px);
+    transform: rotateY($i*30deg) translateZ(300px) translateY((200-$i*10)*1px);
+  }
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//String对象
+		var msg = 'hello world';				//通过字面量创建了一个字符串（string类型）
+		var info = new String('hello string');	//通过构造函数创建字符串(object类型)
+
+		// alert(typeof msg);
+		// alert(typeof info);
+		//Object是数据和操作的集合。String对象的存在，就是为了方便操作字符串
+		//我们将基本类型的string和操作Ta的一些列方法合并到一起，就是String对象
+
+		//在开发使用时，上面两个字符串并没有区别。
+		//TODO:为什么没区别呢？
+
+		//string有一个length属性，表明字符串的长度
+		//这个length属性时只读的(字符串一旦创建，就不可变)
+		//表示的是显示的字符的个数，而不是内存中的字节数
+		// alert(msg.length);
+		var myName = '梦奇';
+		// alert(myName.length)	//2
+		myName = 'こんにちは';
+		// alert(myName.length)	//5
+
+		//字符的访问
+		// alert(msg[0]);
+		// alert(msg[1]);
+		alert(msg[11]);			//字符串访问超出范围，与数组的结果一直，都为undefined
+		alert(msg.charAt(11));	//使用charAt，访问超出范围时，返回的空字符串【''】
+
+		for(var i=0; i<msg.length; i++) {
+			// alert(msg[i]);
+			// alert(msg.charAt(i));
+			alert(msg.charCodeAt(i));
+		}
+
+
+		//判断字符串是否全为大写字母
+		function isUpperCase (str) {
+			for(var i=0; i<str.length; i++) {
+				// if(65 <= str.charCodeAt(i) && str.charCodeAt(i)<=90) {
+				// 	//此处仅代表一个字符是大写字母，所有不能在这return
+				// } else {
+				// 	return false;
+				// }
+
+				if(str.charCodeAt(i)<65 || str.charCodeAt(i)>90) {
+					//不是大写字母，return
+					return false;
+				}
+			}
+
+
+			return true;
+		}
+
+		// 统计一个字符串中大写和小写字母的个数
+		var str1 = 'I am 100 years old!!!I am Happy!!!';
+
+		var upperCount = 0, lowerCount = 0;
+		var code;
+		for(var i=0; i<str1.length; i++) {
+			code = str1.charCodeAt(i);
+			if(65 <=code && code <=90) {
+				//大写
+				upperCount++;
+			} else if(97 <=code && code <=122) {
+				//小写
+				lowerCount++;
+			} else {
+				//不是字母
+			}
+		}
+
+		//indexOf()
+		//功能：查找子串在原串中的位置
+		var str = 'Hello World';
+		str.indexOf('l');
+		//作业2:找到某个字符串中所有匹配的字符所在位置
+		//lastIndexOf()	从后向前查找
+
+		//从文件路径中，找出文件名开始的位置
+		var path = 'D:\\html5\\ppt\\01_ES5\\06_字符串对象.pptx';
+		var index = path.lastIndexOf('\\') + 1;
+
+		//从文件名中，找出扩展名开始的位置
+		var filename = '06_字符串对象.pptx';
+		index = filename.lastIndexOf('.') + 1;
+
+		//在一个邮件地址中，查找出用户名和域名
+		var email = 'cui.jingnan2017@gmail.com';
+		var username = '', domain = '';
+		index = email.indexOf('@');
+		for(var i=0; i<email.length; i++) {
+			if(i < index) {
+				//用户名
+				username += email[i];
+			} else if (i > index) {
+				//域名
+				domain += email[i];
+			} else {
+				//@
+			}
+		}
+
+		
+
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="div1" class="box" title="hello">aaaaa</div>
+	<script>
+
+	var div1 = document.getElementById('div1');
+
+	//通过JS设置的属性，都是可以通过 . [] 
+		//setAttribute() 来 getAttribute()方式来获取到
+		//H5的方式 通过设置 setAttribute('data-*') 
+
+	//div1.qianfeng = '千锋';
+	//console.log( div1.qianfeng );
+	//console.log( div1['qianfeng'] );
+
+	//div1.setAttribute('qianfeng','千锋');
+	//console.log( div1.getAttribute('qianfeng') );
+
+	//div1.setAttribute('data-qianfeng','千锋');
+	//console.log( div1.dataset.qianfeng );
+
+	//所以总结：可以在JS中给任意的标签，加N多个属性和对应的属性值
+
+	div1.a = '1';
+	div1.b = '2';
+	div1.c = '3';
+
+	console.log( div1.a );
+	console.log( div1.b );
+	console.log( div1.c );
+
+	</script>
+</body>
+</html>

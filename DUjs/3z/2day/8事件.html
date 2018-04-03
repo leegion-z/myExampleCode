@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#list{ width: 300px; border: 1px black solid; display: none; }
+	</style>
+</head>
+<body>
+	<button id="btn">弹层</button>
+	<ul id="list">
+		<li>11111</li>
+		<li>11111</li>
+		<li>11111</li>
+		<li>11111</li>
+	</ul>
+	<script>
+
+	var btn = document.getElementById('btn');
+	var list = document.getElementById('list');
+
+	btn.onclick = function(ev){
+		list.style.display = 'block';
+		ev.stopPropagation();
+	};
+	list.onclick = function(ev){
+		ev.stopPropagation();
+	};
+
+	document.onclick = function(){
+		list.style.display = 'none';
+	};	
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	      //reverse()
+			//数组的反向操作
+			//会影响原数组	
+
+		/*var arr = ['a','b','c','d'];
+		
+		var result = arr.reverse();	
+
+		console.log(result);
+
+		console.log(arr);*/
+
+		 //sort()
+       	 	//数组排序
+       	 		//默认：按位来进行排序的，一位一位进行比较
+	 		//自定义排序
+	 			//在sort方法添加一个函数来实现的，函数会触发多次
+	 			//每一次会获取到两个值
+	 			// return返回操作：如果返回 : 
+	 			// 	负数(不进行任何的变化) 正数(切换两个数)
+
+
+		/*var arr = [13,2,5,20,123,7];
+			
+		arr.sort();
+
+		console.log( arr );*/
+
+		//var arr = [13,2,5,20,123,7];
+			
+		/*arr.sort(function(n1,n2){
+
+			//console.log('n1:'+n1);
+			//console.log('n2:'+n2);
+
+			if(n1 < n2){
+				return 1;
+			}
+			else if(n1 > n2){
+				return -1;
+			}
+			else{
+				return 0;
+			}
+
+		});*/
+
+		/*arr.sort(function(n1,n2){
+			return n1 - n2;    //从小到大
+			//return n2 - n1;  //从大到小
+		});
+
+		console.log( arr );*/
+
+		/*var arr = ['c','d','a','b'];
+
+		arr.sort();
+		arr.reverse();
+
+		console.log( arr );*/
+
+		//var str = 'hello';
+		//console.log(str.length);
+
+		/*var arr = ['yellow','red','blue','black','gray','pink'];
+
+		arr.sort(function(n1,n2){
+			return n1.length - n2.length;
+		});
+
+		console.log( arr );*/
+		
+	</script>
+</body>
+</html>

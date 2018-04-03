@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1{ width: 200px; height: 200px; background: red; position: absolute; }
+	#div2{ width: 200px; height: 200px; background: red; position: absolute; top: 200px; }
+	</style>
+</head>
+<script src="jquery-3.2.1.js"></script>
+<body style="height:2000px;">
+	<button>登陆</button><button>停止运动</button>
+	<div id="div1"></div>
+	<div id="div2"></div>
+	<script>
+
+	$('button').eq(0).click(function(){
+
+		//show hide toggle : 动画是：width、height、opacity
+		//$('#div1').toggle(1000);
+
+		//fadeIn() , fadeOut()  , fadeToggle() : 动画是：淡入淡出 opacity
+		//$('#div1').fadeToggle(1000);
+
+		//slideDown()  , slideUp() , slideToggle()：动画是：展开收缩 height
+		//$('#div1').slideToggle(1000);
+
+
+		// animate() : 
+		// 	1参数：运动的样式和目标点，对象格式
+		//	2参数：运动的时间，默认：400ms
+		//  3参数：运动的形式，默认：swing(慢快慢)  linear(匀速)
+		//  4参数：运动结束的回调函数
+
+		//$('#div1').animate({ left : 300 , top : 300 , width:100 , height:100 },5000);
+
+		//$('#div1').animate({ left : 300  },5000,'linear');
+		//$('#div2').animate({ left : 300  },5000,'swing');
+
+		/*$('#div1').animate({ left : 300  },2000,'linear',function(){
+			console.log(123);	
+		});*/
+
+		//链式运动：一个运动结束后去执行下一个运动
+	
+		//$('#div1').animate({ left : 300  },2000,'linear').animate({ top : 300 },2000,'linear');
+
+		//delay() : 延迟
+
+		//$('#div1').animate({ left : 300  },2000,'linear').delay(2000).animate({ top : 300 },2000,'linear');
+
+		//stop()、finish()：停止动画的操作
+
+		$('#div1').animate({ left : 300  },2000,'linear').animate({ top : 300 },2000,'linear');
+
+
+
+	});
+
+	$('button').eq(1).click(function(){
+		
+		//$('#div1').stop();    //只能停止当前的运动，不会停止后续的链式运动
+
+		//$('#div1').stop(true);   //停止当前操作元素的所有运动
+
+		//$('#div1').stop(true,true);   //让当前元素停止在终点的位置
+
+		$('#div1').finish();     //停止到所有运动的终点的位置
+
+	});
+
+	</script>
+</body>
+</html>

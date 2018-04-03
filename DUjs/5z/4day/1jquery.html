@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+	<div id="div1" class="box">aaaaa</div>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<script>
+
+	/*jquery的特点：
+		1. 简化了原生JS的写法
+		2. 处理了原生JS的兼容性问题
+		3. 提供了一些新的功能*/
+
+	//document.getElementById('div1').style.background = 'red';
+	//document.getElementsByTagName('div')[0].style.background = 'red';
+	//document.getElementsByClassName('box')[0].style.background = 'red';
+
+	//jquery中获取元素都是类似于CSS的方式，并且省略循环操作
+	//$('#div1').css('background','red');
+	//$('div').css('background','red');
+	//$('.box').css('background','red');
+
+	// var li = document.getElementsByName('li');
+	// for(){
+	// 	li[i].style.background = 'red';
+	// }
+
+	//$('ul li').css('background','red');
+
+	//$('ul li:nth-of-type(2)').css('background','red');
+
+	//指定的某一个
+	//$('ul li').eq(1).css('background','red');
+	//$('ul li').first().css('background','red');
+	//$('ul li').last().css('background','red');
+	//$('ul li').slice(1,3).css('background','red');
+
+	//$ == jQuery
+	//jQuery('ul li').css('background','red');
+
+	//原生JS和JQ是可以共存的
+
+	//命名规范：JSer 命名jquery会添加一个$，来跟原生进行区别
+	var div1 = document.getElementById('div1');
+	var $ul = $('ul');
+
+	$ul	
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+	<ul id="list"></ul>
+	<script>
+
+		for(var col = 1; col<9;col++){
+			for(var row = 1; row<9;row++){
+				if(row>=col)
+					document.write(col + 'X' + row + '=' + row*col);
+			}
+		}
+
+	</script>
+</body>
+</html>

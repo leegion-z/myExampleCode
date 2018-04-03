@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<div>点一下</div>
+	<script type="text/javascript">
+		var div = document.querySelector('div');
+		div.onclick = function (cuijn_evt) {
+			//通过事件对象可以得到事件相关的信息
+			//在非IE8上，这个对象，是通过事件处理函数的参数传递过来的
+			//在IE8上，这个对象被放到了window上，window.event
+			// console.log(cuijn_evt);
+			//下面的代码意义为：如果前面的值转boolean为true，则e等于前面，否则，e等于后面
+			var e = cuijn_evt || window.evnet;
+			// console.log(e);
+			// var e = cuijn_evt !== undefined ? cuijn_evt : window.evnet;
+			//	1. e.type	===> 事件类型
+			//	2. e.target	===> 目标元素（真正触发事件的元素）
+			//		this指向的是事件流，流经到的元素
+			//	3. e.preventDefault()	===> 阻止默认行为
+			// 		当时DOM0的事件处理程序时，我们可以在事件处理函数中return false来阻止默认行为
+			//  4. e.stopPropagation()	===> 阻止事件传播(截断了事件流)
+
+			return false;	//此处，就阻止了div点击后的默认行为
+		}
+	</script>
+</body>
+</html>
